@@ -1,5 +1,5 @@
 CC = g++			#Compilater used
-EXEC_NAME = main		#Name of the executable
+EXEC_NAME = BIN/main		#Name of the executable
 
 all : $(EXEC_NAME)
 
