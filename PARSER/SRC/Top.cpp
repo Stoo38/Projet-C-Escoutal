@@ -16,6 +16,8 @@ void Top::createBlocks()
 	}
 }
 
+//Parcourt le mot caractere par caractere
+//Si l'un d'eux est une majuscule, il est remplace par la minuscule correspondante
 string Top::toMinuscule(string word)
 {	
 	for (int i = 0; i < word.size(); i++)
@@ -32,6 +34,8 @@ string Top::toMinuscule(string word)
 	return word;
 }
 
+//Parcourt le fichier a la recherche de --, utilises pour les commentaires en VHDL
+//Supprime la fin du string a partir de ces symboles
 string Top::cutComment(string sentence)
 {
 	for(int i = 0; i < (sentence.size() - 1); i++)
@@ -45,6 +49,9 @@ string Top::cutComment(string sentence)
 	return sentence;
 }
 
+//Fonction supprimant toutes les iterations d'un caractere defini
+//Utilise le principe du decalage a gauche pour supprimer le caractere voulu
+//La chaine de caractere est raccourcie a la fin si necessaire
 string Top::eraseCharacter(string sentence, const char symbol)
 {
 	int nbErase = 0;
@@ -65,6 +72,8 @@ string Top::eraseCharacter(string sentence, const char symbol)
 	return sentence;
 }
 
+//Redecoupe une chaine de caractere en entree en fonction d'un caractere
+//EXEMPLE: Pour e: "Testest" ---> "T" "e" "st "e" "st"
 vector<string> Top::cutCharacter(vector<string> tab, int *numCase, const char symbol)
 {
 	vector<string> tabString;
