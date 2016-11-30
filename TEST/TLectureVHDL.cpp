@@ -1,5 +1,6 @@
 #include <fstream>
 #include <iostream>
+#include <list>
 
 using namespace std;
 
@@ -8,7 +9,36 @@ void extractLexeme();
 
 int main()
 {
+	/*list <string> testlist;
+	int i = 0;
+	string c = "ccc";
+	testlist.push_back(c);
+	if (i = 0)
+	{
+		string a = "aaa";
+		string b = "bbb";
+		testlist.push_back(a);
+		testlist.push_back(b);
+	}
+	cout << testlist.back() << endl;
+	cout << testlist.front() << endl;*/
 
+	list <string> testlist;
+	int i = 0;
+	string c = "ccc";
+	string a = "aaa";
+	
+	testlist.push_back(c);
+	testlist.push_back(a);
+	if (1)
+	{	
+		string b = "bbb";
+		testlist.push_back(b);
+		cout << testlist.size() << endl;
+	}
+	cout << testlist.back() << endl;
+	cout << testlist.front() << endl;	
+	cout << testlist.size() << endl;
 }
 
 void extractLexeme ()
