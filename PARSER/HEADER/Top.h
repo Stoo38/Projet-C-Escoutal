@@ -25,7 +25,7 @@ class Top
 		//m_listeBlocks.clear();	
 	}
 	//Fonction utilisee pour creer les différents blocs en fonction des lexemes extraits du fichier VHDL
-	void createBlocks();
+	void extractLexeme();
 	//Fonction remplacant toutes les majuscules se trouvant dans le string en entree par des minuscules
 	string toMinuscule(string word);
 	//Fonction detectant un commentaire VHDL dans un string et effacant tous les caracteres correspondants

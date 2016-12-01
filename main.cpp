@@ -1,13 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include "PARSER/HEADER/Top.h"
 
 using namespace std;
 
-//argc = number of strings in argv
-//argv[] = table of pointers on strings
 int main(int argc, char *argv[])
 {
-	cout << argv[1] << endl;	//Return the first parameter when we execute the program in the terminal
-	cout << argv[2] << endl;	//Return the second parameter when we execute the program in the terminal
+	Top myTop(argv[1]);
+	//myTop.extractLexeme();
+	
+	vector<string> mytab;
+	vector<string>::iterator itmytab;
+	mytab.push_back("xtestx");
+	mytab.push_back("xxx");
+	mytab = myTop.cutCharacter(mytab, 120);
+	for(itmytab=mytab.begin(); itmytab != mytab.end(); itmytab++)
+	{
+		cout << *itmytab << endl;
+	}	
 }

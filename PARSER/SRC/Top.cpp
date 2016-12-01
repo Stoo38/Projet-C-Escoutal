@@ -1,19 +1,32 @@
 #include "../HEADER/Top.h"
 
-void Top::createBlocks()
+void Top::extractLexeme()
 {
 	ifstream myFile(m_vhdlFileName.c_str());
 
 	if(myFile)
 	{
-		do		
+		string line;
+		vector<string> tab;
+		vector<string>::iterator it;
+		while(getline(myFile, line))		
 		{
-		} while (myFile.eof() != 1);		
+			cout << line << endl;
+			line = cutComment(line);
+			cout << line << endl;
+			line = toMinuscule(line);
+			cout << line << endl;
+			tab.push_back(line);		
+		}
+		for(it=tab.begin(); it != tab.end(); it++)
+		{
+			cout << *it << endl;
+		}				
 	}
 	else
 	{
 		cout << "ERROR: " << m_vhdlFileName << " not found" << endl;
-	}
+	}	
 }
 
 //Parcourt le mot caractere par caractere
@@ -76,7 +89,6 @@ string Top::eraseCharacter(string sentence, const char symbol)
 //EXEMPLE: Pour e: "Testest" ---> "T" "e" "st "e" "st"
 vector<string> Top::cutCharacter(vector<string> tab, const char symbol)
 {
-	vector<string> tabString;
 	vector<string> finalTab;
 	vector<string>::iterator it;
 	int pos;
@@ -94,26 +106,33 @@ vector<string> Top::cutCharacter(vector<string> tab, const char symbol)
 			{
 				if (posSymbol == 0)
 				{
-					tabString.push_back(word.substr(pos, 1));
+					finalTab.push_back(word.substr(pos, 1));
 					pos++;
 					posSymbol = word.find(symbol, pos);
-				}	
+				}
+				else if ((posSymbol - pos) == 0)
+				{
+					finalTab.push_back(word.substr(pos, 1));
+					pos++;
+					posSymbol = word.find(symbol, pos);
+				} 	
 				else
 				{
-					tabString.push_back(word.substr(pos, posSymbol - pos));
+					finalTab.push_back(word.substr(pos, posSymbol - pos));
 					pos = posSymbol;
-					tabString.push_back(word.substr(pos, 1));
+					finalTab.push_back(word.substr(pos, 1));
 					pos = posSymbol+1;
 					posSymbol = word.find(symbol, pos);
 				}
 			}
-			if((posSymbol == string::npos) && (word.substr(pos, word.size()) != ""))
+			if(posSymbol == string::npos)
 			{
-				tabString.push_back(word.substr(pos, word.size()));	
+				if(word.substr(pos, word.size()) != "")
+				{
+					finalTab.push_back(word.substr(pos, word.size()));
+				}	
 			}
 		} while (posSymbol != string::npos);
-		finalTab.insert(finalTab.end(), tabString.begin(), tabString.end());
-		tabString.clear();
 	}
 	
 	
@@ -122,8 +141,7 @@ vector<string> Top::cutCharacter(vector<string> tab, const char symbol)
 
 vector<string> Top::eraseSpace(vector<string> tab)
 {
-	tab = cutCharacter(tab, 120);	
-	cout << 1 << endl;
+	tab = cutCharacter(tab, 32);
 	vector<string> tab2;
 	tab2 = tab;
 	vector<string>::iterator it;

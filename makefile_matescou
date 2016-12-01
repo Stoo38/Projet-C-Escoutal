@@ -1,0 +1,21 @@
+CC = g++					#Compilater used
+EXEC_NAME = main				#Name of the executable
+
+all: create_binary_files
+
+$(EXEC_NAME): create_binary_files
+	
+create_binary_files: create_object_files
+	$(CC) -o main PARSER/OBJ/Bloc.o PARSER/OBJ/Top.o main.o  
+
+create_object_files: clean
+	$(CC) -c -o PARSER/OBJ/Bloc.o PARSER/SRC/Bloc.cpp
+	$(CC) -c -o PARSER/OBJ/Top.o PARSER/SRC/Top.cpp
+	$(CC) -c -o main.o main.cpp
+
+clean:
+	rm -f PARSER/OBJ/Bloc.o
+	rm -f PARSER/OBJ/Top.o
+	rm -f main.o
+	rm -f main
+
