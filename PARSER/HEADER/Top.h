@@ -36,7 +36,7 @@ class Top
 	//EXEMPLE: Pour e: "Testest" ---> "T" "e" "st "e" "st"
 	vector<string> cutCharacter(vector<string> tab, const char symbol);
 
-	vector<string> eraseSpace(vector<string> tab, const char symbol);
+	vector<string> eraseSpace(vector<string> tab);
 };
 
 #endif	

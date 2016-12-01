@@ -12,11 +12,11 @@ int main()
 
 	vector<string> mytab;
 	vector<string>::iterator itmytab;
-	mytab.push_back("te st");
+	mytab.push_back("texst");
 	mytab.push_back("essai");
-	mytab.push_back("test ");
-	mytab.push_back("1 2 3 4 5");
-	mytab = my_top.eraseSpace(mytab, 32);
+	mytab.push_back("testx");
+	mytab.push_back("1x2x3x4x5");
+	mytab = my_top.eraseSpace(mytab);
 	for(itmytab=mytab.begin(); itmytab != mytab.end(); itmytab++)
 	{
 		cout << *itmytab << endl;

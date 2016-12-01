@@ -81,59 +81,49 @@ vector<string> Top::cutCharacter(vector<string> tab, const char symbol)
 	vector<string>::iterator it;
 	int pos;
 	int posSymbol;
-	int ajout;
 	string word;	
 	for(it = tab.begin(); it < tab.end(); it++)
 	{
 		pos = 0;
 		posSymbol = 0;
-		ajout = 0;
 		word = *it;
+		posSymbol = word.find(symbol, pos);
 		do
 		{
-			posSymbol = word.find(symbol, pos);
 			if (posSymbol != string::npos)
 			{
 				if (posSymbol == 0)
 				{
 					tabString.push_back(word.substr(pos, 1));
-					ajout++;
 					pos++;
-				}
-				else if (posSymbol == word.size() - 1)
-				{
-					tabString.push_back(word.substr(pos, posSymbol - pos));
-					ajout++;
-					pos = posSymbol;
-					tabString.push_back(word.substr(pos, 1));
-					ajout++;
-				}
+					posSymbol = word.find(symbol, pos);
+				}	
 				else
 				{
 					tabString.push_back(word.substr(pos, posSymbol - pos));
-					ajout++;
 					pos = posSymbol;
 					tabString.push_back(word.substr(pos, 1));
 					pos = posSymbol+1;
-					ajout++;
+					posSymbol = word.find(symbol, pos);
 				}
 			}
-			else
+			if((posSymbol == string::npos) && (word.substr(pos, word.size()) != ""))
 			{
-				tabString.push_back(word.substr(pos, word.size()));
-				ajout++;
-				pos = posSymbol;
+				tabString.push_back(word.substr(pos, word.size()));	
 			}
 		} while (posSymbol != string::npos);
 		finalTab.insert(finalTab.end(), tabString.begin(), tabString.end());
 		tabString.clear();
 	}
+	
+	
 	return finalTab;
 }
 
-vector<string> Top::eraseSpace(vector<string> tab, const char symbol)
+vector<string> Top::eraseSpace(vector<string> tab)
 {
-	tab = cutCharacter(tab, 32);	
+	tab = cutCharacter(tab, 120);	
+	cout << 1 << endl;
 	vector<string> tab2;
 	tab2 = tab;
 	vector<string>::iterator it;
@@ -144,7 +134,8 @@ vector<string> Top::eraseSpace(vector<string> tab, const char symbol)
 		
 		if (*it2 == "" || *it2 == " ")
 		{
-			tab2.erase(it2);	
+			tab2.erase(it2);
+				
 		}
 		it2--;
 	}
