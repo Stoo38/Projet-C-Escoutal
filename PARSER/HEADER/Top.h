@@ -8,6 +8,7 @@
 #include <sstream>
 #include <list>
 #include "Bloc.h"
+#include <vector>
 
 using namespace std;
 
@@ -33,7 +34,9 @@ class Top
 	string eraseCharacter(string sentence, const char symbol);
 	//Fonction decoupant en plusieurs string un vector<string> en entree, en fonction d'un caractere defini
 	//EXEMPLE: Pour e: "Testest" ---> "T" "e" "st "e" "st"
-	vector<string> cutCharacter(vector<string> tab, int *numCase, const char symbol);
+	vector<string> cutCharacter(vector<string> tab, const char symbol);
+
+	vector<string> eraseSpace(vector<string> tab);
 };
 
 #endif	

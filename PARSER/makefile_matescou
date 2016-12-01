@@ -4,15 +4,14 @@ EXEC_NAME = BIN/main		#Name of the executable
 all: create_binary_files
 
 $(EXEC_NAME): create_binary_files
-	$(CC) -o $(EXEC_NAME) main.o
-
+	
 create_binary_files: create_object_files
-	$(CC) -o ../TEST/TLectureVHDL2 OBJ/Bloc.o OBJ/Top.o ../TEST/TLectureVHDL2.o  
+	$(CC) -o ../TEST/TTop OBJ/Bloc.o OBJ/Top.o ../TEST/TTop.o  
 
 create_object_files: clean
 	$(CC) -c -o OBJ/Bloc.o SRC/Bloc.cpp
 	$(CC) -c -o OBJ/Top.o SRC/Top.cpp
-	$(CC) -c -o ../TEST/TLectureVHDL2.o ../TEST/TLectureVHDL2.cpp
+	$(CC) -c -o ../TEST/TTop.o ../TEST/TTop.cpp
 
 clean:
 	rm -f OBJ/Bloc.o
