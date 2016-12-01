@@ -12,7 +12,7 @@ string cutComment(string sentence);
 int main()
 {
 	//TEST 1	
-	string test("testest");
+	/*string test("testest");
 	vector<string> tab;
 	vector<string>::iterator it;
 	tab.push_back(test);
@@ -24,16 +24,16 @@ int main()
 	{
 		cout << *it << endl;
 	}
-	cout << "a = " << a << endl;
+	cout << "a = " << a << endl;*/
 
 	//TEST 2
-	/*string test2("Ceci est                      un nouveau test grandeur nature ! ");
+	string test2("Ceci est                      un nouveau test grandeur nature ! ");
 	cout << test2 << endl;
 	test2 = cutCharacter(test2, 32);
-	cout << test2 << endl;*/
+	cout << test2 << endl;
 
 	//TEST 3
-	/*string test3("Ceci est un autre test --");
+	/*string test3("Ceci est un --autre test --");
 	cout << test3 << endl;
 	test3 = cutComment(test3);
 	cout << test3 << endl;*/
@@ -128,7 +128,7 @@ string cutCharacter(string sentence, const char symbol)
 			{
 				sentence[j] = sentence[j+1];			
 			}
-			sentence[sentence.size()-1] = 'x';
+			sentence[sentence.size()-1] = 62;
 			i = i - 1;
 			nbErase = nbErase + 1;
 		}

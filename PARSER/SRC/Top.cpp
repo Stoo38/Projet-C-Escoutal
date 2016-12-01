@@ -74,62 +74,79 @@ string Top::eraseCharacter(string sentence, const char symbol)
 
 //Redecoupe une chaine de caractere en entree en fonction d'un caractere
 //EXEMPLE: Pour e: "Testest" ---> "T" "e" "st "e" "st"
-vector<string> Top::cutCharacter(vector<string> tab, int *numCase, const char symbol)
+vector<string> Top::cutCharacter(vector<string> tab, const char symbol)
 {
 	vector<string> tabString;
+	vector<string> finalTab;
 	vector<string>::iterator it;
-	it = tab.begin();
-	string word = *(it+(*numCase));
-	int pos = 0;
-	int posSymbol = 0;
-	int ajout = 0;
-
-	if (word.empty())
+	int pos;
+	int posSymbol;
+	int ajout;
+	string word;	
+	for(it = tab.begin(); it < tab.end(); it++)
 	{
-		*numCase = 0;
-		return tab;
-	}
-
-	do
-	{
-		posSymbol = word.find(symbol, pos);
-		if (posSymbol != string::npos)
+		pos = 0;
+		posSymbol = 0;
+		ajout = 0;
+		word = *it;
+		do
 		{
-			if (posSymbol == 0)
+			posSymbol = word.find(symbol, pos);
+			if (posSymbol != string::npos)
 			{
-				tabString.push_back(word.substr(pos, 1));
-				ajout++;
-				pos++;
-			}
-			else if (posSymbol == word.size() - 1)
-			{
-				tabString.push_back(word.substr(pos, posSymbol - pos));
-				ajout++;
-				pos = posSymbol;
-				tabString.push_back(word.substr(pos, 1));
-				ajout++;
+				if (posSymbol == 0)
+				{
+					tabString.push_back(word.substr(pos, 1));
+					ajout++;
+					pos++;
+				}
+				else if (posSymbol == word.size() - 1)
+				{
+					tabString.push_back(word.substr(pos, posSymbol - pos));
+					ajout++;
+					pos = posSymbol;
+					tabString.push_back(word.substr(pos, 1));
+					ajout++;
+				}
+				else
+				{
+					tabString.push_back(word.substr(pos, posSymbol - pos));
+					ajout++;
+					pos = posSymbol;
+					tabString.push_back(word.substr(pos, 1));
+					pos = posSymbol+1;
+					ajout++;
+				}
 			}
 			else
 			{
-				tabString.push_back(word.substr(pos, posSymbol - pos));
+				tabString.push_back(word.substr(pos, word.size()));
 				ajout++;
 				pos = posSymbol;
-				tabString.push_back(word.substr(pos, 1));
-				pos = posSymbol+1;
-				ajout++;
 			}
-		}
-		else
+		} while (posSymbol != string::npos);
+		finalTab.insert(finalTab.end(), tabString.begin(), tabString.end());
+		tabString.clear();
+	}
+	return finalTab;
+}
+
+vector<string> Top::eraseSpace(vector<string> tab, const char symbol)
+{
+	tab = cutCharacter(tab, 32);	
+	vector<string> tab2;
+	tab2 = tab;
+	vector<string>::iterator it;
+	vector<string>::iterator it2;
+	it2 = tab2.end();
+	for(it = tab.end() - 1; it == tab.begin(); it--)
+	{
+		
+		if (*it2 == "" || *it2 == " ")
 		{
-			tabString.push_back(word.substr(pos, word.size()));
-			ajout++;
-			pos = posSymbol;
+			tab2.erase(it2);	
 		}
-	} while (posSymbol != string::npos);
-	it = tab.begin();
-	tab.insert(it+(*numCase), tabString.begin(), tabString.end());
-	it = tab.begin();
-	tab.erase(it+ajout);
-	*numCase = ajout;
-	return tab;
+		it2--;
+	}
+	return tab2;
 }
