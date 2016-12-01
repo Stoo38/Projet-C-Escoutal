@@ -1,5 +1,5 @@
-#ifndef _ENTITY_H_
-#define _ENTITY_H_
+#ifndef _COMPONENT_H_
+#define _COMPONENT_H_
 
 #include <math.h>
 #include <string.h>
@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class Entity
+class Component
 {
 protected:
 	//ATTRIBUTS
@@ -20,7 +20,7 @@ protected:
 
 public:
 	//CONSTRUCTEURS
-	Entity(const string & identifiant = ""):
+	Component(const string & identifiant = ""):
 	m_identifiant(identifiant)
 	{	
 	}

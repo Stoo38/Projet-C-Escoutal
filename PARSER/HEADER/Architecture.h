@@ -1,5 +1,5 @@
-#ifndef _ENTITY_H_
-#define _ENTITY_H_
+#ifndef _ARCHITECTURE_H_
+#define _ARCHITECTURE_H_
 
 #include <math.h>
 #include <string.h>
@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class Entity
+class Architecture
 {
 protected:
 	//ATTRIBUTS
@@ -20,7 +20,7 @@ protected:
 
 public:
 	//CONSTRUCTEURS
-	Entity(const string & identifiant = ""):
+	Architecture(const string & identifiant = ""):
 	m_identifiant(identifiant)
 	{	
 	}

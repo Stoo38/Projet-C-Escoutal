@@ -1,0 +1,20 @@
+CC = g++			#Compilater used
+EXEC_NAME = BIN/main		#Name of the executable
+
+all: create_binary_files
+
+$(EXEC_NAME): create_binary_files
+	$(CC) -o $(EXEC_NAME) main.o
+
+create_binary_files: create_object_files
+	$(CC) -o ../TEST/TClasse OBJ/Bloc.o ../TEST/TClasse.o  
+
+create_object_files: clean
+	$(CC) -c -o OBJ/Bloc.o SRC/Bloc.cpp
+	$(CC) -c -o ../TEST/TClasse.o ../TEST/TClasse.cpp
+
+clean:
+	rm -f OBJ/Bloc.o
+	rm -f ../TEST/TClasse.o
+
+distclean:

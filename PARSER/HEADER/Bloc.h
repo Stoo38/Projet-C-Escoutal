@@ -26,7 +26,7 @@ public:
 	}
 
 	//ACCESSEURS
-	void getIdentifiant() const;
+	const string & getIdentifiant() const;
 
 	//MODIFIEURS
 	void addLexeme(string lexeme);
