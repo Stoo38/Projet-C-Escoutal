@@ -1,6 +1,6 @@
 #include "../HEADER/Top.h"
 
-void Top::extractLexeme()
+void Top::createTree()
 {
 	ifstream myFile(m_vhdlFileName.c_str());
 
@@ -11,17 +11,20 @@ void Top::extractLexeme()
 		vector<string>::iterator it;
 		while(getline(myFile, line))		
 		{
-			cout << line << endl;
-			line = cutComment(line);
-			cout << line << endl;
-			line = toMinuscule(line);
-			cout << line << endl;
-			tab.push_back(line);		
-		}
-		for(it=tab.begin(); it != tab.end(); it++)
-		{
-			cout << *it << endl;
-		}				
+			if (line != "")
+			{
+				line = eraseComment(line);
+				line = toMinuscule(line);
+				tab.push_back(line);	
+				tab = cutSpecialCharacter(tab);	
+				tab = eraseSpace(tab);
+				for(it=tab.begin(); it != tab.end(); it++)
+				{
+					cout << *it << endl;
+				}
+				tab.clear();
+			}
+		}					
 	}
 	else
 	{
@@ -49,14 +52,22 @@ string Top::toMinuscule(string word)
 
 //Parcourt le fichier a la recherche de --, utilises pour les commentaires en VHDL
 //Supprime la fin du string a partir de ces symboles
-string Top::cutComment(string sentence)
+string Top::eraseComment(string sentence)
 {
-	for(int i = 0; i < (sentence.size() - 1); i++)
+	int taille = sentence.size();
+	for(int i = 0; i < (taille - 1); i++)
 	{
 		if((sentence[i] == '-') && (sentence[i+1] == '-'))
 		{
-			sentence = sentence.substr(0, i);
-			i = sentence.size();
+			if(i == 0)
+			{
+				sentence.clear();	
+			}
+			else
+			{
+				sentence = sentence.substr(0, i);
+			}
+			i = sentence.size() - 1;
 		}
 	} 
 	return sentence;
@@ -93,7 +104,7 @@ vector<string> Top::cutCharacter(vector<string> tab, const char symbol)
 	vector<string>::iterator it;
 	int pos;
 	int posSymbol;
-	string word;	
+	string word = "";	
 	for(it = tab.begin(); it < tab.end(); it++)
 	{
 		pos = 0;
@@ -104,18 +115,12 @@ vector<string> Top::cutCharacter(vector<string> tab, const char symbol)
 		{
 			if (posSymbol != string::npos)
 			{
-				if (posSymbol == 0)
+				if ((posSymbol - pos) == 0)
 				{
 					finalTab.push_back(word.substr(pos, 1));
 					pos++;
 					posSymbol = word.find(symbol, pos);
-				}
-				else if ((posSymbol - pos) == 0)
-				{
-					finalTab.push_back(word.substr(pos, 1));
-					pos++;
-					posSymbol = word.find(symbol, pos);
-				} 	
+				}	
 				else
 				{
 					finalTab.push_back(word.substr(pos, posSymbol - pos));
@@ -140,22 +145,39 @@ vector<string> Top::cutCharacter(vector<string> tab, const char symbol)
 }
 
 vector<string> Top::eraseSpace(vector<string> tab)
-{
+{		
 	tab = cutCharacter(tab, 32);
+	tab = cutCharacter(tab, 9);
 	vector<string> tab2;
-	tab2 = tab;
 	vector<string>::iterator it;
-	vector<string>::iterator it2;
-	it2 = tab2.end();
-	for(it = tab.end() - 1; it == tab.begin(); it--)
+	for(it = tab.begin(); it < tab.end(); it++)
 	{
 		
-		if (*it2 == "" || *it2 == " ")
+		if (*it != "" && *it != " " && *it != "	")
 		{
-			tab2.erase(it2);
+			tab2.push_back(*it);
 				
 		}
-		it2--;
 	}
 	return tab2;
+}
+
+vector<string> Top::cutSpecialCharacter(vector<string> tab)
+{
+	char i;
+
+	for (i = 33; i < 127; i++)
+	{
+		tab = cutCharacter(tab,i);
+		
+		if (i == 47)
+		{
+			i = 57;
+		}
+		if (i == 64)
+		{
+			i = 122;
+		}
+	}
+	return tab;	
 }

@@ -1,16 +1,14 @@
 library IEEE ;
 use IEEE.std_logic_1164.ALL ;
 use ieee.numeric_std.all;
-
 entity ALU is
 	port(	A,B		: in STD_LOGIC_VECTOR(7 downto 0) ; 
 		CMD		: in STD_LOGIC_VECTOR(2 downto 0) ;
 		Zero		: out std_logic;
 		S		: out STD_LOGIC_VECTOR(7 downto 0) ;
 		reset, clock	: in std_logic) ;
-		
-end ALU;
 
+end ALU;
 architecture A of ALU is
 
 signal result: unsigned (8 downto 0); 
@@ -66,6 +64,3 @@ end process;
 			 --('0' & a_u) OR ('0' & b_u ) when "101",
     			 --"111111111" when others; 
 end A;
-    
-    
-
