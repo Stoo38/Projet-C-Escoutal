@@ -8,6 +8,30 @@ const string & Bloc::getIdentifiant() const
 	return m_identifiant;
 }
 
+const int & Bloc::getError() const
+{
+	return m_error;
+}
+
+//MODIFIEURS
+void Bloc::addLexeme(string lexeme)
+{
+	m_listLexemes.push_back(lexeme);
+}
+
+void Bloc::displayLexemes()
+{
+	list <string>::iterator itr;
+	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
+	{
+		cout << *itr << endl;		 
+	}
+}
+
+
+
+
+
 int Bloc::trySpecialCharacter(string lexeme)
 {
 	if(lexeme.size() == 1)
@@ -66,7 +90,7 @@ int Bloc::verifyUnderscore(string lexeme)
 
 int Bloc::verifyGlobalWord(string lexeme)
 {
-	
+	return 0;
 }
 
 
