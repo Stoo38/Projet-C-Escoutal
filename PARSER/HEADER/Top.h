@@ -40,6 +40,11 @@ class Top
 	//Fonction decoupant en plusieurs string un vector<string> en entree, en fonction de tous les caractères spéciaux
 	vector<string> cutSpecialCharacter(vector<string> tab);
 	
+	int trySpecialCharacter(string lexeme);
+	int verifyFirstCharacter(string lexeme);
+	int verifyUnderscore(string lexeme);
+	int verifyGlobalWord(string lexeme);
+	
 };
 
 #endif	

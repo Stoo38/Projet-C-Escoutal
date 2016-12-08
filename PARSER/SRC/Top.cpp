@@ -21,6 +21,7 @@ void Top::createTree()
 				for(it=tab.begin(); it != tab.end(); it++)
 				{
 					cout << *it << endl;
+					cout << trySpecialCharacter(*it) << endl;;
 				}
 				tab.clear();
 			}
@@ -176,8 +177,78 @@ vector<string> Top::cutSpecialCharacter(vector<string> tab)
 		}
 		if (i == 64)
 		{
+			i = 90;
+		}
+		if (i == 94)
+		{
+			i = 95;
+		}
+		if (i == 96)
+		{
 			i = 122;
 		}
 	}
 	return tab;	
 }
+
+int Top::trySpecialCharacter(string lexeme)
+{
+	if(lexeme.size() == 1)
+	{
+		for(char i = 33; i < 127; i++)
+		{
+			if(lexeme[0] == i)
+			{
+				return 1;
+			}	
+			if (i == 47)
+			{
+				i = 57;
+			}
+			if (i == 64)
+			{
+				i = 90;
+			}
+			if (i == 94)
+			{
+				i = 95;
+			}
+			if (i == 96)
+			{
+				i = 122;
+			}
+		}
+		return 0;
+	}
+	else
+	{
+		return 0;
+	}		
+}
+
+int Top::verifyFirstCharacter(string lexeme)
+{
+	int error = 1;
+	if (trySpecialCharacter(lexeme) != 1)
+	{
+		for (char i = 97; i < 123; i++)
+		{
+			if(lexeme[0] == i)
+			{
+				error = 0;
+			}
+		}
+	}
+	return error;
+}
+
+int Top::verifyUnderscore(string lexeme)
+{
+	
+}
+
+int Top::verifyGlobalWord(string lexeme)
+{
+	
+}
+
