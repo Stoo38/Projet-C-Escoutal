@@ -31,7 +31,10 @@ public:
 	//MODIFIEURS
 	void addLexeme(string lexeme);
 
-
+	int trySpecialCharacter(string lexeme);
+	int verifyFirstCharacter(string lexeme);
+	int verifyUnderscore(string lexeme);
+	int verifyGlobalWord(string lexeme);
 };
 
 #endif	
