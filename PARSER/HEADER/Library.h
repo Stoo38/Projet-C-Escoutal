@@ -9,28 +9,26 @@
 
 using namespace std;
 
-class Library
+class Library : public Bloc
 {
 protected:
 	//ATTRIBUTS
-	string m_identifiant;
-	list < string > m_listeLexemes;
 
 	//faire un tableau dynamique pour les key words roya
 
 public:
 	//CONSTRUCTEURS
-	Library(const string & identifiant = ""):
-	m_identifiant(identifiant)
+	Library(const string & identifiant = "", const string & motCle = ""):
+	Bloc(identifiant, motCle)
 	{	
 	}
 
 	//ACCESSEURS
-	void getIdentifiant() const;
 
 	//MODIFIEURS
-	void addLexeme(string lexeme);
 
+
+	void browseLexeme() const;
 
 };
 #endif
