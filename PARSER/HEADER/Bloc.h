@@ -20,7 +20,7 @@ class Bloc
 protected:
 	//ATTRIBUTS
 	string m_identifiant;
-	list < string > m_listLexemes;
+	list <string> m_listLexemes;
 	int m_error;
 
 

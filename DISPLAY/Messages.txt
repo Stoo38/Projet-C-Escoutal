@@ -1,0 +1,12 @@
+01FAT Fatal Error line <L:> It is impossible to open the .vhd file 
+02INF Information: We have encountered a fatal error, so the program will be killed
+03INF Information: The option close_when_error is on, so the program will be killed
+04ERR Error line <L:> <"W"> is not a valid label, it can not be only a number or special character 
+05ERR Error line <L:> <"W"> is not a valid label, it can not start or end by "_" 
+06WAR Warning line <L:> 
+07INF Information: The VHDL file was successfully opened 
+08WAR Warning line <L:> 
+09WAR Warning line <L:> 
+10WAR Warning line <L:> 
+11WAR Warning line <L:> 
+12WAR Warning line <L:>

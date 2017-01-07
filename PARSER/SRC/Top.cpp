@@ -9,6 +9,7 @@ void Top::createTree()
 		string line;
 		vector<string> tab;
 		vector<string>::iterator it;
+		int counterLine = 0;
 		while(getline(myFile, line))		
 		{
 			if (line != "")
@@ -21,10 +22,11 @@ void Top::createTree()
 				for(it=tab.begin(); it != tab.end(); it++)
 				{
 					cout << *it << endl;
-					cout << trySpecialCharacter(*it) << endl;;
+					cout << trySpecialCharacter(*it) << endl;
 				}
 				tab.clear();
 			}
+			counterLine++;
 		}					
 	}
 	else
