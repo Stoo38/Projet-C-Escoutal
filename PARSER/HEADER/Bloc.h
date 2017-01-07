@@ -12,6 +12,8 @@ Elle répertorie les fonctions et les attributs globaux
 #include <iostream>
 #include <sstream>
 #include <list>
+#include "Lexeme.h"
+#include "../../DISPLAY/Display.h"
 
 using namespace std;
 
@@ -19,43 +21,35 @@ class Bloc
 {
 protected:
 	//ATTRIBUTS
-	string m_identifiant;
-	list <string> m_listLexemes;
-	int m_error;
+	Lexeme m_identifiant;
+	list <Lexeme> m_listLexemes;
+	Display &m_msgBox;
 
 
 public:
 	//CONSTRUCTEURS
-	Bloc(const string & identifiant = "", const string & motCle = "")
+	Bloc(const string & identifiant, const string & motCle, const int nLine, Display &msgBox):
+	m_msgBox(msgBox)
 	{	
-		m_error = verifyGlobalWord(identifiant);
-		if (m_error == 0)
-		{
-			m_identifiant = identifiant;
-			addLexeme(motCle);
-			addLexeme(identifiant);
-		}
-		else
-		{
-			cout << "Erreur dans " << motCle << ": l'identifiant " << identifiant << " est incorrect !" << endl; 
-			m_identifiant = "";
-		}
-			
+		Lexeme id(identifiant, nLine);		
+		verifyGlobalWord(id);		
+		m_identifiant = id;
+		addLexeme(motCle, nLine);
+		m_listLexemes.push_back(id);
 	}
 
 
 	//ACCESSEURS
 	const string & getIdentifiant() const;
-	const int & getError() const;
 
 	//MODIFIEURS
-	void addLexeme(string lexeme);
+	void addLexeme(string lexeme, int nLine);
 
 	//METHODES
-	int trySpecialCharacter(string lexeme);
-	int verifyFirstCharacter(string lexeme);
-	int verifyUnderscore(string lexeme);
-	int verifyGlobalWord(string lexeme);
+	int trySpecialCharacter(Lexeme lex);
+	void verifyFirstCharacter(Lexeme lex);
+	void verifyUnderscore(Lexeme lex);
+	void verifyGlobalWord(Lexeme lex);
 	void displayLexemes();
 };
 

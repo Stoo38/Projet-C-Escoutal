@@ -5,26 +5,22 @@ using namespace std;
 //ACCESSEURS
 const string & Bloc::getIdentifiant() const
 {
-	return m_identifiant;
-}
-
-const int & Bloc::getError() const
-{
-	return m_error;
+	return m_identifiant.m_word;
 }
 
 //MODIFIEURS
-void Bloc::addLexeme(string lexeme)
+void Bloc::addLexeme(string lexeme, int nLine)
 {
-	m_listLexemes.push_back(lexeme);
+	Lexeme newLexeme(lexeme, nLine);
+	m_listLexemes.push_back(newLexeme);
 }
 
 void Bloc::displayLexemes()
 {
-	list <string>::iterator itr;
+	list <Lexeme>::iterator itr;
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
-		cout << *itr << endl;		 
+		cout << (*itr).m_line << " " << (*itr).m_word << endl;		 
 	}
 }
 
@@ -32,13 +28,14 @@ void Bloc::displayLexemes()
 
 
 
-int Bloc::trySpecialCharacter(string lexeme)
+int Bloc::trySpecialCharacter(Lexeme lex)
 {
-	if(lexeme.size() == 1)
+	string word = lex.m_word;
+	if(word.size() == 1)
 	{
 		for(char i = 33; i < 127; i++)
 		{
-			if(lexeme[0] == i)
+			if(word[0] == i)
 			{
 				return 1;
 			}	
@@ -59,38 +56,38 @@ int Bloc::trySpecialCharacter(string lexeme)
 				i = 122;
 			}
 		}
-		return 0;
 	}
-	else
-	{
-		return 0;
-	}		
+	return 0;		
 }
 
-int Bloc::verifyFirstCharacter(string lexeme)
+void Bloc::verifyFirstCharacter(Lexeme lex)
 {
+	string word = lex.m_word;
 	int error = 1;
-	if (trySpecialCharacter(lexeme) != 1)
+	if (trySpecialCharacter(lex) != 1)
 	{
 		for (char i = 97; i < 123; i++)
 		{
-			if(lexeme[0] == i)
+			if(word[0] == i)
 			{
 				error = 0;
 			}
 		}
 	}
-	return error;
+	if (error == 1)
+	{
+		m_msgBox.createMessage("06", lex.m_line, lex.m_word);
+	}
 }
 
-int Bloc::verifyUnderscore(string lexeme)
+void Bloc::verifyUnderscore(Lexeme lex)
 {
 	
 }
 
-int Bloc::verifyGlobalWord(string lexeme)
+void Bloc::verifyGlobalWord(Lexeme lex)
 {
-	return 0;
+	m_msgBox.createMessage("05", lex.m_line, lex.m_word);
 }
 
 
