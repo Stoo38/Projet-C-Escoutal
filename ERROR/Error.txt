@@ -1,0 +1,5 @@
+01FAT Fatal Error line <L:> It is impossible to open the .vhd file 
+02ERR Error line <L:> <"W"> is not a valid label, it can not be only a number or special character 
+03ERR Error line <L:> <"W"> is not a valid label, it can not start or end by "_" 
+04WAR Warning line <L:>
+05INF Information: The VHDL file was successfully opened 
