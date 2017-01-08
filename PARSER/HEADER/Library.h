@@ -20,8 +20,8 @@ protected:
 
 public:
 	//CONSTRUCTEURS
-	Library(const string & identifiant = "", const string & motCle = ""):
-	Bloc(identifiant, motCle)
+	Library(const string & identifiant, const string & motCle, const int nLine, Display &msgBox):
+	Bloc(identifiant, motCle, nline, msgBox)
 	{	
 	}
 

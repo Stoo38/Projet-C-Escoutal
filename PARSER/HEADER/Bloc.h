@@ -32,7 +32,7 @@ public:
 	m_msgBox(msgBox)
 	{	
 		Lexeme id(identifiant, nLine);			
-		verifyGlobalWord(id);		//Verification que l'identifiant est correct
+		verifyLabel(id);		//Verification que l'identifiant est correct
 		m_identifiant = id;		//Initialisation de l'identifiant
 		addLexeme(motCle, nLine);	//Ajout du premier lexeme, correspondant toujours au mot-cle
 		m_listLexemes.push_back(id);	//Ajout du second lexeme, correspondant toujours a un identifiant
@@ -48,10 +48,10 @@ public:
 	//METHODES
 	int trySpecialCharacter(Lexeme lex);		//Indique si le lexeme transmis est un caractere special: 1 pour oui, 0 pour non
 	void verifyFirstCharacter(Lexeme lex);		//Test le premier caractere du mot, et renvoie une erreur si ce n'est pas une lettre 
-	void verifyUnderscore(Lexeme lex);		// A ECRIRE
-	void verifyGlobalWord(Lexeme lex);		// A ECRIRE
+	void verifyUnderscore(Lexeme lex);		//Test s'il n'y a pas d'underscore en début et/ ou fin du lexeme
+	void verifyGlobalWord(Lexeme lex);		//Test si le mot n'est composé que de lettres, chiffres ou underscores
 	void displayLexemes();				//Affiche chaque lexeme avec la ligne correspondante
-	void verifyLabel(Lexeme lex);			// A ECRIRE
+	void verifyLabel(Lexeme lex);			//Test si le lexeme respecte les differentes regles pour une etiquette
 };
 
 #endif	

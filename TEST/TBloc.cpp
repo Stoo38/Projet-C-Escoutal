@@ -35,7 +35,7 @@ int main()
 	}
 	else 
 	{
-		cout << "error" << endl;
+		cout << "errror" << endl;
 	}
 	
 }

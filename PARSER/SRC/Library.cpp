@@ -19,6 +19,7 @@ void browseLexeme() const
 				{
 					itr = m_listLexemes.end();
 					//Erreur à réfléchir et implémenter 
+					//REFLECHIS PAS TROP TROP NON PLUS C EST DANGEREUX
 				}
 				break;
 
@@ -34,7 +35,8 @@ void browseLexeme() const
 				else
 				{
 					itr = m_listLexemes.end();
-					//Erreur à réfléchir et implémenter 
+					//Erreur à réfléchir et implémenter  
+					//REFLECHIS PAS TROP TROP NON PLUS C EST DANGEREUX
 				}
 				break;
 
@@ -47,7 +49,8 @@ void browseLexeme() const
 				else
 				{
 					itr = m_listLexemes.end();
-					//Erreur à réfléchir et implémenter
+					//Erreur à réfléchir et implémenter 
+					//REFLECHIS PAS TROP TROP NON PLUS C EST DANGEREUX
 				}
 				break;
 
@@ -59,7 +62,8 @@ void browseLexeme() const
 				else
 				{
 					itr = m_listLexemes.end();
-					//Erreur à réfléchir et implémenter
+					//Erreur à réfléchir et implémenter 
+					//REFLECHIS PAS TROP TROP NON PLUS C EST DANGEREUX
 				}
 				break;
 
@@ -71,12 +75,13 @@ void browseLexeme() const
 				else
 				{
 					itr = m_listLexemes.end();
-					//Erreur à réfléchir et implémenter
+					//Erreur à réfléchir et implémenter 
+					//REFLECHIS PAS TROP TROP NON PLUS C EST DANGEREUX
 				}
 				break;
 
 
-//A REPRENDRE 
+//A REPRENDRE ------> AIE AIE AIE
 			case 6:
 				if (*itr == "all")
 				{
@@ -89,7 +94,8 @@ void browseLexeme() const
 				else
 				{
 					itr = m_listLexemes.end();
-					//Erreur à réfléchir et implémenter
+					//Erreur à réfléchir et implémenter 
+					//REFLECHIS PAS TROP TROP NON PLUS C EST DANGEREUX
 				}
 				break;
 
