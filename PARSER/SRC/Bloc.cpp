@@ -24,10 +24,6 @@ void Bloc::displayLexemes()
 	}
 }
 
-
-
-
-
 int Bloc::trySpecialCharacter(Lexeme lex)
 {
 	string word = lex.m_word;
