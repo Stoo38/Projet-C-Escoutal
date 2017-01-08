@@ -6,6 +6,8 @@
 #include <iostream>
 #include <sstream>
 #include <list>
+#include "Lexeme.h"
+#include "../../DISPLAY/Display.h"
 
 using namespace std;
 
