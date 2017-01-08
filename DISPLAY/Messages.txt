@@ -8,14 +8,13 @@
 
 ##### BLOC
 06ERR Error line <L:> <"W"> is not a valid label, it can only start by a letter
+07ERR Error line <L:> <"W"> is not a valid label, it can not start or end by "_" 
+08ERR Error line <L:> <"W"> is not a valid label, it can only be letters, numbers or underscores
 
 
 
 
 
-
-07ERR Error line <L:> <"W"> is not a valid label, it can not be only a number or special character 
-08ERR Error line <L:> <"W"> is not a valid label, it can not start or end by "_" 
 09WAR Warning line <L:> 
 
 

@@ -78,12 +78,42 @@ void Bloc::verifyFirstCharacter(Lexeme lex)
 
 void Bloc::verifyUnderscore(Lexeme lex)
 {
-	
+	string word = lex.m_word;
+	cout << word.size() << endl;
+	if ((word[word.size()-1] == 95) || (word[0] == 95)) 
+	{
+		m_msgBox.createMessage("07", lex.m_line, lex.m_word);
+	}
 }
 
 void Bloc::verifyGlobalWord(Lexeme lex)
 {
-	m_msgBox.createMessage("05", lex.m_line, lex.m_word);
+	string word = lex.m_word;
+	for (int i = 0; i < word.size(); i++)
+	{
+		int error = 1;
+		for (char j = 95; j < 123; j++)
+		{
+			if(word[i] == j)
+			{
+				error = 0;
+				j = 123;
+			}
+			if (j == 95)
+			{
+				j++;
+			}
+		}
+		if (error == 1)
+		{
+			m_msgBox.createMessage("08", lex.m_line, lex.m_word);
+		}
+	}
 }
 
-
+void Bloc::verifyLabel(Lexeme lex)
+{
+	verifyGlobalWord(lex);
+	verifyUnderscore(lex);
+	verifyFirstCharacter(lex);
+}

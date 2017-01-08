@@ -48,9 +48,10 @@ public:
 	//METHODES
 	int trySpecialCharacter(Lexeme lex);		//Indique si le lexeme transmis est un caractere special: 1 pour oui, 0 pour non
 	void verifyFirstCharacter(Lexeme lex);		//Test le premier caractere du mot, et renvoie une erreur si ce n'est pas une lettre 
-	void verifyUnderscore(Lexeme lex);		// A FINIR
-	void verifyGlobalWord(Lexeme lex);		// A FINIR
+	void verifyUnderscore(Lexeme lex);		// A ECRIRE
+	void verifyGlobalWord(Lexeme lex);		// A ECRIRE
 	void displayLexemes();				//Affiche chaque lexeme avec la ligne correspondante
+	void verifyLabel(Lexeme lex);			// A ECRIRE
 };
 
 #endif	
