@@ -22,7 +22,7 @@ class Display
    	public:
    	Display(bool closeError = true) :
 	m_closeError(closeError),
-	m_messageFileName("/home/phelma/Projet-C-Escoutal/DISPLAY/Messages.txt"),
+	m_messageFileName("DISPLAY/Messages.txt"), ///home/phelma/Projet-C-Escoutal/
 	m_alreadyDisplayed(0)
    	{
 		

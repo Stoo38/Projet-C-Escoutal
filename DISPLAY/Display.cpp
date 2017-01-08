@@ -40,13 +40,13 @@ void Display::createMessage(string nMessage, int nline, string lexeme)
 		m_listMessages.push_back(line);
 		if (line.substr(2,3) == "FAT")
 		{
-			createMessage("02");
+			createMessage("03");
 			displayMessage();
 			exit(1);
 		}	
 		else if ((line.substr(2,3) == "ERR") && (m_closeError == true))
 		{
-			createMessage("03");
+			createMessage("04");
 			displayMessage();
 			exit(1);
 		}

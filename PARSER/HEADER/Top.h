@@ -7,20 +7,25 @@
 #include <iostream>
 #include <sstream>
 #include <list>
-#include "Bloc.h"
 #include <vector>
+
+#include "Bloc.h"
+#include "../../DISPLAY/Display.h"
+
 
 using namespace std;
 
 class Top
 {
 	private:
-	string m_vhdlFileName;
-	//list < *Bloc > m_listeBlocks;
+	string m_vhdlFileName;			//Nom du fichier VHDL
+	Display &m_msgBox;			//Nom de l'objet contenant les messages
+	//list < *Bloc > m_listeBlocks;		//Liste des différents blocs composant l'arbre
 
 	public:
-	Top(const string vhdlFileName = ""):
-	m_vhdlFileName(vhdlFileName)
+	Top(const string vhdlFileName, Display &msgBox):	//Constructeur de Top avec deux paramètres: le nom du fichier et une boite d'erreur 
+	m_vhdlFileName(vhdlFileName),
+	m_msgBox(msgBox)
 	{
 		//m_listeBlocks.clear();	
 	}

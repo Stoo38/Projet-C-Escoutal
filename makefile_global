@@ -1,16 +1,25 @@
-CC = g++			#Compilater used
-EXEC_NAME = main		#Name of the executable
+CC = g++					#Compilater used
+EXEC_NAME = main				#Name of the executable
 
-all : $(EXEC_NAME)
+all: create_binary_files
 
-$(EXEC_NAME) : create_object_files
-	$(CC) -o $(EXEC_NAME) main.o
+$(EXEC_NAME): create_binary_files
+	
+create_binary_files: create_object_files
+	$(CC) -o main PARSER/OBJ/Bloc.o PARSER/OBJ/Top.o PARSER/OBJ/Lexeme.o DISPLAY/Display.o main.o 
 
-create_object_files :  
+create_object_files: clean
+	$(CC) -c -o DISPLAY/Display.o DISPLAY/Display.cpp
+	$(CC) -c -o PARSER/OBJ/Lexeme.o PARSER/SRC/Lexeme.cpp
+	$(CC) -c -o PARSER/OBJ/Bloc.o PARSER/SRC/Bloc.cpp
+	$(CC) -c -o PARSER/OBJ/Top.o PARSER/SRC/Top.cpp
 	$(CC) -c -o main.o main.cpp
 
-clean :
-	rm -f $(EXEC_NAME)
+clean:
+	rm -f DISPLAY/Display.o
+	rm -f PARSER/OBJ/Lexeme.o
+	rm -f PARSER/OBJ/Bloc.o
+	rm -f PARSER/OBJ/Top.o
 	rm -f main.o
+	rm -f main
 
-distclean :

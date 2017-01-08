@@ -2,36 +2,36 @@
 
 void Top::createTree()
 {
-	ifstream myFile(m_vhdlFileName.c_str());
+	ifstream myFile(m_vhdlFileName.c_str());  	//Créé flux à partir du fichier VHDL
 
-	if(myFile)
+	if(myFile)					//Ouvre le fichier VHDL
 	{
+		m_msgBox.createMessage("05", 0, m_vhdlFileName);		//Crée un message indiquant que le fichier a bien été ouvert
 		string line;
 		vector<string> tab;
 		vector<string>::iterator it;
-		int counterLine = 0;
-		while(getline(myFile, line))		
+		int counterLine = 0;						//Variable pour compter le numéro des lignes
+		while(getline(myFile, line))					//Lit le fichier ligne par ligne
 		{
 			if (line != "")
 			{
-				line = eraseComment(line);
-				line = toMinuscule(line);
-				tab.push_back(line);	
-				tab = cutSpecialCharacter(tab);	
-				tab = eraseSpace(tab);
+				line = eraseComment(line);			//Efface les commentaires
+				line = toMinuscule(line);			//Transforme les minuscules en majuscules
+				tab.push_back(line);				
+				tab = cutSpecialCharacter(tab);			//Découpe la ligne en fonction des caractères spéciaux
+				tab = eraseSpace(tab);				//Supprime les espaces, tabulations et éléments vides
 				for(it=tab.begin(); it != tab.end(); it++)
 				{
 					cout << *it << endl;
-					cout << trySpecialCharacter(*it) << endl;
 				}
-				tab.clear();
+				tab.clear();					//Vide la liste pour une prochaine ligne
 			}
 			counterLine++;
 		}					
 	}
 	else
 	{
-		cout << "ERROR: " << m_vhdlFileName << " not found" << endl;
+		m_msgBox.createMessage("02", 0, m_vhdlFileName);		//Crée une erreur si le fichier VHDL ne s'ouvre pas
 	}	
 }
 
