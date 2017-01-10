@@ -8,6 +8,11 @@ const string & Bloc::getIdentifiant() const
 	return m_identifiant.m_word;
 }
 
+const string & Bloc::getNameBlock() const
+{
+	return (m_listLexemes.front()).m_word;
+}
+
 //MODIFIEURS
 void Bloc::addLexeme(string lexeme, int nLine)
 {
@@ -79,7 +84,6 @@ void Bloc::verifyFirstCharacter(Lexeme lex)
 void Bloc::verifyUnderscore(Lexeme lex)
 {
 	string word = lex.m_word;
-	cout << word.size() << endl;
 	if ((word[word.size()-1] == 95) || (word[0] == 95)) 
 	{
 		m_msgBox.createMessage("07", lex.m_line, lex.m_word);

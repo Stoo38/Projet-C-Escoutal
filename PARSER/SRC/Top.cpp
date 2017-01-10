@@ -10,7 +10,7 @@ void Top::createTree()
 		string line;
 		vector<string> tab;
 		vector<string>::iterator it;
-		int counterLine = 0;						//Variable pour compter le numéro des lignes
+		int counterLine = 1;						//Variable pour compter le numéro des lignes
 		while(getline(myFile, line))					//Lit le fichier ligne par ligne
 		{
 			if (line != "")
@@ -20,10 +20,7 @@ void Top::createTree()
 				tab.push_back(line);				
 				tab = cutSpecialCharacter(tab);			//Découpe la ligne en fonction des caractères spéciaux
 				tab = eraseSpace(tab);				//Supprime les espaces, tabulations et éléments vides
-				for(it=tab.begin(); it != tab.end(); it++)
-				{
-					cout << *it << endl;
-				}
+				instanceClass(tab, counterLine);
 				tab.clear();					//Vide la liste pour une prochaine ligne
 			}
 			counterLine++;
@@ -193,4 +190,48 @@ vector<string> Top::cutSpecialCharacter(vector<string> tab)
 	return tab;	
 }
 
+void Top::instanceClass(vector<string> tab, int nLine)
+{
+	vector<string>::iterator it;
+	for(it=tab.begin(); it != tab.end(); it++)
+	{
+		if (*it == "library")
+		{
+			it++;
+			m_listeBlocks.push_back(new Library(*it, nLine, m_msgBox));
+			m_msgBox.createMessage("09", nLine, *it);
+		}
+		else if (*it == "entity")
+		{
+			it++;
+			m_listeBlocks.push_back(new Entity(*it, nLine, m_msgBox));
+			m_msgBox.createMessage("10", nLine, *it);
+		}
+		else if (*it == "architecture")
+		{
+			it++;
+			m_listeBlocks.push_back(new Architecture(*it, nLine, m_msgBox));
+			m_msgBox.createMessage("11", nLine, *it);
+		}
+		else 
+		{
+			if (m_listeBlocks.size() > 0)
+			{	
+				(m_listeBlocks.back())->addLexeme(*it, nLine);
+			}
+			else
+			{
+				m_msgBox.createMessage("12", nLine, *it);
+			}
+		}
+	}	
+}
 
+void Top::displayLexemes()
+{
+	list <Bloc *>::iterator it;
+	for(it=m_listeBlocks.begin(); it != m_listeBlocks.end(); it++)
+	{
+		(*it)->displayLexemes();
+	}
+}

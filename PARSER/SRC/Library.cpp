@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void browseLexeme() const
+/*void browseLexeme() const
 {
 	list<string>::iterator itr;
 	int nbLexeme = 0;
@@ -102,4 +102,4 @@ void browseLexeme() const
 
 		}
 	}
-}
+}*/

@@ -7,30 +7,21 @@
 #include <sstream>
 #include <list>
 
+#include "Lexeme.h"
+#include "Bloc.h"
+#include "../../DISPLAY/Display.h"
+
 using namespace std;
 
-class Architecture
+class Architecture : public Bloc
 {
-protected:
-	//ATTRIBUTS
-	string m_identifiant;
-	list < string > m_listeLexemes;
+	protected:
 
-	//faire un tableau dynamique pour les key words roya
-
-public:
-	//CONSTRUCTEURS
-	Architecture(const string & identifiant = ""):
-	m_identifiant(identifiant)
+	public:
+	Architecture(const string & identifiant, const int nLine, Display &msgBox):
+	Bloc(identifiant, "architecture", nLine, msgBox)
 	{	
 	}
-
-	//ACCESSEURS
-	void getIdentifiant() const;
-
-	//MODIFIEURS
-	void addLexeme(string lexeme);
-
 
 };
 #endif

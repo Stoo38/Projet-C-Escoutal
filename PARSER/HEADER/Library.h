@@ -7,21 +7,22 @@
 #include <sstream>
 #include <list>
 #include "Lexeme.h"
+#include "Bloc.h"
 #include "../../DISPLAY/Display.h"
 
 using namespace std;
 
 class Library : public Bloc
 {
-protected:
+	protected:
 	//ATTRIBUTS
 
 	//faire un tableau dynamique pour les key words roya
 
-public:
+	public:
 	//CONSTRUCTEURS
-	Library(const string & identifiant, const string & motCle, const int nLine, Display &msgBox):
-	Bloc(identifiant, motCle, nline, msgBox)
+	Library(const string & identifiant, const int nLine, Display &msgBox):
+	Bloc(identifiant, "library", nLine, msgBox)
 	{	
 	}
 
@@ -30,7 +31,7 @@ public:
 	//MODIFIEURS
 
 
-	void browseLexeme() const;
+	//void browseLexeme() const;
 
 };
 #endif

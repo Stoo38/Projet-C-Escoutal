@@ -41,6 +41,7 @@ public:
 
 	//ACCESSEURS
 	const string & getIdentifiant() const;		//Renvoie l'identifiant
+	const string & getNameBlock() const;		//Renvoie le nom du bloc
 
 	//MODIFIEURS
 	void addLexeme(string lexeme, int nLine);	//Rajoute un lexeme et sa ligne a la liste
