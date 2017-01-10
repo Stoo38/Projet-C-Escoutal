@@ -47,8 +47,9 @@ class Top
 	vector<string> cutCharacter(vector<string> tab, const char symbol);
 	//Fonction decoupant en plusieurs string un vector<string> en entree, en fonction de tous les caractères spéciaux
 	vector<string> cutSpecialCharacter(vector<string> tab);	
-
+	//Fonction instanciant des objets Entity, Library ou Architecture en fonction du fichier VHDL et les place dans m_listBlocks
 	void instanceClass(vector<string> tab, int nLine);
+	//Fonction l'affichage de tous les lexèmes contenus dans les blocks de m_listBlocks
 	void displayLexemes();
 };
 
