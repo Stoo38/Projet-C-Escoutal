@@ -30,8 +30,9 @@ class Library : public Bloc
 
 	//MODIFIEURS
 
-
-	//void browseLexeme() const;
+	
+	string checkNextWord(int count, list<Lexeme>::iterator itr);
+	void browseLexeme();
 
 };
 #endif
