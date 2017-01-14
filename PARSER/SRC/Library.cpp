@@ -4,109 +4,52 @@ using namespace std;
 
 void Library::browseLexeme() 
 {
-	list<Lexeme>::iterator itr;
-	int nbLexeme = 2;
- 	int count = 0;
-	for (itr == m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
+	list <Lexeme>::iterator itr;
+	int nbLexeme = 0;
+	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
-		switch(nbLexeme)
+		string monword = (*itr).m_word;
+		cout << nbLexeme << endl;
+		if (nbLexeme == 0)
 		{
-			
-			case 0:
-				if ((*itr).m_word != "library")
-				{
-					
-				}
-				nbLexeme = 1;
-					//itr = m_listLexemes.end();
-					//Erreur à réfléchir et implémenter 
-					//REFLECHIS PAS TROP TROP NON PLUS C EST DANGEREUX
-
-				break;
-
-			case 1:
+			if (monword == "library")
+			{
+				cout << "OKOKOKOKOKn°0" << endl;
+				nbLexeme = 1;				
+			}
+			else
+			{
+				cout << "NONONOn°0" << endl;
 				nbLexeme = 2;
-				break;
-
-			case 2:
-				cout << "yo fraté" << endl;
-				if ((*itr).m_word != ";")
-				{
-					
-				}
-				nbLexeme = 3;
-
-					////itr = m_listLexemes.end();
-					//Erreur à réfléchir et implémenter  
-					//REFLECHIS PAS TROP TROP NON PLUS C EST DANGEREUX
-				break;
-
-			case 3:
-				if ((*itr).m_word != "use")
-				{
-					
-					 
-				}
-
-				nbLexeme = 4;
-
-					//itr = m_listLexemes.end();
-					//Erreur à réfléchir et implémenter 
-					//REFLECHIS PAS TROP TROP NON PLUS C EST DANGEREUX
-				
-				break;
-
-			case 4:
-				if ((*itr).m_word != m_identifiant.m_word)
-				{
-					
-				}
-
-				nbLexeme = 5;
-
-					//itr = m_listLexemes.end();
-					//Erreur à réfléchir et implémenter 
-					//REFLECHIS PAS TROP TROP NON PLUS C EST DANGEREUX
-
-				break;
-
-			case 5:
-				if ((*itr).m_word != ".")
-				{
-					
-				}
-
-				nbLexeme = 6;
-				
-
-					//itr = m_listLexemes.end();
-					//Erreur à réfléchir et implémenter 
-					//REFLECHIS PAS TROP TROP NON PLUS C EST DANGEREUX
-
-				break;
-
-
-//A REPRENDRE ------> AIE AIE AIE
-			case 6:
-				if ((*itr).m_word != "all")
-				{
-					verifyLabel(*itr);
-
-				}
-
-				break;
-
-			case 7:
-				if ((*itr).m_word != ";")
-				{
-					//itr = m_listLexemes.end();
-				}
-
-				nbLexeme = 6;
-				
-
-				break;
+			}
+						
 		}
+		else if (nbLexeme == 1)
+		{
+			if (monword == "ieee")
+			{
+				cout << "OKOKOKOKOKn°1" << endl;
+				nbLexeme = 2;
+			}
+			else
+			{
+				cout << "NONONOn°1" << endl;
+			}
+			nbLexeme = 2;			
+		}
+		else if (nbLexeme == 2)
+		{
+			if (monword == "library")
+			{
+				cout << "OKOKOKOKOKn°2" << endl;
+				nbLexeme = 2;
+			}
+			else
+			{
+				cout << "NONONOn°2" << endl;
+			}
+			nbLexeme = 2;			
+		}	 
 	}
 }
 
