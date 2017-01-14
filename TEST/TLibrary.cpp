@@ -15,7 +15,7 @@ int main()
 	Library mylib("ieee", 1, Box);
 	int counterLine = 0;
 
-	ifstream fichier("/users/phelma/phelma2015/mahtalb/Projet-C-Escoutal/VHDL/Library.vhd");
+	ifstream fichier("/home/phelma/Projet-C-Escoutal/VHDL/Library.vhd");
 	if (fichier)
 	{
 		string mot;
@@ -25,6 +25,8 @@ int main()
 			counterLine++;
 		}
 		mylib.displayLexemes();
+
+		mylib.browseLexeme();
 	}
 
 	else 

@@ -5,19 +5,19 @@ using namespace std;
 void Library::browseLexeme() 
 {
 	list<Lexeme>::iterator itr;
-	int nbLexeme = 0;
+	int nbLexeme = 2;
  	int count = 0;
 	for (itr == m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
 		switch(nbLexeme)
 		{
+			
 			case 0:
 				if ((*itr).m_word != "library")
 				{
 					
 				}
 				nbLexeme = 1;
-
 					//itr = m_listLexemes.end();
 					//Erreur à réfléchir et implémenter 
 					//REFLECHIS PAS TROP TROP NON PLUS C EST DANGEREUX
@@ -29,6 +29,7 @@ void Library::browseLexeme()
 				break;
 
 			case 2:
+				cout << "yo fraté" << endl;
 				if ((*itr).m_word != ";")
 				{
 					
