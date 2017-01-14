@@ -1,0 +1,8 @@
+01INF Information: Beginning of the synthesis of the "TEST/FINAL_TEST/test1.vhd" file
+05INF Information: The "TEST/FINAL_TEST/test1.vhd" file was successfully opened 
+07ERR Error line 1: "ieee_" is not a valid label, it can not start or end by "_" 
+09INF Information 1: The library "ieee_" has been detected
+07ERR Error line 5: "_alu" is not a valid label, it can not start or end by "_" 
+06ERR Error line 5: "_alu" is not a valid label, it can only start by a letter
+10INF Information 5: The entity "_alu" has been detected
+11INF Information 13: The architecture "a" has been detected
