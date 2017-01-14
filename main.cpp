@@ -50,6 +50,10 @@ int main(int argc, char *argv[])
 		{
 			step_tree = true;	
 		}
+		else if (parameter == "-error")		// Paramètre utilisé pour continuer lors d'une erreur
+		{
+			opt_close_error = false;	
+		}
 		else					// Sinon, paramètre non reconnu 
 		{
 			cout << "invalid parameter" << endl;
