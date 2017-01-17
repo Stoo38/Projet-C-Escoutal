@@ -20,36 +20,68 @@ void Library::browseLexeme()
 			else
 			{
 				cout << "NONONOn°0" << endl;
-				nbLexeme = 2;
+				
 			}
 						
 		}
 		else if (nbLexeme == 1)
 		{
-			if (monword == "ieee")
-			{
-				cout << "OKOKOKOKOKn°1" << endl;
-				nbLexeme = 2;
-			}
-			else
-			{
-				cout << "NONONOn°1" << endl;
-			}
-			nbLexeme = 2;			
+			cout << "OKOKOKOKOKn°1" << endl;
+			nbLexeme = 2;
+		
 		}
 		else if (nbLexeme == 2)
 		{
-			if (monword == "library")
+			if (monword == ";")
 			{
 				cout << "OKOKOKOKOKn°2" << endl;
-				nbLexeme = 2;
+				cout << "Next word: " << checkNextWord(nbLexeme, itr) << endl;
+
+				nbLexeme = 3;
 			}
 			else
 			{
 				cout << "NONONOn°2" << endl;
 			}
-			nbLexeme = 2;			
-		}	 
+		
+		}	
+
+		else if (nbLexeme == 3)
+		{
+			if (monword == "use")
+			{
+				cout << "OKOKOKOKOKn°3" << endl;
+				nbLexeme = 4;
+			}
+			else
+			{
+				cout << "NONONOn°3" << endl;
+			}
+		
+		}	
+	
+		else if (nbLexeme == 4)
+		{
+			if (monword == m_identifiant.m_word)
+			{
+				cout << "OKOKOKOKOKn°4" << endl;
+				cout << "Next word: " << checkNextWord(nbLexeme, itr) << endl;
+				nbLexeme = 5;
+			}
+			else
+			{
+				cout << "NONONOn°4" << endl;
+			}
+		
+		}	
+
+
+
+
+
+
+
+ 
 	}
 }
 

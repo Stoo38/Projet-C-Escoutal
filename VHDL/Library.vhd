@@ -1,5 +1,3 @@
-library
-ieee
 ;
 use
 ieee
