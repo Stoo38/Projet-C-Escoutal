@@ -9,6 +9,8 @@
 
 #include "Lexeme.h"
 #include "Bloc.h"
+#include "Component.h"
+#include "Process.h"
 #include "../../DISPLAY/Display.h"
 
 using namespace std;
@@ -16,6 +18,7 @@ using namespace std;
 class Architecture : public Bloc
 {
 	protected:
+	list <Bloc *> m_listeBlocks;
 
 	public:
 	Architecture(const string & identifiant, const int nLine, Display &msgBox):
@@ -23,5 +26,7 @@ class Architecture : public Bloc
 	{	
 	}
 
+	virtual void distributeLexemes();
+	virtual void displayLexemes();
 };
 #endif

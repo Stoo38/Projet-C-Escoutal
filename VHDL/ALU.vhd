@@ -10,7 +10,7 @@ entity ALU is
 		reset, clock	: in std_logic) ;
 
 end ALU;
-architecture A of ALU is
+architecture architecture of ALU is
 
 signal result: unsigned (8 downto 0); 
 signal a_u: unsigned (7 downto 0);

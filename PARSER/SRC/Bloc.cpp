@@ -22,6 +22,7 @@ void Bloc::addLexeme(string lexeme, int nLine)
 
 void Bloc::displayLexemes()
 {
+	cout << "List of lexemes contained in the block " << getNameBlock() << " " << getIdentifiant() << endl;
 	list <Lexeme>::iterator itr;
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
@@ -120,4 +121,27 @@ void Bloc::verifyLabel(Lexeme lex)
 	verifyGlobalWord(lex);
 	verifyUnderscore(lex);
 	verifyFirstCharacter(lex);
+	compareKeyWords(lex);
 }
+
+void Bloc::compareKeyWords(Lexeme lex)
+{
+	/*ifstream myFile("PARSER/keywords.txt");  	
+
+	if(myFile)					
+	{		
+		string line;				
+		while(getline(myFile, line))					
+		{
+			if (lex.m_word == line)
+			{
+				m_msgBox.createMessage("26", lex.m_line, lex.m_word);
+			}
+		}					
+	}
+	else
+	{
+		m_msgBox.createMessage("25", 0, "keywords.txt");		
+	}*/	
+}
+

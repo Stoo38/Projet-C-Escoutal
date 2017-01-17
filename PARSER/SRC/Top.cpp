@@ -24,6 +24,12 @@ void Top::createTree()
 				tab.clear();					//Vide la liste pour une prochaine ligne
 			}
 			counterLine++;
+		}
+
+		list <Bloc *>::iterator it2;
+		for(it2=m_listeBlocks.begin(); it2 != m_listeBlocks.end(); it2++)
+		{
+			(*it2)->distributeLexemes();
 		}					
 	}
 	else

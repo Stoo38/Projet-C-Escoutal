@@ -18,7 +18,11 @@
 
 
 
+20INF Information <L:> The component <"W"> has been detected
+21INF Information <L:> The process <"W"> has been detected
+22ERR Error line <L:> "end component" must be followed by ";"
+23ERR Error line <L:> "end" must be followed by "component" to indicate the end of the component
+24ERR Error line <L:> "end process" must be followed by ";"
 
-XXWAR Warning line <L:> 
-
+25WAR Warning line: It is impossible to open the <"W"> file 
 

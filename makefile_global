@@ -6,13 +6,17 @@ all: create_binary_files
 $(EXEC_NAME): create_binary_files
 	
 create_binary_files: create_object_files
-	$(CC) -o main PARSER/OBJ/Bloc.o PARSER/OBJ/Library.o PARSER/OBJ/Top.o PARSER/OBJ/Lexeme.o DISPLAY/Display.o main.o 
+	$(CC) -o main PARSER/OBJ/Bloc.o PARSER/OBJ/Process.o PARSER/OBJ/Component.o PARSER/OBJ/Library.o PARSER/OBJ/Entity.o PARSER/OBJ/Architecture.o PARSER/OBJ/Top.o PARSER/OBJ/Lexeme.o DISPLAY/Display.o main.o 
 
 create_object_files: clean
 	$(CC) -c -o DISPLAY/Display.o DISPLAY/Display.cpp
 	$(CC) -c -o PARSER/OBJ/Lexeme.o PARSER/SRC/Lexeme.cpp
 	$(CC) -c -o PARSER/OBJ/Bloc.o PARSER/SRC/Bloc.cpp
 	$(CC) -c -o PARSER/OBJ/Library.o PARSER/SRC/Library.cpp
+	$(CC) -c -o PARSER/OBJ/Entity.o PARSER/SRC/Entity.cpp
+	$(CC) -c -o PARSER/OBJ/Architecture.o PARSER/SRC/Architecture.cpp
+	$(CC) -c -o PARSER/OBJ/Component.o PARSER/SRC/Component.cpp
+	$(CC) -c -o PARSER/OBJ/Process.o PARSER/SRC/Process.cpp
 	$(CC) -c -o PARSER/OBJ/Top.o PARSER/SRC/Top.cpp
 	$(CC) -c -o main.o main.cpp
 
@@ -21,7 +25,11 @@ clean:
 	rm -f PARSER/OBJ/Lexeme.o
 	rm -f PARSER/OBJ/Bloc.o
 	rm -f PARSER/OBJ/Top.o
-	rm -f PARSER/OBJ/Library.o
+	rm -f PARSER/OBJ/Library.o	
+	rm -f PARSER/OBJ/Entity.o
+	rm -f PARSER/OBJ/Architecture.o	
+	rm -f PARSER/OBJ/Component.o
+	rm -f PARSER/OBJ/Process.o
 	rm -f main.o
 	rm -f main
 
