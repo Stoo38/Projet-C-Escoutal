@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void Library::browseLexeme() 
+void Library::verifySyntax() 
 {
 	list <Lexeme>::iterator itr;
 	int nbLexeme = 0;
@@ -68,12 +68,14 @@ void Library::browseLexeme()
 			{
 				cout << "OKOKOKOKOKn°4" << endl;
 				cout << "Next word: " << checkNextWord(count, itr) << endl;
-				nbLexeme = 5;
+				
 			}
 			else
 			{
 				cout << "NONONOn°4" << endl;
+				m_msgBox.createMessage("71", (*itr).m_line, (*itr).m_word);
 			}
+			nbLexeme = 5;
 		}	
 	
 		else if (nbLexeme == 5)
@@ -163,24 +165,5 @@ void Library::browseLexeme()
 			}	
 		}
 		count++;	
-	}
-}
-
-
-string Library::checkNextWord(int count, list<Lexeme>::iterator itr)
-{
-	if (count == (m_listLexemes.size()-1))
-	{	
-		cout << "Il n'y a plus de lexemes à verifier" << endl;
-		return "";		
-	}
-	
-	else 
-	{
-		list<Lexeme>::iterator itr2;
-		itr2 = itr;
-		itr2++;
-
-		return (*itr2).m_word;
 	}
 }

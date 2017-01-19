@@ -24,7 +24,7 @@ class Display
    	public:
    	Display(bool closeError = true) :		//Constructeur de Display
 	m_closeError(closeError),
-	m_messageFileName("DISPLAY/Messages.txt"), 	//Mettre le chemin absolu en cas de problème
+	m_messageFileName("DISPLAY/Messages_bastal.txt"), 	//Mettre le chemin absolu en cas de problème
 	m_alreadyDisplayed(0)				//Pas de Message déjà affiché
    	{
 		

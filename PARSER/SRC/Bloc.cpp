@@ -149,3 +149,21 @@ void Bloc::compareKeyWords(Lexeme lex)
 	}*/	
 }
 
+string Bloc::checkNextWord(int count, list<Lexeme>::iterator itr)
+{
+	if (count == (m_listLexemes.size()-1))
+	{	
+		cout << "Il n'y a plus de lexemes à verifier" << endl;
+		return "";		
+	}
+	
+	else 
+	{
+		list<Lexeme>::iterator itr2;
+		itr2 = itr;
+		itr2++;
+
+		return (*itr2).m_word;
+	}
+}
+

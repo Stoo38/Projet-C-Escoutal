@@ -83,3 +83,13 @@ void Top::displayLexemes()
 		(*it)->displayLexemes();
 	}
 }
+
+void Top::verifySyntax()
+{
+	list <Bloc *>::iterator it;
+	for(it=m_listeBlocks.begin(); it != m_listeBlocks.end(); it++)
+	{
+		(*it)->verifySyntax();
+	}
+	m_msgBox.createMessage("70", 0, "");
+}

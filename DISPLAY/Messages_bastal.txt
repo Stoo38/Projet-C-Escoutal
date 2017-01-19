@@ -1,0 +1,33 @@
+##### MESSAGES DURING THE CREATION OF THE TREE
+##### MAIN & TOP
+01INF Information: Beginning of the synthesis of the <"W"> file
+02FAT Fatal Error: It is impossible to open the <"W"> file 
+03INF Information: We have encountered a fatal error, so the program will be killed
+04INF Information: The option to close when we encounter an error is turned on, so the program will be killed
+05INF Information: The <"W"> file was successfully opened 
+09INF Information <L:> The library <"W"> has been detected
+10INF Information <L:> The entity <"W"> has been detected
+11INF Information <L:> The architecture <"W"> has been detected
+12ERR Error line <L:> <"W"> is not in any hierarchy (library, entity or architecture)
+
+##### BLOC
+06ERR Error line <L:> <"W"> is not a valid label, it can only start by a letter
+07ERR Error line <L:> <"W"> is not a valid label, it can not start or end by "_" 
+08ERR Error line <L:> <"W"> is not a valid label, it can only be letters, numbers or underscores
+
+
+
+
+20INF Information <L:> The component <"W"> has been detected
+21INF Information <L:> The process <"W"> has been detected
+22ERR Error line <L:> "end component" must be followed by ";"
+23ERR Error line <L:> "end" must be followed by "component" to indicate the end of the component
+24ERR Error line <L:> "end process" must be followed by ";"
+26ERR Error line <L:> "end process" must be followed by the name label
+27ERR Error line <L:> "end process" must be followed by ";" after the name label
+
+25WAR Warning line: It is impossible to open the <"W"> file 
+
+##### ERREURS DE BASTIEN
+70INF Information: The syntax verification is ended
+71ERR Error line <L:> <"W"> is not a valid label, it must be the one of the library

@@ -26,7 +26,7 @@ int main()
 		}
 		mylib.displayLexemes();
 
-		mylib.browseLexeme();
+		mylib.verifySyntax();
 		//Box.displayMessage();
 	}
 

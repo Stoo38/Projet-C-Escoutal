@@ -14,8 +14,8 @@ void Architecture::displayLexemes()
 
 void Architecture::createTree()
 {
-	//createComponent();
-	createProcess();
+	createComponent();
+	//createProcess();
 }
 void Architecture::createComponent()
 {
@@ -74,7 +74,7 @@ void Architecture::createComponent()
 
 void Architecture::createProcess()
 {
-	list <Lexeme>::iterator itr;
+	/*list <Lexeme>::iterator itr;
 	list <Lexeme> newList;
 	bool inProcess = false;	
 	bool labelProcess = false;		
@@ -117,7 +117,7 @@ void Architecture::createProcess()
 			}
 		}
 	}	
-	m_listLexemes = newList;
+	m_listLexemes = newList;*/
 }
 /*void Architecture::createTree()
 {

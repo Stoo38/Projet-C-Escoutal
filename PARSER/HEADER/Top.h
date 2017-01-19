@@ -40,6 +40,7 @@ class Top
 	void instanceClass(vector<string> tab, int nLine);
 	//Fonction l'affichage de tous les lexèmes contenus dans les blocks de m_listBlocks
 	void displayLexemes();
+	void verifySyntax();
 };
 
 #endif	

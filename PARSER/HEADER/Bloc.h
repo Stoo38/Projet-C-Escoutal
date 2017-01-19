@@ -53,10 +53,13 @@ public:
 	void verifyGlobalWord(Lexeme lex);		//Test si le mot n'est composé que de lettres, chiffres ou underscores	
 	void verifyLabel(Lexeme lex);			//Test si le lexeme respecte les differentes regles pour une etiquette
 	void compareKeyWords(Lexeme lex);		// A TERMINER
+	string checkNextWord(int count, list<Lexeme>::iterator itr);
 
 	virtual void displayLexemes();			//Affiche chaque lexeme avec la ligne correspondante
+
 	virtual void createTree() {};
 	virtual void reorganizeLexemes() {};
+	virtual void verifySyntax() {};
 };
 
 #endif	

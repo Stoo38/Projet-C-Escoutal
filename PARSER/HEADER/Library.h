@@ -29,10 +29,7 @@ class Library : public Bloc
 	//ACCESSEURS
 
 	//MODIFIEURS
-
 	
-	string checkNextWord(int count, list<Lexeme>::iterator itr);
-	void browseLexeme();
-
+	virtual void verifySyntax();
 };
 #endif

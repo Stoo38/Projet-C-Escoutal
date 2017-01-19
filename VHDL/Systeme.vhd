@@ -1,8 +1,8 @@
 library IEEE ;
-use IEEE.std_logic_1164.ALL ;
+use IEEE_.std_logic_1164_.ALL ;
 use ieee.numeric_std.all;
 library lib_COMP ;
-use lib_COMP.Compteur;
+use lib_COMP.Compteur_;
 use lib_COMP.MachineEtat;
 
 entity Systeme is 
