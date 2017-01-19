@@ -27,6 +27,7 @@ int main()
 		mylib.displayLexemes();
 
 		mylib.browseLexeme();
+		//Box.displayMessage();
 	}
 
 	else 
