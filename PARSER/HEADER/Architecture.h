@@ -27,6 +27,8 @@ class Architecture : public Bloc
 	}
 
 	virtual void createTree();
+	void createComponent();
+	void createProcess();
 	virtual void displayLexemes();
 };
 #endif
