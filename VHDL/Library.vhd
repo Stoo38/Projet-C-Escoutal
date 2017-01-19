@@ -13,8 +13,3 @@ numeric_std
 .
 all
 ;
-use
-ieee
-.
-lolilol_lol
-;
