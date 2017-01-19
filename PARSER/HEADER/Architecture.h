@@ -26,7 +26,7 @@ class Architecture : public Bloc
 	{	
 	}
 
-	virtual void distributeLexemes();
+	virtual void createTree();
 	virtual void displayLexemes();
 };
 #endif

@@ -20,36 +20,144 @@ void Library::browseLexeme()
 			else
 			{
 				cout << "NONONOn°0" << endl;
-				nbLexeme = 2;
+				
 			}
 						
 		}
 		else if (nbLexeme == 1)
 		{
-			if (monword == "ieee")
-			{
-				cout << "OKOKOKOKOKn°1" << endl;
-				nbLexeme = 2;
-			}
-			else
-			{
-				cout << "NONONOn°1" << endl;
-			}
-			nbLexeme = 2;			
+			cout << "OKOKOKOKOKn°1" << endl;
+			nbLexeme = 2;
+		
 		}
 		else if (nbLexeme == 2)
 		{
-			if (monword == "library")
+			if (monword == ";")
 			{
 				cout << "OKOKOKOKOKn°2" << endl;
-				nbLexeme = 2;
+				cout << "Next word: " << checkNextWord(nbLexeme, itr) << endl;
+
+				nbLexeme = 3;
 			}
 			else
 			{
 				cout << "NONONOn°2" << endl;
+			}		
+		}	
+
+		else if (nbLexeme == 3)
+		{
+			if (monword == "use")
+			{
+				cout << "OKOKOKOKOKn°3" << endl;
+				nbLexeme = 4;
 			}
-			nbLexeme = 2;			
-		}	 
+			else
+			{
+				cout << "NONONOn°3" << endl;
+			}
+		}	
+	
+		else if (nbLexeme == 4)
+		{
+			if (monword == m_identifiant.m_word)
+			{
+				cout << "OKOKOKOKOKn°4" << endl;
+				cout << "Next word: " << checkNextWord(nbLexeme, itr) << endl;
+				nbLexeme = 5;
+			}
+			else
+			{
+				cout << "NONONOn°4" << endl;
+			}
+		}	
+	
+		else if (nbLexeme == 5)
+		{
+			if (monword == ".")
+			{
+				if (checkNextWord(nbLexeme, itr) == "all")
+				{
+					cout << "OKOKOKOKOKn°5" << endl;
+					cout << "Next word: " << checkNextWord(nbLexeme, itr) << endl;
+					nbLexeme = 7;
+				}
+				else
+				{
+					cout << "OKOKOKOKOKn°5" << endl;
+					cout << "Next word: " << checkNextWord(nbLexeme, itr) << endl;
+					nbLexeme = 6;
+				}
+			}
+			else
+			{
+				cout << "NONONOn°5" << endl;
+			}
+		}	
+	
+		else if (nbLexeme == 6)
+		{
+			verifyLabel(*itr);
+			if (checkNextWord(nbLexeme, itr) == ".")
+			{
+				cout << "OKOKOKOKOKn°6" << endl;
+				cout << "Next word: " << checkNextWord(nbLexeme, itr) << endl;
+				nbLexeme = 5;
+			}
+			else
+			{
+				cout << "OKOKOKOKOKn°6" << endl;
+				cout << "Next word: " << checkNextWord(nbLexeme, itr) << endl;
+				nbLexeme = 8;
+			}
+		}
+
+		else if (nbLexeme == 7)
+		{
+			if (monword == "all")
+			{
+				cout << "OKOKOKOKOKn°7" << endl;
+				cout << "Next word: " << checkNextWord(nbLexeme, itr) << endl;
+
+				nbLexeme = 8;
+			}
+			else
+			{
+				cout << "NONONOn°7" << endl;
+			}	
+		}	
+
+		else if (nbLexeme == 8)
+		{
+			if (monword == ";")
+			{
+				if (checkNextWord(nbLexeme, itr) == "")
+				{
+					cout << "OKOKOKOKOKn°8" << endl << "Fin du game !" << endl;
+				}
+				else if (checkNextWord(nbLexeme, itr) == "library")
+				{
+					cout << "OKOKOKOKOKn°8" << endl;
+					cout << "Next word: " << checkNextWord(nbLexeme, itr) << endl;
+					nbLexeme = 0;
+				}
+				else if (checkNextWord(nbLexeme, itr) == "use")
+				{
+					cout << "OKOKOKOKOKn°8" << endl;
+					cout << "Next word: " << checkNextWord(nbLexeme, itr) << endl;
+					nbLexeme = 3;
+				}
+				else
+				{
+					cout << "NONONOn°8" << endl;
+				}	
+
+			}
+			else
+			{
+				cout << "NONONOn°8" << endl;
+			}	
+		}	
 	}
 }
 

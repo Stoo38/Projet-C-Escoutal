@@ -23,6 +23,8 @@
 22ERR Error line <L:> "end component" must be followed by ";"
 23ERR Error line <L:> "end" must be followed by "component" to indicate the end of the component
 24ERR Error line <L:> "end process" must be followed by ";"
+26ERR Error line <L:> "end process" must be followed by the name label
+27ERR Error line <L:> "end process" must be followed by ";" after the name label
 
 25WAR Warning line: It is impossible to open the <"W"> file 
 

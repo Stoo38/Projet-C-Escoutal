@@ -8,7 +8,7 @@ const string & Bloc::getIdentifiant() const
 	return m_identifiant.m_word;
 }
 
-const string & Bloc::getNameBlock() const
+const string Bloc::getNameBlock() const
 {
 	return (m_listLexemes.front()).m_word;
 }
@@ -97,12 +97,16 @@ void Bloc::verifyGlobalWord(Lexeme lex)
 	for (int i = 0; i < word.size(); i++)
 	{
 		int error = 1;
-		for (char j = 95; j < 123; j++)
+		for (char j = 48; j < 123; j++)
 		{
 			if(word[i] == j)
 			{
 				error = 0;
 				j = 123;
+			}
+			if (j == 57)
+			{
+				j = 94;
 			}
 			if (j == 95)
 			{

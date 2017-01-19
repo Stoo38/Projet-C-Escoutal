@@ -12,13 +12,20 @@ void Architecture::displayLexemes()
 	}
 }
 
-void Architecture::distributeLexemes()
+void Architecture::createTree()
+{
+
+}
+/*void Architecture::createTree()
 {
 	list <Lexeme>::iterator itr;
 	list <Lexeme> newList;
+	bool proc_label = false;
 	string position("architecture");
+	int countest = 0;
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
+		cout << (*itr).m_word << " " << (*itr).m_line << " " << countest <<endl;
 		if ((*itr).m_word == "component")
 		{
 			position = "component";
@@ -34,6 +41,7 @@ void Architecture::distributeLexemes()
 			itr--;
 			if ((*itr).m_word == ":")
 			{
+				proc_label = true;
 				itr--;
 				m_listeBlocks.push_back(new Process((*itr).m_word, (*itr).m_line, m_msgBox));
 				m_msgBox.createMessage("21", (*itr).m_line, (*itr).m_word);	
@@ -85,17 +93,36 @@ void Architecture::distributeLexemes()
 			if ((*itr).m_word == "process")
 			{
 				itr++;
-				if ((*itr).m_word == ";")
+				if ((proc_label == false) && ((*itr).m_word == ";"))
 				{
 					(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
-					position = "architecture";
+				}
+				else if ((proc_label == true) && ((*itr).m_word == ";"))
+				{
+					m_msgBox.createMessage("26", (*itr).m_line, "");
+					(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+				}
+				else if ((proc_label == true) && ((*itr).m_word != ";"))
+				{
+					(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+					itr++;
+					if ((*itr).m_word == ";")
+					{
+						(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);							
+					}
+					else
+					{
+						m_msgBox.createMessage("27", (*itr).m_line, "");
+						newList.push_back(*itr);
+					}
 				}
 				else
 				{
 					m_msgBox.createMessage("24", (*itr).m_line, "");
-					position = "architecture";
 					newList.push_back(*itr);
 				}
+				position = "architecture";
+				proc_label = false;
 			}
 		}
 		else 
@@ -108,7 +135,8 @@ void Architecture::distributeLexemes()
 			{
 				newList.push_back(*itr);
 			}
-		}				 
+		}
+	countest++;				 
 	}
 	m_listLexemes = newList;
-}
+}*/

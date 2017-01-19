@@ -24,5 +24,7 @@ class Process : public Bloc
 	{	
 	}
 
+	virtual const string getNameBlock() const;
+	virtual void reorganizeLexemes();	
 };
 #endif

@@ -14,6 +14,7 @@
 #include "Entity.h"
 #include "Architecture.h"
 #include "../../DISPLAY/Display.h"
+#include "functions.h"
 
 
 using namespace std;
@@ -34,19 +35,7 @@ class Top
 	}
 	//Fonction utilisee pour creer les différents blocs en fonction des lexemes extraits du fichier VHDL
 	void createTree();
-	//Fonction remplacant toutes les majuscules se trouvant dans le string en entree par des minuscules
-	string toMinuscule(string word);
-	//Fonction detectant un commentaire VHDL dans un string et effacant tous les caracteres correspondants
-	string eraseComment(string sentence);
-	//Fonction enlevant toutes les iterations d'un meme caractere dans un string
-	string eraseCharacter(string sentence, const char symbol);
-	//Fonction decoupant en fonction des espaces, puis supprimant toutes les chaines de caractères vides
-	vector<string> eraseSpace(vector<string> tab);
-	//Fonction decoupant en plusieurs string un vector<string> en entree, en fonction d'un caractere defini
-	//EXEMPLE: Pour e: "Testest" ---> "T" "e" "st "e" "st"
-	vector<string> cutCharacter(vector<string> tab, const char symbol);
-	//Fonction decoupant en plusieurs string un vector<string> en entree, en fonction de tous les caractères spéciaux
-	vector<string> cutSpecialCharacter(vector<string> tab);	
+
 	//Fonction instanciant des objets Entity, Library ou Architecture en fonction du fichier VHDL et les place dans m_listBlocks
 	void instanceClass(vector<string> tab, int nLine);
 	//Fonction l'affichage de tous les lexèmes contenus dans les blocks de m_listBlocks

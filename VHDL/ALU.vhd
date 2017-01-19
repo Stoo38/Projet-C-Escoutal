@@ -2,7 +2,7 @@ library IEEE ;
 use IEEE.std_logic_1164.ALL ;
 
 use ieee.numeric_std.all;
-entity ALU is
+entity te____stest2 is
 	port(	A,B		: in STD_LOGIC_VECTOR(7 downto 0) ; 
 		CMD		: in STD_LOGIC_VECTOR(2 downto 0) ;
 		Zero		: out std_logic;
@@ -18,7 +18,7 @@ signal b_u: unsigned (7 downto 0);
 
 begin	
 
-process(reset, clock)
+testest2 : process(reset, clock)
 begin
 	
 	
@@ -48,7 +48,8 @@ begin
 	else zero <= '0';
 	end if;
 	
-end process;
+end process testest2 ;
+
 
 --zero<= '1' when result(7 downto 0) = "00000000" else '0';
 --S<= std_logic_vector(result(7 downto 0)); --define the value of S in function of result (8 bits)

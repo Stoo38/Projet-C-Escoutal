@@ -41,7 +41,7 @@ public:
 
 	//ACCESSEURS
 	const string & getIdentifiant() const;		//Renvoie l'identifiant
-	const string & getNameBlock() const;		//Renvoie le nom du bloc
+	virtual const string getNameBlock() const;	//Renvoie le nom du bloc
 
 	//MODIFIEURS
 	void addLexeme(string lexeme, int nLine);	//Rajoute un lexeme et sa ligne a la liste
@@ -52,10 +52,11 @@ public:
 	void verifyUnderscore(Lexeme lex);		//Test s'il n'y a pas d'underscore en début et/ ou fin du lexeme
 	void verifyGlobalWord(Lexeme lex);		//Test si le mot n'est composé que de lettres, chiffres ou underscores	
 	void verifyLabel(Lexeme lex);			//Test si le lexeme respecte les differentes regles pour une etiquette
-	void compareKeyWords(Lexeme lex);
+	void compareKeyWords(Lexeme lex);		// A TERMINER
 
 	virtual void displayLexemes();			//Affiche chaque lexeme avec la ligne correspondante
-	virtual void distributeLexemes() {};
+	virtual void createTree() {};
+	virtual void reorganizeLexemes() {};
 };
 
 #endif	

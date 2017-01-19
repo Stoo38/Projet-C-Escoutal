@@ -10,6 +10,8 @@
 #include <vector>
 #include <cstdlib>
 
+#include "../PARSER/HEADER/functions.h"
+
 using namespace std;
 
 class Display
@@ -30,6 +32,5 @@ class Display
 
     	void createMessage(string nMessage, int nline = 0, string lexeme = "");	//Permet d'ajouter un message à la liste et de quitter le programme selon l'erreur
 	void displayMessage(bool allDisplay = false);				//Affiche les messages stockés, à partir du début ou seulement depuis le dernier affiché
-	vector<string> cutCharacter(vector<string> tab, const char symbol);	//Fonction pour couper une phrase en fonction d'un caractère (Identique à celle dans Top.h)
 };
 #endif
