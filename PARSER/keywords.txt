@@ -1,1 +1,3 @@
 library entity architecture component process
+--mot clé particulier
+is in out
