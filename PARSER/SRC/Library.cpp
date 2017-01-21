@@ -22,15 +22,24 @@ void Library::verifySyntax()
 
 		else if (nbLexeme == 1)
 		{
-			cout << "OKOKOKOKOKn°1" << endl;
+			/*
+			if (checkNextWord(count, itr) == "use")
+			{
+				cout << "OKOKOKOKOKn°1" << endl;	
+			}
+			else
+			{
+				m_msgBox.createMessage("072", (*itr).m_line, (*itr).m_word);
+			}
+			*/
 			nbLexeme = 2;
 		
 		}
 
 		else if (nbLexeme == 2)
 		{	
-			if (checkNextWord("025",count, itr) == "use")
-"
+	
+
 			if (monword == ";")
 			{
 				cout << "OKOKOKOKOKn°2" << endl;
