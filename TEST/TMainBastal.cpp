@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
 	{
 		if (step_tree == true)					// Etape de création de l'arbre si l'option est activée
 		{
-			messageBox.createMessage("01", 0, *itfile);			
+			messageBox.createMessage("001", 0, *itfile);			
 			Top myTop(*itfile, messageBox);				// Création d'un objet Top où toutes les informations pour un unique fichier VHDL seront stockées 
 			myTop.createTree();					// Création de l'arbre en lui-même			
 			myTop.verifySyntax();

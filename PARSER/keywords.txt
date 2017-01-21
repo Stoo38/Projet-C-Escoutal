@@ -1,3 +1,15 @@
-library entity architecture component process
---mot clé particulier
-is in out
+library entity architecture component process port 
+
+--mots clefs exclusifs à library
+use all
+
+--mots clefs utilisables dans plusieurs blocs
+--types
+std_logic std_ulogic std_logic_vector std_logic_uvector bit bit_vector integer unsigned
+
+signal variable in out to downto upto range 
+
+begin end if then else elsif switch case of is when map
+
+and or xor 
+
