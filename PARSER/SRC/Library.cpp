@@ -11,42 +11,35 @@ void Library::verifySyntax()
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
 		string monword = (*itr).m_word;
-		
 		cout << count << " " << m_listLexemes.size() << endl;
 
-
+	
 		if (nbLexeme == 0)
 		{
-			if (monword == "library")
-			{
-				cout << "OKOKOKOKOKn°0" << endl;
-				nbLexeme = 1;				
-			}
-			else
-			{
-				cout << "NONONOn°0" << endl;
-			}
-						
+			cout << "OKOKOKOKOKn°0" << endl;
+			nbLexeme = 1;							
 		}
+
 		else if (nbLexeme == 1)
 		{
 			cout << "OKOKOKOKOKn°1" << endl;
 			nbLexeme = 2;
 		
 		}
+
 		else if (nbLexeme == 2)
-		{
+		{	
+			if (checkNextWord("025",count, itr) == "use")
+"
 			if (monword == ";")
 			{
 				cout << "OKOKOKOKOKn°2" << endl;
-				cout << "Next word: " << checkNextWord(count, itr) << endl;
-
-				nbLexeme = 3;
 			}
 			else
 			{
 				cout << "NONONOn°2" << endl;
-			}		
+			}
+			nbLexeme = 3;		
 		}	
 
 		else if (nbLexeme == 3)

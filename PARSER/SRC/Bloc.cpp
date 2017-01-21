@@ -153,7 +153,6 @@ string Bloc::checkNextWord(int count, list<Lexeme>::iterator itr)
 {
 	if (count == (m_listLexemes.size()-1))
 	{	
-		cout << "Il n'y a plus de lexemes à verifier" << endl;
 		return "";		
 	}
 	
