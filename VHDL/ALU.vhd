@@ -1,4 +1,4 @@
-library IEEE ;
+library IEEE_ ;
 use IEEE.std_logic_1164.ALL ;
 
 use ieee.numeric_std.all;
@@ -10,7 +10,7 @@ entity te____stest2 is
 		reset, clock	: in std_logic) ;
 
 end ALU;
-architecture a of ALU is
+architecture _a of ALU is
 
 	component Compteur
 	port(	en,clk,resetn	: in std_logic;

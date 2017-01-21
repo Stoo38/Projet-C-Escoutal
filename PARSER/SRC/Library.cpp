@@ -73,7 +73,7 @@ void Library::verifySyntax()
 			else
 			{
 				cout << "NONONOn°4" << endl;
-				m_msgBox.createMessage("71", (*itr).m_line, (*itr).m_word);
+				m_msgBox.createMessage("071", (*itr).m_line, (*itr).m_word);
 			}
 			nbLexeme = 5;
 		}	

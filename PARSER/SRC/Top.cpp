@@ -6,7 +6,7 @@ void Top::createTree()
 
 	if(myFile)					//Ouvre le fichier VHDL
 	{
-		m_msgBox.createMessage("05", 0, m_vhdlFileName);		//Crée un message indiquant que le fichier a bien été ouvert
+		m_msgBox.createMessage("005", 0, m_vhdlFileName);		//Crée un message indiquant que le fichier a bien été ouvert
 		string line;
 		vector<string> tab;
 		vector<string>::iterator it;
@@ -34,7 +34,7 @@ void Top::createTree()
 	}
 	else
 	{
-		m_msgBox.createMessage("02", 0, m_vhdlFileName);		//Crée une erreur si le fichier VHDL ne s'ouvre pas
+		m_msgBox.createMessage("002", 0, m_vhdlFileName);		//Crée une erreur si le fichier VHDL ne s'ouvre pas
 	}	
 }
 
@@ -47,19 +47,19 @@ void Top::instanceClass(vector<string> tab, int nLine)
 		{
 			it++;
 			m_listeBlocks.push_back(new Library(*it, nLine, m_msgBox));
-			m_msgBox.createMessage("09", nLine, *it);
+			m_msgBox.createMessage("009", nLine, *it);
 		}
 		else if (*it == "entity")
 		{
 			it++;
 			m_listeBlocks.push_back(new Entity(*it, nLine, m_msgBox));
-			m_msgBox.createMessage("10", nLine, *it);
+			m_msgBox.createMessage("010", nLine, *it);
 		}
 		else if (*it == "architecture")
 		{
 			it++;
 			m_listeBlocks.push_back(new Architecture(*it, nLine, m_msgBox));
-			m_msgBox.createMessage("11", nLine, *it);
+			m_msgBox.createMessage("011", nLine, *it);
 		}
 		else 
 		{
@@ -69,7 +69,7 @@ void Top::instanceClass(vector<string> tab, int nLine)
 			}
 			else
 			{
-				m_msgBox.createMessage("12", nLine, *it);
+				m_msgBox.createMessage("012", nLine, *it);
 			}
 		}
 	}	
@@ -91,5 +91,5 @@ void Top::verifySyntax()
 	{
 		(*it)->verifySyntax();
 	}
-	m_msgBox.createMessage("70", 0, "");
+	m_msgBox.createMessage("070", 0, "");
 }

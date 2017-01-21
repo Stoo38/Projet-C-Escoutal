@@ -11,7 +11,7 @@ void Display::createMessage(string nMessage, int nline, string lexeme)
 		stringstream ssline;
 		while(getline(myFile, line))
 		{			
-			if (line.substr(0,2) == nMessage)	//Recherche du texte correspondant au numero de message voulu
+			if (line.substr(0,3) == nMessage)	//Recherche du texte correspondant au numero de message voulu
 			{
 				vector<string> message;
 				vector<string>::iterator itmessage;
@@ -39,22 +39,22 @@ void Display::createMessage(string nMessage, int nline, string lexeme)
 		line.clear();
 		line = ssline.str();
 		m_listMessages.push_back(line);
-		if (line.substr(2,3) == "FAT")			//Si l'erreur ajoutée est de type Fatal Error, on arrête l'exécution
+		if (line.substr(3,3) == "FAT")			//Si l'erreur ajoutée est de type Fatal Error, on arrête l'exécution
 		{
-			createMessage("03");
+			createMessage("003");
 			displayMessage();
 			exit(1);
 		}	
-		else if ((line.substr(2,3) == "ERR") && (m_closeError == true))	//On arrête également si une erreur a été rencontrée et que l'option correspondante est active
+		else if ((line.substr(3,3) == "ERR") && (m_closeError == true))	//On arrête également si une erreur a été rencontrée et que l'option correspondante est active
 		{
-			createMessage("04");
+			createMessage("004");
 			displayMessage();
 			exit(1);
 		}
 	}
 	else
 	{
-        cout << "00WAR Warning: Can not access to the message file Messages.txt" << endl;
+        cout << "000WAR Warning: Can not access to the message file Messages.txt" << endl;
 	}
 }
 

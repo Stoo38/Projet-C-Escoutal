@@ -78,7 +78,7 @@ void Bloc::verifyFirstCharacter(Lexeme lex)
 	}
 	if (error == 1)
 	{
-		m_msgBox.createMessage("06", lex.m_line, lex.m_word);
+		m_msgBox.createMessage("006", lex.m_line, lex.m_word);
 	}
 }
 
@@ -87,7 +87,7 @@ void Bloc::verifyUnderscore(Lexeme lex)
 	string word = lex.m_word;
 	if ((word[word.size()-1] == 95) || (word[0] == 95)) 
 	{
-		m_msgBox.createMessage("07", lex.m_line, lex.m_word);
+		m_msgBox.createMessage("007", lex.m_line, lex.m_word);
 	}
 }
 
@@ -115,7 +115,7 @@ void Bloc::verifyGlobalWord(Lexeme lex)
 		}
 		if (error == 1)
 		{
-			m_msgBox.createMessage("08", lex.m_line, lex.m_word);
+			m_msgBox.createMessage("008", lex.m_line, lex.m_word);
 		}
 	}
 }
@@ -130,23 +130,25 @@ void Bloc::verifyLabel(Lexeme lex)
 
 void Bloc::compareKeyWords(Lexeme lex)
 {
-	/*ifstream myFile("PARSER/keywords.txt");  	
+	ifstream myFile("PARSER/keywords.txt");  	
 
 	if(myFile)					
 	{		
-		string line;				
+		string line;	
+		vector<string> list_keywords;			
 		while(getline(myFile, line))					
 		{
+			list_keywords.push_back(line);	
 			if (lex.m_word == line)
 			{
-				m_msgBox.createMessage("26", lex.m_line, lex.m_word);
+				//m_msgBox.createMessage("028", lex.m_line, lex.m_word);
 			}
 		}					
 	}
 	else
 	{
-		m_msgBox.createMessage("25", 0, "keywords.txt");		
-	}*/	
+		m_msgBox.createMessage("025", 0, "keywords.txt");		
+	}	
 }
 
 string Bloc::checkNextWord(int count, list<Lexeme>::iterator itr)

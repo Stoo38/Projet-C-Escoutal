@@ -1,5 +1,1 @@
-library
-entity
-architecture
-component
-process
+library entity architecture component process
