@@ -15,7 +15,7 @@ void Architecture::displayLexemes()
 void Architecture::createTree()
 {
 	createComponent();
-	//createProcess();
+	createProcess();
 }
 void Architecture::createComponent()
 {
@@ -29,7 +29,7 @@ void Architecture::createComponent()
 			inComponent = true;
 			itr++;
 			m_listeBlocks.push_back(new Component((*itr).m_word, (*itr).m_line, m_msgBox));
-			Lexeme flag("flag_component", (*itr).m_line);			 
+			Lexeme flag("FLAG_COMP", (*itr).m_line);			 
 			newList.push_back(flag);
 			m_msgBox.createMessage("020", (*itr).m_line, (*itr).m_word);			
 		}
@@ -74,7 +74,7 @@ void Architecture::createComponent()
 
 void Architecture::createProcess()
 {
-	/*list <Lexeme>::iterator itr;
+	list <Lexeme>::iterator itr;
 	list <Lexeme> newList;
 	bool inProcess = false;	
 	bool labelProcess = false;		
@@ -86,7 +86,7 @@ void Architecture::createProcess()
 			itr--;
 			if ((*itr).m_word == ":")
 			{
-				proc_label = true;
+				labelProcess = true;
 				itr--;
 				m_listeBlocks.push_back(new Process((*itr).m_word, (*itr).m_line, m_msgBox));
 				m_msgBox.createMessage("021", (*itr).m_line, (*itr).m_word);	
@@ -102,8 +102,48 @@ void Architecture::createProcess()
 				m_msgBox.createMessage("021", (*itr).m_line, "default");				
 			}
 			
-			Lexeme flag("flag_process", (*itr).m_line);			 
+			Lexeme flag("FLAG_PROC", (*itr).m_line);			 
 			newList.push_back(flag);
+		}
+		else if (((*itr).m_word == "end") && (inProcess == true))
+		{
+			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+			itr++;
+			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+			if ((*itr).m_word == "process")
+			{
+				itr++;
+				if ((labelProcess == false) && ((*itr).m_word == ";"))
+				{
+					(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+				}
+				else if ((labelProcess == true) && ((*itr).m_word == ";"))
+				{
+					m_msgBox.createMessage("026", (*itr).m_line, "");
+					(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+				}
+				else if ((labelProcess == true) && ((*itr).m_word != ";"))
+				{
+					(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+					itr++;
+					if ((*itr).m_word == ";")
+					{
+						(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);							
+					}
+					else
+					{
+						m_msgBox.createMessage("027", (*itr).m_line, "");
+						newList.push_back(*itr);
+					}
+				}
+				else
+				{
+					m_msgBox.createMessage("024", (*itr).m_line, "");
+					newList.push_back(*itr);
+				}
+				inProcess = false;
+				labelProcess = false;
+			}
 		}
 		else 
 		{
@@ -117,7 +157,7 @@ void Architecture::createProcess()
 			}
 		}
 	}	
-	m_listLexemes = newList;*/
+	m_listLexemes = newList;
 }
 /*void Architecture::createTree()
 {

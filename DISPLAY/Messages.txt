@@ -29,6 +29,7 @@
 
 025WAR Warning line: It is impossible to open the <"W"> file 
 
+060INF Information: Test d'une erreur
 
 
 ##### ERREURS DE BASTIEN
