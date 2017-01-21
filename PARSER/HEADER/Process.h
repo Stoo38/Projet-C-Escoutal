@@ -23,8 +23,7 @@ class Process : public Bloc
 	Bloc(identifiant, "process", nLine, msgBox)
 	{	
 	}
-
-	virtual const string getNameBlock() const;
+	
 	virtual void reorganizeLexemes();	
 };
 #endif

@@ -21,6 +21,7 @@ class Bloc
 {
 protected:
 	//ATTRIBUTS
+	Lexeme m_keyword;		//Contient le mot-clé de la classe 
 	Lexeme m_identifiant;		//Contient l'identifiant et la premiere ligne de l'objet
 	list <Lexeme> m_listLexemes;	//Contient les lexemes lies à l'objet
 	Display &m_msgBox;		//Reference vers l'objet stockant les messages
@@ -31,17 +32,19 @@ public:
 	Bloc(const string & identifiant, const string & motCle, const int nLine, Display &msgBox):
 	m_msgBox(msgBox)
 	{	
+		Lexeme key(motCle, nLine);
 		Lexeme id(identifiant, nLine);			
 		verifyLabel(id);		//Verification que l'identifiant est correct
-		m_identifiant = id;		//Initialisation de l'identifiant
-		addLexeme(motCle, nLine);	//Ajout du premier lexeme, correspondant toujours au mot-cle
+		m_keyword = key;
+		m_identifiant = id;		//Initialisation de l'identifiant		
+		m_listLexemes.push_back(key);	//Ajout du premier lexeme, correspondant toujours au mot-cle
 		m_listLexemes.push_back(id);	//Ajout du second lexeme, correspondant toujours a un identifiant
 	}
 
 
 	//ACCESSEURS
 	const string & getIdentifiant() const;		//Renvoie l'identifiant
-	virtual const string getNameBlock() const;	//Renvoie le nom du bloc
+	const string getKeyWord() const;		//Renvoie le nom du bloc
 
 	//MODIFIEURS
 	void addLexeme(string lexeme, int nLine);	//Rajoute un lexeme et sa ligne a la liste

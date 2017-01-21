@@ -8,9 +8,9 @@ const string & Bloc::getIdentifiant() const
 	return m_identifiant.m_word;
 }
 
-const string Bloc::getNameBlock() const
+const string Bloc::getKeyWord() const
 {
-	return (m_listLexemes.front()).m_word;
+	return m_keyword.m_word;
 }
 
 //MODIFIEURS
@@ -22,7 +22,7 @@ void Bloc::addLexeme(string lexeme, int nLine)
 
 void Bloc::displayLexemes()
 {
-	cout << "List of lexemes contained in the block " << getNameBlock() << " " << getIdentifiant() << endl;
+	cout << "List of lexemes contained in the block " << getKeyWord() << " " << getIdentifiant() << endl;
 	list <Lexeme>::iterator itr;
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
@@ -130,20 +130,26 @@ void Bloc::verifyLabel(Lexeme lex)
 
 void Bloc::compareKeyWords(Lexeme lex)
 {
-	ifstream myFile("PARSER/keywords.txt");  	
-
+	ifstream myFile("PARSER/keywords.txt"); 
 	if(myFile)					
 	{		
 		string line;	
 		vector<string> list_keywords;			
 		while(getline(myFile, line))					
 		{
+			line = eraseComment(line);	
 			list_keywords.push_back(line);	
-			if (lex.m_word == line)
+			list_keywords = eraseSpace(list_keywords);
+
+		}
+		vector<string>::iterator it;
+		for(it=list_keywords.begin(); it != list_keywords.end(); it++)
+		{
+			if (lex.m_word == *it)
 			{
-				//m_msgBox.createMessage("028", lex.m_line, lex.m_word);
+				m_msgBox.createMessage("028", lex.m_line, lex.m_word);
 			}
-		}					
+		}							
 	}
 	else
 	{

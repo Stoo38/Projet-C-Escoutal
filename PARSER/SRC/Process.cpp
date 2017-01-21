@@ -1,10 +1,5 @@
 #include "../HEADER/Process.h"
 
-const string Process::getNameBlock() const
-{
-	return "okok";
-}
-
 void Process::reorganizeLexemes()
 {
 	m_listLexemes.pop_front();
