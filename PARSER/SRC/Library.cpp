@@ -22,16 +22,13 @@ void Library::verifySyntax()
 
 		else if (nbLexeme == 1)
 		{
-			/*
-			if (checkNextWord(count, itr) == "use")
+			
+			if (checkNextWord(count, itr) != ";")
 			{
-				cout << "OKOKOKOKOKn°1" << endl;	
-			}
-			else
-			{
+				cout << "NONONOn°1" << endl;	
 				m_msgBox.createMessage("072", (*itr).m_line, (*itr).m_word);
 			}
-			*/
+
 			nbLexeme = 2;
 		
 		}
