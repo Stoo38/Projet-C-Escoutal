@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 library ;  ;
 use IEEE.std_logic_1164.all;
+=======
+library ; IEEE ;
+use IEEE.std_logic_1164 .all ;
+>>>>>>> a98a880e59749bcab0ea055557260e902c45a27f
 use ieee.numeric_std.all;
 entity te____stest2 is
 	port(	A,B		: in STD_LOGIC_VECTOR(7 downto 0) ; 
