@@ -32,8 +32,12 @@
 060INF Information: Test d'une erreur
 
 
-##### ERREURS DE BASTIEN
-070INF Information: The syntax verification is ended
-071ERR Error line <L:> <"W"> is not a valid label, it must be the one of the library
-072ERR Error line <L:>: the word <"W"> can not be used at this place
+###### MESSAGES DURING THE VERIFICATION OF THE SYNTAX
+200INF Information: The syntax verification is ended
+
+
+
+
+201ERR Error line <L:> <"W"> is not a valid label, it must be the one of the library
+202ERR Error line <L:> : the word <"W"> can not be used at this place
 
