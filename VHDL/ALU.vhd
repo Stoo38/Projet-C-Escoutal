@@ -64,6 +64,16 @@ begin
 	end if;
 	
 end process testest2 ;
+process(reset, clock)
+begin
+
+		
+	if (result(7 downto 0) = "00000000") then zero <= '1'; 
+	else zero <= '0';
+	end if;
+	
+end process;
+
 
 testest4 : process(reset, clock)
 begin
@@ -73,7 +83,7 @@ begin
 	else zero <= '0';
 	end if;
 	
-end process testest4 ;
+end process testest4;
 
 --zero<= '1' when result(7 downto 0) = "00000000" else '0';
 --S<= std_logic_vector(result(7 downto 0)); --define the value of S in function of result (8 bits)

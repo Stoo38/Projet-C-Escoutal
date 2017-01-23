@@ -100,5 +100,5 @@ void Top::verifySyntax()
 	{
 		(*it)->verifySyntax();
 	}
-	m_msgBox.createMessage("070", 0, "");
+	m_msgBox.createMessage("200", 0, "");
 }
