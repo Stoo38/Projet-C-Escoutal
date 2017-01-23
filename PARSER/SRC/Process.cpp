@@ -15,4 +15,5 @@ void Process::reorganizeLexemes()
 	m_listLexemes.push_front(n2);
 	m_listLexemes.push_front(n1);	
 	m_listLexemes.push_front(m_identifiant);
+	BlocNode::reorganizeLexemes();
 }

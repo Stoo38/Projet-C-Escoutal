@@ -1,5 +1,5 @@
-#ifndef _PORT_H_
-#define _PORT_H_
+#ifndef _SIGNAL_H_
+#define _SIGNAL_H_
 
 #include <math.h>
 #include <string.h>
@@ -13,13 +13,13 @@
 
 using namespace std;
 
-class Port : public Bloc
+class Signal : public Bloc
 {
 	protected:
 
 	public:
-	Port(const string & identifiant, const int nLine, Display &msgBox):
-	Bloc(identifiant, "port", nLine, msgBox)
+	Signal(const string & identifiant, const int nLine, Display &msgBox):
+	Bloc(identifiant, "signal", nLine, msgBox)
 	{	
 	}
 

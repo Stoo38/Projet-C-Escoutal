@@ -9,20 +9,21 @@
 #include <list>
 
 #include "Lexeme.h"
-#include "Bloc.h"
+#include "BlocNode.h"
 #include "../../DISPLAY/Display.h"
 
 using namespace std;
 
-class Component : public Bloc
+class Component : public BlocNode
 {
 	protected:
 
 	public:
 	Component(const string & identifiant, const int nLine, Display &msgBox):
-	Bloc(identifiant, "component", nLine, msgBox)
+	BlocNode(identifiant, "component", nLine, msgBox)
 	{	
 	}
 
+	virtual void createTree();
 };
 #endif

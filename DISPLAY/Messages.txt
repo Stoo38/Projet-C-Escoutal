@@ -5,9 +5,9 @@
 003INF Information: We have encountered a fatal error, so the program will be killed
 004INF Information: The option to close when we encounter an error is turned on, so the program will be killed
 005INF Information: The <"W"> file was successfully opened 
-009INF Information <L:> The library <"W"> has been detected
-010INF Information <L:> The entity <"W"> has been detected
-011INF Information <L:> The architecture <"W"> has been detected
+009INF Information line <L:> The library <"W"> has been detected
+010INF Information line <L:> The entity <"W"> has been detected
+011INF Information line <L:> The architecture <"W"> has been detected
 012ERR Error line <L:> <"W"> is not in any hierarchy (library, entity or architecture)
 
 ###### BLOC
@@ -19,8 +19,8 @@
 
 
 
-020INF Information <L:> The component <"W"> has been detected
-021INF Information <L:> The process <"W"> has been detected
+020INF Information line <L:> The component <"W"> has been detected
+021INF Information line <L:> The process <"W"> has been detected
 022ERR Error line <L:> "end component" must be followed by ";"
 023ERR Error line <L:> "end" must be followed by "component" to indicate the end of the component
 024ERR Error line <L:> "end process" must be followed by ";"
@@ -35,4 +35,10 @@
 ##### ERREURS DE BASTIEN
 070INF Information: The syntax verification is ended
 071ERR Error line <L:> <"W"> is not a valid label, it must be the one of the library
+
+##### DEBUGGER
+801DEB Debugger line <L:> The signal <"W"> has been detected
+802DEB Debugger line <L:> The type <"W"> has been detected
+803DEB Debugger line <L:> The port <"W"> has been detected
+
 

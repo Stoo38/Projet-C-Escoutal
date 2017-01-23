@@ -8,20 +8,22 @@
 #include <list>
 
 #include "Lexeme.h"
-#include "Bloc.h"
+#include "BlocNode.h"
+#include "Port.h"
 #include "../../DISPLAY/Display.h"
 
 using namespace std;
 
-class Entity : public Bloc
+class Entity : public BlocNode
 {
 	protected:
 
 	public:
 	Entity(const string & identifiant, const int nLine, Display &msgBox):
-	Bloc(identifiant, "entity", nLine, msgBox)
+	BlocNode(identifiant, "entity", nLine, msgBox)
 	{	
 	}
 
+	virtual void createTree();
 };
 #endif

@@ -9,18 +9,18 @@
 #include <list>
 
 #include "Lexeme.h"
-#include "Bloc.h"
+#include "BlocNode.h"
 #include "../../DISPLAY/Display.h"
 
 using namespace std;
 
-class Process : public Bloc
+class Process : public BlocNode
 {
 	protected:
 
 	public:
 	Process(const string & identifiant, const int nLine, Display &msgBox):
-	Bloc(identifiant, "process", nLine, msgBox)
+	BlocNode(identifiant, "process", nLine, msgBox)
 	{	
 	}
 	

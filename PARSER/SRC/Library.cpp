@@ -22,7 +22,7 @@ void Library::verifySyntax()
 
 		else if (nbLexeme == 1)
 		{
-			/*
+			
 			if (checkNextWord(count, itr) == "use")
 			{
 				cout << "OKOKOKOKOKn°1" << endl;	
@@ -31,7 +31,7 @@ void Library::verifySyntax()
 			{
 				m_msgBox.createMessage("072", (*itr).m_line, (*itr).m_word);
 			}
-			*/
+			
 			nbLexeme = 2;
 		
 		}

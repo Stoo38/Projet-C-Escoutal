@@ -84,6 +84,15 @@ void Top::displayLexemes()
 	}
 }
 
+void Top::reorganizeLexemes()
+{
+	list <Bloc *>::iterator it;
+	for(it=m_listeBlocks.begin(); it != m_listeBlocks.end(); it++)
+	{
+		(*it)->reorganizeLexemes();
+	}
+}
+
 void Top::verifySyntax()
 {
 	list <Bloc *>::iterator it;

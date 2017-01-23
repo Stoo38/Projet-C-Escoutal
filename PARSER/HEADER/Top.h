@@ -33,13 +33,15 @@ class Top
 	{
 		m_listeBlocks.clear();	
 	}
-	//Fonction utilisee pour creer les différents blocs en fonction des lexemes extraits du fichier VHDL
-	void createTree();
+	
 
 	//Fonction instanciant des objets Entity, Library ou Architecture en fonction du fichier VHDL et les place dans m_listBlocks
 	void instanceClass(vector<string> tab, int nLine);
 	//Fonction l'affichage de tous les lexèmes contenus dans les blocks de m_listBlocks
 	void displayLexemes();
+	//Fonction utilisee pour creer les différents blocs en fonction des lexemes extraits du fichier VHDL
+	void createTree();
+	void reorganizeLexemes();
 	void verifySyntax();
 };
 
