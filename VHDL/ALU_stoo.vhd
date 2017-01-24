@@ -1,14 +1,16 @@
-library ; IEEE ;
-use IEEE.std_logic_1164 .all ;
+library IEEE;
+use IEEE.std_logic_1164.all;
 use ieee.numeric_std.all;
-entity te____stest2 is
-	port(	A,B		: in STD_LOGIC_VECTOR(7 downto 0) ; 
-		CMD		: in STD_LOGIC_VECTOR(2 downto 0) ;
-		Zero		: out std_logic;
-		S		: out STD_LOGIC_VECTOR(7 downto 0) ;
-		reset, clock	: in std_logic) ;
-
+entity ALU is
+	port(	--A,B		: in STD_LOGIC_VECTOR(7 downto 0) ; 
+		--CMD		: in STD_LOGIC_VECTOR(2 downto 0) ;
+		--Zero		: out std_logic;
+		--S		: out STD_LOGIC_VECTOR(7 downto 0) ;
+		--reset, clock	: in std_logic) ;
+		FLAG_PORT/
+		FLAG_PORT);
 end ALU;
+
 architecture a of ALU is
 
 	component Compteur

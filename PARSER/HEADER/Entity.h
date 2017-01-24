@@ -23,7 +23,13 @@ class Entity : public BlocNode
 	BlocNode(identifiant, "entity", nLine, msgBox)
 	{	
 	}
+<<<<<<< HEAD
 
 	virtual void createTree();
+=======
+	
+	//METHODE HERITEE
+	virtual void verifySyntax();
+>>>>>>> 0861227b5c1539c99414fdfd6a44324b28122e42
 };
 #endif

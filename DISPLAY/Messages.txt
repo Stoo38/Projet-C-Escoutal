@@ -40,6 +40,9 @@
 
 201ERR Error line <L:> <"W"> is not a valid label, it must be the one of the library
 202ERR Error line <L:> : the word <"W"> can not be used at this place
+203ERR Error line <L:> <"W"> is not a valid port
+204ERR Error line <L:> <"W"> is not a valid label, it must be the one of the entity
+205ERR Error line <L:> the lexeme <"W"> must not be there, it is the end of the entity
 
 ##### DEBUGGER
 801DEB Debugger line <L:> The signal <"W"> has been detected
