@@ -4,7 +4,7 @@ using namespace std;
 
 void Library::verifySyntax() 
 {
-	list <Lexeme>::iterator itr;
+	/*list <Lexeme>::iterator itr;
 	int nbLexeme = 0;
 	int count = 0;
 	
@@ -104,7 +104,7 @@ void Library::verifySyntax()
 			else
 			{
 				cout << "NONONO" << endl;
-			}*/
+			}
 		}	
 	
 		else if (nbLexeme == 6)
@@ -156,5 +156,5 @@ void Library::verifySyntax()
 		}
 
 		count++;	
-	}
+	}*/
 }
