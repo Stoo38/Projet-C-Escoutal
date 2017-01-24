@@ -13,13 +13,8 @@ void Library::verifySyntax()
 	{
 		string monword = (*itr).m_word;
 		string nextWord = checkNextWord(count, itr);
-<<<<<<< HEAD
-		cout << count << " " << m_listLexemes.size() << " " << nbLexeme << " " << monword << " " << nextWord <<  endl;
-=======
-		cout << nbLexeme << " " << count << " " << m_listLexemes.size() << endl;
-		cout << monword << " " << nextWord << endl;
->>>>>>> a98a880e59749bcab0ea055557260e902c45a27f
 
+		cout << count << " " << m_listLexemes.size() << " " << nbLexeme << " " << monword << " " << nextWord <<  endl;
 	
 		if (nbLexeme == 0)
 		{
@@ -119,21 +114,14 @@ void Library::verifySyntax()
 			}
 			else if (nextWord == "")
 			{
-<<<<<<< HEAD
-			
-=======
-				cout << "error" << endl;	
->>>>>>> a98a880e59749bcab0ea055557260e902c45a27f
+					
 			}	
 			else
 			{				
 				m_msgBox.createMessage("202", (*itr).m_line, nextWord);
 				itr = m_listLexemes.end();
-<<<<<<< HEAD
 				itr--;
-=======
-				//itr--;
->>>>>>> a98a880e59749bcab0ea055557260e902c45a27f
+
 			}
 			
 		}

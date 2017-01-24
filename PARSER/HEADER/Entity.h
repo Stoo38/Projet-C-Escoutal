@@ -22,6 +22,8 @@ class Entity : public Bloc
 	Bloc(identifiant, "entity", nLine, msgBox)
 	{	
 	}
-
+	
+	//METHODE HERITEE
+	virtual void verifySyntax();
 };
 #endif
