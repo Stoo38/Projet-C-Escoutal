@@ -1,6 +1,5 @@
 #include "../HEADER/Entity.h"
 
-<<<<<<< HEAD
 void Entity::createTree()
 {
 	list <Lexeme>::iterator itr;
@@ -67,11 +66,11 @@ void Entity::createTree()
 		}	
 	}
 	m_listLexemes = newList;
-=======
-using namespace std;
+}
 
 void Entity::verifySyntax() 
 {
+	
 	list <Lexeme>::iterator itr;
 	int nbLexeme = 0;
 	int count = 0;
@@ -86,7 +85,7 @@ void Entity::verifySyntax()
 	
 		if (nbLexeme == 0)
 		{
-			nbLexeme = 1;							
+			nbLexeme = 1;				
 		}
 
 		else if (nbLexeme == 1)
@@ -203,5 +202,5 @@ void Entity::verifySyntax()
 		
 		count++;	
 	}
->>>>>>> 0861227b5c1539c99414fdfd6a44324b28122e42
+	BlocNode::verifySyntax();
 }

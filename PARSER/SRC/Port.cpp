@@ -1,8 +1,5 @@
 #include "../HEADER/Port.h"
-
-<<<<<<< HEAD
-
-=======
+/*
 {
 string mytab[5];
 mytab[0] = "std_logic";
@@ -28,7 +25,6 @@ for (int i = 0; i < 5; i++)
 		
 		i = 5; //fin de boucle
 	}
-}
->>>>>>> 0861227b5c1539c99414fdfd6a44324b28122e42
+}*/
 
 

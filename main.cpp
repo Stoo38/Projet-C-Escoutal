@@ -75,7 +75,8 @@ int main(int argc, char *argv[])
 			messageBox.createMessage("001", 0, *itfile);			
 			Top myTop(*itfile, messageBox);				// Création d'un objet Top où toutes les informations pour un unique fichier VHDL seront stockées 
 			myTop.createTree();					// Création de l'arbre en lui-même	
-			myTop.reorganizeLexemes();		
+			myTop.reorganizeLexemes();	
+			myTop.verifySyntax();	
 			myTop.displayLexemes();
 		}
 	}

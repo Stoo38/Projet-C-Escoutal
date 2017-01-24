@@ -4,10 +4,9 @@ using namespace std;
 
 void Library::verifySyntax() 
 {
-	/*list <Lexeme>::iterator itr;
+	list <Lexeme>::iterator itr;
 	int nbLexeme = 0;
 	int count = 0;
-	
 
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
@@ -23,27 +22,12 @@ void Library::verifySyntax()
 
 		else if (nbLexeme == 1)
 		{
-			
-<<<<<<< HEAD
-			if (checkNextWord(count, itr) == "use")
-			{
-				cout << "OKOKOKOKOKn°1" << endl;	
-			}
-			else
-			{
-				m_msgBox.createMessage("072", (*itr).m_line, (*itr).m_word);
-			}
-			
-=======
 			if (nextWord != ";")
 			{	
 				m_msgBox.createMessage("202", (*itr).m_line, nextWord);
 			}
->>>>>>> a98a880e59749bcab0ea055557260e902c45a27f
-			nbLexeme = 2;
-		
+			nbLexeme = 2;	
 		}
-
 		else if (nbLexeme == 2)
 		{	
 			if (nextWord != "use")
@@ -82,32 +66,6 @@ void Library::verifySyntax()
 				verifyLabel(nextWord);
 				nbLexeme = 6;
 			}
-			
-
-<<<<<<< HEAD
-/*
-			if (monword == ".")
-			{
-				if (checkNextWord(count, itr) == "all")
-				{
-					cout << "OKOKOKOKOKn°5" << endl;
-					cout << "Next word: " << checkNextWord(count, itr) << endl;
-					nbLexeme = 7;
-				}
-				else
-				{
-					cout << "OKOKOKOKOKn°5" << endl;
-					cout << "Next word: " << checkNextWord(count, itr) << endl;
-					nbLexeme = 6;
-				}
-			}
-			else
-			{
-				cout << "NONONO" << endl;
-			}
-=======
-
->>>>>>> 0861227b5c1539c99414fdfd6a44324b28122e42
 		}	
 	
 		else if (nbLexeme == 6)
@@ -118,14 +76,13 @@ void Library::verifySyntax()
 			}
 			else if (nextWord == ";")
 			{
-
 				nbLexeme = 8;
 			}
 			else
 			{
 				m_msgBox.createMessage("202", (*itr).m_line, nextWord);
 				itr = m_listLexemes.end();
-				itr--;
+				itr = itr--;
 			}
 		}
 
@@ -147,20 +104,13 @@ void Library::verifySyntax()
 				
 				nbLexeme = 3;
 			}
-			else if (nextWord == "")
+			else if (nextWord != "")
 			{
-					
-			}	
-			else
-			{				
 				m_msgBox.createMessage("202", (*itr).m_line, nextWord);
 				itr = m_listLexemes.end();
-				itr--;
-
+				itr--;	
 			}
-			
 		}
-
 		count++;	
-	}*/
+	}
 }

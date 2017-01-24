@@ -75,6 +75,24 @@ void Display::displayMessage(bool allDisplay)
 	list <string>::iterator itlistMessages;	
 	for(itlistMessages = m_listMessages.begin(); itlistMessages != m_listMessages.end(); itlistMessages++)	//Parcourt la liste des messages stockés
 	{
+		if (counterDisplay == toDisplay)
+		{
+			if ((*itlistMessages).substr(3,3) != "DEB")
+			{
+				cout << *itlistMessages << endl;
+			}
+			else if (((*itlistMessages).substr(3,3) == "DEB")&&(m_debugger == true))
+			{
+				cout << *itlistMessages << endl;
+			}			
+			toDisplay++;
+		}
+		/*if (counterDisplay == toDisplay)
+		{
+			cout << *itlistMessages << endl;
+			cout << (*itlistMessages).substr(3,3) << endl;
+			toDisplay++;
+		}
 		if ((counterDisplay == toDisplay) && (m_debugger == true))
 		{
 			cout << *itlistMessages << endl;
@@ -84,7 +102,7 @@ void Display::displayMessage(bool allDisplay)
 		{
 			cout << *itlistMessages << endl;
 			toDisplay++;
-		}
+		}*/
 		counterDisplay++;
 	}
 	m_alreadyDisplayed = toDisplay;
