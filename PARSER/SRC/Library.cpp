@@ -1,6 +1,5 @@
 #include "../HEADER/Library.h"
 
-using namespace std;
 
 void Library::verifySyntax() 
 {
@@ -25,6 +24,8 @@ void Library::verifySyntax()
 			if (nextWord != ";")
 			{	
 				m_msgBox.createMessage("202", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
 			}
 			nbLexeme = 2;	
 		}
@@ -33,6 +34,8 @@ void Library::verifySyntax()
 			if (nextWord != "use")
 			{	
 				m_msgBox.createMessage("202", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
 			}
 			nbLexeme = 3;		
 		}	
@@ -42,6 +45,8 @@ void Library::verifySyntax()
 			if (nextWord != m_identifiant.m_word)
 			{	
 				m_msgBox.createMessage("201", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
 			}
 			nbLexeme = 4;
 		}	
@@ -51,6 +56,8 @@ void Library::verifySyntax()
 			if (nextWord != ".")
 			{	
 				m_msgBox.createMessage("202", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
 			}
 			nbLexeme = 5;
 		}	
@@ -82,7 +89,7 @@ void Library::verifySyntax()
 			{
 				m_msgBox.createMessage("202", (*itr).m_line, nextWord);
 				itr = m_listLexemes.end();
-				itr = itr--;
+				itr--;
 			}
 		}
 
@@ -91,6 +98,8 @@ void Library::verifySyntax()
 			if (nextWord != ";")
 			{
 				m_msgBox.createMessage("202", (*itr).m_line, nextWord);		
+				itr = m_listLexemes.end();
+				itr--;
 			}
 			nbLexeme = 8;
 
@@ -100,8 +109,7 @@ void Library::verifySyntax()
 		{
 			
 			if (nextWord == "use")
-			{
-				
+			{				
 				nbLexeme = 3;
 			}
 			else if (nextWord != "")
@@ -114,3 +122,5 @@ void Library::verifySyntax()
 		count++;	
 	}
 }
+
+
