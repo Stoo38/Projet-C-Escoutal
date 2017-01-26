@@ -68,11 +68,16 @@ void Library::verifySyntax()
 			{	
 				nbLexeme = 7;
 			}
-			else
+			else if(verifyLabel(nextWord) == false)
 			{
-				verifyLabel(nextWord);
 				nbLexeme = 6;
 			}
+			else
+			{
+				m_msgBox.createMessage("202", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
+			}		
 		}	
 	
 		else if (nbLexeme == 6)
@@ -122,5 +127,3 @@ void Library::verifySyntax()
 		count++;	
 	}
 }
-
-
