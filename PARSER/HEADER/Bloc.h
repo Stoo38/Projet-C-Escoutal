@@ -51,11 +51,11 @@ public:
 
 	//METHODES
 	int trySpecialCharacter(Lexeme lex);		//Indique si le lexeme transmis est un caractere special: 1 pour oui, 0 pour non
-	void verifyFirstCharacter(Lexeme lex);		//Test le premier caractere du mot, et renvoie une erreur si ce n'est pas une lettre 
-	void verifyUnderscore(Lexeme lex);		//Test s'il n'y a pas d'underscore en début et/ ou fin du lexeme
-	void verifyGlobalWord(Lexeme lex);		//Test si le mot n'est composé que de lettres, chiffres ou underscores	
-	void verifyLabel(Lexeme lex);			//Test si le lexeme respecte les differentes regles pour une etiquette
-	void compareKeyWords(Lexeme lex);		// A TERMINER
+	bool verifyFirstCharacter(Lexeme lex);		//Test le premier caractere du mot, et renvoie une erreur si ce n'est pas une lettre 
+	bool verifyUnderscore(Lexeme lex);		//Test s'il n'y a pas d'underscore en début et/ ou fin du lexeme
+	bool verifyGlobalWord(Lexeme lex);		//Test si le mot n'est composé que de lettres, chiffres ou underscores	
+	bool verifyLabel(Lexeme lex);			//Test si le lexeme respecte les differentes regles pour une etiquette
+	bool compareKeyWords(Lexeme lex);		//Test si le lexeme est egal à un mot-clé
 	string checkNextWord(int count, list<Lexeme>::iterator itr);
 
 	virtual void displayLexemes();			//Affiche chaque lexeme avec la ligne correspondante

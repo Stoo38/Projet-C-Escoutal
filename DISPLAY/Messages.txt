@@ -14,7 +14,6 @@
 006ERR Error line <L:> <"W"> is not a valid label, it can only start by a letter
 007ERR Error line <L:> <"W"> is not a valid label, it can not start or end by "_" 
 008ERR Error line <L:> <"W"> is not a valid label, it can only be letters, numbers or underscores
-
 028ERR Error line <L:> <"W"> is not a valid label, it can not be a keyword
 
 
@@ -29,7 +28,7 @@
 
 025WAR Warning line: It is impossible to open the <"W"> file 
 
-060INF Information: Test d'une erreur
+030ERR Error line <L:> "end if" must be followed by ";"
 
 
 ###### MESSAGES DURING THE VERIFICATION OF THE SYNTAX
@@ -48,5 +47,9 @@
 801DEB Debugger line <L:> The signal <"W"> has been detected
 802DEB Debugger line <L:> The type <"W"> has been detected
 803DEB Debugger line <L:> The port <"W"> has been detected
+804DEB Debugger line <L:> The port map <"W"> has been detected
+
+810DEB Debugger line <L:> The if has been detected
+811DEB Debugger line <L:> The variable <"W"> has been detected
 
 

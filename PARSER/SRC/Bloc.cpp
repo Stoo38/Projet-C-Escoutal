@@ -62,46 +62,50 @@ int Bloc::trySpecialCharacter(Lexeme lex)
 	return 0;		
 }
 
-void Bloc::verifyFirstCharacter(Lexeme lex)
+bool Bloc::verifyFirstCharacter(Lexeme lex)
 {
 	string word = lex.m_word;
-	int error = 1;
+	bool error = true;
 	if (trySpecialCharacter(lex) != 1)
 	{
 		for (char i = 97; i < 123; i++)
 		{
 			if(word[0] == i)
 			{
-				error = 0;
+				error = false;
 			}
 		}
 	}
-	if (error == 1)
+	if (error == true)
 	{
 		m_msgBox.createMessage("006", lex.m_line, lex.m_word);
 	}
+	return error;
 }
 
-void Bloc::verifyUnderscore(Lexeme lex)
+bool Bloc::verifyUnderscore(Lexeme lex)
 {
 	string word = lex.m_word;
+	bool error = false;
 	if ((word[word.size()-1] == 95) || (word[0] == 95)) 
 	{
 		m_msgBox.createMessage("007", lex.m_line, lex.m_word);
+		error = true;
 	}
+	return error;
 }
 
-void Bloc::verifyGlobalWord(Lexeme lex)
+bool Bloc::verifyGlobalWord(Lexeme lex)
 {
 	string word = lex.m_word;
 	for (int i = 0; i < word.size(); i++)
 	{
-		int error = 1;
+		bool error = true;
 		for (char j = 48; j < 123; j++)
 		{
 			if(word[i] == j)
 			{
-				error = 0;
+				error = false;
 				j = 123;
 			}
 			if (j == 57)
@@ -113,28 +117,39 @@ void Bloc::verifyGlobalWord(Lexeme lex)
 				j++;
 			}
 		}
-		if (error == 1)
+		if (error == true)
 		{
 			m_msgBox.createMessage("008", lex.m_line, lex.m_word);
 		}
 	}
+	return error;
 }
 
-void Bloc::verifyLabel(Lexeme lex)
+bool Bloc::verifyLabel(Lexeme lex)
 {
-	verifyGlobalWord(lex);
-	verifyUnderscore(lex);
-	verifyFirstCharacter(lex);
-	compareKeyWords(lex);
+	bool error1, error2, error3, error4;
+	error1 = verifyGlobalWord(lex);	
+	error2 = verifyUnderscore(lex);
+	error3 = verifyFirstCharacter(lex);
+	error4 = compareKeyWords(lex);
+	if ((error1 == true)||(error2 == true)||(error3 == true)||(error4 == true))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
-void Bloc::compareKeyWords(Lexeme lex)
+bool Bloc::compareKeyWords(Lexeme lex)
 {
 	ifstream myFile("PARSER/keywords.txt"); 
 	if(myFile)					
 	{		
 		string line;	
-		vector<string> list_keywords;			
+		vector<string> list_keywords;	
+		bool error = false;		
 		while(getline(myFile, line))					
 		{
 			line = eraseComment(line);	
@@ -148,6 +163,7 @@ void Bloc::compareKeyWords(Lexeme lex)
 			if (lex.m_word == *it)
 			{
 				m_msgBox.createMessage("028", lex.m_line, lex.m_word);
+				error = true;
 			}
 		}							
 	}
@@ -155,6 +171,7 @@ void Bloc::compareKeyWords(Lexeme lex)
 	{
 		m_msgBox.createMessage("025", 0, "keywords.txt");		
 	}	
+	return error;
 }
 
 string Bloc::checkNextWord(int count, list<Lexeme>::iterator itr)

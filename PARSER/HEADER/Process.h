@@ -9,21 +9,25 @@
 #include <list>
 
 #include "Lexeme.h"
-#include "BlocNode.h"
+#include "BlocInstruction.h"
+#include "InstructionIf.h"
+#include "Variable.h"
 #include "../../DISPLAY/Display.h"
 
 using namespace std;
 
-class Process : public BlocNode
+class Process : public BlocInstruction
 {
 	protected:
 
 	public:
 	Process(const string & identifiant, const int nLine, Display &msgBox):
-	BlocNode(identifiant, "process", nLine, msgBox)
+	BlocInstruction(identifiant, "process", nLine, msgBox)
 	{	
 	}
 	
 	virtual void reorganizeLexemes();	
+	virtual void createIf();
+	virtual void createVariable();
 };
 #endif

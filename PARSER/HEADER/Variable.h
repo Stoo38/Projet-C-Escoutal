@@ -1,5 +1,5 @@
-#ifndef _PORT_H_
-#define _PORT_H_
+#ifndef _VARIABLE_H_
+#define _VARIABLE_H_
 
 #include <math.h>
 #include <string.h>
@@ -13,16 +13,15 @@
 
 using namespace std;
 
-class Port : public Bloc
+class Variable : public Bloc
 {
 	protected:
 
 	public:
-	Port(const string & identifiant, const int nLine, Display &msgBox):
-	Bloc(identifiant, "port", nLine, msgBox)
+	Variable(const string & identifiant, const int nLine, Display &msgBox):
+	Bloc(identifiant, "variable", nLine, msgBox)
 	{	
 	}
 
-	virtual void reorganizeLexemes();
 };
 #endif

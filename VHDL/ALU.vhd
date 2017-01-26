@@ -32,6 +32,8 @@ signal a_u: unsigned (7 downto 0);
 signal b_u: unsigned (7 downto 0);
 
 begin	
+	MachineEtat01 : MachineEtat port map (sig_clk,sig_rst_n,sig_P,sig_F,sig_M,sig_A);
+	Compteur01 : Compteur port map (sig_M,sig_clk,sig_rst_n,sig_P,sig_F);
 
 testest2 : process(reset, clock)
 begin
@@ -65,10 +67,19 @@ begin
 	
 end process testest2 ;
 process(reset, clock)
+	variable count_int : unsigned (3 downto 0);
+	variable count_int2 : unsigned (3 downto 0);
+	variable count_2int : unsigned (3 downto 0);
 begin
 
 		
 	if (result(7 downto 0) = "00000000") then zero <= '1'; 
+	if (result(7 downto 0) = "00000000") then zero <= '1'; 
+	else zero <= '0';
+	end if;
+	if (result(7 downto 0) = "00000000") then zero <= '1'; 
+	else zero <= '0';
+	end if;
 	else zero <= '0';
 	end if;
 	

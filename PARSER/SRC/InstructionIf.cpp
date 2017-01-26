@@ -1,64 +1,11 @@
-#include "../HEADER/Process.h"
+#include "../HEADER/InstructionIf.h"
 
-void Process::reorganizeLexemes()
-{
-	m_listLexemes.pop_front();
-	m_listLexemes.pop_front();
-	
-	if ((m_listLexemes.front()).m_word == ":")
-	{
-		m_listLexemes.pop_front();
-	}
-		
-	Lexeme n1(":", m_identifiant.m_line);
-	Lexeme n2("process", m_identifiant.m_line);
-	m_listLexemes.push_front(n2);
-	m_listLexemes.push_front(n1);	
-	m_listLexemes.push_front(m_identifiant);
-	BlocNode::reorganizeLexemes();
-}
-
-void Process::createVariable()
+void InstructionIf::createIf()
 {
 	list <Lexeme>::iterator itr;
 	list <Lexeme> newList;
-	bool inVariable = false;			
-	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
-	{
-		if ((*itr).m_word == "variable")
-		{
-			inVariable = true;
-			itr++;
-			m_listeBlocks.push_back(new Variable((*itr).m_word, (*itr).m_line, m_msgBox));
-			m_msgBox.createMessage("811", (*itr).m_line, (*itr).m_word);	
-			Lexeme flag("FLAG_VARI", (*itr).m_line);			 
-			newList.push_back(flag);			
-		}
-		else if (((*itr).m_word == ";") && (inVariable == true))
-		{
-			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
-			inVariable = false;
-		}
-		else 
-		{
-			if (inVariable == true)	
-			{		
-				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
-			}
-			else
-			{
-				newList.push_back(*itr);
-			}
-		}	
-	}
-	m_listLexemes = newList;
-}
-
-
-void Process::createIf()
-{
-	list <Lexeme>::iterator itr;
-	list <Lexeme> newList;
+	newList.push_back(m_listLexemes.front());
+	m_listLexemes.pop_front();
 	bool inIf = false;	
 	int countIf = 0;		
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
@@ -106,6 +53,12 @@ void Process::createIf()
 				countIf--;
 			}
 		}
+		else if ((*itr).m_word == "end")
+		{
+			newList.push_back(*itr);
+			itr++;
+			newList.push_back(*itr);
+		}
 		else 
 		{
 			if (inIf == true)	
@@ -119,4 +72,13 @@ void Process::createIf()
 		}	
 	}
 	m_listLexemes = newList;
+}
+
+void InstructionIf::reorganizeLexemes()
+{
+	Lexeme mem("if", (m_listLexemes.front()).m_line);
+	m_listLexemes.pop_front();
+	m_listLexemes.pop_front();
+	m_listLexemes.push_front(mem);
+	BlocNode::reorganizeLexemes();
 }

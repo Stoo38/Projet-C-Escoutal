@@ -6,6 +6,7 @@ void Architecture::createTree()
 	createProcess();
 	createType();
 	createSignal();
+	createPortMap();
 	BlocNode::createTree();
 }
 void Architecture::createComponent()
@@ -71,7 +72,7 @@ void Architecture::createProcess()
 	bool labelProcess = false;		
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
-		if ((*itr).m_word == "process")
+		if (((*itr).m_word == "process") && (inProcess == false))
 		{
 			inProcess = true;
 			itr--;
@@ -186,6 +187,7 @@ void Architecture::createType()
 	}
 	m_listLexemes = newList;
 }
+
 void Architecture::createSignal()
 {
 	list <Lexeme>::iterator itr;
@@ -210,6 +212,56 @@ void Architecture::createSignal()
 		else 
 		{
 			if (inSignal == true)	
+			{		
+				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+			}
+			else
+			{
+				newList.push_back(*itr);
+			}
+		}	
+	}
+	m_listLexemes = newList;
+}
+
+void Architecture::createPortMap()
+{
+	list <Lexeme>::iterator itr;
+	list <Lexeme> newList;
+	bool inPortMap = false;			
+	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
+	{
+		if (((*itr).m_word == "port")&&(inPortMap == false))
+		{
+			itr++;
+			if ((*itr).m_word == "map")
+			{
+				inPortMap = true;
+				itr--;
+				itr--;
+				string name((*itr).m_word);
+				itr--;
+				itr--;
+				m_listeBlocks.push_back(new PortMap((*itr).m_word, name, (*itr).m_line, m_msgBox));
+				m_msgBox.createMessage("804", (*itr).m_line, (*itr).m_word);	
+				Lexeme flag("FLAG_PMAP", (*itr).m_line);			 
+				newList.push_back(flag);
+			}
+			else
+			{	
+				itr--;
+				newList.push_back(*itr);
+			}
+						
+		}
+		else if (((*itr).m_word == ";") && (inPortMap == true))
+		{
+			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+			inPortMap = false;
+		}
+		else 
+		{
+			if (inPortMap == true)	
 			{		
 				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
 			}

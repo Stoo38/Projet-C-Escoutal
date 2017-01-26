@@ -13,6 +13,7 @@
 #include "Process.h"
 #include "Type.h"
 #include "Signal.h"
+#include "PortMap.h"
 #include "../../DISPLAY/Display.h"
 
 using namespace std;
@@ -32,5 +33,6 @@ class Architecture : public BlocNode
 	void createProcess();
 	void createType();
 	void createSignal();
+	void createPortMap();
 };
 #endif

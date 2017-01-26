@@ -1,4 +1,10 @@
 #include "../HEADER/Port.h"
+
+void Port::reorganizeLexemes()
+{
+	m_listLexemes.pop_front();
+}
+
 /*
 {
 string mytab[5];
