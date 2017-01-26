@@ -22,6 +22,7 @@ class Type : public Bloc
 	Bloc(identifiant, "type", nLine, msgBox)
 	{	
 	}
-
+	
+	virtual void reorganizeLexemes() {};
 };
 #endif

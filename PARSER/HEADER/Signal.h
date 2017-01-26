@@ -23,5 +23,6 @@ class Signal : public Bloc
 	{	
 	}
 
+	virtual void reorganizeLexemes() {};
 };
 #endif

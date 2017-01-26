@@ -23,9 +23,9 @@ class BlocInstruction : public BlocNode
 	{	
 		
 	}
-	
 	virtual void createTree();
 	virtual void createVariable() {};
 	virtual void createIf() {};
+	virtual void createAssig() {};
 };
 #endif

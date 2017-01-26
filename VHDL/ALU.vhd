@@ -2,11 +2,11 @@ library IEEE ;
 use IEEE.std_logic_1164.ALL ;
 
 use ieee.numeric_std.all;
-entity ALU is
+entity AçLU is
 	port(	A,B		: in STD_LOGIC_VECTOR(7 downto 0) ; 
 		CMD		: in STD_LOGIC_VECTOR(2 downto 0) ;
 		Zero		: out std_logic;
-		S		: out STD_LOGIC_VECTOR(7 downto 0) ;
+		A		: out STD_LOGIC_VECTOR(7 downto 0) ;
 		reset, clock	: in std_logic) ;
 
 end ALU;
@@ -73,7 +73,10 @@ process(reset, clock)
 begin
 
 		
-	if (result(7 downto 0) = "00000000") then zero <= '1'; 
+	if (result(7 downto 0) = "00000000") then 
+		zero <= '1'; 
+		count_int := count_int + "0001";
+		count_int := count_int + "0001";
 	if (result(7 downto 0) = "00000000") then zero <= '1'; 
 	else zero <= '0';
 	end if;

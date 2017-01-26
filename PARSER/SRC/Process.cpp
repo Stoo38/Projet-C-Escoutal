@@ -120,3 +120,63 @@ void Process::createIf()
 	}
 	m_listLexemes = newList;
 }
+
+void Process::createAssig()
+{
+	list <Lexeme>::iterator itr;
+	list <Lexeme> newList;
+	bool inAssig = false;
+	
+	int count = 0;
+	string word;
+	string nextWord;
+	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
+	{
+		word = (*itr).m_word;
+		nextWord = checkNextWord(count, itr);
+		if ((word == "<") && (nextWord == "=") && (inAssig == false))
+		{
+			inAssig = true;
+			m_listeBlocks.push_back(new InstructionAssig((*itr).m_line, m_msgBox));
+			m_msgBox.createMessage("812", (*itr).m_line, "");	
+			itr--;
+			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+			newList.pop_back();
+			itr++;
+			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);	
+			Lexeme flag("FLAG_ASSIG", (*itr).m_line);			 
+			newList.push_back(flag);			
+		}
+		else if ((word == ":") && (nextWord == "=") && (inAssig == false))
+		{
+			inAssig = true;
+			m_listeBlocks.push_back(new InstructionAssig((*itr).m_line, m_msgBox));
+			m_msgBox.createMessage("812", (*itr).m_line, "");	
+			itr--;
+			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+			newList.pop_back();
+			itr++;
+			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);	
+			Lexeme flag("FLAG_ASSIG", (*itr).m_line);			 
+			newList.push_back(flag);			
+		}
+		else if (((*itr).m_word == ";") && (inAssig == true))
+		{
+			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+			inAssig = false;			
+		}
+		else 
+		{
+			if (inAssig == true)	
+			{		
+				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+			}
+			else
+			{
+				newList.push_back(*itr);
+			}
+		}
+		count++;
+	}
+	m_listLexemes = newList;
+}

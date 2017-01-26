@@ -26,6 +26,8 @@
 026ERR Error line <L:> "end process" must be followed by the name label
 027ERR Error line <L:> "end process" must be followed by ";" after the name label
 
+029ERR Error line <L:> "port" must be followed by "("
+
 025WAR Warning line: It is impossible to open the <"W"> file 
 
 030ERR Error line <L:> "end if" must be followed by ";"
@@ -51,5 +53,6 @@
 
 810DEB Debugger line <L:> The if has been detected
 811DEB Debugger line <L:> The variable <"W"> has been detected
+812DEB Debugger line <L:> The assignment has been detected
 
 

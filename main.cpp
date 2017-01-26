@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
 			step_tree = true;	
 		}
 		else if (parameter == "-error")		// Paramètre utilisé pour continuer lors d'une erreur
-		{
+		{					// Ne fonctionne pas avec toutes les erreurs
 			opt_close_error = false;	
 		}
 		else if (parameter == "-debug")		// Paramètre utilisé pour continuer lors d'une erreur

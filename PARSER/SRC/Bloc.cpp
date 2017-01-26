@@ -26,7 +26,7 @@ void Bloc::displayLexemes()
 	list <Lexeme>::iterator itr;
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
-		cout << (*itr).m_line << " " << (*itr).m_word << endl;		 
+		cout << (*itr).m_line << " "<< (*itr).m_line << " " << (*itr).m_word << endl;		 
 	}
 }
 
@@ -190,5 +190,45 @@ string Bloc::checkNextWord(int count, list<Lexeme>::iterator itr)
 
 		return (*itr2).m_word;
 	}
+}
+
+bool Bloc::verifyNumber(Lexeme lex)
+{
+	string word = lex.m_word;
+	bool error = true;
+	for (char j = 45; j < 58; j++)
+	{
+		if (word[0] == j)
+		{
+			error = false;
+			j = 58;
+		}
+		if (j == 45)
+		{
+			j = 47;
+		}
+	}
+	if ((error)||(word.size() == 1))
+	{
+		return error;
+	}
+	
+	for (int i = 1; i < word.size(); i++)
+	{	
+		error = true;	
+		for (char j = 48; j < 58; j++)
+		{
+			if(word[i] == j)
+			{
+				error = false;
+				j = 58;
+			}
+		}
+		if (error)
+		{
+			return error;
+		}
+	}
+	return error;
 }
 

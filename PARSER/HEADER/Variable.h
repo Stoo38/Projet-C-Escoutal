@@ -23,5 +23,6 @@ class Variable : public Bloc
 	{	
 	}
 
+	virtual void reorganizeLexemes() {};
 };
 #endif

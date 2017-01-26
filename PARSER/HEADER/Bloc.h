@@ -57,11 +57,12 @@ public:
 	bool verifyLabel(Lexeme lex);			//Test si le lexeme respecte les differentes regles pour une etiquette
 	bool compareKeyWords(Lexeme lex);		//Test si le lexeme est egal à un mot-clé
 	string checkNextWord(int count, list<Lexeme>::iterator itr);
+	bool verifyNumber(Lexeme lex);
 
 	virtual void displayLexemes();			//Affiche chaque lexeme avec la ligne correspondante
 
 	virtual void createTree() {};
-	virtual void reorganizeLexemes() {};
+	virtual void reorganizeLexemes() = 0;
 	virtual void verifySyntax() {};
 };
 
