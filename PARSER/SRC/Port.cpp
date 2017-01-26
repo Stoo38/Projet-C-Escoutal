@@ -75,21 +75,18 @@ void Port::verifySyntax()
 
 		else if (nbLexeme == 1)
 		{
-			if(verifyLabel(nextWord) == false)
-			{
-				nbLexeme = 0;	
-			}
-			else
+			if(verifyLabel(nextWord) != false)
 			{
 				m_msgBox.createMessage("207", (*itr).m_line, nextWord);
 				itr = m_listLexemes.end();
 				itr--;
 			}
+			nbLexeme = 0;
 		}
 
 		else if (nbLexeme == 2)
 		{	
-			if ((nextWord == "in") || (nextWord == "in"))
+			if ((nextWord == "in") || (nextWord == "out"))
 			{	
 				nbLexeme = 3;	
 			}
@@ -103,35 +100,38 @@ void Port::verifySyntax()
 
 		else if (nbLexeme == 3)
 		{
+			bool flag = false;
 			for (int i = 0; i < 7; i++)
 			{
 				if ((nextWord == myTypes[i]) && (i < 3))
 				{
 					//ici c'est les cas simples
+					flag = true;
 					nbLexeme = 4;
-		
 					i = 7; //fin de boucle
+					
 				}
 				else if ((nextWord == myTypes[i]) && (i >= 3) && (i < 6))
 				{
 					//ici c'est les cas type vector
-					nbLexeme = 5;
-		
+					flag = true;
+					nbLexeme = 5;		
 					i = 7; //fin de boucle
 				}
 				else if (nextWord == myTypes[i])
 				{
-					//ici c'est les cas type range
+					//ici c'est les cas type range	
+					flag = true;
 					nbLexeme = 11;
 					i = 7; //fin de boucle
 				}
-				else
-				{
-					m_msgBox.createMessage("208", (*itr).m_line, nextWord);
-					itr = m_listLexemes.end();
-					itr--;
-				}			
 			}
+			if (flag == false)
+			{
+				m_msgBox.createMessage("208", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
+			}	
 		}	
 		//TYPE SIMPLE
 		else if (nbLexeme == 4)
@@ -155,14 +155,10 @@ void Port::verifySyntax()
 			}
 			nbLexeme = 6;
 		}	
-/*
+
 		else if (nbLexeme == 6)
 		{
-			string h("ttest");
-			int i;
-			i = atoi(h.c_str());
-
-			if (atoi(nextWord.c_str()) != "(")
+			if (verifyNumber(nextWord) != false)
 			{
 				m_msgBox.createMessage("207", (*itr).m_line, nextWord);		
 				itr = m_listLexemes.end();
@@ -170,21 +166,25 @@ void Port::verifySyntax()
 			}
 			nbLexeme = 7;
 		}	
-*/
+
 		else if (nbLexeme == 7)
 		{
-			if (nextWord != "upto" || nextWord != "downto" || nextWord != "to")
+			if ((nextWord == "upto") || (nextWord == "downto") || (nextWord == "to"))
+			{
+				nbLexeme = 8;
+
+			}
+			else
 			{
 				m_msgBox.createMessage("207", (*itr).m_line, nextWord);		
 				itr = m_listLexemes.end();
 				itr--;
 			}
-			nbLexeme = 8;
 		}
-/*
+
 		else if (nbLexeme == 8)
 		{
-			if (nextWord != "(")
+			if (verifyNumber(nextWord) != false)
 			{
 				m_msgBox.createMessage("207", (*itr).m_line, nextWord);		
 				itr = m_listLexemes.end();
@@ -192,7 +192,7 @@ void Port::verifySyntax()
 			}
 			nbLexeme = 9;
 		}
-*/
+
 		else if (nbLexeme == 9)
 		{
 			if (nextWord != ")")
@@ -225,10 +225,10 @@ void Port::verifySyntax()
 			}
 			nbLexeme = 12;
 		}
-/*
+
 		else if (nbLexeme == 12)
 		{
-			if (nextWord != ")")
+			if (verifyNumber(nextWord) != false)
 			{
 				m_msgBox.createMessage("207", (*itr).m_line, nextWord);		
 				itr = m_listLexemes.end();
@@ -236,7 +236,7 @@ void Port::verifySyntax()
 			}
 			nbLexeme = 13;
 		}
-*/
+
 		else if (nbLexeme == 13)
 		{
 			if (nextWord != "to")
@@ -247,10 +247,10 @@ void Port::verifySyntax()
 			}
 			nbLexeme = 14;
 		}
-/*
+
 		else if (nbLexeme == 14)
 		{
-			if (nextWord != ")")
+			if (verifyNumber(nextWord) != false)
 			{
 				m_msgBox.createMessage("207", (*itr).m_line, nextWord);		
 				itr = m_listLexemes.end();
@@ -258,7 +258,7 @@ void Port::verifySyntax()
 			}
 			nbLexeme = 15;
 		}
-*/
+
 		else if (nbLexeme == 15)
 		{
 			if (nextWord != "")
