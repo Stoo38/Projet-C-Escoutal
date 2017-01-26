@@ -98,9 +98,9 @@ bool Bloc::verifyUnderscore(Lexeme lex)
 bool Bloc::verifyGlobalWord(Lexeme lex)
 {
 	string word = lex.m_word;
+	bool error = true;
 	for (int i = 0; i < word.size(); i++)
-	{
-		bool error = true;
+	{		
 		for (char j = 48; j < 123; j++)
 		{
 			if(word[i] == j)
@@ -144,12 +144,13 @@ bool Bloc::verifyLabel(Lexeme lex)
 
 bool Bloc::compareKeyWords(Lexeme lex)
 {
+		
+	bool error = false;		
 	ifstream myFile("PARSER/keywords.txt"); 
 	if(myFile)					
 	{		
 		string line;	
-		vector<string> list_keywords;	
-		bool error = false;		
+		vector<string> list_keywords;
 		while(getline(myFile, line))					
 		{
 			line = eraseComment(line);	
