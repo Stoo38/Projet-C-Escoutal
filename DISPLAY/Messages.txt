@@ -37,13 +37,17 @@
 200INF Information: The syntax verification is ended
 
 
-
-
 201ERR Error line <L:> <"W"> is not a valid label, it must be the one of the library
-202ERR Error line <L:> : the word <"W"> can not be used at this place
+202ERR Error line <L:> : the word <"W"> can not be used at this place for a library
 203ERR Error line <L:> <"W"> is not a valid port
 204ERR Error line <L:> <"W"> is not a valid label, it must be the one of the entity
-205ERR Error line <L:> the lexeme <"W"> must not be there, it is the end of the entity
+205ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the entity
+206ERR Error line <L:> : the word <"W"> can not be used at this place for an entity
+207ERR Error line <L:> : the word <"W"> can not be used at this place for a port
+208ERR Error line <L:> : the word <"W"> is not a valid type
+209ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the port
+
+
 
 ##### DEBUGGER
 801DEB Debugger line <L:> The signal <"W"> has been detected

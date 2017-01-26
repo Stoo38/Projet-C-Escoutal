@@ -68,6 +68,8 @@ void Entity::createTree()
 	m_listLexemes = newList;
 }
 
+
+// Fonction qui effectue la vérification syntaxique 
 void Entity::verifySyntax() 
 {
 	
@@ -93,7 +95,9 @@ void Entity::verifySyntax()
 			
 			if (nextWord != "is")
 			{	
-				m_msgBox.createMessage("202", (*itr).m_line, nextWord);
+				m_msgBox.createMessage("206", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
 			}
 			nbLexeme = 2;
 		
@@ -103,7 +107,9 @@ void Entity::verifySyntax()
 		{	
 			if (nextWord != "port")
 			{	
-				m_msgBox.createMessage("202", (*itr).m_line, nextWord);
+				m_msgBox.createMessage("206", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
 			}
 			nbLexeme = 3;		
 		}	
@@ -112,9 +118,11 @@ void Entity::verifySyntax()
 		{
 			if (nextWord != "(")
 			{	
-				m_msgBox.createMessage("202", (*itr).m_line, nextWord);
+				m_msgBox.createMessage("206", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;			
 			}
-			nbLexeme = 4;
+			nbLexeme = 4;			
 		}	
 	
 		else if (nbLexeme == 4)
@@ -122,6 +130,8 @@ void Entity::verifySyntax()
 			if (nextWord != "FLAG_PORT")
 			{	
 				m_msgBox.createMessage("203", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
 			}
 			nbLexeme = 5;
 		}	
@@ -138,7 +148,7 @@ void Entity::verifySyntax()
 			}
 			else 
 			{
-				m_msgBox.createMessage("202", (*itr).m_line, nextWord);
+				m_msgBox.createMessage("206", (*itr).m_line, nextWord);
 				itr = m_listLexemes.end();
 				itr--;			
 			}
@@ -149,6 +159,8 @@ void Entity::verifySyntax()
 			if (nextWord != "FLAG_PORT")
 			{
 				m_msgBox.createMessage("203", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
 			}
 			nbLexeme = 5;
 		}
@@ -157,7 +169,9 @@ void Entity::verifySyntax()
 		{
 			if (nextWord != ";")
 			{
-				m_msgBox.createMessage("202", (*itr).m_line, nextWord);		
+				m_msgBox.createMessage("206", (*itr).m_line, nextWord);	
+				itr = m_listLexemes.end();
+				itr--;	
 			}
 			nbLexeme = 8;
 
@@ -167,7 +181,9 @@ void Entity::verifySyntax()
 		{
 			if (nextWord != "end")
 			{
-				m_msgBox.createMessage("202", (*itr).m_line, nextWord);		
+				m_msgBox.createMessage("206", (*itr).m_line, nextWord);	
+				itr = m_listLexemes.end();
+				itr--;	
 			}
 			nbLexeme = 9;
 		}
@@ -177,6 +193,8 @@ void Entity::verifySyntax()
 			if (nextWord != m_identifiant.m_word)
 			{	
 				m_msgBox.createMessage("201", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
 			}
 			nbLexeme = 10;
 		}
@@ -185,7 +203,9 @@ void Entity::verifySyntax()
 		{
 			if (nextWord != ";")
 			{	
-				m_msgBox.createMessage("202", (*itr).m_line, nextWord);
+				m_msgBox.createMessage("206", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
 			}
 			nbLexeme = 11;
 		}
@@ -196,10 +216,9 @@ void Entity::verifySyntax()
 			{	
 				m_msgBox.createMessage("205", (*itr).m_line, nextWord);
 			}
-				itr = m_listLexemes.end();
-				itr--;
-		}
-		
+			itr = m_listLexemes.end();
+			itr--;
+		}		
 		count++;	
 	}
 	BlocNode::verifySyntax();
