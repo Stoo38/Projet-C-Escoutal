@@ -11,12 +11,11 @@ class Lexeme
    	public:
 	string m_word;
 	int m_line;
-	string m_label;
+	//string m_label;
 
-	Lexeme(string word = "", int line = 0, string label = ""):
+	Lexeme(string word = "", int line = 0):
 	m_word(word),
-	m_line(line),
-	m_label(label)
+	m_line(line)
 	{
 
 	}	
