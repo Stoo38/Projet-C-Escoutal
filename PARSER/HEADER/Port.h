@@ -24,5 +24,6 @@ class Port : public Bloc
 	}
 
 	virtual void reorganizeLexemes();
+	virtual void verifySyntax();
 };
 #endif

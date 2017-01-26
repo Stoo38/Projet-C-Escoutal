@@ -98,9 +98,10 @@ bool Bloc::verifyUnderscore(Lexeme lex)
 bool Bloc::verifyGlobalWord(Lexeme lex)
 {
 	string word = lex.m_word;
-	bool error = true;
+	bool error;
 	for (int i = 0; i < word.size(); i++)
 	{		
+		error = true;
 		for (char j = 48; j < 123; j++)
 		{
 			if(word[i] == j)
