@@ -2,7 +2,7 @@ library IEEE ;
 use IEEE.std_logic_1164.ALL ;
 
 use ieee.numeric_std.all;
-entity AçLU is
+entity ALU is
 	port(	A,B		: in STD_LOGIC_VECTOR(7 downto 0) ; 
 		CMD		: in STD_LOGIC_VECTOR(2 downto 0) ;
 		Zero		: out std_logic;

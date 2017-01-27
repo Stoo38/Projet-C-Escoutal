@@ -6,7 +6,7 @@ all: create_binary_files
 $(EXEC_NAME): create_binary_files
 	
 create_binary_files: create_object_files
-	$(CC) -o main PARSER/OBJ/Bloc.o PARSER/OBJ/BlocNode.o PARSER/OBJ/BlocInstruction.o PARSER/OBJ/functions.o PARSER/OBJ/Library.o PARSER/OBJ/Entity.o PARSER/OBJ/Architecture.o PARSER/OBJ/Process.o PARSER/OBJ/Component.o PARSER/OBJ/Type.o PARSER/OBJ/Signal.o PARSER/OBJ/Port.o PARSER/OBJ/PortMap.o PARSER/OBJ/Variable.o PARSER/OBJ/InstructionIf.o PARSER/OBJ/InstructionAssig.o PARSER/OBJ/Top.o PARSER/OBJ/Lexeme.o DISPLAY/Display.o main.o 
+	$(CC) -o main PARSER/OBJ/Bloc.o PARSER/OBJ/BlocNode.o PARSER/OBJ/BlocInstruction.o PARSER/OBJ/functions.o PARSER/OBJ/Library.o PARSER/OBJ/Entity.o PARSER/OBJ/Architecture.o PARSER/OBJ/Process.o PARSER/OBJ/Component.o PARSER/OBJ/Type.o PARSER/OBJ/Signal.o PARSER/OBJ/Port.o PARSER/OBJ/PortMap.o PARSER/OBJ/Variable.o PARSER/OBJ/InstructionIf.o PARSER/OBJ/InstructionAssig.o PARSER/OBJ/InstructionCompa.o PARSER/OBJ/Top.o PARSER/OBJ/Lexeme.o DISPLAY/Display.o main.o 
 
 create_object_files: clean
 	$(CC) -c -o DISPLAY/Display.o DISPLAY/Display.cpp
@@ -26,6 +26,7 @@ create_object_files: clean
 	$(CC) -c -o PARSER/OBJ/BlocInstruction.o PARSER/SRC/BlocInstruction.cpp
 	$(CC) -c -o PARSER/OBJ/InstructionIf.o PARSER/SRC/InstructionIf.cpp
 	$(CC) -c -o PARSER/OBJ/InstructionAssig.o PARSER/SRC/InstructionAssig.cpp
+	$(CC) -c -o PARSER/OBJ/InstructionCompa.o PARSER/SRC/InstructionCompa.cpp
 	$(CC) -c -o PARSER/OBJ/Process.o PARSER/SRC/Process.cpp
 	$(CC) -c -o PARSER/OBJ/Top.o PARSER/SRC/Top.cpp
 	$(CC) -c -o main.o main.cpp
@@ -50,6 +51,7 @@ clean:
 	rm -f PARSER/OBJ/PortMap.o
 	rm -f PARSER/OBJ/InstructionIf.o
 	rm -f PARSER/OBJ/InstructionAssig.o
+	rm -f PARSER/OBJ/InstructionCompa.o
 	rm -f main.o
 	rm -f main
 

@@ -5,6 +5,7 @@ void BlocInstruction::createTree()
 	createVariable();
 	createIf();
 	createAssig();
+	createComparison();
 	BlocNode::createTree();
 }
 

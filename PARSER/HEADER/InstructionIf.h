@@ -11,6 +11,7 @@
 #include "Lexeme.h"
 #include "BlocInstruction.h"
 #include "InstructionAssig.h"
+#include "InstructionCompa.h"
 #include "../../DISPLAY/Display.h"
 
 using namespace std;
@@ -29,5 +30,6 @@ class InstructionIf : public BlocInstruction
 	virtual void createIf();
 	virtual void createAssig();	
 	virtual void reorganizeLexemes();
+	virtual void createComparison();
 };
 #endif
