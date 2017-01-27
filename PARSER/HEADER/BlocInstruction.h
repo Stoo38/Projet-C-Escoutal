@@ -27,5 +27,6 @@ class BlocInstruction : public BlocNode
 	virtual void createVariable() {};
 	virtual void createIf() {};
 	virtual void createAssig() {};
+	virtual void createComparison() {};
 };
 #endif

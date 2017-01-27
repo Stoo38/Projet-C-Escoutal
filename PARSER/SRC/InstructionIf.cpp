@@ -142,3 +142,8 @@ void InstructionIf::reorganizeLexemes()
 	m_listLexemes.push_front(mem);
 	BlocNode::reorganizeLexemes();
 }
+
+void InstructionIf::createComparison()
+{
+
+}
