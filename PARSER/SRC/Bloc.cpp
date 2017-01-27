@@ -193,9 +193,8 @@ string Bloc::checkNextWord(int count, list<Lexeme>::iterator itr)
 	}
 }
 
-bool Bloc::verifyNumber(Lexeme lex)
+bool Bloc::verifyNumber(string word)
 {
-	string word = lex.m_word;
 	bool error = true;
 	for (char j = 45; j < 58; j++)
 	{
