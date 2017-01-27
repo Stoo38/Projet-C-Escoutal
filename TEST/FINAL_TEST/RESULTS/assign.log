@@ -1,0 +1,71 @@
+0 10 0 library std
+1 10 1 std ;
+2 10 2 ; use
+3 10 3 use std
+4 10 4 std .
+5 10 5 . textio
+6 10 6 textio .
+7 10 5 . all
+8 10 7 all ;
+9 10 8 ; 
+0 24 0 library ieee
+1 24 1 ieee ;
+2 24 2 ; use
+3 24 3 use ieee
+4 24 4 ieee .
+5 24 5 . bit_1164
+6 24 6 bit_1164 .
+7 24 5 . all
+8 24 7 all ;
+9 24 8 ; use
+10 24 3 use ieee
+11 24 4 ieee .
+12 24 5 . bit_misc
+13 24 6 bit_misc .
+14 24 5 . all
+15 24 7 all ;
+16 24 8 ; use
+17 24 3 use ieee
+18 24 4 ieee .
+19 24 5 . bit_arith
+20 24 6 bit_arith .
+21 24 5 . all
+22 24 7 all ;
+23 24 8 ; 
+0 21 0 entity assign
+1 21 1 assign is
+2 21 2 is port
+3 21 3 port (
+4 21 4 ( FLAG_PORT
+5 21 5 FLAG_PORT ;
+6 21 6 ; FLAG_PORT
+7 21 5 FLAG_PORT ;
+8 21 6 ; FLAG_PORT
+9 21 5 FLAG_PORT ;
+10 21 6 ; FLAG_PORT
+11 21 5 FLAG_PORT ;
+12 21 6 ; FLAG_PORT
+13 21 5 FLAG_PORT ;
+14 21 6 ; FLAG_PORT
+15 21 5 FLAG_PORT )
+16 21 7 ) ;
+17 21 8 ; end
+18 21 9 end signaux
+001INF Information: Beginning of the synthesis of the "TEST/FINAL_TEST/assign.vhd" file
+005INF Information: The "TEST/FINAL_TEST/assign.vhd" file was successfully opened 
+009INF Information line 1: The library "std" has been detected
+009INF Information line 3: The library "ieee" has been detected
+010INF Information line 8: The entity "assign" has been detected
+011INF Information line 19: The architecture "struct" has been detected
+803DEB Debugger line 10: The port "clk" has been detected
+803DEB Debugger line 11: The port "rst" has been detected
+803DEB Debugger line 12: The port "start" has been detected
+803DEB Debugger line 13: The port "done" has been detected
+803DEB Debugger line 14: The port "din" has been detected
+803DEB Debugger line 15: The port "dout" has been detected
+801DEB Debugger line 21: The signal "data_round_in" has been detected
+801DEB Debugger line 22: The signal "data_round_out" has been detected
+801DEB Debugger line 23: The signal "last_round_signal" has been detected
+801DEB Debugger line 24: The signal "first_round_signal" has been detected
+201ERR Error line 17: "signaux" is not a valid label, it must be the one of the library
+004INF Information: The option to close when we encounter an error is turned on, so the program will be killed

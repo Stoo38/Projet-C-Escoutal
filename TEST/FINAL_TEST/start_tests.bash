@@ -1,9 +1,15 @@
 #!/bin/bash
 
-list_test_files = 
-cd ../../
+PATH_TEST='TEST/FINAL_TEST/'
+LIST_TEST_FILES='archivide assign biblio'
+RESULTS_DIRECTORY='RESULTS/'
 
-echo "Test 1: Underscore au début d'un identifiant"
-./main -tree -error -file TEST/FINAL_TEST/test1.vhd |tee TEST/FINAL_TEST/test1.log
+cd ../../
+mkdir $PATH_TEST$RESULTS_DIRECTORY
+for files in $LIST_TEST_FILES
+do
+	rm -f $PATH_TEST$RESULTS_DIRECTORY$files.log
+	./main -tree -debug -file $PATH_TEST$files.vhd |tee $PATH_TEST$RESULTS_DIRECTORY$files.log
+done
 
 cd TEST/FINAL_TEST/

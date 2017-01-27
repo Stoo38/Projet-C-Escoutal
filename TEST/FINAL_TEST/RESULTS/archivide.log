@@ -1,0 +1,210 @@
+0 10 0 library std
+1 10 1 std ;
+2 10 2 ; use
+3 10 3 use std
+4 10 4 std .
+5 10 5 . textio
+6 10 6 textio .
+7 10 5 . all
+8 10 7 all ;
+9 10 8 ; 
+0 24 0 library ieee
+1 24 1 ieee ;
+2 24 2 ; use
+3 24 3 use ieee
+4 24 4 ieee .
+5 24 5 . bit_1164
+6 24 6 bit_1164 .
+7 24 5 . all
+8 24 7 all ;
+9 24 8 ; use
+10 24 3 use ieee
+11 24 4 ieee .
+12 24 5 . bit_misc
+13 24 6 bit_misc .
+14 24 5 . all
+15 24 7 all ;
+16 24 8 ; use
+17 24 3 use ieee
+18 24 4 ieee .
+19 24 5 . bit_arith
+20 24 6 bit_arith .
+21 24 5 . all
+22 24 7 all ;
+23 24 8 ; 
+0 21 0 entity archivide
+1 21 1 archivide is
+2 21 2 is port
+3 21 3 port (
+4 21 4 ( FLAG_PORT
+5 21 5 FLAG_PORT ;
+6 21 6 ; FLAG_PORT
+7 21 5 FLAG_PORT ;
+8 21 6 ; FLAG_PORT
+9 21 5 FLAG_PORT ;
+10 21 6 ; FLAG_PORT
+11 21 5 FLAG_PORT ;
+12 21 6 ; FLAG_PORT
+13 21 5 FLAG_PORT ;
+14 21 6 ; FLAG_PORT
+15 21 5 FLAG_PORT )
+16 21 7 ) ;
+17 21 8 ; end
+18 21 9 end archivide
+19 21 10 archivide ;
+20 21 11 ; 
+0 4 0 clk :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 4 0 rst :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 4 0 start :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 4 0 done :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 9 0 din :
+1 9 2 : in
+2 9 3 in bit_vector
+3 9 5 bit_vector (
+4 9 6 ( 15
+5 9 7 15 downto
+6 9 8 downto 0
+7 9 9 0 )
+8 9 10 ) 
+0 9 0 dout :
+1 9 2 : out
+2 9 3 out bit_vector
+3 9 5 bit_vector (
+4 9 6 ( 15
+5 9 7 15 downto
+6 9 8 downto 0
+7 9 9 0 )
+8 9 10 ) 
+List of lexemes contained in the block library std
+2 2 library
+2 2 std
+2 2 ;
+3 3 use
+3 3 std
+3 3 .
+3 3 textio
+3 3 .
+3 3 all
+3 3 ;
+List of lexemes contained in the block library ieee
+4 4 library
+4 4 ieee
+4 4 ;
+5 5 use
+5 5 ieee
+5 5 .
+5 5 bit_1164
+5 5 .
+5 5 all
+5 5 ;
+6 6 use
+6 6 ieee
+6 6 .
+6 6 bit_misc
+6 6 .
+6 6 all
+6 6 ;
+7 7 use
+7 7 ieee
+7 7 .
+7 7 bit_arith
+7 7 .
+7 7 all
+7 7 ;
+List of lexemes contained in the block entity archivide
+9 9 entity
+9 9 archivide
+9 9 is
+10 10 port
+10 10 (
+11 11 FLAG_PORT
+11 11 ;
+12 12 FLAG_PORT
+12 12 ;
+13 13 FLAG_PORT
+13 13 ;
+14 14 FLAG_PORT
+14 14 ;
+15 15 FLAG_PORT
+15 15 ;
+16 16 FLAG_PORT
+17 17 )
+17 17 ;
+18 18 end
+18 18 archivide
+18 18 ;
+List of lexemes contained in the block port clk
+11 11 clk
+11 11 :
+11 11 in
+11 11 bit
+List of lexemes contained in the block port rst
+12 12 rst
+12 12 :
+12 12 in
+12 12 bit
+List of lexemes contained in the block port start
+13 13 start
+13 13 :
+13 13 in
+13 13 bit
+List of lexemes contained in the block port done
+14 14 done
+14 14 :
+14 14 in
+14 14 bit
+List of lexemes contained in the block port din
+15 15 din
+15 15 :
+15 15 in
+15 15 bit_vector
+15 15 (
+15 15 15
+15 15 downto
+15 15 0
+15 15 )
+List of lexemes contained in the block port dout
+16 16 dout
+16 16 :
+16 16 out
+16 16 bit_vector
+16 16 (
+16 16 15
+16 16 downto
+16 16 0
+16 16 )
+List of lexemes contained in the block architecture vide
+20 20 architecture
+20 20 vide
+20 20 of
+20 20 archivide
+20 20 is
+21 21 begin
+23 23 end
+23 23 vide
+23 23 ;
+001INF Information: Beginning of the synthesis of the "TEST/FINAL_TEST/archivide.vhd" file
+005INF Information: The "TEST/FINAL_TEST/archivide.vhd" file was successfully opened 
+009INF Information line 2: The library "std" has been detected
+009INF Information line 4: The library "ieee" has been detected
+010INF Information line 9: The entity "archivide" has been detected
+011INF Information line 20: The architecture "vide" has been detected
+803DEB Debugger line 11: The port "clk" has been detected
+803DEB Debugger line 12: The port "rst" has been detected
+803DEB Debugger line 13: The port "start" has been detected
+803DEB Debugger line 14: The port "done" has been detected
+803DEB Debugger line 15: The port "din" has been detected
+803DEB Debugger line 16: The port "dout" has been detected
+200INF Information: The syntax verification is ended
