@@ -31,7 +31,7 @@
 025WAR Warning line: It is impossible to open the <"W"> file 
 
 030ERR Error line <L:> "end if" must be followed by ";"
-
+031ERR Error line <L:> "then" is missing or ";" is invalid in comparison
 
 ###### MESSAGES DURING THE VERIFICATION OF THE SYNTAX
 200INF Information: The syntax verification is ended
@@ -58,5 +58,5 @@
 810DEB Debugger line <L:> The if has been detected
 811DEB Debugger line <L:> The variable <"W"> has been detected
 812DEB Debugger line <L:> The assignment has been detected
-
+813DEB Debugger line <L:> The comparison has been detected
 

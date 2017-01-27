@@ -145,5 +145,61 @@ void InstructionIf::reorganizeLexemes()
 
 void InstructionIf::createComparison()
 {
-
+	list <Lexeme>::iterator itr;
+	list <Lexeme> newList;
+	bool inCompa = false;
+	bool flagBegin = true;
+	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
+	{
+		cout << (*itr).m_word << endl;
+		if (((*itr).m_word == "default") && (inCompa == false))
+		{
+			if (flagBegin == true)
+			{				
+				inCompa = true;
+				flagBegin = false;
+				newList.push_back(*itr);
+				m_listeBlocks.push_back(new InstructionCompa((*itr).m_line, m_msgBox));
+				m_msgBox.createMessage("813", (*itr).m_line, "");
+				Lexeme flag("FLAG_COMPA", (*itr).m_line);			 
+				newList.push_back(flag);
+			}
+			else
+			{
+				newList.push_back(*itr);
+			}			
+		}
+		else if (((*itr).m_word == "elsif") && (inCompa == false))
+		{
+			inCompa = true;
+			newList.push_back(*itr);
+			m_listeBlocks.push_back(new InstructionCompa((*itr).m_line, m_msgBox));
+			m_msgBox.createMessage("813", (*itr).m_line, "");
+			Lexeme flag("FLAG_COMPA", (*itr).m_line);			 
+			newList.push_back(flag);			
+		}
+		else if (((*itr).m_word == ";") && (inCompa == true))
+		{
+			m_msgBox.createMessage("031", (*itr).m_line, "");
+			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+			inCompa = false;
+		}
+		else if (((*itr).m_word == "then") && (inCompa== true))
+		{
+			newList.push_back(*itr);
+			inCompa = false;			
+		}
+		else 
+		{
+			if (inCompa == true)	
+			{		
+				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+			}
+			else
+			{
+				newList.push_back(*itr);
+			}
+		}
+	}
+	m_listLexemes = newList;
 }

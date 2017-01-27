@@ -1,4 +1,6 @@
 #!/bin/bash
+
+list_test_files = 
 cd ../../
 
 echo "Test 1: Underscore au début d'un identifiant"
