@@ -32,6 +32,7 @@
 
 030ERR Error line <L:> "end if" must be followed by ";"
 031ERR Error line <L:> "then" is missing or ";" is invalid in comparison
+032ERR Error line <L:> "end case" must be followed by ";"
 
 ###### MESSAGES DURING THE VERIFICATION OF THE SYNTAX
 200INF Information: The syntax verification is ended
@@ -64,4 +65,4 @@
 811DEB Debugger line <L:> The variable <"W"> has been detected
 812DEB Debugger line <L:> The assignment has been detected
 813DEB Debugger line <L:> The comparison has been detected
-
+814DEB Debugger line <L:> The case has been detected

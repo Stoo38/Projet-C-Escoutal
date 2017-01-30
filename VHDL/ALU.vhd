@@ -38,7 +38,30 @@ begin
 testest2 : process(reset, clock)
 begin
 	
-	
+	case CMD is
+		when("000") => result <= ('0' & a_u);
+		if (result(7 downto 0) = "00000000") then zero <= '1'; 
+	else zero <= '0';
+	end if;
+		when("001") => result <= ('0' & a_u) + ('0' & b_u );
+		when("010") => result <= ('0' & a_u) - ('0' & b_u );
+				case CMD is
+		when("000") => result <= ('0' & a_u);
+		when("001") => result <= ('0' & a_u) + ('0' & b_u );
+		when("010") => result <= ('0' & a_u) - ('0' & b_u );
+		when("011") => result <= ('0' & b_u) - ('0' & a_u );
+		when others => result <= "111111111";
+	end case;
+		when("011") => result <= ('0' & b_u) - ('0' & a_u );
+		when others => result <= "111111111";
+	end case;
+	case CMD is
+		when("000") => result <= ('0' & a_u);
+		when("001") => result <= ('0' & a_u) + ('0' & b_u );
+		when("010") => result <= ('0' & a_u) - ('0' & b_u );
+		when("011") => result <= ('0' & b_u) - ('0' & a_u );
+		when others => result <= "111111111";
+	end case;
 	if (reset = '1') then 
 	result <= "000000000";	
 	a_u <= "00000000";

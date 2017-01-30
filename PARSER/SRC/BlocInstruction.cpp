@@ -3,7 +3,7 @@
 void BlocInstruction::createTree()
 {
 	createVariable();
-	createIf();
+	createIfCase();
 	createAssig();
 	createComparison();
 	BlocNode::createTree();

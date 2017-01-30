@@ -27,6 +27,7 @@ class PortMap : public Bloc
 		m_component = compo;
 	}
 
+	virtual void createTree() {};
 	virtual void reorganizeLexemes();
 };
 #endif
