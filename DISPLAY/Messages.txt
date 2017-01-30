@@ -1,68 +1,85 @@
 ###### MESSAGES DURING THE CREATION OF THE TREE
 ###### MAIN & TOP
-001INF Information: Beginning of the synthesis of the <"W"> file
+001INF Information: BEGINNING OF THE SYNTHESIS OF THE <"W"> FILE
 002FAT Fatal Error: It is impossible to open the <"W"> file 
 003INF Information: We have encountered a fatal error, so the program will be killed
 004INF Information: The option to close when we encounter an error is turned on, so the program will be killed
 005INF Information: The <"W"> file was successfully opened 
-009INF Information line <L:> The library <"W"> has been detected
-010INF Information line <L:> The entity <"W"> has been detected
-011INF Information line <L:> The architecture <"W"> has been detected
 012ERR Error line <L:> <"W"> is not in any hierarchy (library, entity or architecture)
-
+025WAR Warning line: It is impossible to open the <"W"> file 
+050INF Information: THE CREATION OF THE DATA TREE IS ENDED
+###### LIBRARY
+009INF Information line <L:> The library <"W"> has been detected
+###### ENTITY
+010INF Information line <L:> The entity <"W"> has been detected
+###### ARCHITECTURE
+011INF Information line <L:> The architecture <"W"> has been detected
 ###### BLOC
 006ERR Error line <L:> <"W"> is not a valid label, it can only start by a letter
 007ERR Error line <L:> <"W"> is not a valid label, it can not start or end by "_" 
 008ERR Error line <L:> <"W"> is not a valid label, it can only be letters, numbers or underscores
 028ERR Error line <L:> <"W"> is not a valid label, it can not be a keyword
-
-
-
-020INF Information line <L:> The component <"W"> has been detected
+##### PROCESS
 021INF Information line <L:> The process <"W"> has been detected
-022ERR Error line <L:> "end component" must be followed by ";"
-023ERR Error line <L:> "end" must be followed by "component" to indicate the end of the component
 024ERR Error line <L:> "end process" must be followed by ";"
 026ERR Error line <L:> "end process" must be followed by the name label
 027ERR Error line <L:> "end process" must be followed by ";" after the name label
-
+##### COMPONENT
+020INF Information line <L:> The component <"W"> has been detected
+022ERR Error line <L:> "end component" must be followed by ";"
+023ERR Error line <L:> "end" must be followed by "component" to indicate the end of the component
+##### PORT
 029ERR Error line <L:> "port" must be followed by "("
-
-025WAR Warning line: It is impossible to open the <"W"> file 
-
+##### IF
 030ERR Error line <L:> "end if" must be followed by ";"
+##### COMPARISON (==, !=, <= ...)
 031ERR Error line <L:> "then" is missing or ";" is invalid in comparison
+##### CASE
 032ERR Error line <L:> "end case" must be followed by ";"
 
+
+###### MESSAGES DURING THE REORGANIZATION OF THE LEXEMES
+100INF Information: THE REORGANIZATION OF THE LEXEMES IS ENDED
+
+
 ###### MESSAGES DURING THE VERIFICATION OF THE SYNTAX
-200INF Information: The syntax verification is ended
-
-
+200INF Information: THE SYNTAX VERIFICATION IS ENDED
+210ERR Error line <L:> the number <"W"> is not correct. If you have "a downto b", "a" has to be higher than "b"
+211ERR Error line <L:> the number <"W"> is not correct. If you have "a to b", "a" has to be lower than "b"
+###### LIBRARY
 201ERR Error line <L:> <"W"> is not a valid label, it must be the one of the library
 202ERR Error line <L:> : the word <"W"> can not be used at this place for a library
-203ERR Error line <L:> <"W"> is not a valid port
+###### ENTITY
 204ERR Error line <L:> <"W"> is not a valid label, it must be the one of the entity
 205ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the entity
 206ERR Error line <L:> the word <"W"> can not be used at this place for an entity
+###### PORT
+203ERR Error line <L:> <"W"> is not a valid port
 207ERR Error line <L:> the word <"W"> can not be used at this place for a port
 208ERR Error line <L:> the word <"W"> is not a valid type for a port
 209ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the port
-210ERR Error line <L:> the number <"W"> is not correct. If you have "a downto b", "a" has to be higher than "b"
-211ERR Error line <L:> the number <"W"> is not correct. If you have "a to b", "a" has to be lower than "b"
+###### TYPE
 212ERR Error line <L:>  the word <"W"> can not be used at this place for a type
 213ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the type
 
 
-
-
-##### DEBUGGER
+##### MESSAGES FOR THE DEBUGGING
+##### SIGNAL
 801DEB Debugger line <L:> The signal <"W"> has been detected
+##### TYPE
 802DEB Debugger line <L:> The type <"W"> has been detected
+##### PORT
 803DEB Debugger line <L:> The port <"W"> has been detected
+##### PORTMAP
 804DEB Debugger line <L:> The port map <"W"> has been detected
-
+##### IF
 810DEB Debugger line <L:> The if has been detected
-811DEB Debugger line <L:> The variable <"W"> has been detected
-812DEB Debugger line <L:> The assignment has been detected
-813DEB Debugger line <L:> The comparison has been detected
+##### CASE
 814DEB Debugger line <L:> The case has been detected
+##### VARIABLE
+811DEB Debugger line <L:> The variable <"W"> has been detected
+##### ASSIGNMENT (<=)
+812DEB Debugger line <L:> The assignment has been detected
+##### COMPARISON (==, !=, <= ...)
+813DEB Debugger line <L:> The comparison has been detected
+

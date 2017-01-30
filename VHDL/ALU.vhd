@@ -4,7 +4,7 @@ use IEEE.std_logic_1164.ALL ;
 use ieee.numeric_std.all;
 entity ALU is
 	port(	A,B		: in STD_LOGIC_VECTOR(2 downto 0) ; 
-		CMD		: in STD_LOGIC_VECTOR(2 to 0) ;
+		CMD		: in STD_LOGIC_VECTOR(0 to 2) ;
 		Zero		: out std_logic;
 		A		: out STD_LOGIC_VECTOR(0 to 7) ;
 		reset, clock	: in std_logic) ;
