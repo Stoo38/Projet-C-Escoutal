@@ -3,10 +3,10 @@ use IEEE.std_logic_1164.ALL ;
 
 use ieee.numeric_std.all;
 entity ALU is
-	port(	A,B		: in STD_LOGIC_VECTOR(7 downto 0) ; 
-		CMD		: in STD_LOGIC_VECTOR(2 downto 0) ;
+	port(	A,B		: in STD_LOGIC_VECTOR(2 downto 0) ; 
+		CMD		: in STD_LOGIC_VECTOR(2 to 0) ;
 		Zero		: out std_logic;
-		A		: out STD_LOGIC_VECTOR(7 downto 0) ;
+		A		: out STD_LOGIC_VECTOR(0 to 7) ;
 		reset, clock	: in std_logic) ;
 
 end ALU;
@@ -27,7 +27,7 @@ architecture a of ALU is
 		A	: out std_logic);
 	end component ;
 
-signal result: unsigned (8 downto 0); 
+signal result,fgf: unsigned (8 downto 0) := '1'; 
 signal a_u: unsigned (7 downto 0);
 signal b_u: unsigned (7 downto 0);
 

@@ -46,6 +46,9 @@
 207ERR Error line <L:> : the word <"W"> can not be used at this place for a port
 208ERR Error line <L:> : the word <"W"> is not a valid type for a port
 209ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the port
+210ERR Error line <L:> the number <"W"> is not correct. If you have "a downto b", "a" has to be higher than "b"
+211ERR Error line <L:> the number <"W"> is not correct. If you have "a to b", "a" has to be lower than "b"
+
 
 
 

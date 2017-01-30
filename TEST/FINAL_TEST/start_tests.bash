@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PATH_TEST='TEST/FINAL_TEST/'
-LIST_TEST_FILES='archivide assign biblio'
+LIST_TEST_FILES='archivide assign biblio case'
 RESULTS_DIRECTORY='RESULTS/'
 
 cd ../../
