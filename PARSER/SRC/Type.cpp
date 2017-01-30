@@ -112,7 +112,7 @@ void Type::verifySyntax()
 				itr = m_listLexemes.end();
 				itr--;
 			}
-			nbLexeme = 15;
+			nbLexeme = 16;
 		}		
 
 		else if (nbLexeme == 7)
