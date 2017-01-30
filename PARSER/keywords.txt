@@ -5,7 +5,7 @@ use all
 
 --mots clefs utilisables dans plusieurs blocs
 --types
-std_logic std_ulogic std_logic_vector std_logic_uvector bit bit_vector integer unsigned
+std_ulogic std_logic_vector std_logic_uvector bit_vector integer unsigned
 
 signal variable in out to downto upto range 
 

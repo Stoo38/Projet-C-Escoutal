@@ -141,7 +141,7 @@ void Port::verifySyntax()
 				itr--;
 			}
 			prevNb = atoi(nextWord.c_str());
-			cout << "PREVIOUS NUMBER" << prevNb << endl;
+			//cout << "PREVIOUS NUMBER" << prevNb << endl;
 			nbLexeme = 7;
 		}	
 
@@ -191,7 +191,7 @@ void Port::verifySyntax()
 				itr--;
 			}
 			nextNb = atoi(nextWord.c_str());
-			cout << "NEXT NUMBER" << prevNb << endl;
+			//cout << "NEXT NUMBER" << prevNb << endl;
 			if (nextNb <= prevNb)
 			{
 				m_msgBox.createMessage("211", (*itr).m_line, nextWord);		
@@ -243,7 +243,7 @@ void Port::verifySyntax()
 				itr--;
 			}
 			prevNb = atoi(nextWord.c_str());
-			cout << "PREVIOUS NUMBER" << prevNb << endl;
+			//cout << "PREVIOUS NUMBER" << prevNb << endl;
 			nbLexeme = 13;
 		}
 
@@ -267,7 +267,7 @@ void Port::verifySyntax()
 				itr--;
 			}
 			nextNb = atoi(nextWord.c_str());
-			cout << "NEXT NUMBER" << prevNb << endl;
+			//cout << "NEXT NUMBER" << prevNb << endl;
 			if (nextNb <= prevNb)
 			{
 				m_msgBox.createMessage("211", (*itr).m_line, nextWord);		
