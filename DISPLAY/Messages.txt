@@ -50,6 +50,9 @@
 211ERR Error line <L:> the number <"W"> is not correct. If you have "a to b", "a" has to be lower than "b"
 212ERR Error line <L:>  the word <"W"> can not be used at this place for a type
 213ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the type
+214ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the component
+215ERR Error line <L:> the word <"W"> can not be used at this place for a component
+216ERR Error line <L:> the word <"W"> can not be used at this place for a signal
 
 
 

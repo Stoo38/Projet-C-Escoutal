@@ -1,7 +1,7 @@
 #include "../HEADER/Type.h"
 
 void Type::verifySyntax() 
-{
+{/*
 	
 	list <Lexeme>::iterator itr;
 	int nbLexeme = 0;
@@ -130,7 +130,7 @@ void Type::verifySyntax()
 		{
 			if (verifyNumber(nextWord) != false)
 			{
-				m_msgBox.createMessage("207", (*itr).m_line, nextWord);		
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
 				itr = m_listLexemes.end();
 				itr--;
 			}
@@ -147,11 +147,11 @@ void Type::verifySyntax()
 			}
 			else if (nextWord == "to")
 			{
-				nbLexeme = 16;
+				nbLexeme = 11;
 			}
 			else
 			{
-				m_msgBox.createMessage("207", (*itr).m_line, nextWord);		
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
 				itr = m_listLexemes.end();
 				itr--;
 			}
@@ -161,7 +161,7 @@ void Type::verifySyntax()
 		{
 			if (verifyNumber(nextWord) != false)
 			{
-				m_msgBox.createMessage("207", (*itr).m_line, nextWord);		
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
 				itr = m_listLexemes.end();
 				itr--;
 			}
@@ -173,14 +173,14 @@ void Type::verifySyntax()
 				itr = m_listLexemes.end();
 				itr--;
 			}
-			nbLexeme = 9;
+			nbLexeme = 12;
 		}
 
-		else if (nbLexeme == 16)
+		else if (nbLexeme == 11)
 		{
 			if (verifyNumber(nextWord) != false)
 			{
-				m_msgBox.createMessage("207", (*itr).m_line, nextWord);		
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
 				itr = m_listLexemes.end();
 				itr--;
 			}
@@ -192,31 +192,247 @@ void Type::verifySyntax()
 				itr = m_listLexemes.end();
 				itr--;
 			}
-			nbLexeme = 9;
+			nbLexeme = 12;
 		}
 
-		else if (nbLexeme == 9)
+		else if (nbLexeme == 12)
 		{
 			if (nextWord != ")")
 			{
-				m_msgBox.createMessage("207", (*itr).m_line, nextWord);		
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
 				itr = m_listLexemes.end();
 				itr--;
 			}
-			nbLexeme = 10;
-		}		
-			
+			nbLexeme = 13;
+		}
+
+		else if (nbLexeme == 13)
+		{
+			if (nextWord != "of")
+			{
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
+				itr = m_listLexemes.end();
+				itr--;
+			}
+			nbLexeme = 14;
+		}	
+
+		else if (nbLexeme == 14)
+		{
+			if (verifyLabel(nextWord) != false)
+			{
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
+				itr = m_listLexemes.end();
+				itr--;
+			}
+			nbLexeme = 15;
+		}	
+
+		else if (nbLexeme == 15)
+		{
+			if (nextWord != ";")
+			{
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
+				itr = m_listLexemes.end();
+				itr--;
+			}
+			nbLexeme = 16;
+		}
 
 
+// Cas où l'on a une paranthèse ouvrante 
 
+		else if (nbLexeme == 17)
+		{
+			if (verifyLabel(nextWord) == false)
+			{	
+				nbLexeme = 18;
+			}
+			else if (nextWord == "\'")
+			{	
+				nbLexeme = 20;
+			}
+			else if (nextWord == "\"" )
+			{	
+				nbLexeme = 24;
+			}
+			else
+			{
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
+			}
+		}
+		
+		// Cas d'un simple étiquette
+		else if (nbLexeme == 18)
+		{
+			if (nextWord == ",")
+			{
+				nbLexeme = 19;
+			}
+			else if (nextWord == ")")
+			{	
+				nbLexeme = 28;
+			}
+			else
+			{
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
+			}
+		}
 
+		else if (nbLexeme == 19)
+		{
+			if (verifyLabel(nextWord) != false)
+			{
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
+				itr = m_listLexemes.end();
+				itr--;
+			}
+			nbLexeme = 18;
+		}	
 
+		// Cas d'un charactère encadré par deux apostrophes 'char'
+		else if (nbLexeme == 20)
+		{
+			if ((verifyGlobalWord(nextWord) == false) && (nextWord.size() == 1))
+			{
+				nbLexeme = 21;
+				cout << "BEEEELLLLLLLLLE" << endl;
+			}
+			else
+			{
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
+				itr = m_listLexemes.end();
+				itr--;
+			}
+		}	
 
+		else if (nbLexeme == 21)
+		{
+			if (nextWord != "\'")
+			{
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
+				itr = m_listLexemes.end();
+				itr--;
+			}
+			nbLexeme = 22;
+		}
 
+		else if (nbLexeme == 21)
+		{
+			if (nextWord != "\'")
+			{
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
+				itr = m_listLexemes.end();
+				itr--;
+			}
+			nbLexeme = 22;
+		}
 
+		else if (nbLexeme == 22)
+		{
+			if (nextWord == ",")
+			{
+				nbLexeme = 23;
+			}
+			else if (nextWord == ")")
+			{	
+				nbLexeme = 28;
+			}
+			else
+			{
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
+			}
+		}
 
+		else if (nbLexeme == 23)
+		{
+			if (nextWord != "\'")
+			{
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
+				itr = m_listLexemes.end();
+				itr--;
+			}
+			nbLexeme = 20;
+		}	
 
+		// Cas d'une suite de bits encadrée par deux guillemets "bits"
 
+		else if (nbLexeme == 24)
+		{
+			string nextValue = "";
+			for (int i=0; i < nextWord.size(); i++)
+			{
+				if ((nextWord[i] == 0) || (nextWord[i] == 1))
+				{
+					nextValue += nextWord[i];
+				}
+			}
+
+			if (nextValue.size() < 2)
+			{
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
+				itr = m_listLexemes.end();
+				itr--;
+			}
+			nbLexeme = 25;
+		}
+
+		else if (nbLexeme == 25)
+		{
+			if (nextWord != "\"")
+			{
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
+				itr = m_listLexemes.end();
+				itr--;
+			}
+			nbLexeme = 26;
+		}
+
+		else if (nbLexeme == 26)
+		{
+			if (nextWord == ",")
+			{
+				nbLexeme = 27;
+			}
+			else if (nextWord == ")")
+			{	
+				nbLexeme = 28;
+			}
+			else
+			{
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
+			}
+		}
+
+		else if (nbLexeme == 27)
+		{
+			if (nextWord != "\"")
+			{
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
+				itr = m_listLexemes.end();
+				itr--;
+			}
+			nbLexeme = 24;
+		}
+
+		else if (nbLexeme == 28)
+		{
+			if (nextWord != ";")
+			{
+				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
+				itr = m_listLexemes.end();
+				itr--;
+			}
+			nbLexeme = 16;
+		}
 
 		else if (nbLexeme == 16)
 		{
@@ -231,5 +447,5 @@ void Type::verifySyntax()
 
 	
 		count++;	
-	}
+	}*/
 }

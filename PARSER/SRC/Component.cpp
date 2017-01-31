@@ -67,3 +67,159 @@ void Component::createTree()
 	}
 	m_listLexemes = newList;
 }
+
+
+// Fonction qui effectue la vérification syntaxique 
+void Component::verifySyntax() 
+{	
+	list <Lexeme>::iterator itr;
+	int nbLexeme = 0;
+	int count = 0;	
+
+	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
+	{
+		string monword = (*itr).m_word;
+		string nextWord = checkNextWord(count, itr);
+
+		cout << count << " " << m_listLexemes.size() << " " << nbLexeme << " " << monword << " " << nextWord <<  endl;
+	
+		if (nbLexeme == 0)
+		{
+			if (verifyLabel(nextWord) != false)
+			{	
+				m_msgBox.createMessage("215", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
+			}
+			nbLexeme = 1;				
+		}
+
+		else if (nbLexeme == 1)
+		{	
+			if (nextWord == "port")
+			{	
+				nbLexeme = 2;
+			}
+			else if (nextWord == "end")
+			{	
+				nbLexeme = 8;
+			}
+			else
+			{
+				m_msgBox.createMessage("215", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
+			}
+					
+		}	
+
+		else if (nbLexeme == 2)
+		{
+			if (nextWord != "(")
+			{	
+				m_msgBox.createMessage("215", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;			
+			}
+			nbLexeme = 3;			
+		}	
+	
+		else if (nbLexeme == 3)
+		{
+			if (nextWord != "FLAG_PORT")
+			{	
+				m_msgBox.createMessage("203", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
+			}
+			nbLexeme = 4;
+		}	
+	
+		else if (nbLexeme == 4)
+		{
+			if (nextWord == ";")
+			{	
+				nbLexeme = 5;
+			}
+			else if (nextWord == ")")
+			{
+				nbLexeme = 6;
+			}
+			else 
+			{
+				m_msgBox.createMessage("215", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;			
+			}
+		}	
+	
+		else if (nbLexeme == 5)
+		{
+			if (nextWord != "FLAG_PORT")
+			{
+				m_msgBox.createMessage("203", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
+			}
+			nbLexeme = 4;
+		}
+
+		else if (nbLexeme == 6)
+		{
+			if (nextWord != ";")
+			{
+				m_msgBox.createMessage("215", (*itr).m_line, nextWord);	
+				itr = m_listLexemes.end();
+				itr--;	
+			}
+			nbLexeme = 7;
+
+		}	
+
+		else if (nbLexeme == 7)
+		{
+			if (nextWord != "end")
+			{
+				m_msgBox.createMessage("215", (*itr).m_line, nextWord);	
+				itr = m_listLexemes.end();
+				itr--;	
+			}
+			nbLexeme = 8;
+		}
+
+		else if (nbLexeme == 8)
+		{
+			if (nextWord != "component")
+			{	
+				m_msgBox.createMessage("215", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
+			}
+			nbLexeme = 9;
+		}
+
+		else if (nbLexeme == 9)
+		{
+			if (nextWord != ";")
+			{	
+				m_msgBox.createMessage("215", (*itr).m_line, nextWord);
+				itr = m_listLexemes.end();
+				itr--;
+			}
+			nbLexeme = 10;
+		}
+
+		else if (nbLexeme == 10)
+		{
+			if (nextWord != "")
+			{	
+				m_msgBox.createMessage("215", (*itr).m_line, nextWord);
+			}
+			itr = m_listLexemes.end();
+			itr--;
+		}		
+		count++;	
+	}
+	BlocNode::verifySyntax();
+}
+

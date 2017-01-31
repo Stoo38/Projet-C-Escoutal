@@ -9,6 +9,8 @@
 
 #include "Lexeme.h"
 #include "Bloc.h"
+#include "Architecture.h"
+#include "BlocNode.h"
 #include "../../DISPLAY/Display.h"
 
 using namespace std;
@@ -24,5 +26,6 @@ class Signal : public Bloc
 	}
 
 	virtual void reorganizeLexemes() {};
+	virtual void verifySyntax();
 };
 #endif

@@ -9,6 +9,7 @@
 #include <list>
 
 #include "Lexeme.h"
+#include "Port.h"
 #include "BlocNode.h"
 #include "../../DISPLAY/Display.h"
 
@@ -25,5 +26,6 @@ class Component : public BlocNode
 	}
 
 	virtual void createTree();
+	virtual void verifySyntax();
 };
 #endif
