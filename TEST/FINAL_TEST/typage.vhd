@@ -12,8 +12,8 @@
 architecture essai of typage is
 
 TYPE  couleur  IS  (bleu,  blanc,  rouge);
-TYPE  std_logic  is  ('U',  'X',  '0',  '1',  'Z',  'W',  'L',  'H');
---TYPE  byte  is ("00", "01", "10", "11");
+TYPE  std_logic  is  ('U',  'X',  '0',  '1',  'Z',  'W',  'L',  'H', '-');
+TYPE  byte  is ("10", "01", "10", "11");
 TYPE  test_range  IS  range 0 to 9;
 TYPE  mot  IS  array (0  TO  31)  OF  bit ;
 TYPE  drapeau  IS  array (0  TO  2)  OF  couleur;

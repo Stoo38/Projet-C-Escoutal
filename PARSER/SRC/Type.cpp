@@ -1,7 +1,7 @@
 #include "../HEADER/Type.h"
 
 void Type::verifySyntax() 
-{/*
+{
 	
 	list <Lexeme>::iterator itr;
 	int nbLexeme = 0;
@@ -244,17 +244,17 @@ void Type::verifySyntax()
 
 		else if (nbLexeme == 17)
 		{
-			if (verifyLabel(nextWord) == false)
-			{	
-				nbLexeme = 18;
-			}
-			else if (nextWord == "\'")
+			if (nextWord == "\'")
 			{	
 				nbLexeme = 20;
 			}
 			else if (nextWord == "\"" )
 			{	
 				nbLexeme = 24;
+			}
+			else if (verifyLabel(nextWord) == false)
+			{
+				nbLexeme = 18;
 			}
 			else
 			{
@@ -297,10 +297,9 @@ void Type::verifySyntax()
 		// Cas d'un charactère encadré par deux apostrophes 'char'
 		else if (nbLexeme == 20)
 		{
-			if ((verifyGlobalWord(nextWord) == false) && (nextWord.size() == 1))
+			if (((nextWord == "-") || (verifyGlobalWord(nextWord) == false)) && (nextWord.size() == 1))
 			{
 				nbLexeme = 21;
-				cout << "BEEEELLLLLLLLLE" << endl;
 			}
 			else
 			{
@@ -365,16 +364,21 @@ void Type::verifySyntax()
 
 		else if (nbLexeme == 24)
 		{
-			string nextValue = "";
-			for (int i=0; i < nextWord.size(); i++)
+			if ( nextWord.size() > 1)
 			{
-				if ((nextWord[i] == 0) || (nextWord[i] == 1))
+				for (int i=0; i < nextWord.size(); i++)
 				{
-					nextValue += nextWord[i];
+					if ((nextWord[i] != '0') && (nextWord[i] != '1'))
+					{	cout << "error" << endl;
+						m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
+						itr = m_listLexemes.end();
+						itr--;
+						i = nextWord.size();
+					}
 				}
 			}
 
-			if (nextValue.size() < 2)
+			else
 			{
 				m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
 				itr = m_listLexemes.end();
@@ -447,5 +451,5 @@ void Type::verifySyntax()
 
 	
 		count++;	
-	}*/
+	}
 }
