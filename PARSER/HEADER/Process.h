@@ -11,6 +11,7 @@
 #include "Lexeme.h"
 #include "BlocInstruction.h"
 #include "InstructionIf.h"
+#include "InstructionCase.h"
 #include "InstructionAssig.h"
 #include "Variable.h"
 #include "../../DISPLAY/Display.h"
@@ -28,7 +29,7 @@ class Process : public BlocInstruction
 	}
 	
 	virtual void reorganizeLexemes();	
-	virtual void createIf();
+	virtual void createIfCase();
 	virtual void createVariable();
 	virtual void createAssig();
 };

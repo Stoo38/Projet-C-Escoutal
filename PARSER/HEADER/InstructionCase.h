@@ -1,5 +1,5 @@
-#ifndef _INSTRUCTIONIF_H_
-#define _INSTRUCTIONIF_H_
+#ifndef _INSTRUCTIONCASE_H_
+#define _INSTRUCTIONCASE_H_
 
 
 #include <math.h>
@@ -10,20 +10,19 @@
 
 #include "Lexeme.h"
 #include "BlocInstruction.h"
-#include "InstructionCase.h"
+#include "InstructionIf.h"
 #include "InstructionAssig.h"
-#include "InstructionCompa.h"
 #include "../../DISPLAY/Display.h"
 
 using namespace std;
 
-class InstructionIf : public BlocInstruction
+class InstructionCase : public BlocInstruction
 {
 	protected:
 
 	public:
-	InstructionIf(const int nLine, Display &msgBox):
-	BlocInstruction("default", "instructionif", nLine, msgBox)
+	InstructionCase(const int nLine, Display &msgBox):
+	BlocInstruction("default", "instructioncase", nLine, msgBox)
 	{	
 
 	}
@@ -31,6 +30,5 @@ class InstructionIf : public BlocInstruction
 	virtual void createIfCase();
 	virtual void createAssig();	
 	virtual void reorganizeLexemes();
-	virtual void createComparison();
 };
 #endif

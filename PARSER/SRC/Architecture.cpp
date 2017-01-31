@@ -9,6 +9,7 @@ void Architecture::createTree()
 	createPortMap();
 	BlocNode::createTree();
 }
+
 void Architecture::createComponent()
 {
 	list <Lexeme>::iterator itr;

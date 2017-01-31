@@ -30,7 +30,8 @@ void Top::createTree()
 		for(it2=m_listeBlocks.begin(); it2 != m_listeBlocks.end(); it2++)
 		{
 			(*it2)->createTree();
-		}					
+		}
+		m_msgBox.createMessage("050", 0, "");					
 	}
 	else
 	{
@@ -91,6 +92,7 @@ void Top::reorganizeLexemes()
 	{
 		(*it)->reorganizeLexemes();
 	}
+	m_msgBox.createMessage("100", 0, "");
 }
 
 void Top::verifySyntax()

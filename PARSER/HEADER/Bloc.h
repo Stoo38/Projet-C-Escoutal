@@ -61,7 +61,7 @@ public:
 
 	virtual void displayLexemes();			//Affiche chaque lexeme avec la ligne correspondante
 
-	virtual void createTree() {};
+	virtual void createTree() = 0;
 	virtual void reorganizeLexemes() = 0;
 	virtual void verifySyntax() {};
 };

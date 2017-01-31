@@ -25,6 +25,7 @@ class Signal : public Bloc
 	{	
 	}
 
+	virtual void createTree() {};
 	virtual void reorganizeLexemes() {};
 	virtual void verifySyntax();
 };
