@@ -9,7 +9,7 @@ mkdir $PATH_TEST$RESULTS_DIRECTORY
 for files in $LIST_TEST_FILES
 do
 	rm -f $PATH_TEST$RESULTS_DIRECTORY$files.log
-	./main -tree -debug -file $PATH_TEST$files.vhd |tee $PATH_TEST$RESULTS_DIRECTORY$files.log
+	./main -tree -debug -file $PATH_TEST$files.vhd >> $PATH_TEST$RESULTS_DIRECTORY$files.log
 done
 
 grep -c ERR TEST/FINAL_TEST/RESULTS/*
