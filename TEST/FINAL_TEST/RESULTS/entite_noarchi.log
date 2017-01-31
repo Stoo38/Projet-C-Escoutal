@@ -32,8 +32,8 @@
 21 24 5 . all
 22 24 7 all ;
 23 24 8 ; 
-0 21 0 entity archivide
-1 21 1 archivide is
+0 21 0 entity entite_noarchi
+1 21 1 entite_noarchi is
 2 21 2 is port
 3 21 3 port (
 4 21 4 ( FLAG_PORT
@@ -50,8 +50,8 @@
 15 21 5 FLAG_PORT )
 16 21 7 ) ;
 17 21 8 ; end
-18 21 9 end archivide
-19 21 10 archivide ;
+18 21 9 end entite_noarchi
+19 21 10 entite_noarchi ;
 20 21 11 ; 
 0 4 0 clk :
 1 4 2 : in
@@ -89,12 +89,11 @@ NEXT NUMBER15
 NEXT NUMBER15
 7 9 9 0 )
 8 9 10 ) 
-001INF Information: BEGINNING OF THE SYNTHESIS OF THE "TEST/FINAL_TEST/archivide.vhd" FILE
-005INF Information: The "TEST/FINAL_TEST/archivide.vhd" file was successfully opened 
+001INF Information: BEGINNING OF THE SYNTHESIS OF THE "TEST/FINAL_TEST/entite_noarchi.vhd" FILE
+005INF Information: The "TEST/FINAL_TEST/entite_noarchi.vhd" file was successfully opened 
 009INF Information line 2: The library "std" has been detected
 009INF Information line 4: The library "ieee" has been detected
-010INF Information line 9: The entity "archivide" has been detected
-011INF Information line 20: The architecture "vide" has been detected
+010INF Information line 9: The entity "entite_noarchi" has been detected
 803DEB Debugger line 11: The port "clk" has been detected
 803DEB Debugger line 12: The port "rst" has been detected
 803DEB Debugger line 13: The port "start" has been detected

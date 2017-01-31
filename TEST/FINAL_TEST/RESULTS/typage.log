@@ -1,0 +1,117 @@
+0 11 0 type couleur
+1 11 1 couleur is
+2 11 2 is (
+3 11 17 ( bleu
+4 11 18 bleu ,
+5 11 19 , blanc
+6 11 18 blanc ,
+7 11 19 , rouge
+8 11 18 rouge )
+9 11 28 ) ;
+10 11 16 ; 
+0 41 0 type std_logic
+1 41 1 std_logic is
+2 41 2 is (
+3 41 17 ( '
+4 41 20 ' u
+5 41 21 u '
+6 41 22 ' ,
+7 41 23 , '
+8 41 20 ' x
+9 41 21 x '
+10 41 22 ' ,
+11 41 23 , '
+12 41 20 ' 0
+13 41 21 0 '
+14 41 22 ' ,
+15 41 23 , '
+16 41 20 ' 1
+17 41 21 1 '
+18 41 22 ' ,
+19 41 23 , '
+20 41 20 ' z
+21 41 21 z '
+22 41 22 ' ,
+23 41 23 , '
+24 41 20 ' w
+25 41 21 w '
+26 41 22 ' ,
+27 41 23 , '
+28 41 20 ' l
+29 41 21 l '
+30 41 22 ' ,
+31 41 23 , '
+32 41 20 ' h
+33 41 21 h '
+34 41 22 ' ,
+35 41 23 , '
+36 41 20 ' -
+37 41 21 - '
+38 41 22 ' )
+39 41 28 ) ;
+40 41 16 ; 
+0 21 0 type byte
+1 21 1 byte is
+2 21 2 is (
+3 21 17 ( "
+4 21 24 " 10
+5 21 25 10 "
+6 21 26 " ,
+7 21 27 , "
+8 21 24 " 01
+9 21 25 01 "
+10 21 26 " ,
+11 21 27 , "
+12 21 24 " 10
+13 21 25 10 "
+14 21 26 " ,
+15 21 27 , "
+16 21 24 " 11
+17 21 25 11 "
+18 21 26 " )
+19 21 28 ) ;
+20 21 16 ; 
+0 8 0 type test_range
+1 8 1 test_range is
+2 8 2 is range
+3 8 3 range 0
+4 8 4 0 to
+5 8 5 to 9
+6 8 6 9 ;
+7 8 16 ; 
+0 12 0 type mot
+1 12 1 mot is
+2 12 2 is array
+3 12 7 array (
+4 12 8 ( 0
+5 12 9 0 to
+6 12 11 to 31
+7 12 12 31 )
+8 12 13 ) of
+9 12 14 of bit
+10 12 15 bit ;
+11 12 16 ; 
+0 12 0 type drapeau
+1 12 1 drapeau is
+2 12 2 is array
+3 12 7 array (
+4 12 8 ( 0
+5 12 9 0 to
+6 12 11 to 2
+7 12 12 2 )
+8 12 13 ) of
+9 12 14 of couleur
+10 12 15 couleur ;
+11 12 16 ; 
+001INF Information: BEGINNING OF THE SYNTHESIS OF THE "TEST/FINAL_TEST/typage.vhd" FILE
+005INF Information: The "TEST/FINAL_TEST/typage.vhd" file was successfully opened 
+011INF Information line 12: The architecture "essai" has been detected
+802DEB Debugger line 14: The type "couleur" has been detected
+802DEB Debugger line 15: The type "std_logic" has been detected
+802DEB Debugger line 16: The type "byte" has been detected
+802DEB Debugger line 17: The type "test_range" has been detected
+802DEB Debugger line 18: The type "mot" has been detected
+802DEB Debugger line 19: The type "drapeau" has been detected
+050INF Information: THE CREATION OF THE DATA TREE IS ENDED
+100INF Information: THE REORGANIZATION OF THE LEXEMES IS ENDED
+200INF Information: THE SYNTAX VERIFICATION IS ENDED

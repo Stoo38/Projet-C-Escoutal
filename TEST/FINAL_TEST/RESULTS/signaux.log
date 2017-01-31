@@ -32,8 +32,8 @@
 21 24 5 . all
 22 24 7 all ;
 23 24 8 ; 
-0 21 0 entity archivide
-1 21 1 archivide is
+0 21 0 entity signaux
+1 21 1 signaux is
 2 21 2 is port
 3 21 3 port (
 4 21 4 ( FLAG_PORT
@@ -50,8 +50,8 @@
 15 21 5 FLAG_PORT )
 16 21 7 ) ;
 17 21 8 ; end
-18 21 9 end archivide
-19 21 10 archivide ;
+18 21 9 end signaux
+19 21 10 signaux ;
 20 21 11 ; 
 0 4 0 clk :
 1 4 2 : in
@@ -89,18 +89,25 @@ NEXT NUMBER15
 NEXT NUMBER15
 7 9 9 0 )
 8 9 10 ) 
-001INF Information: BEGINNING OF THE SYNTHESIS OF THE "TEST/FINAL_TEST/archivide.vhd" FILE
-005INF Information: The "TEST/FINAL_TEST/archivide.vhd" file was successfully opened 
+001INF Information: BEGINNING OF THE SYNTHESIS OF THE "TEST/FINAL_TEST/signaux.vhd" FILE
+005INF Information: The "TEST/FINAL_TEST/signaux.vhd" file was successfully opened 
 009INF Information line 2: The library "std" has been detected
 009INF Information line 4: The library "ieee" has been detected
-010INF Information line 9: The entity "archivide" has been detected
-011INF Information line 20: The architecture "vide" has been detected
+010INF Information line 9: The entity "signaux" has been detected
+011INF Information line 20: The architecture "struct" has been detected
 803DEB Debugger line 11: The port "clk" has been detected
 803DEB Debugger line 12: The port "rst" has been detected
 803DEB Debugger line 13: The port "start" has been detected
 803DEB Debugger line 14: The port "done" has been detected
 803DEB Debugger line 15: The port "din" has been detected
 803DEB Debugger line 16: The port "dout" has been detected
+801DEB Debugger line 22: The signal "data_round_in" has been detected
+801DEB Debugger line 23: The signal "data_round_out" has been detected
+801DEB Debugger line 24: The signal "first_round_key" has been detected
+801DEB Debugger line 25: The signal "round_key" has been detected
+801DEB Debugger line 26: The signal "round_key2" has been detected
+801DEB Debugger line 27: The signal "last_round_signal" has been detected
+801DEB Debugger line 28: The signal "first_round_signal" has been detected
 050INF Information: THE CREATION OF THE DATA TREE IS ENDED
 100INF Information: THE REORGANIZATION OF THE LEXEMES IS ENDED
 200INF Information: THE SYNTAX VERIFICATION IS ENDED

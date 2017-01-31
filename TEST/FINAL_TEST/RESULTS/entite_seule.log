@@ -32,10 +32,17 @@
 21 24 5 . all
 22 24 7 all ;
 23 24 8 ; 
-001INF Information: BEGINNING OF THE SYNTHESIS OF THE "TEST/FINAL_TEST/biblio.vhd" FILE
-005INF Information: The "TEST/FINAL_TEST/biblio.vhd" file was successfully opened 
+0 6 0 entity entite_sans_portes
+1 6 1 entite_sans_portes is
+2 6 2 is end
+3 6 9 end entite_sans_portes
+4 6 10 entite_sans_portes ;
+5 6 11 ; 
+001INF Information: BEGINNING OF THE SYNTHESIS OF THE "TEST/FINAL_TEST/entite_seule.vhd" FILE
+005INF Information: The "TEST/FINAL_TEST/entite_seule.vhd" file was successfully opened 
 009INF Information line 1: The library "std" has been detected
-009INF Information line 4: The library "ieee" has been detected
+009INF Information line 3: The library "ieee" has been detected
+010INF Information line 8: The entity "entite_sans_portes" has been detected
 050INF Information: THE CREATION OF THE DATA TREE IS ENDED
 100INF Information: THE REORGANIZATION OF THE LEXEMES IS ENDED
 200INF Information: THE SYNTAX VERIFICATION IS ENDED

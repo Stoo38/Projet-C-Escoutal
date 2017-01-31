@@ -1,0 +1,390 @@
+0 10 0 library std
+1 10 1 std ;
+2 10 2 ; use
+3 10 3 use std
+4 10 4 std .
+5 10 5 . textio
+6 10 6 textio .
+7 10 5 . all
+8 10 7 all ;
+9 10 8 ; 
+0 24 0 library ieee
+1 24 1 ieee ;
+2 24 2 ; use
+3 24 3 use ieee
+4 24 4 ieee .
+5 24 5 . std_logic_1164
+6 24 6 std_logic_1164 .
+7 24 5 . all
+8 24 7 all ;
+9 24 8 ; use
+10 24 3 use ieee
+11 24 4 ieee .
+12 24 5 . std_logic_misc
+13 24 6 std_logic_misc .
+14 24 5 . all
+15 24 7 all ;
+16 24 8 ; use
+17 24 3 use ieee
+18 24 4 ieee .
+19 24 5 . std_logic_arith
+20 24 6 std_logic_arith .
+21 24 5 . all
+22 24 7 all ;
+23 24 8 ; 
+0 27 0 entity aes_core
+1 27 1 aes_core is
+2 27 2 is port
+3 27 3 port (
+4 27 4 ( FLAG_PORT
+5 27 5 FLAG_PORT ;
+6 27 6 ; FLAG_PORT
+7 27 5 FLAG_PORT ;
+8 27 6 ; FLAG_PORT
+9 27 5 FLAG_PORT ;
+10 27 6 ; FLAG_PORT
+11 27 5 FLAG_PORT ;
+12 27 6 ; FLAG_PORT
+13 27 5 FLAG_PORT ;
+14 27 6 ; FLAG_PORT
+15 27 5 FLAG_PORT ;
+16 27 6 ; FLAG_PORT
+17 27 5 FLAG_PORT ;
+18 27 6 ; FLAG_PORT
+19 27 5 FLAG_PORT ;
+20 27 6 ; FLAG_PORT
+21 27 5 FLAG_PORT )
+22 27 7 ) ;
+23 27 8 ; end
+24 27 9 end aes_core
+25 27 10 aes_core ;
+26 27 11 ; 
+0 4 0 clk :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 4 0 rst :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 9 0 keyin :
+1 9 2 : in
+2 9 3 in bit_vector
+3 9 5 bit_vector (
+4 9 6 ( 127
+5 9 7 127 downto
+6 9 8 downto 0
+NEXT NUMBER127
+7 9 9 0 )
+8 9 10 ) 
+0 4 0 start :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 9 0 din :
+1 9 2 : in
+2 9 3 in bit_vector
+3 9 5 bit_vector (
+4 9 6 ( 127
+5 9 7 127 downto
+6 9 8 downto 0
+NEXT NUMBER127
+7 9 9 0 )
+8 9 10 ) 
+0 9 0 dout :
+1 9 2 : out
+2 9 3 out bit_vector
+3 9 5 bit_vector (
+4 9 6 ( 127
+5 9 7 127 downto
+6 9 8 downto 0
+NEXT NUMBER127
+7 9 9 0 )
+8 9 10 ) 
+0 9 0 ivin :
+1 9 2 : in
+2 9 3 in bit_vector
+3 9 5 bit_vector (
+4 9 6 ( 127
+5 9 7 127 downto
+6 9 8 downto 0
+NEXT NUMBER127
+7 9 9 0 )
+8 9 10 ) 
+0 4 0 ecb_cbc :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 4 0 dout_val :
+1 4 2 : out
+2 4 3 out bit
+3 4 4 bit 
+0 20 0 component key_schedule
+1 20 1 key_schedule port
+2 20 2 port (
+3 20 3 ( FLAG_PORT
+4 20 4 FLAG_PORT ;
+5 20 5 ; FLAG_PORT
+6 20 4 FLAG_PORT ;
+7 20 5 ; FLAG_PORT
+8 20 4 FLAG_PORT ;
+9 20 5 ; FLAG_PORT
+10 20 4 FLAG_PORT ;
+11 20 5 ; FLAG_PORT
+12 20 4 FLAG_PORT ;
+13 20 5 ; FLAG_PORT
+14 20 4 FLAG_PORT )
+15 20 6 ) ;
+16 20 7 ; end
+17 20 8 end component
+18 20 9 component ;
+19 20 10 ; 
+0 4 0 clk :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 4 0 rst :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 9 0 keyin :
+1 9 2 : in
+2 9 3 in bit_vector
+3 9 5 bit_vector (
+4 9 6 ( 127
+5 9 7 127 downto
+6 9 8 downto 0
+NEXT NUMBER127
+7 9 9 0 )
+8 9 10 ) 
+0 9 0 first_round_key :
+1 9 2 : out
+2 9 3 out bit_vector
+3 9 5 bit_vector (
+4 9 6 ( 127
+5 9 7 127 downto
+6 9 8 downto 0
+NEXT NUMBER127
+7 9 9 0 )
+8 9 10 ) 
+0 9 0 round_key :
+1 9 2 : out
+2 9 3 out bit_vector
+3 9 5 bit_vector (
+4 9 6 ( 127
+5 9 7 127 downto
+6 9 8 downto 0
+NEXT NUMBER127
+7 9 9 0 )
+8 9 10 ) 
+0 4 0 first_round_signal :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 24 0 component round
+1 24 1 round port
+2 24 2 port (
+3 24 3 ( FLAG_PORT
+4 24 4 FLAG_PORT ;
+5 24 5 ; FLAG_PORT
+6 24 4 FLAG_PORT ;
+7 24 5 ; FLAG_PORT
+8 24 4 FLAG_PORT ;
+9 24 5 ; FLAG_PORT
+10 24 4 FLAG_PORT ;
+11 24 5 ; FLAG_PORT
+12 24 4 FLAG_PORT ;
+13 24 5 ; FLAG_PORT
+14 24 4 FLAG_PORT ;
+15 24 5 ; FLAG_PORT
+16 24 4 FLAG_PORT ;
+17 24 5 ; FLAG_PORT
+18 24 4 FLAG_PORT )
+19 24 6 ) ;
+20 24 7 ; end
+21 24 8 end component
+22 24 9 component ;
+23 24 10 ; 
+0 4 0 clk :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 4 0 rst :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 9 0 din :
+1 9 2 : in
+2 9 3 in bit_vector
+3 9 5 bit_vector (
+4 9 6 ( 0
+5 9 7 0 to
+6 9 16 to 127
+7 9 9 127 )
+8 9 10 ) 
+0 9 0 first_round_key :
+1 9 2 : in
+2 9 3 in bit_vector
+3 9 5 bit_vector (
+4 9 6 ( 0
+5 9 7 0 to
+6 9 16 to 127
+7 9 9 127 )
+8 9 10 ) 
+0 9 0 round_key :
+1 9 2 : in
+2 9 3 in bit_vector
+3 9 5 bit_vector (
+4 9 6 ( 0
+5 9 7 0 to
+6 9 16 to 127
+7 9 9 127 )
+8 9 10 ) 
+0 4 0 last_round_signal :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 4 0 first_round_signal :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 9 0 dout :
+1 9 2 : out
+2 9 3 out bit_vector
+3 9 5 bit_vector (
+4 9 6 ( 0
+5 9 7 0 to
+6 9 16 to 127
+7 9 9 127 )
+8 9 10 ) 
+0 18 0 component aes_ctrl
+1 18 1 aes_ctrl port
+2 18 2 port (
+3 18 3 ( FLAG_PORT
+4 18 4 FLAG_PORT ;
+5 18 5 ; FLAG_PORT
+6 18 4 FLAG_PORT ;
+7 18 5 ; FLAG_PORT
+8 18 4 FLAG_PORT ;
+9 18 5 ; FLAG_PORT
+10 18 4 FLAG_PORT ;
+11 18 5 ; FLAG_PORT
+12 18 4 FLAG_PORT )
+13 18 6 ) ;
+14 18 7 ; end
+15 18 8 end component
+16 18 9 component ;
+17 18 10 ; 
+0 4 0 clk :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 4 0 rst :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 4 0 start :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 4 0 last_round_signal :
+1 4 2 : out
+2 4 3 out bit
+3 4 4 bit 
+0 4 0 first_round_signal :
+1 4 2 : out
+2 4 3 out bit
+3 4 4 bit 
+0 18 0 component ffd_start
+1 18 1 ffd_start port
+2 18 2 port (
+3 18 3 ( FLAG_PORT
+4 18 4 FLAG_PORT ;
+5 18 5 ; FLAG_PORT
+6 18 4 FLAG_PORT ;
+7 18 5 ; FLAG_PORT
+8 18 4 FLAG_PORT ;
+9 18 5 ; FLAG_PORT
+10 18 4 FLAG_PORT ;
+11 18 5 ; FLAG_PORT
+12 18 4 FLAG_PORT )
+13 18 6 ) ;
+14 18 7 ; end
+15 18 8 end component
+16 18 9 component ;
+17 18 10 ; 
+0 4 0 a :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 4 0 q :
+1 4 2 : out
+2 4 3 out bit
+3 4 4 bit 
+0 4 0 store :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 4 0 clk :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 4 0 rst :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+001INF Information: BEGINNING OF THE SYNTHESIS OF THE "TEST/FINAL_TEST/base_bit.vhd" FILE
+005INF Information: The "TEST/FINAL_TEST/base_bit.vhd" file was successfully opened 
+009INF Information line 4: The library "std" has been detected
+009INF Information line 6: The library "ieee" has been detected
+010INF Information line 11: The entity "aes_core" has been detected
+011INF Information line 25: The architecture "struct" has been detected
+803DEB Debugger line 13: The port "clk" has been detected
+803DEB Debugger line 14: The port "rst" has been detected
+803DEB Debugger line 15: The port "keyin" has been detected
+803DEB Debugger line 16: The port "start" has been detected
+803DEB Debugger line 17: The port "din" has been detected
+803DEB Debugger line 18: The port "dout" has been detected
+803DEB Debugger line 19: The port "ivin" has been detected
+803DEB Debugger line 20: The port "ecb_cbc" has been detected
+803DEB Debugger line 21: The port "dout_val" has been detected
+020INF Information line 27: The component "key_schedule" has been detected
+020INF Information line 37: The component "round" has been detected
+020INF Information line 49: The component "aes_ctrl" has been detected
+020INF Information line 58: The component "ffd_start" has been detected
+801DEB Debugger line 67: The signal "data_round_in" has been detected
+801DEB Debugger line 68: The signal "data_round_out" has been detected
+801DEB Debugger line 69: The signal "first_round_key" has been detected
+801DEB Debugger line 70: The signal "round_key" has been detected
+801DEB Debugger line 71: The signal "last_round_signal" has been detected
+801DEB Debugger line 72: The signal "first_round_signal" has been detected
+804DEB Debugger line 75: The port map "round_inst" has been detected
+804DEB Debugger line 76: The port map "key_sched_inst" has been detected
+804DEB Debugger line 78: The port map "control_inst" has been detected
+803DEB Debugger line 29: The port "clk" has been detected
+803DEB Debugger line 30: The port "rst" has been detected
+803DEB Debugger line 31: The port "keyin" has been detected
+803DEB Debugger line 32: The port "first_round_key" has been detected
+803DEB Debugger line 33: The port "round_key" has been detected
+803DEB Debugger line 34: The port "first_round_signal" has been detected
+803DEB Debugger line 39: The port "clk" has been detected
+803DEB Debugger line 40: The port "rst" has been detected
+803DEB Debugger line 41: The port "din" has been detected
+803DEB Debugger line 42: The port "first_round_key" has been detected
+803DEB Debugger line 43: The port "round_key" has been detected
+803DEB Debugger line 44: The port "last_round_signal" has been detected
+803DEB Debugger line 45: The port "first_round_signal" has been detected
+803DEB Debugger line 46: The port "dout" has been detected
+803DEB Debugger line 51: The port "clk" has been detected
+803DEB Debugger line 52: The port "rst" has been detected
+803DEB Debugger line 53: The port "start" has been detected
+803DEB Debugger line 54: The port "last_round_signal" has been detected
+803DEB Debugger line 55: The port "first_round_signal" has been detected
+803DEB Debugger line 60: The port "a" has been detected
+803DEB Debugger line 61: The port "q" has been detected
+803DEB Debugger line 62: The port "store" has been detected
+803DEB Debugger line 63: The port "clk" has been detected
+803DEB Debugger line 64: The port "rst" has been detected
+050INF Information: THE CREATION OF THE DATA TREE IS ENDED
+100INF Information: THE REORGANIZATION OF THE LEXEMES IS ENDED
+200INF Information: THE SYNTAX VERIFICATION IS ENDED

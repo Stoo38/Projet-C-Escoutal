@@ -1,0 +1,4 @@
+001INF Information: BEGINNING OF THE SYNTHESIS OF THE "TEST/FINAL_TEST/erreur.vhd" FILE
+005INF Information: The "TEST/FINAL_TEST/erreur.vhd" file was successfully opened 
+012ERR Error line 2: "librar" is not in any hierarchy (library, entity or architecture)
+004INF Information: The option to close when we encounter an error is turned on, so the program will be killed
