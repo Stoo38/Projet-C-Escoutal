@@ -1,5 +1,5 @@
 #include "../HEADER/Signal.h"
-/*
+
 void Signal::verifySyntax() 
 {
 	list <Lexeme>::iterator itr;
@@ -8,10 +8,10 @@ void Signal::verifySyntax()
 	int nextNb = 0, prevNb = 0;
 	int sizeVector = 0;
 
-	string myTypes[2];
+	string myTypes[3];
 	myTypes[0] = "bit";
 	myTypes[1] = "bit_vector";
-	myTypes[2] = "integer";
+	myTypes[2] = "unsigned";
 
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
@@ -361,4 +361,4 @@ void Signal::verifySyntax()
 		}
 		count++;	
 	}
-}*/
+}

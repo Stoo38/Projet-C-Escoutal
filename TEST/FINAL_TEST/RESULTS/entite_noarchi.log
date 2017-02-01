@@ -1,3 +1,101 @@
+List of lexemes contained in the block library std
+2 2 library
+2 2 std
+2 2 ;
+3 3 use
+3 3 std
+3 3 .
+3 3 textio
+3 3 .
+3 3 all
+3 3 ;
+List of lexemes contained in the block library ieee
+4 4 library
+4 4 ieee
+4 4 ;
+5 5 use
+5 5 ieee
+5 5 .
+5 5 bit_1164
+5 5 .
+5 5 all
+5 5 ;
+6 6 use
+6 6 ieee
+6 6 .
+6 6 bit_misc
+6 6 .
+6 6 all
+6 6 ;
+7 7 use
+7 7 ieee
+7 7 .
+7 7 bit_arith
+7 7 .
+7 7 all
+7 7 ;
+List of lexemes contained in the block entity entite_noarchi
+9 9 entity
+9 9 entite_noarchi
+9 9 is
+10 10 port
+10 10 (
+11 11 FLAG_PORT
+11 11 ;
+12 12 FLAG_PORT
+12 12 ;
+13 13 FLAG_PORT
+13 13 ;
+14 14 FLAG_PORT
+14 14 ;
+15 15 FLAG_PORT
+15 15 ;
+16 16 FLAG_PORT
+18 18 )
+18 18 ;
+19 19 end
+19 19 entite_noarchi
+19 19 ;
+List of lexemes contained in the block port clk
+11 11 clk
+11 11 :
+11 11 in
+11 11 bit
+List of lexemes contained in the block port rst
+12 12 rst
+12 12 :
+12 12 in
+12 12 bit
+List of lexemes contained in the block port start
+13 13 start
+13 13 :
+13 13 in
+13 13 bit
+List of lexemes contained in the block port done
+14 14 done
+14 14 :
+14 14 in
+14 14 bit
+List of lexemes contained in the block port din
+15 15 din
+15 15 :
+15 15 in
+15 15 bit_vector
+15 15 (
+15 15 15
+15 15 downto
+15 15 0
+15 15 )
+List of lexemes contained in the block port dout
+16 16 dout
+16 16 :
+16 16 out
+16 16 bit_vector
+16 16 (
+16 16 15
+16 16 downto
+16 16 0
+16 16 )
 0 10 0 library std
 1 10 1 std ;
 2 10 2 ; use

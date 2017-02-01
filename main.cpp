@@ -15,7 +15,9 @@ int main(int argc, char *argv[])
 	int opt_nb_file = 1;			//Nombre de fichier VHDL à synthétiser
 	bool opt_close_error = true;		//Option pour arrêter/ continuer quand l'on rencontre une erreur
 	bool opt_debug = false;			//Option pour utiliser les messages de debug
+	bool opt_display = false;
 	bool step_tree = false;			//Option pour activer l'étape de création de l'arbre, obligatoire pour passer aux étapes suivantes
+	bool step_syntax = false;
 	list <string> file;			// Liste contenant les différents fichiers VHDL à synthétiser
 	
 
@@ -51,6 +53,11 @@ int main(int argc, char *argv[])
 		{
 			step_tree = true;	
 		}
+		else if (parameter == "-syntax")	
+		{
+			step_syntax = true;
+			step_tree = true;	
+		}
 		else if (parameter == "-error")		// Paramètre utilisé pour continuer lors d'une erreur
 		{					// Ne fonctionne pas avec toutes les erreurs
 			opt_close_error = false;	
@@ -58,6 +65,10 @@ int main(int argc, char *argv[])
 		else if (parameter == "-debug")		// Paramètre utilisé pour continuer lors d'une erreur
 		{
 			opt_debug = true;	
+		}
+		else if (parameter == "-display")	// Paramètre utilisé pour continuer lors d'une erreur
+		{
+			opt_display = true;	
 		}
 		else					// Sinon, paramètre non reconnu 
 		{
@@ -70,14 +81,20 @@ int main(int argc, char *argv[])
 	Display messageBox(opt_close_error, opt_debug);			// Création de l'objet contenant tous les messages
 	for (itfile = file.begin(); itfile != file.end(); itfile++) 	// Parcours un à un des fichiers VHDL
 	{
-		if (step_tree == true)					// Etape de création de l'arbre si l'option est activée
-		{
-			messageBox.createMessage("001", 0, *itfile);			
-			Top myTop(*itfile, messageBox);				// Création d'un objet Top où toutes les informations pour un unique fichier VHDL seront stockées 
-			myTop.createTree();					// Création de l'arbre en lui-même	
-			myTop.reorganizeLexemes();	
-			myTop.verifySyntax();	
+		messageBox.createMessage("001", 0, *itfile);			
+		Top myTop(*itfile, messageBox);				// Création d'un objet Top par fichier VHDL 
+		if (step_tree == true)					
+		{									
+			myTop.createTree();				// Création de l'arbre en lui-même	
+			myTop.reorganizeLexemes();
+		}
+		if (opt_display == true)					
+		{									
 			myTop.displayLexemes();
+		}
+		if (step_syntax == true)					
+		{
+			myTop.verifySyntax();	
 		}
 	}
 		

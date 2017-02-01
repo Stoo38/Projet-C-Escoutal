@@ -77,7 +77,6 @@ void InstructionIf::createComparison()
 	bool flagBegin = true;
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
-		cout << (*itr).m_word << endl;
 		if (((*itr).m_word == "default") && (inCompa == false))
 		{
 			if (flagBegin == true)

@@ -1,3 +1,541 @@
+List of lexemes contained in the block library std
+4 4 library
+4 4 std
+4 4 ;
+5 5 use
+5 5 std
+5 5 .
+5 5 textio
+5 5 .
+5 5 all
+5 5 ;
+List of lexemes contained in the block library ieee
+6 6 library
+6 6 ieee
+6 6 ;
+7 7 use
+7 7 ieee
+7 7 .
+7 7 std_logic_1164
+7 7 .
+7 7 all
+7 7 ;
+8 8 use
+8 8 ieee
+8 8 .
+8 8 std_logic_misc
+8 8 .
+8 8 all
+8 8 ;
+9 9 use
+9 9 ieee
+9 9 .
+9 9 std_logic_arith
+9 9 .
+9 9 all
+9 9 ;
+List of lexemes contained in the block entity aes_core
+11 11 entity
+11 11 aes_core
+11 11 is
+12 12 port
+12 12 (
+13 13 FLAG_PORT
+13 13 ;
+14 14 FLAG_PORT
+14 14 ;
+15 15 FLAG_PORT
+15 15 ;
+16 16 FLAG_PORT
+16 16 ;
+17 17 FLAG_PORT
+17 17 ;
+18 18 FLAG_PORT
+18 18 ;
+19 19 FLAG_PORT
+19 19 ;
+20 20 FLAG_PORT
+20 20 ;
+21 21 FLAG_PORT
+22 22 )
+22 22 ;
+23 23 end
+23 23 aes_core
+23 23 ;
+List of lexemes contained in the block port clk
+13 13 clk
+13 13 :
+13 13 in
+13 13 std_logic
+List of lexemes contained in the block port rst
+14 14 rst
+14 14 :
+14 14 in
+14 14 std_logic
+List of lexemes contained in the block port keyin
+15 15 keyin
+15 15 :
+15 15 in
+15 15 std_logic_vector
+15 15 (
+15 15 127
+15 15 downto
+15 15 0
+15 15 )
+List of lexemes contained in the block port start
+16 16 start
+16 16 :
+16 16 in
+16 16 std_logic
+List of lexemes contained in the block port din
+17 17 din
+17 17 :
+17 17 in
+17 17 std_logic_vector
+17 17 (
+17 17 127
+17 17 downto
+17 17 0
+17 17 )
+List of lexemes contained in the block port dout
+18 18 dout
+18 18 :
+18 18 out
+18 18 std_logic_vector
+18 18 (
+18 18 127
+18 18 downto
+18 18 0
+18 18 )
+List of lexemes contained in the block port ivin
+19 19 ivin
+19 19 :
+19 19 in
+19 19 std_logic_vector
+19 19 (
+19 19 127
+19 19 downto
+19 19 0
+19 19 )
+List of lexemes contained in the block port ecb_cbc
+20 20 ecb_cbc
+20 20 :
+20 20 in
+20 20 std_logic
+List of lexemes contained in the block port dout_val
+21 21 dout_val
+21 21 :
+21 21 out
+21 21 std_logic
+List of lexemes contained in the block architecture struct
+25 25 architecture
+25 25 struct
+25 25 of
+25 25 aes_core
+25 25 is
+27 27 FLAG_COMP
+37 37 FLAG_COMP
+49 49 FLAG_COMP
+58 58 FLAG_COMP
+67 67 FLAG_SIGN
+68 68 FLAG_SIGN
+69 69 FLAG_SIGN
+70 70 FLAG_SIGN
+71 71 FLAG_SIGN
+72 72 FLAG_SIGN
+73 73 begin
+75 75 FLAG_PMAP
+76 76 FLAG_PMAP
+78 78 FLAG_PMAP
+80 80 data_round_in
+80 80 <
+80 80 =
+80 80 din
+80 80 when
+80 80 (
+80 80 ecb_cbc
+80 80 =
+80 80 '
+80 80 0
+80 80 '
+80 80 )
+80 80 else
+81 81 (
+81 81 din
+81 81 xor
+81 81 ivin
+81 81 )
+81 81 ;
+83 83 dout
+83 83 <
+83 83 =
+83 83 data_round_out
+83 83 ;
+84 84 dout_val
+84 84 <
+84 84 =
+84 84 last_round_signal
+84 84 ;
+86 86 end
+86 86 struct
+86 86 ;
+List of lexemes contained in the block component key_schedule
+27 27 component
+27 27 key_schedule
+28 28 port
+28 28 (
+29 29 FLAG_PORT
+29 29 ;
+30 30 FLAG_PORT
+30 30 ;
+31 31 FLAG_PORT
+31 31 ;
+32 32 FLAG_PORT
+32 32 ;
+33 33 FLAG_PORT
+33 33 ;
+34 34 FLAG_PORT
+35 35 )
+35 35 ;
+36 36 end
+36 36 component
+36 36 ;
+List of lexemes contained in the block port clk
+29 29 clk
+29 29 :
+29 29 in
+29 29 std_logic
+List of lexemes contained in the block port rst
+30 30 rst
+30 30 :
+30 30 in
+30 30 std_logic
+List of lexemes contained in the block port keyin
+31 31 keyin
+31 31 :
+31 31 in
+31 31 std_logic_vector
+31 31 (
+31 31 127
+31 31 downto
+31 31 0
+31 31 )
+List of lexemes contained in the block port first_round_key
+32 32 first_round_key
+32 32 :
+32 32 out
+32 32 std_logic_vector
+32 32 (
+32 32 127
+32 32 downto
+32 32 0
+32 32 )
+List of lexemes contained in the block port round_key
+33 33 round_key
+33 33 :
+33 33 out
+33 33 std_logic_vector
+33 33 (
+33 33 127
+33 33 downto
+33 33 0
+33 33 )
+List of lexemes contained in the block port first_round_signal
+34 34 first_round_signal
+34 34 :
+34 34 in
+34 34 std_logic
+List of lexemes contained in the block component round
+37 37 component
+37 37 round
+38 38 port
+38 38 (
+39 39 FLAG_PORT
+39 39 ;
+40 40 FLAG_PORT
+40 40 ;
+41 41 FLAG_PORT
+41 41 ;
+42 42 FLAG_PORT
+42 42 ;
+43 43 FLAG_PORT
+43 43 ;
+44 44 FLAG_PORT
+44 44 ;
+45 45 FLAG_PORT
+45 45 ;
+46 46 FLAG_PORT
+47 47 )
+47 47 ;
+48 48 end
+48 48 component
+48 48 ;
+List of lexemes contained in the block port clk
+39 39 clk
+39 39 :
+39 39 in
+39 39 std_logic
+List of lexemes contained in the block port rst
+40 40 rst
+40 40 :
+40 40 in
+40 40 std_logic
+List of lexemes contained in the block port din
+41 41 din
+41 41 :
+41 41 in
+41 41 std_logic_vector
+41 41 (
+41 41 0
+41 41 to
+41 41 127
+41 41 )
+List of lexemes contained in the block port first_round_key
+42 42 first_round_key
+42 42 :
+42 42 in
+42 42 std_logic_vector
+42 42 (
+42 42 0
+42 42 to
+42 42 127
+42 42 )
+List of lexemes contained in the block port round_key
+43 43 round_key
+43 43 :
+43 43 in
+43 43 std_logic_vector
+43 43 (
+43 43 0
+43 43 to
+43 43 127
+43 43 )
+List of lexemes contained in the block port last_round_signal
+44 44 last_round_signal
+44 44 :
+44 44 in
+44 44 std_logic
+List of lexemes contained in the block port first_round_signal
+45 45 first_round_signal
+45 45 :
+45 45 in
+45 45 std_logic
+List of lexemes contained in the block port dout
+46 46 dout
+46 46 :
+46 46 out
+46 46 std_logic_vector
+46 46 (
+46 46 0
+46 46 to
+46 46 127
+46 46 )
+List of lexemes contained in the block component aes_ctrl
+49 49 component
+49 49 aes_ctrl
+50 50 port
+50 50 (
+51 51 FLAG_PORT
+51 51 ;
+52 52 FLAG_PORT
+52 52 ;
+53 53 FLAG_PORT
+53 53 ;
+54 54 FLAG_PORT
+54 54 ;
+55 55 FLAG_PORT
+56 56 )
+56 56 ;
+57 57 end
+57 57 component
+57 57 ;
+List of lexemes contained in the block port clk
+51 51 clk
+51 51 :
+51 51 in
+51 51 std_logic
+List of lexemes contained in the block port rst
+52 52 rst
+52 52 :
+52 52 in
+52 52 std_logic
+List of lexemes contained in the block port start
+53 53 start
+53 53 :
+53 53 in
+53 53 std_logic
+List of lexemes contained in the block port last_round_signal
+54 54 last_round_signal
+54 54 :
+54 54 out
+54 54 std_logic
+List of lexemes contained in the block port first_round_signal
+55 55 first_round_signal
+55 55 :
+55 55 out
+55 55 std_logic
+List of lexemes contained in the block component ffd_start
+58 58 component
+58 58 ffd_start
+59 59 port
+59 59 (
+60 60 FLAG_PORT
+60 60 ;
+61 61 FLAG_PORT
+61 61 ;
+62 62 FLAG_PORT
+62 62 ;
+63 63 FLAG_PORT
+63 63 ;
+64 64 FLAG_PORT
+64 64 )
+64 64 ;
+65 65 end
+65 65 component
+65 65 ;
+List of lexemes contained in the block port a
+60 60 a
+60 60 :
+60 60 in
+60 60 std_logic
+List of lexemes contained in the block port q
+61 61 q
+61 61 :
+61 61 out
+61 61 std_logic
+List of lexemes contained in the block port store
+62 62 store
+62 62 :
+62 62 in
+62 62 std_logic
+List of lexemes contained in the block port clk
+63 63 clk
+63 63 :
+63 63 in
+63 63 std_logic
+List of lexemes contained in the block port rst
+64 64 rst
+64 64 :
+64 64 in
+64 64 std_logic
+List of lexemes contained in the block signal data_round_in
+67 67 signal
+67 67 data_round_in
+67 67 :
+67 67 std_logic_vector
+67 67 (
+67 67 127
+67 67 downto
+67 67 0
+67 67 )
+67 67 ;
+List of lexemes contained in the block signal data_round_out
+68 68 signal
+68 68 data_round_out
+68 68 :
+68 68 std_logic_vector
+68 68 (
+68 68 127
+68 68 downto
+68 68 0
+68 68 )
+68 68 ;
+List of lexemes contained in the block signal first_round_key
+69 69 signal
+69 69 first_round_key
+69 69 :
+69 69 std_logic_vector
+69 69 (
+69 69 127
+69 69 downto
+69 69 0
+69 69 )
+69 69 ;
+List of lexemes contained in the block signal round_key
+70 70 signal
+70 70 round_key
+70 70 :
+70 70 std_logic_vector
+70 70 (
+70 70 127
+70 70 downto
+70 70 0
+70 70 )
+70 70 ;
+List of lexemes contained in the block signal last_round_signal
+71 71 signal
+71 71 last_round_signal
+71 71 :
+71 71 std_logic
+71 71 ;
+List of lexemes contained in the block signal first_round_signal
+72 72 signal
+72 72 first_round_signal
+72 72 :
+72 72 std_logic
+72 72 ;
+List of lexemes contained in the block portmap round_inst
+75 75 round_inst
+75 75 :
+75 75 round
+75 75 port
+75 75 map
+75 75 (
+75 75 clk
+75 75 ,
+75 75 rst
+75 75 ,
+75 75 data_round_in
+75 75 ,
+75 75 first_round_key
+75 75 ,
+75 75 round_key
+75 75 ,
+75 75 last_round_signal
+75 75 ,
+75 75 first_round_signal
+75 75 ,
+75 75 data_round_out
+75 75 )
+75 75 ;
+List of lexemes contained in the block portmap key_sched_inst
+76 76 key_sched_inst
+76 76 :
+76 76 key_schedule
+76 76 port
+76 76 map
+76 76 (
+76 76 clk
+76 76 ,
+76 76 rst
+76 76 ,
+76 76 keyin
+76 76 ,
+76 76 first_round_key
+76 76 ,
+76 76 round_key
+76 76 ,
+76 76 first_round_signal
+76 76 )
+76 76 ;
+List of lexemes contained in the block portmap control_inst
+78 78 control_inst
+78 78 :
+78 78 aes_ctrl
+78 78 port
+78 78 map
+78 78 (
+78 78 clk
+78 78 ,
+78 78 rst
+78 78 ,
+78 78 start
+78 78 ,
+78 78 last_round_signal
+78 78 ,
+78 78 first_round_signal
+78 78 )
+78 78 ;
 0 10 0 library std
 1 10 1 std ;
 2 10 2 ; use
@@ -119,220 +657,25 @@ NEXT NUMBER127
 1 4 2 : out
 2 4 3 out std_logic
 3 4 4 std_logic 
-0 20 0 component key_schedule
-1 20 1 key_schedule port
-2 20 2 port (
-3 20 3 ( FLAG_PORT
-4 20 4 FLAG_PORT ;
-5 20 5 ; FLAG_PORT
-6 20 4 FLAG_PORT ;
-7 20 5 ; FLAG_PORT
-8 20 4 FLAG_PORT ;
-9 20 5 ; FLAG_PORT
-10 20 4 FLAG_PORT ;
-11 20 5 ; FLAG_PORT
-12 20 4 FLAG_PORT ;
-13 20 5 ; FLAG_PORT
-14 20 4 FLAG_PORT )
-15 20 6 ) ;
-16 20 7 ; end
-17 20 8 end component
-18 20 9 component ;
-19 20 10 ; 
-0 4 0 clk :
-1 4 2 : in
-2 4 3 in std_logic
-3 4 4 std_logic 
-0 4 0 rst :
-1 4 2 : in
-2 4 3 in std_logic
-3 4 4 std_logic 
-0 9 0 keyin :
-1 9 2 : in
-2 9 3 in std_logic_vector
-3 9 5 std_logic_vector (
-4 9 6 ( 127
-5 9 7 127 downto
-6 9 8 downto 0
-NEXT NUMBER127
-7 9 9 0 )
-8 9 10 ) 
-0 9 0 first_round_key :
-1 9 2 : out
-2 9 3 out std_logic_vector
-3 9 5 std_logic_vector (
-4 9 6 ( 127
-5 9 7 127 downto
-6 9 8 downto 0
-NEXT NUMBER127
-7 9 9 0 )
-8 9 10 ) 
-0 9 0 round_key :
-1 9 2 : out
-2 9 3 out std_logic_vector
-3 9 5 std_logic_vector (
-4 9 6 ( 127
-5 9 7 127 downto
-6 9 8 downto 0
-NEXT NUMBER127
-7 9 9 0 )
-8 9 10 ) 
-0 4 0 first_round_signal :
-1 4 2 : in
-2 4 3 in std_logic
-3 4 4 std_logic 
-0 24 0 component round
-1 24 1 round port
-2 24 2 port (
-3 24 3 ( FLAG_PORT
-4 24 4 FLAG_PORT ;
-5 24 5 ; FLAG_PORT
-6 24 4 FLAG_PORT ;
-7 24 5 ; FLAG_PORT
-8 24 4 FLAG_PORT ;
-9 24 5 ; FLAG_PORT
-10 24 4 FLAG_PORT ;
-11 24 5 ; FLAG_PORT
-12 24 4 FLAG_PORT ;
-13 24 5 ; FLAG_PORT
-14 24 4 FLAG_PORT ;
-15 24 5 ; FLAG_PORT
-16 24 4 FLAG_PORT ;
-17 24 5 ; FLAG_PORT
-18 24 4 FLAG_PORT )
-19 24 6 ) ;
-20 24 7 ; end
-21 24 8 end component
-22 24 9 component ;
-23 24 10 ; 
-0 4 0 clk :
-1 4 2 : in
-2 4 3 in std_logic
-3 4 4 std_logic 
-0 4 0 rst :
-1 4 2 : in
-2 4 3 in std_logic
-3 4 4 std_logic 
-0 9 0 din :
-1 9 2 : in
-2 9 3 in std_logic_vector
-3 9 5 std_logic_vector (
-4 9 6 ( 0
-5 9 7 0 to
-6 9 16 to 127
-7 9 9 127 )
-8 9 10 ) 
-0 9 0 first_round_key :
-1 9 2 : in
-2 9 3 in std_logic_vector
-3 9 5 std_logic_vector (
-4 9 6 ( 0
-5 9 7 0 to
-6 9 16 to 127
-7 9 9 127 )
-8 9 10 ) 
-0 9 0 round_key :
-1 9 2 : in
-2 9 3 in std_logic_vector
-3 9 5 std_logic_vector (
-4 9 6 ( 0
-5 9 7 0 to
-6 9 16 to 127
-7 9 9 127 )
-8 9 10 ) 
-0 4 0 last_round_signal :
-1 4 2 : in
-2 4 3 in std_logic
-3 4 4 std_logic 
-0 4 0 first_round_signal :
-1 4 2 : in
-2 4 3 in std_logic
-3 4 4 std_logic 
-0 9 0 dout :
-1 9 2 : out
-2 9 3 out std_logic_vector
-3 9 5 std_logic_vector (
-4 9 6 ( 0
-5 9 7 0 to
-6 9 16 to 127
-7 9 9 127 )
-8 9 10 ) 
-0 18 0 component aes_ctrl
-1 18 1 aes_ctrl port
-2 18 2 port (
-3 18 3 ( FLAG_PORT
-4 18 4 FLAG_PORT ;
-5 18 5 ; FLAG_PORT
-6 18 4 FLAG_PORT ;
-7 18 5 ; FLAG_PORT
-8 18 4 FLAG_PORT ;
-9 18 5 ; FLAG_PORT
-10 18 4 FLAG_PORT ;
-11 18 5 ; FLAG_PORT
-12 18 4 FLAG_PORT )
-13 18 6 ) ;
-14 18 7 ; end
-15 18 8 end component
-16 18 9 component ;
-17 18 10 ; 
-0 4 0 clk :
-1 4 2 : in
-2 4 3 in std_logic
-3 4 4 std_logic 
-0 4 0 rst :
-1 4 2 : in
-2 4 3 in std_logic
-3 4 4 std_logic 
-0 4 0 start :
-1 4 2 : in
-2 4 3 in std_logic
-3 4 4 std_logic 
-0 4 0 last_round_signal :
-1 4 2 : out
-2 4 3 out std_logic
-3 4 4 std_logic 
-0 4 0 first_round_signal :
-1 4 2 : out
-2 4 3 out std_logic
-3 4 4 std_logic 
-0 18 0 component ffd_start
-1 18 1 ffd_start port
-2 18 2 port (
-3 18 3 ( FLAG_PORT
-4 18 4 FLAG_PORT ;
-5 18 5 ; FLAG_PORT
-6 18 4 FLAG_PORT ;
-7 18 5 ; FLAG_PORT
-8 18 4 FLAG_PORT ;
-9 18 5 ; FLAG_PORT
-10 18 4 FLAG_PORT ;
-11 18 5 ; FLAG_PORT
-12 18 4 FLAG_PORT )
-13 18 6 ) ;
-14 18 7 ; end
-15 18 8 end component
-16 18 9 component ;
-17 18 10 ; 
-0 4 0 a :
-1 4 2 : in
-2 4 3 in std_logic
-3 4 4 std_logic 
-0 4 0 q :
-1 4 2 : out
-2 4 3 out std_logic
-3 4 4 std_logic 
-0 4 0 store :
-1 4 2 : in
-2 4 3 in std_logic
-3 4 4 std_logic 
-0 4 0 clk :
-1 4 2 : in
-2 4 3 in std_logic
-3 4 4 std_logic 
-0 4 0 rst :
-1 4 2 : in
-2 4 3 in std_logic
-3 4 4 std_logic 
+0 51 0 architecture struct
+1 51 1 struct of
+2 51 2 of aes_core
+3 51 3 aes_core is
+4 51 4 is FLAG_COMP
+5 51 4 FLAG_COMP FLAG_COMP
+6 51 4 FLAG_COMP FLAG_COMP
+7 51 4 FLAG_COMP FLAG_COMP
+8 51 4 FLAG_COMP FLAG_SIGN
+9 51 4 FLAG_SIGN FLAG_SIGN
+10 51 4 FLAG_SIGN FLAG_SIGN
+11 51 4 FLAG_SIGN FLAG_SIGN
+12 51 4 FLAG_SIGN FLAG_SIGN
+13 51 4 FLAG_SIGN FLAG_SIGN
+14 51 4 FLAG_SIGN begin
+15 51 5 begin FLAG_PMAP
+16 51 5 FLAG_PMAP FLAG_PMAP
+17 51 5 FLAG_PMAP FLAG_PMAP
+18 51 5 FLAG_PMAP data_round_in
 001INF Information: BEGINNING OF THE SYNTHESIS OF THE "TEST/FINAL_TEST/base.vhd" FILE
 005INF Information: The "TEST/FINAL_TEST/base.vhd" file was successfully opened 
 009INF Information line 4: The library "std" has been detected
@@ -387,4 +730,5 @@ NEXT NUMBER127
 803DEB Debugger line 64: The port "rst" has been detected
 050INF Information: THE CREATION OF THE DATA TREE IS ENDED
 100INF Information: THE REORGANIZATION OF THE LEXEMES IS ENDED
-200INF Information: THE SYNTAX VERIFICATION IS ENDED
+231ERR Error line 78: the word "data_round_in" can not be used at this place for an architecture
+004INF Information: The option to close when we encounter an error is turned on, so the program will be killed

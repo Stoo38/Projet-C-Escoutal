@@ -26,7 +26,7 @@ void Bloc::displayLexemes()
 	list <Lexeme>::iterator itr;
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
-		cout << (*itr).m_line << " "<< (*itr).m_line << " " << (*itr).m_word << endl;		 
+		cout << (*itr).m_line << " " << (*itr).m_word << endl;		 
 	}
 }
 

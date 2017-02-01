@@ -27,7 +27,7 @@ architecture a of ALU is
 		A	: out std_logic);
 	end component ;
 
-signal result: unsigned (8 downto 0) := '1'; 
+signal result: unsigned (8 downto 0) <= "111111111"; 
 signal a_u: unsigned (7 downto 0);
 signal b_u: unsigned (7 downto 0);
 
