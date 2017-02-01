@@ -21,6 +21,7 @@ using namespace std;
 class Architecture : public BlocNode
 {
 	protected:
+		
 
 	public:
 	Architecture(const string & identifiant, const int nLine, Display &msgBox):
@@ -34,5 +35,7 @@ class Architecture : public BlocNode
 	void createType();
 	void createSignal();
 	void createPortMap();
+
+	virtual void verifySyntax();
 };
 #endif

@@ -34,7 +34,6 @@ signal b_u: unsigned (7 downto 0);
 begin	
 	MachineEtat01 : MachineEtat port map (sig_clk,sig_rst_n,sig_P,sig_F,sig_M,sig_A);
 	Compteur01 : Compteur port map (sig_M,sig_clk,sig_rst_n,sig_P,sig_F);
-
 testest2 : process(reset, clock)
 begin
 	
@@ -52,9 +51,11 @@ begin
 		when("011") => result <= ('0' & b_u) - ('0' & a_u );
 		when others => result <= "111111111";
 	end case;
+		
 		when("011") => result <= ('0' & b_u) - ('0' & a_u );
 		when others => result <= "111111111";
 	end case;
+	
 	case CMD is
 		when("000") => result <= ('0' & a_u);
 		when("001") => result <= ('0' & a_u) + ('0' & b_u );

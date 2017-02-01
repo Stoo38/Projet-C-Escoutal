@@ -64,6 +64,11 @@
 214ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the component
 215ERR Error line <L:> the word <"W"> can not be used at this place for a component
 216ERR Error line <L:> the word <"W"> can not be used at this place for a signal
+##### ARCHITECTURE
+230ERR Error line <L:> <"W"> is not a valid label, it must be the one of the architecture
+231ERR Error line <L:> the word <"W"> can not be used at this place for an architecture
+232ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the architecture
+
 
 
 ##### MESSAGES FOR THE DEBUGGING

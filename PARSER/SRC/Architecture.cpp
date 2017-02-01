@@ -244,7 +244,10 @@ void Architecture::createPortMap()
 				itr--;
 				itr--;
 				m_listeBlocks.push_back(new PortMap((*itr).m_word, name, (*itr).m_line, m_msgBox));
-				m_msgBox.createMessage("804", (*itr).m_line, (*itr).m_word);	
+				m_msgBox.createMessage("804", (*itr).m_line, (*itr).m_word);
+				newList.pop_back();	
+				newList.pop_back();	
+				newList.pop_back();	
 				Lexeme flag("FLAG_PMAP", (*itr).m_line);			 
 				newList.push_back(flag);
 			}
@@ -273,4 +276,141 @@ void Architecture::createPortMap()
 		}	
 	}
 	m_listLexemes = newList;
+}
+
+void Architecture::verifySyntax() 
+{
+	
+	list <Lexeme>::iterator itr;
+	int nbLexeme = 0;
+	int count = 0;
+	
+	string monword;
+	string nextWord;
+	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
+	{
+		monword = (*itr).m_word;
+		nextWord = checkNextWord(count, itr);
+		cout << count << " " << m_listLexemes.size() << " " << nbLexeme << " " << monword << " " << nextWord <<  endl;
+
+		switch (nbLexeme)
+		{
+			case 0:	
+				if (nextWord == m_identifiant.m_word)
+				{
+					nbLexeme = 1;
+				}
+				else
+				{
+					m_msgBox.createMessage("230", (*itr).m_line, nextWord);
+					itr = m_listLexemes.end();
+					itr--;
+				}
+				break;
+			case 1:
+				if (nextWord == "of")
+				{
+					nbLexeme = 2;
+				}
+				else
+				{
+					m_msgBox.createMessage("231", (*itr).m_line, nextWord);
+					itr = m_listLexemes.end();
+					itr--;
+				}
+				break;
+			case 2:
+				if (verifyLabel(nextWord) == false)
+				{
+					nbLexeme = 3;
+				}
+				else
+				{
+					m_msgBox.createMessage("231", (*itr).m_line, nextWord);
+					itr = m_listLexemes.end();
+					itr--;
+				}
+				break;
+			case 3:
+				if (nextWord == "is")
+				{
+					nbLexeme = 4;
+				}
+				else
+				{
+					m_msgBox.createMessage("231", (*itr).m_line, nextWord);
+					itr = m_listLexemes.end();
+					itr--;
+				}
+				break;
+			case 4:
+				if ((nextWord == "FLAG_COMP") || (nextWord == "FLAG_SIGN"))
+				{
+					nbLexeme = 4;
+				}
+				else if (nextWord == "begin")
+				{
+					nbLexeme = 5;
+				}
+				else
+				{
+					m_msgBox.createMessage("231", (*itr).m_line, nextWord);
+					itr = m_listLexemes.end();
+					itr--;
+				}
+				break;
+			case 5:
+				if ((nextWord == "FLAG_PMAP") || (nextWord == "FLAG_PROC"))
+				{					
+					nbLexeme = 5;
+				}
+				else if (nextWord == "end")
+				{
+					nbLexeme = 6;
+				}
+				else
+				{
+					m_msgBox.createMessage("231", (*itr).m_line, nextWord);
+					itr = m_listLexemes.end();
+					itr--;
+				}
+				break;
+			case 6:
+				if (nextWord == m_identifiant.m_word)
+				{
+					nbLexeme = 7;
+				}
+				else
+				{
+					m_msgBox.createMessage("230", (*itr).m_line, nextWord);
+					itr = m_listLexemes.end();
+					itr--;
+				}
+				break;
+			case 7:
+				if (nextWord == ";")
+				{
+					nbLexeme = 8;
+				}
+				else
+				{
+					m_msgBox.createMessage("232", (*itr).m_line, nextWord);
+					itr = m_listLexemes.end();
+					itr--;
+				}
+				break;
+			case 8:
+				if (nextWord != "")
+				{
+					m_msgBox.createMessage("232", (*itr).m_line, nextWord);
+					itr = m_listLexemes.end();
+					itr--;
+				}
+				break;
+			default:
+				break;
+		}
+		count++;
+	}	
+	BlocNode::verifySyntax();
 }
