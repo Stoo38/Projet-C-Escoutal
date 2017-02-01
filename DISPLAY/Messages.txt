@@ -1,3 +1,4 @@
+000WAR Warning: <"W"> is an invalid parameter 
 ###### MESSAGES DURING THE CREATION OF THE TREE
 ###### MAIN & TOP
 001INF Information: BEGINNING OF THE SYNTHESIS OF THE <"W"> FILE

@@ -19,9 +19,10 @@ int main(int argc, char *argv[])
 	bool step_tree = false;			//Option pour activer l'étape de création de l'arbre, obligatoire pour passer aux étapes suivantes
 	bool step_syntax = false;
 	list <string> file;			// Liste contenant les différents fichiers VHDL à synthétiser
-	
-
 	// Récupération des différents paramètres passés depuis la ligne de commande
+	
+	Display messageBox(opt_close_error, opt_debug);			// Création de l'objet contenant tous les messages
+	
 	int i = 1;
 	string parameter;
 	for(int i = 1; i < argc; i++)
@@ -72,13 +73,13 @@ int main(int argc, char *argv[])
 		}
 		else					// Sinon, paramètre non reconnu 
 		{
-			cout << "invalid parameter" << endl;
+			messageBox.createMessage("000", 0, parameter);
+			//cout << "000WAR Warning: Invalid Parameter" << endl;
 		}
 	}
 
 	// Déclenchement des différentes étapes de synthèse en utilisant les options définies précédemment
 	list <string>::iterator itfile;
-	Display messageBox(opt_close_error, opt_debug);			// Création de l'objet contenant tous les messages
 	for (itfile = file.begin(); itfile != file.end(); itfile++) 	// Parcours un à un des fichiers VHDL
 	{
 		messageBox.createMessage("001", 0, *itfile);			
