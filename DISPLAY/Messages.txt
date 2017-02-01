@@ -61,9 +61,13 @@
 ###### TYPE
 212ERR Error line <L:>  the word <"W"> can not be used at this place for a type
 213ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the type
+###### COMPONENT
 214ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the component
 215ERR Error line <L:> the word <"W"> can not be used at this place for a component
+###### SIGNAL
 216ERR Error line <L:> the word <"W"> can not be used at this place for a signal
+217ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the signal
+218ERR Error line <L:> the size of the vector <"W"> is different of the expected size
 
 
 ##### MESSAGES FOR THE DEBUGGING

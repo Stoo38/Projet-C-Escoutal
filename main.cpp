@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
 			myTop.createTree();					// Création de l'arbre en lui-même	
 			myTop.reorganizeLexemes();	
 			myTop.verifySyntax();	
-			//myTop.displayLexemes();
+			myTop.displayLexemes();
 		}
 	}
 		
