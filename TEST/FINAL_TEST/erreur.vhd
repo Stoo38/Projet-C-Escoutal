@@ -7,7 +7,11 @@ libraryIEEE; --pas d'espace
   use IEEE.bit_arith.all;
 
 entity assign  --pas de is
+<<<<<<< HEAD
   port  ( --pas de (  
+=======
+  port   (--pas de (  
+>>>>>>> 0dd66c3f1788be8061feea85fb54be962546d778
     CLK :       In    bt; --bt inconnu
     RST :       In   bit, --mauvais separateur
     start, :      In  bit; -- manque un port 
