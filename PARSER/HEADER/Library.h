@@ -1,17 +1,10 @@
 #ifndef _LIBRARY_H_
 #define _LIBRARY_H_
 
-#include <math.h>
-#include <string.h>
-#include <iostream>
-#include <sstream>
-#include <list>
-#include "Lexeme.h"
 #include "Bloc.h"
-#include "../../DISPLAY/Display.h"
 
 using namespace std;
-
+//Classe pour separer les library VHDL
 class Library : public Bloc
 {
 	protected:
@@ -26,9 +19,7 @@ class Library : public Bloc
 	{	
 	}
 
-	//ACCESSEURS
-
-	//MODIFIEURS
+	//METHODE HERITEE
 	virtual void createTree() {};
 	virtual void reorganizeLexemes() {};	
 	virtual void verifySyntax();

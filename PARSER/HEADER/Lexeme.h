@@ -5,13 +5,12 @@
 #include <cstdlib>
 
 using namespace std;
-
+//Classe pour stocker chaque lexeme et y associer d'eventuels attributs
 class Lexeme
 {
    	public:
-	string m_word;
-	int m_line;
-	//string m_label;
+	string m_word;		//Contient le lexeme
+	int m_line;		//Contient la ligne
 
 	Lexeme(string word = "", int line = 0):
 	m_word(word),

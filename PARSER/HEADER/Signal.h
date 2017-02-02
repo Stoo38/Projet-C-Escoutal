@@ -1,20 +1,11 @@
 #ifndef _SIGNAL_H_
 #define _SIGNAL_H_
 
-#include <math.h>
-#include <string.h>
-#include <iostream>
-#include <sstream>
-#include <list>
-
-#include "Lexeme.h"
 #include "Bloc.h"
-#include "Architecture.h"
 #include "BlocNode.h"
-#include "../../DISPLAY/Display.h"
 
 using namespace std;
-
+//Classe pour separer les déclarations de signaux VHDL
 class Signal : public Bloc
 {
 	protected:
@@ -24,7 +15,7 @@ class Signal : public Bloc
 	Bloc(identifiant, "signal", nLine, msgBox)
 	{	
 	}
-
+	//METHODE HERITEE
 	virtual void createTree() {};
 	virtual void reorganizeLexemes() {};
 	virtual void verifySyntax();

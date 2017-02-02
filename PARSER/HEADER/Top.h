@@ -16,9 +16,9 @@
 #include "../../DISPLAY/Display.h"
 #include "functions.h"
 
-
 using namespace std;
-
+//Classe de base pour stocker les blocs Library, Entity et Architecture
+//Sert à lancer les différentes fonctions à travers l'arbre
 class Top
 {
 	private:
@@ -41,10 +41,13 @@ class Top
 	void displayLexemes();
 	//Fonction utilisee pour creer les différents blocs en fonction des lexemes extraits du fichier VHDL
 	void createTree();
+	//Fonction pour réorganiser les lexemes des differents blocs
 	void reorganizeLexemes();
+	//Fonction pour lancer la verification syntaxique de chaque bloc
 	void verifySyntax();
-
+	//Fonction pour lancer la presynthese de chaque bloc
 	void preSynthesis();
+	//Fonction verifiant les correspondances des noms entre Entity et Architecture
 	void verifyEntityArchi();
 };
 

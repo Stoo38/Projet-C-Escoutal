@@ -7,7 +7,7 @@
 #include "Lexeme.h"
 
 using namespace std;
-
+//Classe pour decouper les connexions en des elements les plus simples possibles
 class Gate
 {
    	public:

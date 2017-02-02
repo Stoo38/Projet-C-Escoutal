@@ -1,13 +1,6 @@
 #ifndef _ARCHITECTURE_H_
 #define _ARCHITECTURE_H_
 
-#include <math.h>
-#include <string.h>
-#include <iostream>
-#include <sstream>
-#include <list>
-
-#include "Lexeme.h"
 #include "BlocNode.h"
 #include "Component.h"
 #include "Process.h"
@@ -15,14 +8,13 @@
 #include "Signal.h"
 #include "PortMap.h"
 #include "Connexion.h"
-#include "../../DISPLAY/Display.h"
 
 using namespace std;
-
+//Classe pour separer les architectures VHDL
 class Architecture : public BlocNode
 {
 	protected:
-	Lexeme m_entity;	
+	Lexeme m_entity;	//Contient le nom de l'entity liée
 
 	public:
 	Architecture(const string & identifiant, const int nLine, Display &msgBox):
@@ -33,12 +25,12 @@ class Architecture : public BlocNode
 	virtual const string & getEntity() const;
 
 	virtual void createTree();
-	void createComponent();
-	void createProcess();
-	void createType();
-	void createSignal();
-	void createPortMap();
-	void createConnexion();
+	void createComponent();		//Sépare les component
+	void createProcess();		//Sépare les process
+	void createType();		//Sépare les déclarations de types
+	void createSignal();		//Sépare les déclarations de signaux
+	void createPortMap();		//Sépare les port map
+	void createConnexion();		//Sépare les connexions de signaux
 
 	virtual void verifySyntax();
 };

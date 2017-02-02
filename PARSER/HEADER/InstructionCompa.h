@@ -1,19 +1,10 @@
 #ifndef _INSTRUCTIONCOMPA_H_
 #define _INSTRUCTIONCOMPA_H_
 
-
-#include <math.h>
-#include <string.h>
-#include <iostream>
-#include <sstream>
-#include <list>
-
-#include "Lexeme.h"
 #include "BlocInstruction.h"
-#include "../../DISPLAY/Display.h"
 
 using namespace std;
-
+//Classe pour separer les comparaisons VHDL dans les if
 class InstructionCompa : public BlocInstruction
 {
 	protected:
@@ -24,7 +15,8 @@ class InstructionCompa : public BlocInstruction
 	{	
 
 	}
-
+	
 	virtual void reorganizeLexemes();
+	virtual void verifySyntax() {};
 };
 #endif

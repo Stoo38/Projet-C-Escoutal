@@ -1,18 +1,10 @@
 #ifndef _VARIABLE_H_
 #define _VARIABLE_H_
 
-#include <math.h>
-#include <string.h>
-#include <iostream>
-#include <sstream>
-#include <list>
-
-#include "Lexeme.h"
 #include "Bloc.h"
-#include "../../DISPLAY/Display.h"
 
 using namespace std;
-
+//Classe pour separer les variables VHDL
 class Variable : public Bloc
 {
 	protected:
@@ -22,7 +14,7 @@ class Variable : public Bloc
 	Bloc(identifiant, "variable", nLine, msgBox)
 	{	
 	}
-
+	//METHODE HERITEE
 	virtual void createTree() {};
 	virtual void reorganizeLexemes() {};
 	virtual void verifySyntax();

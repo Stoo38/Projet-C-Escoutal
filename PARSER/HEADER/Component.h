@@ -1,20 +1,11 @@
 #ifndef _COMPONENT_H_
 #define _COMPONENT_H_
 
-
-#include <math.h>
-#include <string.h>
-#include <iostream>
-#include <sstream>
-#include <list>
-
-#include "Lexeme.h"
 #include "Port.h"
 #include "BlocNode.h"
-#include "../../DISPLAY/Display.h"
 
 using namespace std;
-
+//Classe pour separer les component VHDL
 class Component : public BlocNode
 {
 	protected:
@@ -25,6 +16,7 @@ class Component : public BlocNode
 	{	
 	}
 
+	//METHODE HERITEE
 	virtual void createTree();
 	virtual void verifySyntax();
 };

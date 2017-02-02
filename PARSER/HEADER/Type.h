@@ -1,18 +1,10 @@
 #ifndef _TYPE_H_
 #define _TYPE_H_
 
-#include <math.h>
-#include <string.h>
-#include <iostream>
-#include <sstream>
-#include <list>
-
-#include "Lexeme.h"
 #include "Bloc.h"
-#include "../../DISPLAY/Display.h"
 
 using namespace std;
-
+//Classe pour separer les type VHDL
 class Type : public Bloc
 {
 	protected:
@@ -22,7 +14,7 @@ class Type : public Bloc
 	Bloc(identifiant, "type", nLine, msgBox)
 	{	
 	}
-	
+	//METHODE HERITEE
 	virtual void createTree() {};
 	virtual void reorganizeLexemes() {};
 	virtual void verifySyntax();

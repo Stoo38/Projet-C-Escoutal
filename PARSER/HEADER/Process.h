@@ -1,23 +1,14 @@
 #ifndef _PROCESS_H_
 #define _PROCESS_H_
 
-
-#include <math.h>
-#include <string.h>
-#include <iostream>
-#include <sstream>
-#include <list>
-
-#include "Lexeme.h"
 #include "BlocInstruction.h"
 #include "InstructionIf.h"
 #include "InstructionCase.h"
 #include "InstructionAssig.h"
 #include "Variable.h"
-#include "../../DISPLAY/Display.h"
 
 using namespace std;
-
+//Classe pour separer les process VHDL
 class Process : public BlocInstruction
 {
 	protected:

@@ -1,9 +1,3 @@
-/* La classe Bloc est mère des classes Library, Entity, Architecture et Component.
-Elle répertorie les fonctions et les attributs globaux 
-*/ 
-
-
-
 #ifndef _BLOC_H_
 #define _BLOC_H_
 
@@ -12,11 +6,14 @@ Elle répertorie les fonctions et les attributs globaux
 #include <iostream>
 #include <sstream>
 #include <list>
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "Lexeme.h"
 #include "../../DISPLAY/Display.h"
 
 using namespace std;
-
+//Classe virtuelle pure de base pour decouper le fichier VHDL
 class Bloc
 {
 protected:
@@ -61,11 +58,11 @@ public:
 
 	virtual void displayLexemes();			//Affiche chaque lexeme avec la ligne correspondante
 
-	virtual void createTree() = 0;
-	virtual void reorganizeLexemes() = 0;
-	virtual void verifySyntax() {};
+	virtual void createTree() = 0;			//Prototype de la fonction de création de l'arbre
+	virtual void reorganizeLexemes() = 0;		//Prototype de la fonction pour reorganiser les lexemes
+	virtual void verifySyntax() = 0;		//Prototype de la fonction pour verifier la syntaxe
 
-	virtual const string & getEntity() const {};
+	virtual const string & getEntity() const {};	//Prototype de la fonction utilisee dans architecture
 };
 
 #endif	

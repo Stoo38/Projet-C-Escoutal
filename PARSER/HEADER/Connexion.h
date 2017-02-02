@@ -1,20 +1,11 @@
 #ifndef _CONNEXION_H_
 #define _CONNEXION_H_
 
-
-#include <math.h>
-#include <string.h>
-#include <iostream>
-#include <sstream>
-#include <list>
-
-#include "Lexeme.h"
 #include "BlocInstruction.h"
 #include "Gate.h"
-#include "../../DISPLAY/Display.h"
 
 using namespace std;
-
+//Classe pour separer les connexions VHDL entre signaux
 class Connexion : public BlocInstruction
 {
 	protected:
@@ -25,8 +16,10 @@ class Connexion : public BlocInstruction
 	BlocInstruction("default", "connexion", nLine, msgBox)
 	{	
 	}
-	
+
+	//METHODE HERITEE
 	virtual void createTree();
 	virtual void reorganizeLexemes();
+	virtual void verifySyntax() {};
 };
 #endif

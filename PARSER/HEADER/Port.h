@@ -1,20 +1,10 @@
 #ifndef _PORT_H_
 #define _PORT_H_
 
-#include <math.h>
-#include <string.h>
-#include <iostream>
-#include <sstream>
-#include <list>
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "Lexeme.h"
 #include "Bloc.h"
-#include "../../DISPLAY/Display.h"
 
 using namespace std;
-
+//Classe pour separer les ports VHDL
 class Port : public Bloc
 {
 	protected:
@@ -32,7 +22,7 @@ class Port : public Bloc
 	m_size_b(0)
 	{	
 	}
-
+	//METHODE HERITEE
 	virtual void createTree() {};
 	virtual void reorganizeLexemes();
 	virtual void verifySyntax();

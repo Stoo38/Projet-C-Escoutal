@@ -15,10 +15,10 @@ int main(int argc, char *argv[])
 	int opt_nb_file = 1;			//Nombre de fichier VHDL à synthétiser
 	bool opt_close_error = true;		//Option pour arrêter/ continuer quand l'on rencontre une erreur
 	bool opt_debug = false;			//Option pour utiliser les messages de debug
-	bool opt_display = false;
+	bool opt_display = false;		//Option pour afficher les lexemes apres la creation de l'arbre
 	bool step_tree = false;			//Option pour activer l'étape de création de l'arbre, obligatoire pour passer aux étapes suivantes
-	bool step_syntax = false;
-	bool step_presynthesis = false;
+	bool step_syntax = false;		//Option pour activer l'etape de verification de la syntaxe
+	bool step_presynthesis = false;		//Option pour activer l'étape de presynthese
 	list <string> file;			// Liste contenant les différents fichiers VHDL à synthétiser
 	// Récupération des différents paramètres passés depuis la ligne de commande	
 	

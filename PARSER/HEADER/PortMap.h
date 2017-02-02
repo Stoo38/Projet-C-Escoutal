@@ -1,18 +1,10 @@
 #ifndef _PORTMAP_H_
 #define _PORTMAP_H_
 
-#include <math.h>
-#include <string.h>
-#include <iostream>
-#include <sstream>
-#include <list>
-
-#include "Lexeme.h"
 #include "Bloc.h"
-#include "../../DISPLAY/Display.h"
 
 using namespace std;
-
+//Classe pour separer les port map VHDL
 class PortMap : public Bloc
 {
 	protected:
@@ -26,7 +18,7 @@ class PortMap : public Bloc
 		verifyLabel(compo);
 		m_component = compo;
 	}
-
+	//METHODE HERITEE
 	virtual void createTree() {};
 	virtual void reorganizeLexemes();
 	virtual void verifySyntax();

@@ -1,21 +1,12 @@
 #ifndef _INSTRUCTIONCASE_H_
 #define _INSTRUCTIONCASE_H_
 
-
-#include <math.h>
-#include <string.h>
-#include <iostream>
-#include <sstream>
-#include <list>
-
-#include "Lexeme.h"
 #include "BlocInstruction.h"
 #include "InstructionIf.h"
 #include "InstructionAssig.h"
-#include "../../DISPLAY/Display.h"
 
 using namespace std;
-
+//Classe pour separer les case VHDL
 class InstructionCase : public BlocInstruction
 {
 	protected:
@@ -26,9 +17,10 @@ class InstructionCase : public BlocInstruction
 	{	
 
 	}
-
+	
 	virtual void createIfCase();
 	virtual void createAssig();	
 	virtual void reorganizeLexemes();
+	virtual void verifySyntax() {};
 };
 #endif

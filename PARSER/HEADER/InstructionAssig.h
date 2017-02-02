@@ -1,19 +1,10 @@
 #ifndef _INSTRUCTIONASSIG_H_
 #define _INSTRUCTIONASSIG_H_
 
-
-#include <math.h>
-#include <string.h>
-#include <iostream>
-#include <sstream>
-#include <list>
-
-#include "Lexeme.h"
 #include "BlocInstruction.h"
-#include "../../DISPLAY/Display.h"
 
 using namespace std;
-
+//Classe pour separer les assignations VHDL
 class InstructionAssig : public BlocInstruction
 {
 	protected:
@@ -24,7 +15,8 @@ class InstructionAssig : public BlocInstruction
 	{	
 
 	}
-	
+	//METHODE HERITEE
 	virtual void reorganizeLexemes();
+	virtual void verifySyntax() {};
 };
 #endif
