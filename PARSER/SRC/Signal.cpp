@@ -1,11 +1,15 @@
 #include "../HEADER/Signal.h"
 
-/* Verification syntaxique d'un signal */
+/* 
+##################Void VerifySyntax()##################
+Fonctionnement global expliqué dans Library.cpp
+ */
+
 void Signal::verifySyntax() 
 {
-	list <Lexeme>::iterator itr; //Création de l'itérateur permettant de parcourir chaque lexeme du signal
-	int nbLexeme = 0; // nbLexeme correspond aux différents états de la FSM
-	int count = 0; // Le compteur permet de relever le nombre de fois que l'on a changé d'étape
+	list <Lexeme>::iterator itr; 	// Création de l'itérateur permettant de parcourir chaque lexeme du signal
+	int nbLexeme = 0; 		// nbLexeme correspond aux différents états de la FSM
+	int count = 0; 			// Le compteur permet de relever le nombre de fois que l'on a changé d'étape
 	/* Variables permettant de tester la cohérence d'un vecteur*/
 	int nextNb = 0, prevNb = 0; 
 	int sizeVector = 0; 
@@ -18,28 +22,28 @@ void Signal::verifySyntax()
 
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++) //Début du parcours d'un signal pour vérification 
 	{
-		string monword = (*itr).m_word; // Déclaration de la variable qui contiendra le lexeme courant
-		string nextWord = checkNextWord(count, itr); // Déclaration de la variable qui contiendra le mot suivant ou qui indiquera une erreur s'il n'y en a pas
+		string monword = (*itr).m_word; 		// Déclaration de la variable qui contiendra le lexeme courant
+		string nextWord = checkNextWord(count, itr); 	// Déclaration de la variable qui contiendra le mot suivant ou qui indiquera une erreur s'il n'y en a pas
 
 	
-		if (nbLexeme == 0) // CAS 0: Mot-clef "signal" 
+		if (nbLexeme == 0) 	// CAS 0: Mot-clef "signal" 
 		{	
-			if(verifyLabel(nextWord) != false)
+			if(verifyLabel(nextWord) != false) 	// Ici on utilise la fonction verifyLabel pour vérifier que le prochain lexeme est valide
 			{
-				m_msgBox.createMessage("216", (*itr).m_line, nextWord);
-				itr = m_listLexemes.end();
+				m_msgBox.createMessage("216", (*itr).m_line, nextWord); // Affiche une erreur
+				itr = m_listLexemes.end(); // On coupe la vérification
 				itr--;
 			}
 			nbLexeme = 1;						
 		}
 
-		else if (nbLexeme == 1) // CAS 1: Etiquette du signal à déclarer
+		else if (nbLexeme == 1)	 // CAS 1: Etiquette du signal à déclarer
 		{
-			if (nextWord == ",")
+			if (nextWord == ",") 	  // Possibilité d'avoir une "," comme prochain lexeme
 			{
 				nbLexeme = 2;
 			}
-			else if (nextWord == ":")
+			else if (nextWord == ":") // ou ":"
 			{
 				nbLexeme = 3;
 			}
@@ -51,7 +55,7 @@ void Signal::verifySyntax()
 			}
 		}
 
-		else if (nbLexeme == 2) // CAS 2: Séparateur "," autorisant la déclaration, de plusieurs signaux
+		else if (nbLexeme == 2)	// CAS 2: Séparateur "," autorisant la déclaration, de plusieurs signaux
 		{	
 			if(verifyLabel(nextWord) != false)
 			{
@@ -69,18 +73,18 @@ void Signal::verifySyntax()
 			{
 				if ((nextWord == myTypes[i]) && (i < 1))
 				{
-					//ici c'est les cas simples
+					//ici ce sont les cas simples
 					flag = true;
 					nbLexeme = 4;
-					i = 3; //fin de boucle
+					i = 3; 		//fin de boucle
 					
 				}
 				else if (nextWord == myTypes[i])
 				{
-					//ici c'est les cas type vector/unsigned
+					//ici ce sont les cas type vector/unsigned
 					flag = true;
 					nbLexeme = 10;		
-					i = 3; //fin de boucle
+					i = 3; 		//fin de boucle
 				}
 			}
 
@@ -94,11 +98,11 @@ void Signal::verifySyntax()
 		//TYPE SIMPLE
 		else if (nbLexeme == 4) // CAS 4: Utilisation d'un type "simple" tel que "bit"
 		{
-			if (nextWord == ";")
+			if (nextWord == ";") 		// Possibilité que le prochain lexeme soit un ";"
 			{
 				nbLexeme = 22;
 			}
-			else if (nextWord == "<")
+			else if (nextWord == "<") 	// ou un "<"
 			{
 				nbLexeme = 5;
 			}
@@ -110,7 +114,7 @@ void Signal::verifySyntax()
 			}
 		}
 
-		else if (nbLexeme == 5) // CAS 5: Lexeme "<" à combiner avec "=" pour effectuer une affectation
+		else if (nbLexeme == 5) // CAS 5: Lexeme "<" à combiner avec "=" pour effectuer l'affectation d'un signal
 		{	
 			if(nextWord != "=")
 			{
@@ -134,7 +138,7 @@ void Signal::verifySyntax()
 
 		else if (nbLexeme == 7) // CAS 7: Premier caractère "'" permettant d'encadrer un char (un lexeme de taille 1 pouvant être 0 ou 1 pour le type bit)
 		{	
-			if((nextWord.size() == 1) &&  ((nextWord[0] == '0') || (nextWord[0] == '1')))
+			if((nextWord.size() == 1) &&  ((nextWord[0] == '0') || (nextWord[0] == '1')))  // On teste si on a bien un caractère, et si c'est bien un bit
 			{
 				nbLexeme = 8;
 			}
@@ -190,17 +194,17 @@ void Signal::verifySyntax()
 				itr = m_listLexemes.end();
 				itr--;
 			}
-			prevNb = atoi(nextWord.c_str());
+			prevNb = atoi(nextWord.c_str()); // On stocke la valeur du premier nombre sous forme d'entier
 			nbLexeme = 12;
 		}	
 
 		else if (nbLexeme == 12) // CAS 12: Première borne du vecteur
 		{
-			if (nextWord == "downto")
+			if (nextWord == "downto")	// On peut avoir un "downto"
 			{
 				nbLexeme = 13;
 			}
-			else if (nextWord == "to")
+			else if (nextWord == "to")  	// ou un "to"
 			{
 				nbLexeme = 14;
 			}
@@ -220,14 +224,14 @@ void Signal::verifySyntax()
 				itr = m_listLexemes.end();
 				itr--;
 			}
-			nextNb = atoi(nextWord.c_str());
-			if (nextNb >= prevNb)
+			nextNb = atoi(nextWord.c_str()); // On stocke la valeur du second nombre sous forme d'entier
+			if (nextNb >= prevNb) // Pour un downto le premier nombre doit être supérieur au second
 			{
 				m_msgBox.createMessage("210", (*itr).m_line, nextWord);		
 				itr = m_listLexemes.end();
 				itr--;
 			}
-			sizeVector = (prevNb - nextNb);
+			sizeVector = (prevNb - nextNb); // On calcule la taille du vecteur
 			nbLexeme = 15;
 		}
 
@@ -240,7 +244,7 @@ void Signal::verifySyntax()
 				itr--;
 			}
 			nextNb = atoi(nextWord.c_str());
-			if (nextNb <= prevNb)
+			if (nextNb <= prevNb) // Pour un to le premier nombre doit être inférieur au second
 			{
 				m_msgBox.createMessage("211", (*itr).m_line, nextWord);		
 				itr = m_listLexemes.end();
@@ -303,11 +307,11 @@ void Signal::verifySyntax()
 
 		else if (nbLexeme == 19) // CAS 19: Premier caractère """ permettant d'encadrer un vecteur (un lexeme de la taille du vecteur défini auparavant)
 		{	
-			if ( nextWord.size() == (sizeVector+1))
+			if ( nextWord.size() == (sizeVector+1))		// On va chercher que le vecteur de bits déclaré est de la même taille que celle déclarée auparavant
 			{
-				for (int i=0; i < nextWord.size(); i++)
+				for (int i=0; i < nextWord.size(); i++)	// Parcours des caractères du lexeme
 				{
-					if ((nextWord[i] != '0') && (nextWord[i] != '1'))
+					if ((nextWord[i] != '0') && (nextWord[i] != '1')) // Chaque caractère doit être un bit
 					{	
 						m_msgBox.createMessage("216", (*itr).m_line, nextWord);		
 						itr = m_listLexemes.end();

@@ -1,6 +1,18 @@
 #include "../HEADER/Library.h"
 
-/* Vérification de la syntaxe d'une librairie */
+/* 
+##################Void VerifySyntax()##################
+C'est la fonction qui gère la vérification de la syntaxe d'une librairie sur le principe d'une FSM.
+Elle fonctionne avec une variable "nbLexeme" correspondant aux différents états de la FSM.
+Dans chaque cas on vérifie le lexeme suivant:
+	- s'il correspond à un cas normal, alors on passe à l'état souhaité
+	- s'il n'est pas valide, alors on retourne une erreur et on coupe la vérification syntaxique
+Comme dans une FSM il est possible de reboucler sur un même état, un état précédent ou un état suivant.
+Chaque cas peut inclure plusieurs conditions et ainsi renvoyer vers différents états.
+
+On notera que les FSM des classes qui ont des sous-branches (Entity, Architecture, Component, Process, InstructionIf et InstructionCase) utiliserons des flag pour identifier le noeud rencontré avoir d'avoir une structure bien imbriquée
+ */
+
 void Library::verifySyntax() 
 {
 	list <Lexeme>::iterator itr; //Création de l'itérateur permettant de parcourir chaque lexeme de la librairie
@@ -14,15 +26,15 @@ void Library::verifySyntax()
 	
 		if (nbLexeme == 0) // CAS 0: library
 		{
-			nbLexeme = 1;							
+			nbLexeme = 1; 						
 		}
 
 		else if (nbLexeme == 1) // CAS 1: Etiquette de la librairie déclarée
 		{
 			if (nextWord != ";")
 			{	
-				m_msgBox.createMessage("202", (*itr).m_line, nextWord);
-				itr = m_listLexemes.end();
+				m_msgBox.createMessage("202", (*itr).m_line, nextWord); // Une erreur s'affiche
+				itr = m_listLexemes.end(); // On coupe la vérification
 				itr--;
 			}
 			nbLexeme = 2;	
@@ -108,7 +120,7 @@ void Library::verifySyntax()
 
 		}	
 
-		else if (nbLexeme == 8) // CAS 8: ";" final
+		else if (nbLexeme == 8) // CAS 8: FIN DE LA VERIFICATION, séparateur ";"
 		{
 			
 			if (nextWord == "use") // Possibilité d'avoir un nouveau "use" et donc de reboucler dans la "FSM"
@@ -122,6 +134,6 @@ void Library::verifySyntax()
 				itr--;	
 			}
 		}
-		count++;	
+		count++; // Incrémentation du compteur	
 	}
 }

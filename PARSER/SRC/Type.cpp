@@ -1,10 +1,9 @@
 #include "../HEADER/Type.h"
 
-/* Vérification de la syntaxe de la déclaration d'un type 
-   Prise en compte des:
-		-types énumérés
-		-types composites
-*/
+/* 
+##################Void VerifySyntax()##################
+Fonctionnement global expliqué dans Library.cpp
+ */
 
 void Type::verifySyntax() 
 {
@@ -46,15 +45,15 @@ void Type::verifySyntax()
 
 		else if (nbLexeme == 2) // CAS 2: Mot-clef "is"
 		{	
-			if (nextWord == "range")
+			if (nextWord == "range") 	// Possibilité d'avoir le lexeme "range"
 			{	
 				nbLexeme = 3;
 			}
-			else if (nextWord == "array")
+			else if (nextWord == "array")	// ou array pour les composites
 			{	
 				nbLexeme = 7;
 			}
-			else if (nextWord == "(")
+			else if (nextWord == "(")	// ou une paranthèse pour les énumérés
 			{	
 				nbLexeme = 17;
 			}
@@ -75,7 +74,7 @@ void Type::verifySyntax()
 				itr = m_listLexemes.end();
 				itr--;
 			}
-			prevNb = atoi(nextWord.c_str());
+			prevNb = atoi(nextWord.c_str()); // On stocke la valeur du premier nombre sous forme d'entier
 			nbLexeme = 4;
 		}
 
@@ -98,7 +97,7 @@ void Type::verifySyntax()
 				itr = m_listLexemes.end();
 				itr--;
 			}
-			nextNb = atoi(nextWord.c_str());
+			nextNb = atoi(nextWord.c_str()); // On stocke la valeur du second nombre sous forme d'entier
 			if (nextNb <= prevNb)
 			{
 				m_msgBox.createMessage("211", (*itr).m_line, nextWord);		
@@ -139,7 +138,7 @@ void Type::verifySyntax()
 				itr = m_listLexemes.end();
 				itr--;
 			}
-			prevNb = atoi(nextWord.c_str());
+			prevNb = atoi(nextWord.c_str()); // On stocke la valeur du premier nombre sous forme d'entier
 			nbLexeme = 9;
 		}	
 
@@ -169,7 +168,7 @@ void Type::verifySyntax()
 				itr = m_listLexemes.end();
 				itr--;
 			}
-			nextNb = atoi(nextWord.c_str());
+			nextNb = atoi(nextWord.c_str()); // On stocke la valeur du second nombre sous forme d'entier
 			if (nextNb >= prevNb)
 			{
 				m_msgBox.createMessage("210", (*itr).m_line, nextWord);		
@@ -187,7 +186,7 @@ void Type::verifySyntax()
 				itr = m_listLexemes.end();
 				itr--;
 			}
-			nextNb = atoi(nextWord.c_str());
+			nextNb = atoi(nextWord.c_str()); // On stocke la valeur du second nombre sous forme d'entier
 			if (nextNb <= prevNb)
 			{
 				m_msgBox.createMessage("211", (*itr).m_line, nextWord);		
@@ -352,18 +351,18 @@ void Type::verifySyntax()
 
 		// Cas d'une suite de bits encadrée par deux guillemets "bits"
 
-		else if (nbLexeme == 24)
+		else if (nbLexeme == 24) // CAS 24: Ici on doit avoir une première guillemet pour encadrer le vecteur 
 		{
-			if ( nextWord.size() > 1)
+			if ( nextWord.size() > 1) // On doit avoir au moins 2 caractères pour avoir un vecteur
 			{
 				for (int i=0; i < nextWord.size(); i++)
 				{
-					if ((nextWord[i] != '0') && (nextWord[i] != '1'))
+					if ((nextWord[i] != '0') && (nextWord[i] != '1')) // Le type bit_vector sous-entend qu'il faut des bits (1 ou 0)
 					{	
 						m_msgBox.createMessage("212", (*itr).m_line, nextWord);		
 						itr = m_listLexemes.end();
 						itr--;
-						i = nextWord.size();
+						i = nextWord.size();	// On sort de la condition
 					}
 				}
 			}
@@ -377,7 +376,7 @@ void Type::verifySyntax()
 			nbLexeme = 25;
 		}
 
-		else if (nbLexeme == 25)
+		else if (nbLexeme == 25) //CAS 25: C'est ici que l'on doit avoir le vecteur de bits
 		{
 			if (nextWord != "\"")
 			{
@@ -388,7 +387,7 @@ void Type::verifySyntax()
 			nbLexeme = 26;
 		}
 
-		else if (nbLexeme == 26)
+		else if (nbLexeme == 26) // CAS 26: Ici on doit avoir une seconde guillemet pour encadrer le vecteur 
 		{
 			if (nextWord == ",")
 			{
@@ -406,7 +405,7 @@ void Type::verifySyntax()
 			}
 		}
 
-		else if (nbLexeme == 27)
+		else if (nbLexeme == 27) // CAS 27: Séparateur "," pour reboucler sur un autre vecteur
 		{
 			if (nextWord != "\"")
 			{
@@ -417,7 +416,7 @@ void Type::verifySyntax()
 			nbLexeme = 24;
 		}
 
-		else if (nbLexeme == 28)
+		else if (nbLexeme == 28) // CAS 28: Paranthèse fermante ")" pour clôturer le type énuméré
 		{
 			if (nextWord != ";")
 			{
@@ -428,7 +427,7 @@ void Type::verifySyntax()
 			nbLexeme = 16;
 		}
 
-		else if (nbLexeme == 16)
+		else if (nbLexeme == 16) // CAS 16: FIN DE LA VERIFICATION, séparateur ";"
 		{
 			if (nextWord != "")
 			{	

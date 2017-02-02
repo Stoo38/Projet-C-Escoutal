@@ -1,5 +1,10 @@
 #include "../HEADER/Entity.h"
 
+/* 
+##################Void VerifySyntax()##################
+Fonctionnement global expliqué dans Library.cpp
+ */
+
 void Entity::createTree()
 {
 	list <Lexeme>::iterator itr;
@@ -73,23 +78,22 @@ void Entity::createTree()
 void Entity::verifySyntax() 
 {
 	
-	list <Lexeme>::iterator itr;
-	int nbLexeme = 0;
-	int count = 0;
+	list <Lexeme>::iterator itr; 	// Création de l'itérateur permettant de parcourir chaque lexeme du signal
+	int nbLexeme = 0; 		// nbLexeme correspond aux différents états de la FSM
+	int count = 0; 			// Le compteur permet de relever le nombre de fois que l'on a changé d'étape
 	
-
-	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
+	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++) //Début du parcours d'une entité pour vérification
 	{
 		string monword = (*itr).m_word;
 		string nextWord = checkNextWord(count, itr);
 
 
-		if (nbLexeme == 0)
+		if (nbLexeme == 0) // CAS 0: Mot clef "Entity"
 		{
 			nbLexeme = 1;				
 		}
 
-		else if (nbLexeme == 1)
+		else if (nbLexeme == 1) // CAS 1: Label correspondant à l'étiquette de l'entité
 		{
 			
 			if (nextWord != "is")
@@ -102,7 +106,7 @@ void Entity::verifySyntax()
 		
 		}
 
-		else if (nbLexeme == 2)
+		else if (nbLexeme == 2) // CAS 2: Mot clef "is"
 		{	
 			if (nextWord == "port")
 			{	
@@ -121,7 +125,7 @@ void Entity::verifySyntax()
 					
 		}	
 
-		else if (nbLexeme == 3)
+		else if (nbLexeme == 3) // CAS 3: Mot clef "port"
 		{
 			if (nextWord != "(")
 			{	
@@ -132,9 +136,9 @@ void Entity::verifySyntax()
 			nbLexeme = 4;			
 		}	
 	
-		else if (nbLexeme == 4)
+		else if (nbLexeme == 4) // CAS 4: Paranthèse ouvrante "("
 		{
-			if (nextWord != "FLAG_PORT")
+			if (nextWord != "FLAG_PORT") // On vérifie que le prochain mot est "FLAG_PORT", ce lexeme est automatiquement généré si un port a été déclaré
 			{	
 				m_msgBox.createMessage("203", (*itr).m_line, nextWord);
 				itr = m_listLexemes.end();
@@ -143,7 +147,7 @@ void Entity::verifySyntax()
 			nbLexeme = 5;
 		}	
 	
-		else if (nbLexeme == 5)
+		else if (nbLexeme == 5) // CAS 5: FLAG_PORT correspondant à la déclaration d'un port
 		{
 			if (nextWord == ";")
 			{	
@@ -161,7 +165,7 @@ void Entity::verifySyntax()
 			}
 		}	
 	
-		else if (nbLexeme == 6)
+		else if (nbLexeme == 6) // CAS 6: Séparateur ";" permettant de reboucler sur un nouveau FLAG_PORT
 		{
 			if (nextWord != "FLAG_PORT")
 			{
@@ -172,7 +176,7 @@ void Entity::verifySyntax()
 			nbLexeme = 5;
 		}
 
-		else if (nbLexeme == 7)
+		else if (nbLexeme == 7) // CAS 7: Paranthèse fermante ")"
 		{
 			if (nextWord != ";")
 			{
@@ -184,7 +188,7 @@ void Entity::verifySyntax()
 
 		}	
 
-		else if (nbLexeme == 8)
+		else if (nbLexeme == 8) // CAS 8: Séparateur ";" 
 		{
 			if (nextWord != "end")
 			{
@@ -195,7 +199,7 @@ void Entity::verifySyntax()
 			nbLexeme = 9;
 		}
 
-		else if (nbLexeme == 9)
+		else if (nbLexeme == 9) // CAS 9: Mot clef "end"
 		{
 			if (nextWord != m_identifiant.m_word)
 			{	
@@ -206,7 +210,7 @@ void Entity::verifySyntax()
 			nbLexeme = 10;
 		}
 
-		else if (nbLexeme == 10)
+		else if (nbLexeme == 10) // CAS 10: Mot clef "component"
 		{
 			if (nextWord != ";")
 			{	
@@ -217,7 +221,7 @@ void Entity::verifySyntax()
 			nbLexeme = 11;
 		}
 
-		else if (nbLexeme == 11)
+		else if (nbLexeme == 11) // CAS 11: FIN DE LA VERIFICATION, séparateur ";" 
 		{
 			if (nextWord != "")
 			{	
@@ -228,5 +232,5 @@ void Entity::verifySyntax()
 		}		
 		count++;	
 	}
-	BlocNode::verifySyntax();
+	BlocNode::verifySyntax(); // En appelant cette fonction on va effectuer la vérification syntaxique des noeuds (ici seulement des ports) contenus par l'entité
 }

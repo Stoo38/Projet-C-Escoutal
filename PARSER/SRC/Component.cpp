@@ -219,4 +219,3 @@ void Component::verifySyntax()
 	}
 	BlocNode::verifySyntax();
 }
-
