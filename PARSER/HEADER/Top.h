@@ -43,6 +43,9 @@ class Top
 	void createTree();
 	void reorganizeLexemes();
 	void verifySyntax();
+
+	void preSynthesis();
+	void verifyEntityArchi();
 };
 
 #endif	

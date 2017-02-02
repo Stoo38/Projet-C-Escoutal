@@ -10,7 +10,7 @@ entity ALU is
 		reset, clock	: in std_logic) ;
 
 end ALU;
-architecture a of ALU is
+architecture a of ALUS is
 
 	component Compteur
 	port(	en,clk,resetn	: in std_logic;

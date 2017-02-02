@@ -83,7 +83,7 @@ begin
 
   DOUT<= data_round_out ;
   DOUT_VAL<=last_round_signal;
-  a<= b or  (c='0' and d) or first_round_signal;
+  a<= (b or  (c and d)) or first_round_signal;
   b<= last_round_signal and c or d;
   c<= not first_round_signal xor d;
   d<= not last_round_signal;

@@ -104,3 +104,44 @@ void Top::verifySyntax()
 	}
 	m_msgBox.createMessage("200", 0, "");
 }
+
+void Top::preSynthesis()
+{
+	verifyEntityArchi();
+	m_msgBox.createMessage("300", 0, "");
+}
+
+void Top::verifyEntityArchi()
+{
+	list <Bloc *>::iterator it;
+	list <string> labelEntity;
+	string label;
+	for(it=m_listeBlocks.begin(); it != m_listeBlocks.end(); it++)
+	{
+		label = (*it)->getKeyWord();
+		if (label == "entity")
+		{
+			labelEntity.push_back((*it)->getIdentifiant());
+		}
+	}
+	for(it=m_listeBlocks.begin(); it != m_listeBlocks.end(); it++)
+	{
+		label = (*it)->getKeyWord();
+		if (label == "architecture")
+		{
+			bool warning = true;
+			list <string>::iterator itlabelEntity;
+			for(itlabelEntity=labelEntity.begin(); itlabelEntity != labelEntity.end(); itlabelEntity++)
+			{
+				if ((*it)->getEntity() == *itlabelEntity)
+				{
+					warning = false;
+				}
+			}	
+			if (warning == true)
+			{
+				m_msgBox.createMessage("301", 0, (*it)->getEntity());
+			}		
+		}
+	}	
+}

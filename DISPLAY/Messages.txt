@@ -1,3 +1,4 @@
+000WAR Warning: <"W"> is an invalid parameter 
 ###### MESSAGES DURING THE CREATION OF THE TREE
 ###### MAIN & TOP
 001INF Information: BEGINNING OF THE SYNTHESIS OF THE <"W"> FILE
@@ -92,6 +93,10 @@
 
 
 
+###### MESSAGES DURING THE PRESYNTHESIS
+300INF Information: THE PRESYNTHESIS VERIFICATION IS ENDED
+301WAR Warning: The architecture matchs with an entity <"W"> which is not in the same .vhd file
+
 ##### MESSAGES FOR THE DEBUGGING
 ##### SIGNAL
 801DEB Debugger line <L:> The signal <"W"> has been detected
@@ -111,4 +116,5 @@
 812DEB Debugger line <L:> The assignment has been detected
 ##### COMPARISON (==, !=, <= ...)
 813DEB Debugger line <L:> The comparison has been detected
-
+##### CONNEXION (<=)
+815DEB Debugger line <L:> The connexion has been detected
