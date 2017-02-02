@@ -18,6 +18,7 @@ int main(int argc, char *argv[])
 	bool opt_display = false;
 	bool step_tree = false;			//Option pour activer l'étape de création de l'arbre, obligatoire pour passer aux étapes suivantes
 	bool step_syntax = false;
+	bool step_presynthesis = false;
 	list <string> file;			// Liste contenant les différents fichiers VHDL à synthétiser
 	// Récupération des différents paramètres passés depuis la ligne de commande
 	
@@ -59,6 +60,12 @@ int main(int argc, char *argv[])
 			step_syntax = true;
 			step_tree = true;	
 		}
+		else if (parameter == "-presynthesis")	
+		{
+			step_presynthesis = true;
+			step_syntax = true;
+			step_tree = true;	
+		}
 		else if (parameter == "-error")		// Paramètre utilisé pour continuer lors d'une erreur
 		{					// Ne fonctionne pas avec toutes les erreurs
 			opt_close_error = false;	
@@ -74,7 +81,6 @@ int main(int argc, char *argv[])
 		else					// Sinon, paramètre non reconnu 
 		{
 			messageBox.createMessage("000", 0, parameter);
-			//cout << "000WAR Warning: Invalid Parameter" << endl;
 		}
 	}
 
@@ -96,6 +102,10 @@ int main(int argc, char *argv[])
 		if (step_syntax == true)					
 		{
 			myTop.verifySyntax();	
+		}
+		if (step_presynthesis == true)					
+		{
+			myTop.preSynthesis();	
 		}
 	}
 		

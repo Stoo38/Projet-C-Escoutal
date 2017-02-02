@@ -64,6 +64,8 @@ public:
 	virtual void createTree() = 0;
 	virtual void reorganizeLexemes() = 0;
 	virtual void verifySyntax() {};
+
+	virtual const string & getEntity() const {};
 };
 
 #endif	

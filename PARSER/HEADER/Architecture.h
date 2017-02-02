@@ -14,6 +14,7 @@
 #include "Type.h"
 #include "Signal.h"
 #include "PortMap.h"
+#include "Connexion.h"
 #include "../../DISPLAY/Display.h"
 
 using namespace std;
@@ -21,7 +22,7 @@ using namespace std;
 class Architecture : public BlocNode
 {
 	protected:
-		
+	Lexeme m_entity;	
 
 	public:
 	Architecture(const string & identifiant, const int nLine, Display &msgBox):
@@ -29,12 +30,15 @@ class Architecture : public BlocNode
 	{	
 	}
 
+	virtual const string & getEntity() const;
+
 	virtual void createTree();
 	void createComponent();
 	void createProcess();
 	void createType();
 	void createSignal();
 	void createPortMap();
+	void createConnexion();
 
 	virtual void verifySyntax();
 };

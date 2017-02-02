@@ -61,11 +61,16 @@ void Port::verifySyntax()
 
 		else if (nbLexeme == 2)
 		{	
-			if ((nextWord == "in") || (nextWord == "out"))
+			if (nextWord == "in")
 			{	
 				nbLexeme = 3;	
+				m_in = true;
 			}
-			
+			else if(nextWord == "out")
+			{
+				nbLexeme = 3;
+				m_in = false;
+			}
 			else
 			{
 				m_msgBox.createMessage("207", (*itr).m_line, nextWord);
@@ -85,6 +90,7 @@ void Port::verifySyntax()
 					flag = true;
 					nbLexeme = 4;
 					i = 7; //fin de boucle
+					m_type = nextWord;
 					
 				}
 				else if ((nextWord == myTypes[i]) && (i >= 3) && (i < 6))
@@ -93,6 +99,7 @@ void Port::verifySyntax()
 					flag = true;
 					nbLexeme = 5;		
 					i = 7; //fin de boucle
+					m_type = nextWord;
 				}
 				else if (nextWord == myTypes[i])
 				{
@@ -100,6 +107,7 @@ void Port::verifySyntax()
 					flag = true;
 					nbLexeme = 11;
 					i = 7; //fin de boucle
+					m_type = nextWord;
 				}
 			}
 			if (flag == false)
@@ -116,6 +124,8 @@ void Port::verifySyntax()
 			{	
 				m_msgBox.createMessage("209", (*itr).m_line, nextWord);
 			}
+			m_size_a = 0;
+			m_size_b = 0;
 			itr = m_listLexemes.end();
 			itr--;
 		}
@@ -141,6 +151,7 @@ void Port::verifySyntax()
 				itr--;
 			}
 			prevNb = atoi(nextWord.c_str());
+			m_size_a = prevNb;
 			//cout << "PREVIOUS NUMBER" << prevNb << endl;
 			nbLexeme = 7;
 		}	
@@ -172,7 +183,8 @@ void Port::verifySyntax()
 				itr--;
 			}
 			nextNb = atoi(nextWord.c_str());
-			cout << "NEXT NUMBER" << prevNb << endl;
+			m_size_b = nextNb;
+			//cout << "NEXT NUMBER" << prevNb << endl;
 			if (nextNb >= prevNb)
 			{
 				m_msgBox.createMessage("210", (*itr).m_line, nextWord);		

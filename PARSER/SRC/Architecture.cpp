@@ -1,5 +1,10 @@
 #include "../HEADER/Architecture.h"
 
+const string & Architecture::getEntity() const
+{
+	return m_entity.m_word;
+}
+
 void Architecture::createTree()
 {
 	createComponent();
@@ -7,6 +12,7 @@ void Architecture::createTree()
 	createType();
 	createSignal();
 	createPortMap();
+	createConnexion();
 	BlocNode::createTree();
 }
 
@@ -278,6 +284,53 @@ void Architecture::createPortMap()
 	m_listLexemes = newList;
 }
 
+void Architecture::createConnexion()
+{
+	list <Lexeme>::iterator itr;
+	list <Lexeme> newList;
+	bool inConnex = false;
+	
+	int count = 0;
+	string word;
+	string nextWord;
+	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
+	{
+		word = (*itr).m_word;
+		nextWord = checkNextWord(count, itr);
+		if ((word == "<") && (nextWord == "=") && (inConnex == false))
+		{
+			inConnex = true;
+			m_listeBlocks.push_back(new Connexion((*itr).m_line, m_msgBox));
+			m_msgBox.createMessage("815", (*itr).m_line, "");	
+			itr--;
+			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+			newList.pop_back();
+			itr++;
+			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);	
+			Lexeme flag("FLAG_CONNEX", (*itr).m_line);			 
+			newList.push_back(flag);			
+		}
+		else if (((*itr).m_word == ";") && (inConnex == true))
+		{
+			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+			inConnex = false;			
+		}
+		else 
+		{
+			if (inConnex == true)	
+			{		
+				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+			}
+			else
+			{
+				newList.push_back(*itr);
+			}
+		}
+		count++;
+	}
+	m_listLexemes = newList;
+}
+
 void Architecture::verifySyntax() 
 {
 	
@@ -291,8 +344,6 @@ void Architecture::verifySyntax()
 	{
 		monword = (*itr).m_word;
 		nextWord = checkNextWord(count, itr);
-		cout << count << " " << m_listLexemes.size() << " " << nbLexeme << " " << monword << " " << nextWord <<  endl;
-
 		switch (nbLexeme)
 		{
 			case 0:	
@@ -332,6 +383,7 @@ void Architecture::verifySyntax()
 				}
 				break;
 			case 3:
+				m_entity = (*itr);
 				if (nextWord == "is")
 				{
 					nbLexeme = 4;
@@ -360,7 +412,7 @@ void Architecture::verifySyntax()
 				}
 				break;
 			case 5:
-				if ((nextWord == "FLAG_PMAP") || (nextWord == "FLAG_PROC"))
+				if ((nextWord == "FLAG_PMAP") || (nextWord == "FLAG_PROC") || (nextWord == "FLAG_CONNEX"))
 				{					
 					nbLexeme = 5;
 				}
