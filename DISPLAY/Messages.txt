@@ -95,7 +95,7 @@
 
 ###### MESSAGES DURING THE PRESYNTHESIS
 300INF Information: THE PRESYNTHESIS VERIFICATION IS ENDED
-301WAR Warning: The architecture matchs with an entity <"W"> which is not in the same .vhd file
+301WAR Warning: The architecture matches with an entity <"W"> which is not in the same .vhd file
 
 ##### MESSAGES FOR THE DEBUGGING
 ##### SIGNAL
