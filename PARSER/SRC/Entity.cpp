@@ -1,14 +1,12 @@
 #include "../HEADER/Entity.h"
 
-<<<<<<< HEAD
-=======
+
 /* 
 ##################Void VerifySyntax()##################
 Fonctionnement global expliqué dans Library.cpp
  */
 
 //Fonction pour separer les ports dans une entity
->>>>>>> 3b783271d41d3856b7a58e5e33f354126d5ad52f
 void Entity::createTree()
 {
 	list <Lexeme>::iterator itr;
