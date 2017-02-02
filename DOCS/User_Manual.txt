@@ -5,12 +5,12 @@
 	1. COMMANDS
 To start the synthesizer correctly, you have to be in the "~/Projet-C-Escoutal" repertory.
 The basic command, without any option, is:
-			./mebm_synth
+			./escoutal_synth
 By default, without any parameter, the synthesizer does nothing.
 To pass a VHDL file in parameter, you must precede the file name with the parameter "-file":
-			./mebm_synth -file VHDL/ALU.vhd
+			./escoutal_synth -file VHDL/ALU.vhd
 And to begin the synthesis, a step must be specified. Here, we only want to create the data tree:
-			./mebm_synth -file VHDL/ALU.vhd -tree
+			./escoutal_synth -file VHDL/ALU.vhd -tree
 
 
 	2. PARAMETERS & OPTIONS
@@ -19,41 +19,41 @@ Several parameters are available, to define more precisely what we want to do:
 -file [NAME AND PATH OF VHDL FILE] 	: Used to pass the different .vhd files at the synthesizer
 					: To pass simultaneously many files, the -nb_files must be used
 		Example 1:
-			./mebm_synth -file VHDL/ALU.vhd
+			./escoutal_synth -file VHDL/ALU.vhd
 		Example 2:
-			./mebm_synth -nb_files 2 -file VHDL/ALU.vhd VHDL/Library.vhd
+			./escoutal_synth -nb_files 2 -file VHDL/ALU.vhd VHDL/Library.vhd
 		Example 3:
-			./mebm_synth -file VHDL/ALU.vhd VHDL/Library.vhd -nb_files 2
+			./escoutal_synth -file VHDL/ALU.vhd VHDL/Library.vhd -nb_files 2
 
 -nb_files [NUMBER OF VHDL FILES]	: Used to indicate the number of .vhd files
 		Example 1:
-			./mebm_synth -nb_files 2 -file VHDL/ALU.vhd VHDL/Library.vhd
+			./escoutal_synth -nb_files 2 -file VHDL/ALU.vhd VHDL/Library.vhd
 		Example 2:
-			./mebm_synth -file VHDL/ALU.vhd VHDL/Library.vhd -nb_files 2
+			./escoutal_synth -file VHDL/ALU.vhd VHDL/Library.vhd -nb_files 2
 
 -tree					: Step 1 of the synthesis
 					: Used to activate the creation of the data tree
 					: By default OFF, but this option is automatically ON when we want to do the following steps
 		Example 1:
-			./mebm_synth -file VHDL/ALU.vhd -tree
+			./escoutal_synth -file VHDL/ALU.vhd -tree
 
 -syntax					: Step 2 of the synthesis
 					: Used to verify the syntax of the .vhd file
 					: By default OFF, but this option is automatically ON when we want to do the following steps
 		Example 1:
-			./mebm_synth -syntax -file VHDL/ALU.vhd
+			./escoutal_synth -syntax -file VHDL/ALU.vhd
 
 -presynthesis				: Step 3 of the synthesis
 					: Used to verify if the design is synthesizable
 					: By default OFF, but this option is automatically ON when we want to do the following steps
 		Example 1:
-			./mebm_synth -presynthesis -file VHDL/ALU.vhd
+			./escoutal_synth -presynthesis -file VHDL/ALU.vhd
 
 -display				: Used to display all the lexemes in the tree 
 		Example 1: 
-			./mebm_synth -syntax -file VHDL/ALU.vhd -display
+			./escoutal_synth -syntax -file VHDL/ALU.vhd -display
 
 -debug					: Used to display messages only useful to debug
 		Example 1:
-			./mebm_synth -tree -file VHDL/ALU.vhd -debug
+			./escoutal_synth -tree -file VHDL/ALU.vhd -debug
 		

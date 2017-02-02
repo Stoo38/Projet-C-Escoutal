@@ -3,7 +3,7 @@ CC = g++					#Compilater used
 all: create_binary_files
 	
 create_binary_files: create_object_files
-	$(CC) -o mebm_synth PARSER/OBJ/Gate.o PARSER/OBJ/Bloc.o PARSER/OBJ/BlocNode.o PARSER/OBJ/BlocInstruction.o PARSER/OBJ/functions.o PARSER/OBJ/Library.o PARSER/OBJ/Entity.o PARSER/OBJ/Architecture.o PARSER/OBJ/Process.o PARSER/OBJ/Component.o PARSER/OBJ/Type.o PARSER/OBJ/Signal.o PARSER/OBJ/Port.o PARSER/OBJ/PortMap.o PARSER/OBJ/Connexion.o PARSER/OBJ/Variable.o PARSER/OBJ/InstructionIf.o PARSER/OBJ/InstructionCase.o PARSER/OBJ/InstructionAssig.o PARSER/OBJ/InstructionCompa.o PARSER/OBJ/Top.o PARSER/OBJ/Lexeme.o DISPLAY/Display.o main.o 
+	$(CC) -o escoutal_synth PARSER/OBJ/Gate.o PARSER/OBJ/Bloc.o PARSER/OBJ/BlocNode.o PARSER/OBJ/BlocInstruction.o PARSER/OBJ/functions.o PARSER/OBJ/Library.o PARSER/OBJ/Entity.o PARSER/OBJ/Architecture.o PARSER/OBJ/Process.o PARSER/OBJ/Component.o PARSER/OBJ/Type.o PARSER/OBJ/Signal.o PARSER/OBJ/Port.o PARSER/OBJ/PortMap.o PARSER/OBJ/Connexion.o PARSER/OBJ/Variable.o PARSER/OBJ/InstructionIf.o PARSER/OBJ/InstructionCase.o PARSER/OBJ/InstructionAssig.o PARSER/OBJ/InstructionCompa.o PARSER/OBJ/Top.o PARSER/OBJ/Lexeme.o DISPLAY/Display.o main.o 
 
 create_object_files: 
 	$(CC) -c -o DISPLAY/Display.o DISPLAY/Display.cpp
