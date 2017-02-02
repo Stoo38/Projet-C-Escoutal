@@ -1,13 +1,4 @@
-0 30 0 library std
-1 30 1 std ;
-2 30 2 ; use
-3 30 3 use stdtextio
 001INF Information: BEGINNING OF THE SYNTHESIS OF THE "TEST/FINAL_TEST/erreur.vhd" FILE
 005INF Information: The "TEST/FINAL_TEST/erreur.vhd" file was successfully opened 
-009INF Information line 2: The library "std" has been detected
-010INF Information line 9: The entity "assign" has been detected
-011INF Information line 20: The architecture "struct" has been detected
-050INF Information: THE CREATION OF THE DATA TREE IS ENDED
-100INF Information: THE REORGANIZATION OF THE LEXEMES IS ENDED
-201ERR Error line 3: "stdtextio" is not a valid label, it must be the one of the library
+012ERR Error line 2: "librar" is not in any hierarchy (library, entity or architecture)
 004INF Information: The option to close when we encounter an error is turned on, so the program will be killed

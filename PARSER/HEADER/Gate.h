@@ -20,5 +20,7 @@ class Gate
 	{
 
 	}	
+
+	void displayLexemes();
 };
 #endif

@@ -19,7 +19,7 @@ class Connexion : public BlocInstruction
 
 	//METHODE HERITEE
 	virtual void createTree();
-	virtual void reorganizeLexemes();
 	virtual void verifySyntax() {};
+	virtual void displayLexemes();
 };
 #endif

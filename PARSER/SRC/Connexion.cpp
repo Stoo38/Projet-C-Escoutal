@@ -1,9 +1,9 @@
 #include "../HEADER/Connexion.h"
 
-void Connexion::reorganizeLexemes()
+void Connexion::displayLexemes()
 {
-	//m_listLexemes.pop_front();
-	//m_listLexemes.pop_front();
+	BlocNode::displayLexemes();
+	m_gate.displayLexemes();
 }
 
 void Connexion::createTree()
@@ -18,6 +18,8 @@ void Connexion::createTree()
 	newList.push_back(*itr);
 	itr++;
 	newList.push_back(*itr);
+	m_listLexemes.pop_front();
+	m_listLexemes.pop_front();
 	m_listLexemes.pop_front();
 	m_listLexemes.pop_front();
 	m_listLexemes.pop_front();

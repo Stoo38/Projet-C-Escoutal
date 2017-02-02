@@ -4,6 +4,12 @@
 009INF Information line 4: The library "ieee" has been detected
 010INF Information line 9: The entity "proc" has been detected
 011INF Information line 20: The architecture "struct" has been detected
+803DEB Debugger line 11: The port "clk" has been detected
+803DEB Debugger line 12: The port "rst" has been detected
+803DEB Debugger line 13: The port "start" has been detected
+803DEB Debugger line 14: The port "done" has been detected
+803DEB Debugger line 15: The port "din" has been detected
+803DEB Debugger line 16: The port "dout" has been detected
 021INF Information line 32: The process "un" has been detected
 026ERR Error line 40: "end process" must be followed by the name label
 004INF Information: The option to close when we encounter an error is turned on, so the program will be killed
