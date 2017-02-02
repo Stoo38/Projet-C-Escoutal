@@ -1,5 +1,6 @@
 #include "../HEADER/Component.h"
 
+//Fonction pour separer les differents ports dans un component
 void Component::createTree()
 {
 	list <Lexeme>::iterator itr;
@@ -8,7 +9,7 @@ void Component::createTree()
 	int countParenthesis = 0;		
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
-		if ((*itr).m_word == "port")
+		if ((*itr).m_word == "port")		//Les ports ne sont declares qu'apres "port("
 		{
 			newList.push_back(*itr);
 			itr++;
@@ -16,7 +17,7 @@ void Component::createTree()
 			{
 				newList.push_back(*itr);
 				itr++;
-				m_listeBlocks.push_back(new Port((*itr).m_word, (*itr).m_line, m_msgBox));
+				m_listeBlocks.push_back(new Port((*itr).m_word, (*itr).m_line, m_msgBox));		//On crée un objet Port
 				m_msgBox.createMessage("803", (*itr).m_line, (*itr).m_word);		
 
 			}
@@ -28,7 +29,7 @@ void Component::createTree()
 			Lexeme flag("FLAG_PORT", (*itr).m_line);			 
 			newList.push_back(flag);	
 		}
-		else if (((*itr).m_word == "(") && (inPort == true))
+		else if (((*itr).m_word == "(") && (inPort == true))	//On compte les parentheses ouvrantes/ fermantes pour savoir où nous sommes
 		{
 			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
 			countParenthesis++;
@@ -38,17 +39,17 @@ void Component::createTree()
 			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
 			countParenthesis--;
 		}
-		else if (((*itr).m_word == ")") && (countParenthesis == 0))
+		else if (((*itr).m_word == ")") && (countParenthesis == 0))	//Si ")" et que le compteur = 0 alors c'est la fin de la declaration des ports
 		{
 			newList.push_back(*itr);
 			inPort = false;
 		}
-		else if (((*itr).m_word == ";") && (inPort == true))
+		else if (((*itr).m_word == ";") && (inPort == true))		//Nouveau port quand on croise ";"
 		{
 			
 			newList.push_back(*itr);
 			itr++;
-			m_listeBlocks.push_back(new Port((*itr).m_word, (*itr).m_line, m_msgBox));
+			m_listeBlocks.push_back(new Port((*itr).m_word, (*itr).m_line, m_msgBox));		//On crée un objet Port
 			m_msgBox.createMessage("803", (*itr).m_line, (*itr).m_word);
 			Lexeme flag("FLAG_PORT", (*itr).m_line);			 
 			newList.push_back(flag);
@@ -57,11 +58,11 @@ void Component::createTree()
 		{
 			if (inPort == true)	
 			{		
-				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);	//Ajout de lexeme au dernier port créé
 			}
 			else
 			{
-				newList.push_back(*itr);
+				newList.push_back(*itr);	//Ajout de lexeme à la nouvelle liste de lexeme de l'entity
 			}
 		}	
 	}

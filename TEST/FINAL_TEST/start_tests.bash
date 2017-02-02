@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PATH_TEST='TEST/FINAL_TEST/'
-LIST_TEST_FILES='archivide assign base_bit base_ports base biblio case entite_noarchi entite_seule erreur file_list instances latch process_clk2 process_clk3 process_clk4 process_clk proc proc_vide sensibilite signaux typage variables vide'
+LIST_TEST_FILES='archivide assign base_bit base_ports base biblio case entite_noarchi entite_seule erreur instances latch process_clk2 process_clk3 process_clk4 process_clk proc proc_vide sensibilite signaux typage variables vide'
 RESULTS_DIRECTORY='RESULTS/'
 
 cd ../../
