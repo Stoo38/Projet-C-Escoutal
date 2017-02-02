@@ -22,7 +22,7 @@ void Component::createTree()
 			}
 			else
 			{
-				cout << "error 1" << endl;
+				m_msgBox.createMessage("029", (*itr).m_line, (*itr).m_word);
 			}
 			inPort = true;
 			Lexeme flag("FLAG_PORT", (*itr).m_line);			 
