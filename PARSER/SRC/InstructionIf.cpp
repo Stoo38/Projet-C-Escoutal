@@ -247,31 +247,35 @@ void InstructionIf::createIfCase()
 }
 
 
+/* 
+##################Void verifySyntax()##################
+Fonctionnement global expliqué dans Library.cpp
+ */
 
 void InstructionIf::verifySyntax() 
 {	
-	list <Lexeme>::iterator itr;
-	int nbLexeme = 0;
-	int count = 0;	
-	bool flagElse = false;
+	list <Lexeme>::iterator itr; 	// Création de l'itérateur permettant de parcourir chaque lexeme du signal
+	int nbLexeme = 0; 		// nbLexeme correspond aux différents états de la FSM
+	int count = 0; 			// Le compteur permet de relever le nombre de fois que l'on a changé d'étape
+	bool flagElse = false;		// Initialisation d'un flag permettant de vérifier qu'après un else on ne peut ni avoir un autre else ni un elsif
 
-	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
+	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++) //Début du parcours de l'instruction if pour vérification
 	{
 		string monword = (*itr).m_word;
 		string nextWord = checkNextWord(count, itr);
 			
-		if (nbLexeme == 0)
+		if (nbLexeme == 0) // CAS 0: Mot clef "if"
 		{
-			if (nextWord != "FLAG_COMPA")
+			if (nextWord != "FLAG_COMPA") // Après un "if" on doit nécessairement avoir une comparaison
 			{	
-				m_msgBox.createMessage("226", (*itr).m_line, nextWord);
-				itr = m_listLexemes.end();
+				m_msgBox.createMessage("226", (*itr).m_line, nextWord); // On affiche une erreur
+				itr = m_listLexemes.end(); // On coupe la vérification
 				itr--;
 			}
-			nbLexeme = 1;				
+			nbLexeme = 1; 		
 		}
 
-		else if (nbLexeme == 1)
+		else if (nbLexeme == 1) // CAS 1: FLAG_COMPA pour indiquer qu'il y a un noeud de comparaison à ce niveau	
 		{
 			if (nextWord != "then")
 			{	
@@ -282,8 +286,9 @@ void InstructionIf::verifySyntax()
 			nbLexeme = 2;				
 		}	
 
-		else if (nbLexeme == 2)
+		else if (nbLexeme == 2) // CAS 2: Mot clef "then"
 		{
+			// Après "then" on aura nécessairement une structure conditionnelle imbriquée ou une assignation
 			if ((nextWord != "FLAG_IF") && (nextWord != "FLAG_CASE") && (nextWord != "FLAG_ASSIG"))
 			{	
 				m_msgBox.createMessage("226", (*itr).m_line, nextWord);
@@ -293,21 +298,21 @@ void InstructionIf::verifySyntax()
 			nbLexeme = 3;				
 		}	
 
-		else if (nbLexeme == 3)
+		else if (nbLexeme == 3) // CAS 3: FLAG_IF, FLAG_CASE ou FLAS_ASSIG correspondant à une structure conditionnelle imbriquée ou à une assignation
 		{
-			if ((nextWord == "FLAG_IF") || (nextWord == "FLAG_CASE") || (nextWord == "FLAG_ASSIG"))
+			if ((nextWord == "FLAG_IF") || (nextWord == "FLAG_CASE") || (nextWord == "FLAG_ASSIG")) // Il est possible d'avoir plusieurs conditions imbriquées ou assignations à la suite
 			{	
 				nbLexeme = 3;
 			}
-			else if ((nextWord == "elsif") && (flagElse == false))
+			else if ((nextWord == "elsif") && (flagElse == false)) // Tant qu'on n'a pas eu de "else" on peut ensuite avoir un "elsif"
 			{	
 				nbLexeme = 4;
 			}
-			else if ((nextWord == "else") && (flagElse == false))
+			else if ((nextWord == "else") && (flagElse == false)) // Tant qu'on n'a pas eu de "else" on peut ensuite avoir un "else"
 			{	
 				nbLexeme = 5;
 			}
-			else if (nextWord == "end")
+			else if (nextWord == "end") // On peut également avoir "end", sans se soucier de savoir si on a eu un "elsif" ou un "else"
 			{	
 				nbLexeme = 6;
 			}
@@ -320,9 +325,9 @@ void InstructionIf::verifySyntax()
 			}			
 		}			
 
-		else if (nbLexeme == 4)
+		else if (nbLexeme == 4) // CAS 4: Mot clef "elsif" 
 		{
-			if (nextWord != "FLAG_COMPA")
+			if (nextWord != "FLAG_COMPA") // Après un "elsif" on aura nécessairement une comparaison
 			{	
 				m_msgBox.createMessage("226", (*itr).m_line, nextWord);
 				itr = m_listLexemes.end();
@@ -331,9 +336,9 @@ void InstructionIf::verifySyntax()
 			nbLexeme = 1;				
 		}	
 	
-		else if (nbLexeme == 5)
+		else if (nbLexeme == 5) // CAS 5: Mot clef "else"
 		{
-			flagElse = true;
+			flagElse = true; // On passe le flag à true pour empếcher d'avoir deux "else" pour un if
 			if ((nextWord != "FLAG_IF") && (nextWord != "FLAG_CASE") && (nextWord != "FLAG_ASSIG"))
 			{	
 				m_msgBox.createMessage("226", (*itr).m_line, nextWord);
@@ -343,7 +348,7 @@ void InstructionIf::verifySyntax()
 			nbLexeme = 3;				
 		}		
 
-		else if (nbLexeme == 6)
+		else if (nbLexeme == 6) // CAS 6: Mot clef "end"
 		{
 			if (nextWord != "if")
 			{	
@@ -354,7 +359,7 @@ void InstructionIf::verifySyntax()
 			nbLexeme = 7;				
 		}
 
-		else if (nbLexeme == 7)
+		else if (nbLexeme == 7) // CAS 7: Mot clef "if"
 		{
 			if (nextWord != ";")
 			{	
@@ -365,7 +370,7 @@ void InstructionIf::verifySyntax()
 			nbLexeme = 8;				
 		}	
 
-		else if (nbLexeme == 8)
+		else if (nbLexeme == 8) // CAS 8: FIN DE LA VERIFICATION, séparateur ";" 
 		{
 			if (nextWord != "")
 			{	
@@ -374,8 +379,8 @@ void InstructionIf::verifySyntax()
 			itr = m_listLexemes.end();
 			itr--;
 		}		
-		count++;	
+		count++; // Incrémentation du compteur
 	}
-	BlocNode::verifySyntax();
+	BlocNode::verifySyntax(); // En appelant cette fonction on va effectuer la vérification syntaxique des noeuds (ici seulement des ports) contenus dans l'entity
 }
 

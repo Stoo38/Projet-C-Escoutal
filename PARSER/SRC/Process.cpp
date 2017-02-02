@@ -233,41 +233,45 @@ void Process::createIfCase()
 	m_listLexemes = newList;
 }
 
+/* 
+##################Void verifySyntax()##################
+Fonctionnement global expliqué dans Library.cpp
+ */
 
 void Process::verifySyntax() 
 {	
-	list <Lexeme>::iterator itr;
-	int nbLexeme = 0;
-	int count = 0;	
-
-	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
+	list <Lexeme>::iterator itr; 	// Création de l'itérateur permettant de parcourir chaque lexeme du signal
+	int nbLexeme = 0; 		// nbLexeme correspond aux différents états de la FSM
+	int count = 0; 			// Le compteur permet de relever le nombre de fois que l'on a changé d'étape
+	
+	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++) //Début du parcours d'une entité pour vérification
 	{
 		string monword = (*itr).m_word;
 		string nextWord = checkNextWord(count, itr);
 	
-		if (nbLexeme == 0)
+		if (nbLexeme == 0) 	// CAS 0: Label correspondant à l'étiquette du process
 		{
-			if (nextWord != ":")
+			if (nextWord != ":") // On s'assure que le prochain lexeme est bien ":"
 			{	
-				m_msgBox.createMessage("225", (*itr).m_line, nextWord);
-				itr = m_listLexemes.end();
+				m_msgBox.createMessage("225", (*itr).m_line, nextWord); // Affiche une erreur
+				itr = m_listLexemes.end(); // On coupe la vérification
 				itr--;
 			}
 			nbLexeme = 1;				
 		}
 
-		else if (nbLexeme == 1)
+		else if (nbLexeme == 1)	// CAS 1: Séparateur ":"
 		{
-			if (nextWord != "process")
+			if (nextWord != "process") 
 			{	
-				m_msgBox.createMessage("225", (*itr).m_line, nextWord);
-				itr = m_listLexemes.end();
+				m_msgBox.createMessage("225", (*itr).m_line, nextWord); // Affiche une erreur
+				itr = m_listLexemes.end(); // On coupe la vérification
 				itr--;
 			}
 			nbLexeme = 2;				
 		}	
 
-		else if (nbLexeme == 2)
+		else if (nbLexeme == 2)	// CAS 2: Mot clef "process"
 		{
 			if (nextWord != "(")
 			{	
@@ -278,9 +282,9 @@ void Process::verifySyntax()
 			nbLexeme = 3;				
 		}	
 
-		else if (nbLexeme == 3)
+		else if (nbLexeme == 3)	// CAS 3: Paranthèse ouvrante "("
 		{
-			if (verifyLabel(nextWord) != false)
+			if (verifyLabel(nextWord) != false) // On s'assure que le prochain lexeme est un label valide
 			{	
 				m_msgBox.createMessage("225", (*itr).m_line, nextWord);
 				itr = m_listLexemes.end();
@@ -289,7 +293,7 @@ void Process::verifySyntax()
 			nbLexeme = 4;				
 		}		
 
-		else if (nbLexeme == 4)
+		else if (nbLexeme == 4) // CAS 4: Label correspondant à un paramètre de la liste de sensibilité
 		{
 			if (nextWord == ",")
 			{	
@@ -307,7 +311,7 @@ void Process::verifySyntax()
 			}			
 		}	
 	
-		else if (nbLexeme == 5)
+		else if (nbLexeme == 5) // CAS 5: Séparateur "," permettant de reboucler sur un autre paramètre de la liste de sensibilité
 		{
 			if (verifyLabel(nextWord) != false)
 			{	
@@ -318,13 +322,13 @@ void Process::verifySyntax()
 			nbLexeme = 4;				
 		}	
 
-		else if (nbLexeme == 6)
+		else if (nbLexeme == 6) // CAS 6: Paranthèse fermante ")"
 		{
-			if (nextWord == "FLAG_VARI")
+			if (nextWord == "FLAG_VARI") 	// A cette endroit on ne peut avoir que des déclarations de variable
 			{	
 				nbLexeme = 7;
 			}
-			else if (nextWord == "begin")
+			else if (nextWord == "begin")	// ou le mot clef "begin"
 			{	
 				nbLexeme = 8;
 			}
@@ -336,13 +340,13 @@ void Process::verifySyntax()
 			}				
 		}	
 
-		else if (nbLexeme == 7)
+		else if (nbLexeme == 7) // CAS 7: FLAG_VARI correspondant à la déclaration d'un noeud variable
 		{
-			if (nextWord == "FLAG_VARI")
+			if (nextWord == "FLAG_VARI")	// On peut reboucler sur le même état si on a une autre déclaration de variable
 			{	
 				nbLexeme = 7;
 			}
-			else if (nextWord == "begin")
+			else if (nextWord == "begin")	// ou aller à l'état "begin"
 			{	
 				nbLexeme = 8;
 			}
@@ -354,13 +358,13 @@ void Process::verifySyntax()
 			}				
 		}	
 
-		else if (nbLexeme == 8)
+		else if (nbLexeme == 8) // CAS 8: Mot clef "begin"
 		{
-			if ((nextWord == "FLAG_IF") || (nextWord == "FLAG_CASE") || (nextWord == "FLAG_ASSIG"))
+			if ((nextWord == "FLAG_IF") || (nextWord == "FLAG_CASE") || (nextWord == "FLAG_ASSIG")) // Après le begin on peut utiliser une structure if ou case, on peut aussi effectuer une assignation
 			{	
 				nbLexeme = 9;
 			}
-			else if (nextWord == "end")
+			else if (nextWord == "end")	// ou sortir du process via le mot clef "end"
 			{	
 				nbLexeme = 10;
 			}
@@ -372,7 +376,7 @@ void Process::verifySyntax()
 			}				
 		}	
 
-		else if (nbLexeme == 9)
+		else if (nbLexeme == 9) // CAS 9: FLAG_IF, FLAG_CASE ou FLAG_ASSIG correspondant à l'utilisation d'un if, d'un case ou à une assignation
 		{
 			if ((nextWord == "FLAG_IF") || (nextWord == "FLAG_CASE") || (nextWord == "FLAG_ASSIG"))
 			{	
@@ -390,7 +394,7 @@ void Process::verifySyntax()
 			}				
 		}
 
-		else if (nbLexeme == 10)
+		else if (nbLexeme == 10) // CAS 10: Mot clef "end"
 		{
 			if (nextWord != "process")
 			{	
@@ -401,7 +405,7 @@ void Process::verifySyntax()
 			nbLexeme = 11;
 		}
 
-		else if (nbLexeme == 11)
+		else if (nbLexeme == 11) // CAS 11: Mot clef "process"
 		{
 			if (nextWord != m_identifiant.m_word)
 			{	
@@ -412,7 +416,7 @@ void Process::verifySyntax()
 			nbLexeme = 12;
 		}
 
-		else if (nbLexeme == 12)
+		else if (nbLexeme == 12) // CAS 12: Label correspondant à l'étiquette du process
 		{
 			if (nextWord != ";")
 			{	
@@ -425,7 +429,7 @@ void Process::verifySyntax()
 
 
 
-		else if (nbLexeme == 13)
+		else if (nbLexeme == 13) // CAS 13: FIN DE LA VERIFICATION, séparateur ";" 
 		{
 			if (nextWord != "")
 			{	
@@ -436,7 +440,7 @@ void Process::verifySyntax()
 		}		
 		count++;	
 	}
-	BlocNode::verifySyntax();
+	BlocNode::verifySyntax(); // En appelant cette fonction on va effectuer la vérification syntaxique des noeuds (ici seulement des ports) contenus dans l'entity
 }
 
 

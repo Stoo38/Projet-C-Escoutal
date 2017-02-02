@@ -69,35 +69,41 @@ void Component::createTree()
 }
 
 
-// Fonction qui effectue la vérification syntaxique 
+
+/* 
+##################Void VerifySyntax()##################
+Fonctionnement global expliqué dans Library.cpp
+ */
+
 void Component::verifySyntax() 
 {	
-	list <Lexeme>::iterator itr;
-	int nbLexeme = 0;
-	int count = 0;	
-
-	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
+	list <Lexeme>::iterator itr; 	// Création de l'itérateur permettant de parcourir chaque lexeme du signal
+	int nbLexeme = 0; 		// nbLexeme correspond aux différents états de la FSM
+	int count = 0; 			// Le compteur permet de relever le nombre de fois que l'on a changé d'étape
+	
+	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++) //Début du parcours d'une entité pour vérification
 	{
 		string monword = (*itr).m_word;
 		string nextWord = checkNextWord(count, itr);
-		if (nbLexeme == 0)
+
+		if (nbLexeme == 0)     // CAS 0: Mot clef "Component"
 		{
 			if (verifyLabel(nextWord) != false)
 			{	
-				m_msgBox.createMessage("215", (*itr).m_line, nextWord);
-				itr = m_listLexemes.end();
+				m_msgBox.createMessage("215", (*itr).m_line, nextWord); // Affiche une erreur
+				itr = m_listLexemes.end(); // On coupe la vérification
 				itr--;
 			}
 			nbLexeme = 1;				
 		}
 
-		else if (nbLexeme == 1)
+		else if (nbLexeme == 1) // CAS 1: Label correspondant à l'étiquette du component
 		{	
-			if (nextWord == "port")
+			if (nextWord == "port")		// Possibilité d'avoir le mot clef "port"
 			{	
 				nbLexeme = 2;
 			}
-			else if (nextWord == "end")
+			else if (nextWord == "end")	// ou "end"
 			{	
 				nbLexeme = 8;
 			}
@@ -110,7 +116,7 @@ void Component::verifySyntax()
 					
 		}	
 
-		else if (nbLexeme == 2)
+		else if (nbLexeme == 2) // CAS 2: Mot clef "port"
 		{
 			if (nextWord != "(")
 			{	
@@ -121,9 +127,9 @@ void Component::verifySyntax()
 			nbLexeme = 3;			
 		}	
 	
-		else if (nbLexeme == 3)
+		else if (nbLexeme == 3) // CAS 3: Paranthèse ouvrante "("
 		{
-			if (nextWord != "FLAG_PORT")
+			if (nextWord != "FLAG_PORT") // On vérifie que le prochain mot est "FLAG_PORT", ce lexeme est automatiquement généré si un port a été déclaré
 			{	
 				m_msgBox.createMessage("203", (*itr).m_line, nextWord);
 				itr = m_listLexemes.end();
@@ -132,7 +138,7 @@ void Component::verifySyntax()
 			nbLexeme = 4;
 		}	
 	
-		else if (nbLexeme == 4)
+		else if (nbLexeme == 4) // CAS 4: FLAG_PORT correspondant à la déclaration d'un port
 		{
 			if (nextWord == ";")
 			{	
@@ -150,7 +156,7 @@ void Component::verifySyntax()
 			}
 		}	
 	
-		else if (nbLexeme == 5)
+		else if (nbLexeme == 5) // CAS 5: Séparateur ";" permettant de reboucler sur un nouveau FLAG_PORT
 		{
 			if (nextWord != "FLAG_PORT")
 			{
@@ -161,7 +167,7 @@ void Component::verifySyntax()
 			nbLexeme = 4;
 		}
 
-		else if (nbLexeme == 6)
+		else if (nbLexeme == 6) // CAS 6: Paranthèse fermante ")"
 		{
 			if (nextWord != ";")
 			{
@@ -173,7 +179,7 @@ void Component::verifySyntax()
 
 		}	
 
-		else if (nbLexeme == 7)
+		else if (nbLexeme == 7) // CAS 7: Séparateur ";" 
 		{
 			if (nextWord != "end")
 			{
@@ -184,7 +190,7 @@ void Component::verifySyntax()
 			nbLexeme = 8;
 		}
 
-		else if (nbLexeme == 8)
+		else if (nbLexeme == 8) // CAS 8: Mot clef "end"
 		{
 			if (nextWord != "component")
 			{	
@@ -195,7 +201,7 @@ void Component::verifySyntax()
 			nbLexeme = 9;
 		}
 
-		else if (nbLexeme == 9)
+		else if (nbLexeme == 9) // CAS 10: Mot clef "component"
 		{
 			if (nextWord != ";")
 			{	
@@ -206,7 +212,7 @@ void Component::verifySyntax()
 			nbLexeme = 10;
 		}
 
-		else if (nbLexeme == 10)
+		else if (nbLexeme == 10) // CAS 10: FIN DE LA VERIFICATION, séparateur ";" 
 		{
 			if (nextWord != "")
 			{	
@@ -217,5 +223,5 @@ void Component::verifySyntax()
 		}		
 		count++;	
 	}
-	BlocNode::verifySyntax();
+	BlocNode::verifySyntax(); // En appelant cette fonction on va effectuer la vérification syntaxique des noeuds (ici seulement des ports) contenus dans le component
 }

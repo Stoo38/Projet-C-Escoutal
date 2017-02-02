@@ -1,10 +1,5 @@
 #include "../HEADER/Entity.h"
 
-/* 
-##################Void VerifySyntax()##################
-Fonctionnement global expliqué dans Library.cpp
- */
-
 void Entity::createTree()
 {
 	list <Lexeme>::iterator itr;
@@ -74,7 +69,12 @@ void Entity::createTree()
 }
 
 
-// Fonction qui effectue la vérification syntaxique 
+
+/* 
+##################Void verifySyntax()##################
+Fonctionnement global expliqué dans Library.cpp
+ */
+
 void Entity::verifySyntax() 
 {
 	
@@ -87,7 +87,6 @@ void Entity::verifySyntax()
 		string monword = (*itr).m_word;
 		string nextWord = checkNextWord(count, itr);
 
-
 		if (nbLexeme == 0) // CAS 0: Mot clef "Entity"
 		{
 			nbLexeme = 1;				
@@ -96,10 +95,10 @@ void Entity::verifySyntax()
 		else if (nbLexeme == 1) // CAS 1: Label correspondant à l'étiquette de l'entité
 		{
 			
-			if (nextWord != "is")
+			if (nextWord != "is") // On s'assure que le prochain lexeme est bien "is"
 			{	
-				m_msgBox.createMessage("206", (*itr).m_line, nextWord);
-				itr = m_listLexemes.end();
+				m_msgBox.createMessage("206", (*itr).m_line, nextWord); // Affiche une erreur
+				itr = m_listLexemes.end(); // On coupe la vérification
 				itr--;
 			}
 			nbLexeme = 2;
@@ -108,11 +107,11 @@ void Entity::verifySyntax()
 
 		else if (nbLexeme == 2) // CAS 2: Mot clef "is"
 		{	
-			if (nextWord == "port")
+			if (nextWord == "port") 	// Possibilité d'avoir le mot clef "port"
 			{	
 				nbLexeme = 3;
 			}
-			else if (nextWord == "end")
+			else if (nextWord == "end") 	// ou "end"
 			{	
 				nbLexeme = 9;
 			}
@@ -210,7 +209,7 @@ void Entity::verifySyntax()
 			nbLexeme = 10;
 		}
 
-		else if (nbLexeme == 10) // CAS 10: Mot clef "component"
+		else if (nbLexeme == 10) // CAS 10: Label correspondant à l'étiquette de l'entité
 		{
 			if (nextWord != ";")
 			{	
@@ -232,5 +231,5 @@ void Entity::verifySyntax()
 		}		
 		count++;	
 	}
-	BlocNode::verifySyntax(); // En appelant cette fonction on va effectuer la vérification syntaxique des noeuds (ici seulement des ports) contenus par l'entité
+	BlocNode::verifySyntax(); // En appelant cette fonction on va effectuer la vérification syntaxique des noeuds (ici seulement des ports) contenus dans l'entity
 }
