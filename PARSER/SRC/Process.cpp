@@ -26,7 +26,7 @@ void Process::reorganizeLexemes()	//Reorganise les lexemes dans process
 	BlocNode::reorganizeLexemes();
 }
 
-void Process::createVariable()
+void Process::createVariable()		//Separe les lexemes des variables
 {
 	list <Lexeme>::iterator itr;
 	list <Lexeme> newList;
@@ -62,7 +62,7 @@ void Process::createVariable()
 	m_listLexemes = newList;
 }
 
-void Process::createAssig()
+void Process::createAssig()		//Separe les lexemes des assignations
 {
 	list <Lexeme>::iterator itr;
 	list <Lexeme> newList;
@@ -122,7 +122,7 @@ void Process::createAssig()
 	m_listLexemes = newList;
 }
 
-void Process::createIfCase()
+void Process::createIfCase()		//Separe les lexemes des if et des case
 {
 	list <Lexeme>::iterator itr;
 	list <Lexeme> newList;
