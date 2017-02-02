@@ -396,7 +396,7 @@ void Architecture::verifySyntax()
 				}
 				break;
 			case 4:
-				if ((nextWord == "FLAG_COMP") || (nextWord == "FLAG_SIGN"))
+				if ((nextWord == "FLAG_COMP") || (nextWord == "FLAG_SIGN") || (nextWord == "FLAG_TYPE"))
 				{
 					nbLexeme = 4;
 				}

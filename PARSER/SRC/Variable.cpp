@@ -17,8 +17,7 @@ void Variable::verifySyntax()
 	{
 		string monword = (*itr).m_word;
 		string nextWord = checkNextWord(count, itr);
-		
-		cout << count << " " << m_listLexemes.size() << " " << nbLexeme << " " << monword << " " << nextWord <<  endl;
+
 	
 		if (nbLexeme == 0)
 		{	
@@ -188,7 +187,6 @@ void Variable::verifySyntax()
 				itr--;
 			}
 			prevNb = atoi(nextWord.c_str());
-			//cout << "PREVIOUS NUMBER" << prevNb << endl;
 			nbLexeme = 12;
 		}	
 
@@ -219,7 +217,6 @@ void Variable::verifySyntax()
 				itr--;
 			}
 			nextNb = atoi(nextWord.c_str());
-			//cout << "NEXT NUMBER" << prevNb << endl;
 			if (nextNb >= prevNb)
 			{
 				m_msgBox.createMessage("210", (*itr).m_line, nextWord);		
@@ -239,7 +236,6 @@ void Variable::verifySyntax()
 				itr--;
 			}
 			nextNb = atoi(nextWord.c_str());
-			//cout << "NEXT NUMBER" << prevNb << endl;
 			if (nextNb <= prevNb)
 			{
 				m_msgBox.createMessage("211", (*itr).m_line, nextWord);		
@@ -308,7 +304,7 @@ void Variable::verifySyntax()
 				for (int i=0; i < nextWord.size(); i++)
 				{
 					if ((nextWord[i] != '0') && (nextWord[i] != '1'))
-					{	cout << "error" << endl;
+					{	
 						m_msgBox.createMessage("219", (*itr).m_line, nextWord);		
 						itr = m_listLexemes.end();
 						itr--;

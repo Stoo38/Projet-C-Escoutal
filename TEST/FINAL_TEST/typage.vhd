@@ -25,7 +25,7 @@ TYPE  drapeau  IS  array (0  TO  2)  OF  couleur;
 --signal three : mot;
 --signal four: drapeau;
 
---begin
--- end vide;
+begin
+end essai;
 
 

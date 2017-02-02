@@ -259,9 +259,7 @@ void InstructionIf::verifySyntax()
 	{
 		string monword = (*itr).m_word;
 		string nextWord = checkNextWord(count, itr);
-
-		cout << count << " " << m_listLexemes.size() << " " << nbLexeme << " " << monword << " " << nextWord <<  endl;
-	
+			
 		if (nbLexeme == 0)
 		{
 			if (nextWord != "FLAG_COMPA")

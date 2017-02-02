@@ -1,27 +1,28 @@
 #include "../HEADER/Signal.h"
 
+/* Verification syntaxique d'un signal */
 void Signal::verifySyntax() 
 {
-	list <Lexeme>::iterator itr;
-	int nbLexeme = 0;
-	int count = 0;
-	int nextNb = 0, prevNb = 0;
-	int sizeVector = 0;
+	list <Lexeme>::iterator itr; //Création de l'itérateur permettant de parcourir chaque lexeme du signal
+	int nbLexeme = 0; // nbLexeme correspond aux différents états de la FSM
+	int count = 0; // Le compteur permet de relever le nombre de fois que l'on a changé d'étape
+	/* Variables permettant de tester la cohérence d'un vecteur*/
+	int nextNb = 0, prevNb = 0; 
+	int sizeVector = 0; 
 
+	/* Tableau contenant les différents types pris en compte par le compilateur */
 	string myTypes[3];
 	myTypes[0] = "bit";
 	myTypes[1] = "bit_vector";
 	myTypes[2] = "unsigned";
 
-	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
+	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++) //Début du parcours d'un signal pour vérification 
 	{
-		string monword = (*itr).m_word;
-		string nextWord = checkNextWord(count, itr);
-		
+		string monword = (*itr).m_word; // Déclaration de la variable qui contiendra le lexeme courant
+		string nextWord = checkNextWord(count, itr); // Déclaration de la variable qui contiendra le mot suivant ou qui indiquera une erreur s'il n'y en a pas
 
-		cout << count << " " << m_listLexemes.size() << " " << nbLexeme << " " << monword << " " << nextWord <<  endl;
 	
-		if (nbLexeme == 0)
+		if (nbLexeme == 0) // CAS 0: Mot-clef "signal" 
 		{	
 			if(verifyLabel(nextWord) != false)
 			{
@@ -32,7 +33,7 @@ void Signal::verifySyntax()
 			nbLexeme = 1;						
 		}
 
-		else if (nbLexeme == 1)
+		else if (nbLexeme == 1) // CAS 1: Etiquette du signal à déclarer
 		{
 			if (nextWord == ",")
 			{
@@ -50,7 +51,7 @@ void Signal::verifySyntax()
 			}
 		}
 
-		else if (nbLexeme == 2)
+		else if (nbLexeme == 2) // CAS 2: Séparateur "," autorisant la déclaration, de plusieurs signaux
 		{	
 			if(verifyLabel(nextWord) != false)
 			{
@@ -61,7 +62,7 @@ void Signal::verifySyntax()
 			nbLexeme = 1;		
 		}	
 
-		else if (nbLexeme == 3)
+		else if (nbLexeme == 3) // CAS 3: Séparateur ":" - vérification du type 
 		{
 			bool flag = false;
 			for (int i = 0; i < 3; i++)
@@ -82,6 +83,7 @@ void Signal::verifySyntax()
 					i = 3; //fin de boucle
 				}
 			}
+
 			if (flag == false)
 			{
 				m_msgBox.createMessage("216", (*itr).m_line, nextWord);
@@ -90,7 +92,7 @@ void Signal::verifySyntax()
 			}	
 		}	
 		//TYPE SIMPLE
-		else if (nbLexeme == 4)
+		else if (nbLexeme == 4) // CAS 4: Utilisation d'un type "simple" tel que "bit"
 		{
 			if (nextWord == ";")
 			{
@@ -108,7 +110,7 @@ void Signal::verifySyntax()
 			}
 		}
 
-		else if (nbLexeme == 5)
+		else if (nbLexeme == 5) // CAS 5: Lexeme "<" à combiner avec "=" pour effectuer une affectation
 		{	
 			if(nextWord != "=")
 			{
@@ -119,7 +121,7 @@ void Signal::verifySyntax()
 			nbLexeme = 6;		
 		}	
 
-		else if (nbLexeme == 6)
+		else if (nbLexeme == 6) // CAS 6: Lexeme "=" permettant d'assurer l'affectation
 		{	
 			if(nextWord != "\'")
 			{
@@ -130,7 +132,7 @@ void Signal::verifySyntax()
 			nbLexeme = 7;		
 		}	
 
-		else if (nbLexeme == 7)
+		else if (nbLexeme == 7) // CAS 7: Premier caractère "'" permettant d'encadrer un char (un lexeme de taille 1 pouvant être 0 ou 1 pour le type bit)
 		{	
 			if((nextWord.size() == 1) &&  ((nextWord[0] == '0') || (nextWord[0] == '1')))
 			{
@@ -144,9 +146,9 @@ void Signal::verifySyntax()
 			}					
 		}
 
-		else if (nbLexeme == 8)
+		else if (nbLexeme == 8) // CAS 8: Ici on doit avoir un bit (0 ou 1) dans le cas du type "bit"
 		{	
-			if(nextWord != "\'")
+			if(nextWord != "\'") 
 			{
 				m_msgBox.createMessage("216", (*itr).m_line, nextWord);
 				itr = m_listLexemes.end();
@@ -155,7 +157,7 @@ void Signal::verifySyntax()
 			nbLexeme = 9;		
 		}
 
-		else if (nbLexeme == 9)
+		else if (nbLexeme == 9) // CAS 9: Second caractère "'" permettant d'encadrer un char (un lexeme de taille 1 pouvant être 0 ou 1 pour le type bit)
 		{	
 			if(nextWord != ";")
 			{
@@ -169,7 +171,7 @@ void Signal::verifySyntax()
 
 	
 		//TYPE VECTOR ET UNSIGNED
-		else if (nbLexeme == 10)
+		else if (nbLexeme == 10) // CAS 10: Utilisation d'un type vector ou unsigned
 		{
 			if (nextWord != "(")
 			{
@@ -180,7 +182,7 @@ void Signal::verifySyntax()
 			nbLexeme = 11;
 		}
 
-		else if (nbLexeme == 11)
+		else if (nbLexeme == 11) // CAS 11: Paranthèse ouvrante "("
 		{
 			if (verifyNumber(nextWord) != false)
 			{
@@ -189,11 +191,10 @@ void Signal::verifySyntax()
 				itr--;
 			}
 			prevNb = atoi(nextWord.c_str());
-			//cout << "PREVIOUS NUMBER" << prevNb << endl;
 			nbLexeme = 12;
 		}	
 
-		else if (nbLexeme == 12)
+		else if (nbLexeme == 12) // CAS 12: Première borne du vecteur
 		{
 			if (nextWord == "downto")
 			{
@@ -211,7 +212,7 @@ void Signal::verifySyntax()
 			}
 		}
 
-		else if (nbLexeme == 13)
+		else if (nbLexeme == 13) // CAS 13: Traitement du cas Downto
 		{
 			if (verifyNumber(nextWord) != false)
 			{
@@ -220,7 +221,6 @@ void Signal::verifySyntax()
 				itr--;
 			}
 			nextNb = atoi(nextWord.c_str());
-			//cout << "NEXT NUMBER" << prevNb << endl;
 			if (nextNb >= prevNb)
 			{
 				m_msgBox.createMessage("210", (*itr).m_line, nextWord);		
@@ -231,7 +231,7 @@ void Signal::verifySyntax()
 			nbLexeme = 15;
 		}
 
-		else if (nbLexeme == 14)
+		else if (nbLexeme == 14) // CAS 14: Traitement du cas To
 		{
 			if (verifyNumber(nextWord) != false)
 			{
@@ -240,7 +240,6 @@ void Signal::verifySyntax()
 				itr--;
 			}
 			nextNb = atoi(nextWord.c_str());
-			//cout << "NEXT NUMBER" << prevNb << endl;
 			if (nextNb <= prevNb)
 			{
 				m_msgBox.createMessage("211", (*itr).m_line, nextWord);		
@@ -251,7 +250,7 @@ void Signal::verifySyntax()
 			nbLexeme = 15;
 		}
 
-		else if (nbLexeme == 15)
+		else if (nbLexeme == 15) // CAS 15: Seconde borne du vecteur qui doit être supérieure à la première en cas de "to" et inférieure en cas de "downto"
 		{
 			if (nextWord != ")")
 			{
@@ -262,7 +261,7 @@ void Signal::verifySyntax()
 			nbLexeme = 16;
 		}	
 
-		else if (nbLexeme == 16)
+		else if (nbLexeme == 16) // CAS 16: Paranthèse fermante ")"
 		{
 			if (nextWord == ";")
 			{
@@ -280,7 +279,7 @@ void Signal::verifySyntax()
 			}
 		}
 
-		else if (nbLexeme == 17)
+		else if (nbLexeme == 17) // CAS 17: Lexeme "<" à combiner avec "=" pour effectuer une affectation
 		{	
 			if(nextWord != "=")
 			{
@@ -291,7 +290,7 @@ void Signal::verifySyntax()
 			nbLexeme = 18;		
 		}	
 
-		else if (nbLexeme == 18)
+		else if (nbLexeme == 18) // CAS 18: Lexeme "=" permettant d'assurer l'affectation
 		{	
 			if(nextWord != "\"")
 			{
@@ -302,14 +301,14 @@ void Signal::verifySyntax()
 			nbLexeme = 19;		
 		}	
 
-		else if (nbLexeme == 19)
+		else if (nbLexeme == 19) // CAS 19: Premier caractère """ permettant d'encadrer un vecteur (un lexeme de la taille du vecteur défini auparavant)
 		{	
 			if ( nextWord.size() == (sizeVector+1))
 			{
 				for (int i=0; i < nextWord.size(); i++)
 				{
 					if ((nextWord[i] != '0') && (nextWord[i] != '1'))
-					{	cout << "error" << endl;
+					{	
 						m_msgBox.createMessage("216", (*itr).m_line, nextWord);		
 						itr = m_listLexemes.end();
 						itr--;
@@ -327,7 +326,7 @@ void Signal::verifySyntax()
 			nbLexeme = 20;					
 		}
 
-		else if (nbLexeme == 20)
+		else if (nbLexeme == 20) // CAS 20: Vecteur de bits dont la taille a été définie auparavant
 		{	
 			if(nextWord != "\"")
 			{
@@ -338,7 +337,7 @@ void Signal::verifySyntax()
 			nbLexeme = 21;		
 		}
 
-		else if (nbLexeme == 21)
+		else if (nbLexeme == 21) // CAS 21: Second caractère """ permettant d'encadrer un vecteur (un lexeme de la taille du vecteur défini auparavant)
 		{	
 			if(nextWord != ";")
 			{
@@ -350,7 +349,7 @@ void Signal::verifySyntax()
 		}
 
 
-		else if (nbLexeme == 22)
+		else if (nbLexeme == 22) // CAS 22: FIN DE LA VERIFICATION, séparateur ";"
 		{
 			if (nextWord != "")
 			{	
@@ -359,6 +358,6 @@ void Signal::verifySyntax()
 			itr = m_listLexemes.end();
 			itr--;
 		}
-		count++;	
+		count++; // Incrémentation du compteur
 	}
 }
