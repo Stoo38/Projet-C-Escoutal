@@ -3,24 +3,24 @@
 using namespace std;
 
 //ACCESSEURS
-const string & Bloc::getIdentifiant() const
+const string & Bloc::getIdentifiant() const		//Renvoie l'identifiant
 {
 	return m_identifiant.m_word;
 }
 
-const string Bloc::getKeyWord() const
+const string Bloc::getKeyWord() const			//Renvoie le mot-clé de la classe
 {
 	return m_keyword.m_word;
 }
 
 //MODIFIEURS
-void Bloc::addLexeme(string lexeme, int nLine)
+void Bloc::addLexeme(string lexeme, int nLine)		//Permet d'ajouter un Lexeme à la liste
 {
 	Lexeme newLexeme(lexeme, nLine);
 	m_listLexemes.push_back(newLexeme);
 }
 
-void Bloc::displayLexemes()
+void Bloc::displayLexemes()				//Permet d'afficher tous les lexemes contenus dans la liste
 {
 	cout << "List of lexemes contained in the block " << getKeyWord() << " " << getIdentifiant() << endl;
 	list <Lexeme>::iterator itr;
@@ -30,8 +30,8 @@ void Bloc::displayLexemes()
 	}
 }
 
-int Bloc::trySpecialCharacter(Lexeme lex)
-{
+int Bloc::trySpecialCharacter(Lexeme lex)		//Permet de voir s'il y a des caracteres speciaux dans le lexeme
+{							//Parcourt pour cela tous les autres caracteres valides
 	string word = lex.m_word;
 	if(word.size() == 1)
 	{
@@ -62,7 +62,7 @@ int Bloc::trySpecialCharacter(Lexeme lex)
 	return 0;		
 }
 
-bool Bloc::verifyFirstCharacter(Lexeme lex)
+bool Bloc::verifyFirstCharacter(Lexeme lex)		//Verifie que le premier caractere est une lettre
 {
 	string word = lex.m_word;
 	bool error = true;
@@ -83,7 +83,7 @@ bool Bloc::verifyFirstCharacter(Lexeme lex)
 	return error;
 }
 
-bool Bloc::verifyUnderscore(Lexeme lex)
+bool Bloc::verifyUnderscore(Lexeme lex)			//Verifie que le premier et le dernier caractere du lexeme n'est pas un underscore
 {
 	string word = lex.m_word;
 	bool error = false;
@@ -95,7 +95,7 @@ bool Bloc::verifyUnderscore(Lexeme lex)
 	return error;
 }
 
-bool Bloc::verifyGlobalWord(Lexeme lex)
+bool Bloc::verifyGlobalWord(Lexeme lex)			//Verifie que le lexeme n'est compose que de lettres, chiffres et underscore
 {
 	string word = lex.m_word;
 	bool error;
@@ -126,7 +126,7 @@ bool Bloc::verifyGlobalWord(Lexeme lex)
 	return error;
 }
 
-bool Bloc::verifyLabel(Lexeme lex)
+bool Bloc::verifyLabel(Lexeme lex)		//Lance toutes les fonctions pour verifier que le lexeme est une etiquette valide
 {
 	bool error1, error2, error3, error4;
 	error1 = verifyGlobalWord(lex);	
@@ -143,7 +143,7 @@ bool Bloc::verifyLabel(Lexeme lex)
 	}
 }
 
-bool Bloc::compareKeyWords(Lexeme lex)
+bool Bloc::compareKeyWords(Lexeme lex)		//Compare les lexemes aux mot-cles contenus dans le fichier kaywords.txt
 {
 		
 	bool error = false;		
@@ -176,7 +176,7 @@ bool Bloc::compareKeyWords(Lexeme lex)
 	return error;
 }
 
-string Bloc::checkNextWord(int count, list<Lexeme>::iterator itr)
+string Bloc::checkNextWord(int count, list<Lexeme>::iterator itr)	//Renvoie le prochain mot quand on parcourt la liste de lexemes
 {
 	if (count == (m_listLexemes.size()-1))
 	{	
@@ -193,10 +193,10 @@ string Bloc::checkNextWord(int count, list<Lexeme>::iterator itr)
 	}
 }
 
-bool Bloc::verifyNumber(string word)
+bool Bloc::verifyNumber(string word)					//Verifie que le lexeme est un nombre
 {
 	bool error = true;
-	for (char j = 45; j < 58; j++)
+	for (char j = 45; j < 58; j++)					//verifie si le premier caractere est "-" et donc si le nombre est negatif
 	{
 		if (word[0] == j)
 		{

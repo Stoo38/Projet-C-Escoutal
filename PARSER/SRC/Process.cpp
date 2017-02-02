@@ -1,6 +1,6 @@
 #include "../HEADER/Process.h"
 
-void Process::reorganizeLexemes()
+void Process::reorganizeLexemes()	//Reorganise les lexemes dans process
 {
 	m_listLexemes.pop_front();
 	m_listLexemes.pop_front();
@@ -33,7 +33,7 @@ void Process::createVariable()
 	bool inVariable = false;			
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
-		if ((*itr).m_word == "variable")
+		if ((*itr).m_word == "variable")	//detecte le mot-clé variable
 		{
 			inVariable = true;
 			itr++;
@@ -42,7 +42,7 @@ void Process::createVariable()
 			Lexeme flag("FLAG_VARI", (*itr).m_line);			 
 			newList.push_back(flag);			
 		}
-		else if (((*itr).m_word == ";") && (inVariable == true))
+		else if (((*itr).m_word == ";") && (inVariable == true))	//Fin d'une variable avec le ";"
 		{
 			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
 			inVariable = false;
@@ -51,11 +51,11 @@ void Process::createVariable()
 		{
 			if (inVariable == true)	
 			{		
-				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);	//Ajoute les lexemes a la derniere variable créée
 			}
 			else
 			{
-				newList.push_back(*itr);
+				newList.push_back(*itr);	//Ajout des lexemes a la nouvelle liste
 			}
 		}	
 	}

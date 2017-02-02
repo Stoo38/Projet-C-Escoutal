@@ -1,11 +1,13 @@
 #include "../HEADER/Connexion.h"
-
+//Affiche tous les lexemes contenu dans l'objet Gate
 void Connexion::displayLexemes()
 {
 	BlocNode::displayLexemes();
 	m_gate.displayLexemes();
 }
 
+//Instancie un objet Gate contenant la partie droite de la connexion
+//L'objectif est de faire un arbre pour simplifier le traitement
 void Connexion::createTree()
 {
 	list <Lexeme>::iterator itr;

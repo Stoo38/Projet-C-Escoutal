@@ -1,6 +1,6 @@
 #include "../HEADER/BlocNode.h"
 
-void BlocNode::displayLexemes()
+void BlocNode::displayLexemes()		//Lance displayLexemes pour les Blocs contenus dans la liste
 {
 	Bloc::displayLexemes();
 	if (m_listeBlocks.size() > 0)
@@ -13,7 +13,7 @@ void BlocNode::displayLexemes()
 	}
 }
 
-void BlocNode::createTree() 
+void BlocNode::createTree() 		//Lance createTree pour les Blocs contenus dans la liste
 {
 	if (m_listeBlocks.size() > 0)
 	{
@@ -25,7 +25,7 @@ void BlocNode::createTree()
 	}
 }
 
-void BlocNode::reorganizeLexemes() 
+void BlocNode::reorganizeLexemes() 	//Lance reorganizeLexemes pour les Blocs contenus dans la liste
 {
 	if (m_listeBlocks.size() > 0)
 	{
@@ -37,7 +37,7 @@ void BlocNode::reorganizeLexemes()
 	}
 }
 
-void BlocNode::verifySyntax() 
+void BlocNode::verifySyntax() 		//Lance verifySyntax pour les Blocs contenus dans la liste
 {
 	if (m_listeBlocks.size() > 0)
 	{

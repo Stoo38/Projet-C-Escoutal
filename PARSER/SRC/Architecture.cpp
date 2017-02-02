@@ -1,11 +1,11 @@
 #include "../HEADER/Architecture.h"
 
-const string & Architecture::getEntity() const
+const string & Architecture::getEntity() const		//Renvoie le nom de l'entity rattachee a l'architecture
 {
 	return m_entity.m_word;
 }
 
-void Architecture::createTree()
+void Architecture::createTree()			//Appelle les differentes fonctions pour repartir les lexemes	
 {
 	createComponent();
 	createProcess();
@@ -16,28 +16,28 @@ void Architecture::createTree()
 	BlocNode::createTree();
 }
 
-void Architecture::createComponent()
+void Architecture::createComponent()	//Repere les component entre le mot-clé "component" et la fin "end component;"
 {
 	list <Lexeme>::iterator itr;
 	list <Lexeme> newList;
 	bool inComponent = false;			
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
-		if ((*itr).m_word == "component")
+		if ((*itr).m_word == "component")		//Debut du component
 		{
 			inComponent = true;
 			itr++;
-			m_listeBlocks.push_back(new Component((*itr).m_word, (*itr).m_line, m_msgBox));
-			Lexeme flag("FLAG_COMP", (*itr).m_line);			 
+			m_listeBlocks.push_back(new Component((*itr).m_word, (*itr).m_line, m_msgBox));	//Creation d'un component
+			Lexeme flag("FLAG_COMP", (*itr).m_line);		//Place un FLAG	 
 			newList.push_back(flag);
 			m_msgBox.createMessage("020", (*itr).m_line, (*itr).m_word);			
 		}
-		else if (((*itr).m_word == "end") && (inComponent == true))
+		else if (((*itr).m_word == "end") && (inComponent == true))	
 		{
 			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
 			itr++;
 			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
-			if ((*itr).m_word == "component")
+			if ((*itr).m_word == "component")	//Fin du component
 			{
 				itr++;
 				if ((*itr).m_word == ";")
@@ -60,18 +60,18 @@ void Architecture::createComponent()
 		{
 			if (inComponent == true)	
 			{		
-				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);	//Ajout du lexeme au dernier component
 			}
 			else
 			{
-				newList.push_back(*itr);
+				newList.push_back(*itr);			//Ajout du lexeme a la nouvelle liste de lexeme
 			}
 		}	
 	}
 	m_listLexemes = newList;
 }
 
-void Architecture::createProcess()
+void Architecture::createProcess()	//Repere les process entre le mot-clé process et "end process ;"
 {
 	list <Lexeme>::iterator itr;
 	list <Lexeme> newList;
@@ -79,7 +79,7 @@ void Architecture::createProcess()
 	bool labelProcess = false;		
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
-		if (((*itr).m_word == "process") && (inProcess == false))
+		if (((*itr).m_word == "process") && (inProcess == false))	//Debut du process
 		{
 			inProcess = true;
 			itr--;
@@ -87,7 +87,7 @@ void Architecture::createProcess()
 			{
 				labelProcess = true;
 				itr--;
-				m_listeBlocks.push_back(new Process((*itr).m_word, (*itr).m_line, m_msgBox));
+				m_listeBlocks.push_back(new Process((*itr).m_word, (*itr).m_line, m_msgBox));	//Creation du process avec etiquette
 				m_msgBox.createMessage("021", (*itr).m_line, (*itr).m_word);	
 				itr++;
 				itr++;
@@ -97,11 +97,11 @@ void Architecture::createProcess()
 			else
 			{
 				itr++;
-				m_listeBlocks.push_back(new Process("default", (*itr).m_line, m_msgBox));
+				m_listeBlocks.push_back(new Process("default", (*itr).m_line, m_msgBox));	//Creation du process sans etiquette
 				m_msgBox.createMessage("021", (*itr).m_line, "default");				
 			}
 			
-			Lexeme flag("FLAG_PROC", (*itr).m_line);			 
+			Lexeme flag("FLAG_PROC", (*itr).m_line);	//Place un FLAG		 
 			newList.push_back(flag);
 		}
 		else if (((*itr).m_word == "end") && (inProcess == true))
@@ -109,7 +109,7 @@ void Architecture::createProcess()
 			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
 			itr++;
 			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
-			if ((*itr).m_word == "process")
+			if ((*itr).m_word == "process")			//Fin du process
 			{
 				itr++;
 				if ((labelProcess == false) && ((*itr).m_word == ";"))
@@ -127,7 +127,7 @@ void Architecture::createProcess()
 					itr++;
 					if ((*itr).m_word == ";")
 					{
-						(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);							
+						(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
 					}
 					else
 					{
@@ -148,67 +148,67 @@ void Architecture::createProcess()
 		{
 			if (inProcess == true)	
 			{		
-				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);	//Ajout des lexemes au dernier process
 			}
 			else
 			{
-				newList.push_back(*itr);
+				newList.push_back(*itr);				//Ajout des lexemes a la nouvelle liste
 			}
 		}
 	}	
 	m_listLexemes = newList;
 }
 
-void Architecture::createType()
+void Architecture::createType()	//Repere les type entre le mot-clé type et ";"
 {
 	list <Lexeme>::iterator itr;
 	list <Lexeme> newList;
 	bool inType = false;			
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
-		if ((*itr).m_word == "type")
+		if ((*itr).m_word == "type")		//Detection du mot-cle type
 		{
 			inType = true;
 			itr++;
-			m_listeBlocks.push_back(new Type((*itr).m_word, (*itr).m_line, m_msgBox));
+			m_listeBlocks.push_back(new Type((*itr).m_word, (*itr).m_line, m_msgBox));	//Creation d'un type
 			m_msgBox.createMessage("802", (*itr).m_line, (*itr).m_word);	
-			Lexeme flag("FLAG_TYPE", (*itr).m_line);			 
+			Lexeme flag("FLAG_TYPE", (*itr).m_line);	//Place un FLAG			 
 			newList.push_back(flag);			
 		}
 		else if (((*itr).m_word == ";") && (inType == true))
 		{
-			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);	//Fin du type
 			inType = false;
 		}
 		else 
 		{
 			if (inType == true)	
 			{		
-				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);	//Ajout du lexeme au dernier objet type cree
 			}
 			else
 			{
-				newList.push_back(*itr);
+				newList.push_back(*itr);	//Ajout du lexeme a la nouvelle liste
 			}
 		}	
 	}
 	m_listLexemes = newList;
 }
 
-void Architecture::createSignal()
+void Architecture::createSignal()	//Repere les signaux entre le mot-clé signal et ";"
 {
 	list <Lexeme>::iterator itr;
 	list <Lexeme> newList;
 	bool inSignal = false;			
 	for(itr = m_listLexemes.begin(); itr != m_listLexemes.end(); itr++)
 	{
-		if ((*itr).m_word == "signal")
+		if ((*itr).m_word == "signal")	//Debut du signal
 		{
 			inSignal = true;
 			itr++;
 			m_listeBlocks.push_back(new Signal((*itr).m_word, (*itr).m_line, m_msgBox));
 			m_msgBox.createMessage("801", (*itr).m_line, (*itr).m_word);	
-			Lexeme flag("FLAG_SIGN", (*itr).m_line);			 
+			Lexeme flag("FLAG_SIGN", (*itr).m_line);		//Place un FLAG		 
 			newList.push_back(flag);			
 		}
 		else if (((*itr).m_word == ";") && (inSignal == true))
@@ -220,18 +220,18 @@ void Architecture::createSignal()
 		{
 			if (inSignal == true)	
 			{		
-				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);	//Ajout du lexeme au dernier objet signal cree
 			}
 			else
 			{
-				newList.push_back(*itr);
+				newList.push_back(*itr);		//Ajout du lexeme a la nouvelle liste
 			}
 		}	
 	}
 	m_listLexemes = newList;
 }
 
-void Architecture::createPortMap()
+void Architecture::createPortMap()	//Repere les portmap à partir du mot-cle port map
 {
 	list <Lexeme>::iterator itr;
 	list <Lexeme> newList;
@@ -254,7 +254,7 @@ void Architecture::createPortMap()
 				newList.pop_back();	
 				newList.pop_back();	
 				newList.pop_back();	
-				Lexeme flag("FLAG_PMAP", (*itr).m_line);			 
+				Lexeme flag("FLAG_PMAP", (*itr).m_line);	//Place un FLAG			 
 				newList.push_back(flag);
 			}
 			else
@@ -273,11 +273,11 @@ void Architecture::createPortMap()
 		{
 			if (inPortMap == true)	
 			{		
-				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);	//Ajout du lexeme au dernier objet portmap cree
 			}
 			else
 			{
-				newList.push_back(*itr);
+				newList.push_back(*itr);		//Ajout du lexeme a la nouvelle liste
 			}
 		}	
 	}
@@ -307,7 +307,7 @@ void Architecture::createConnexion()
 			newList.pop_back();
 			itr++;
 			(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);	
-			Lexeme flag("FLAG_CONNEX", (*itr).m_line);			 
+			Lexeme flag("FLAG_CONNEX", (*itr).m_line);		//Place un FLAG		 
 			newList.push_back(flag);			
 		}
 		else if (((*itr).m_word == ";") && (inConnex == true))
@@ -319,11 +319,11 @@ void Architecture::createConnexion()
 		{
 			if (inConnex == true)	
 			{		
-				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
+				(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);	//Ajout du lexeme au dernier objet connexion cree
 			}
 			else
 			{
-				newList.push_back(*itr);
+				newList.push_back(*itr);		//Ajout du lexeme a la nouvelle liste
 			}
 		}
 		count++;
@@ -346,8 +346,8 @@ void Architecture::verifySyntax()
 		nextWord = checkNextWord(count, itr);
 		switch (nbLexeme)
 		{
-			case 0:	
-				if (nextWord == m_identifiant.m_word)
+			case 0:			//Premier mot: architecture
+				if (nextWord == m_identifiant.m_word)	//Second mot: nom de l'architecture
 				{
 					nbLexeme = 1;
 				}
@@ -359,7 +359,7 @@ void Architecture::verifySyntax()
 				}
 				break;
 			case 1:
-				if (nextWord == "of")
+				if (nextWord == "of")		//Prochain mot: of
 				{
 					nbLexeme = 2;
 				}
@@ -371,7 +371,7 @@ void Architecture::verifySyntax()
 				}
 				break;
 			case 2:
-				if (verifyLabel(nextWord) == false)
+				if (verifyLabel(nextWord) == false)	//Prochain mot: nom de l'entite rattachee
 				{
 					nbLexeme = 3;
 				}
@@ -384,7 +384,7 @@ void Architecture::verifySyntax()
 				break;
 			case 3:
 				m_entity = (*itr);
-				if (nextWord == "is")
+				if (nextWord == "is")			//Prochain mot: is
 				{
 					nbLexeme = 4;
 				}
@@ -395,12 +395,12 @@ void Architecture::verifySyntax()
 					itr--;
 				}
 				break;
-			case 4:
+			case 4:		//Prochain mot: un flag remplacant un component, un signal ou un type
 				if ((nextWord == "FLAG_COMP") || (nextWord == "FLAG_SIGN") || (nextWord == "FLAG_TYPE"))
 				{
 					nbLexeme = 4;
 				}
-				else if (nextWord == "begin")
+				else if (nextWord == "begin")	//Ou bien le begin d'architecture
 				{
 					nbLexeme = 5;
 				}
@@ -411,12 +411,12 @@ void Architecture::verifySyntax()
 					itr--;
 				}
 				break;
-			case 5:
+			case 5:		//Prochain mot: un flag remplacant un port map, un process ou une connexion
 				if ((nextWord == "FLAG_PMAP") || (nextWord == "FLAG_PROC") || (nextWord == "FLAG_CONNEX"))
 				{					
 					nbLexeme = 5;
 				}
-				else if (nextWord == "end")
+				else if (nextWord == "end")	//Ou bien le end d'architecture
 				{
 					nbLexeme = 6;
 				}
@@ -428,7 +428,7 @@ void Architecture::verifySyntax()
 				}
 				break;
 			case 6:
-				if (nextWord == m_identifiant.m_word)
+				if (nextWord == m_identifiant.m_word)	//Prochain mot: le nom de l'architecture
 				{
 					nbLexeme = 7;
 				}
@@ -440,7 +440,7 @@ void Architecture::verifySyntax()
 				}
 				break;
 			case 7:
-				if (nextWord == ";")
+				if (nextWord == ";")			//Prochain mot: doit etre un ";"
 				{
 					nbLexeme = 8;
 				}
@@ -452,7 +452,7 @@ void Architecture::verifySyntax()
 				}
 				break;
 			case 8:
-				if (nextWord != "")
+				if (nextWord != "")			//Il ne doit plus y avoir de lexeme dans l'architecture
 				{
 					m_msgBox.createMessage("232", (*itr).m_line, nextWord);
 					itr = m_listLexemes.end();

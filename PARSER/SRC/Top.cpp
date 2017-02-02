@@ -39,6 +39,7 @@ void Top::createTree()
 	}	
 }
 
+//Crée des objets Library, Entity ou Architecture en fonction de ce qui est lu
 void Top::instanceClass(vector<string> tab, int nLine)
 {
 	vector<string>::iterator it;
@@ -76,6 +77,7 @@ void Top::instanceClass(vector<string> tab, int nLine)
 	}	
 }
 
+//Affiche tous les lexemes
 void Top::displayLexemes()
 {
 	list <Bloc *>::iterator it;
@@ -85,6 +87,7 @@ void Top::displayLexemes()
 	}
 }
 
+//Reclasse certains lexemes
 void Top::reorganizeLexemes()
 {
 	list <Bloc *>::iterator it;
@@ -95,6 +98,7 @@ void Top::reorganizeLexemes()
 	m_msgBox.createMessage("100", 0, "");
 }
 
+//Lance la verification syntaxique dans chaque bloc
 void Top::verifySyntax()
 {
 	list <Bloc *>::iterator it;
@@ -105,18 +109,20 @@ void Top::verifySyntax()
 	m_msgBox.createMessage("200", 0, "");
 }
 
+//Lance les verifications de presynthese
 void Top::preSynthesis()
 {
 	verifyEntityArchi();
 	m_msgBox.createMessage("300", 0, "");
 }
 
+//Verifie la concordance entre les architecture et les entity
 void Top::verifyEntityArchi()
 {
 	list <Bloc *>::iterator it;
 	list <string> labelEntity;
 	string label;
-	for(it=m_listeBlocks.begin(); it != m_listeBlocks.end(); it++)
+	for(it=m_listeBlocks.begin(); it != m_listeBlocks.end(); it++)		//Récupère tous les noms des entity
 	{
 		label = (*it)->getKeyWord();
 		if (label == "entity")
@@ -124,7 +130,7 @@ void Top::verifyEntityArchi()
 			labelEntity.push_back((*it)->getIdentifiant());
 		}
 	}
-	for(it=m_listeBlocks.begin(); it != m_listeBlocks.end(); it++)
+	for(it=m_listeBlocks.begin(); it != m_listeBlocks.end(); it++)		//Compare les noms stockes avec ceux des architecture
 	{
 		label = (*it)->getKeyWord();
 		if (label == "architecture")
