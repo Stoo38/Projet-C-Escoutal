@@ -20,9 +20,7 @@ int main(int argc, char *argv[])
 	bool step_syntax = false;
 	bool step_presynthesis = false;
 	list <string> file;			// Liste contenant les différents fichiers VHDL à synthétiser
-	// Récupération des différents paramètres passés depuis la ligne de commande
-	
-	Display messageBox(opt_close_error, opt_debug);			// Création de l'objet contenant tous les messages
+	// Récupération des différents paramètres passés depuis la ligne de commande	
 	
 	int i = 1;
 	string parameter;
@@ -55,12 +53,12 @@ int main(int argc, char *argv[])
 		{
 			step_tree = true;	
 		}
-		else if (parameter == "-syntax")	
+		else if (parameter == "-syntax")	// Paramètre utilisé pour activer la vérification syntaxique
 		{
 			step_syntax = true;
 			step_tree = true;	
 		}
-		else if (parameter == "-presynthesis")	
+		else if (parameter == "-presynthesis")	// Paramètre utilisé pour activer la présynthèse
 		{
 			step_presynthesis = true;
 			step_syntax = true;
@@ -72,7 +70,7 @@ int main(int argc, char *argv[])
 		}
 		else if (parameter == "-debug")		// Paramètre utilisé pour continuer lors d'une erreur
 		{
-			opt_debug = true;	
+			opt_debug = true;
 		}
 		else if (parameter == "-display")	// Paramètre utilisé pour continuer lors d'une erreur
 		{
@@ -80,12 +78,13 @@ int main(int argc, char *argv[])
 		}
 		else					// Sinon, paramètre non reconnu 
 		{
-			messageBox.createMessage("000", 0, parameter);
+			cout << "000WAR Warning: " << parameter <<" is an invalid parameter" << endl; 
 		}
 	}
 
 	// Déclenchement des différentes étapes de synthèse en utilisant les options définies précédemment
 	list <string>::iterator itfile;
+	Display messageBox(opt_close_error, opt_debug);			// Création de l'objet contenant tous les messages
 	for (itfile = file.begin(); itfile != file.end(); itfile++) 	// Parcours un à un des fichiers VHDL
 	{
 		messageBox.createMessage("001", 0, *itfile);			
@@ -93,19 +92,19 @@ int main(int argc, char *argv[])
 		if (step_tree == true)					
 		{									
 			myTop.createTree();				// Création de l'arbre en lui-même	
-			myTop.reorganizeLexemes();
+			myTop.reorganizeLexemes();			// Réorganisation du stockage des lexemes pour les prochaines étapes
 		}
 		if (opt_display == true)					
 		{									
-			myTop.displayLexemes();
+			myTop.displayLexemes();				// Afffiche les lexemes lus
 		}
 		if (step_syntax == true)					
 		{
-			myTop.verifySyntax();	
+			myTop.verifySyntax();				// Lance l'etape de verification syntaxique
 		}
 		if (step_presynthesis == true)					
 		{
-			myTop.preSynthesis();	
+			myTop.preSynthesis();				// Lance l'etape de presynthese
 		}
 	}
 		

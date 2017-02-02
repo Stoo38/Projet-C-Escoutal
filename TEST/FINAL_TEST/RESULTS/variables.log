@@ -1,15 +1,205 @@
+0 10 0 library std
+1 10 1 std ;
+2 10 2 ; use
+3 10 3 use std
+4 10 4 std .
+5 10 5 . textio
+6 10 6 textio .
+7 10 5 . all
+8 10 7 all ;
+9 10 8 ; 
+0 24 0 library ieee
+1 24 1 ieee ;
+2 24 2 ; use
+3 24 3 use ieee
+4 24 4 ieee .
+5 24 5 . bit_1164
+6 24 6 bit_1164 .
+7 24 5 . all
+8 24 7 all ;
+9 24 8 ; use
+10 24 3 use ieee
+11 24 4 ieee .
+12 24 5 . bit_misc
+13 24 6 bit_misc .
+14 24 5 . all
+15 24 7 all ;
+16 24 8 ; use
+17 24 3 use ieee
+18 24 4 ieee .
+19 24 5 . bit_arith
+20 24 6 bit_arith .
+21 24 5 . all
+22 24 7 all ;
+23 24 8 ; 
+0 21 0 entity variables
+1 21 1 variables is
+2 21 2 is port
+3 21 3 port (
+4 21 4 ( FLAG_PORT
+5 21 5 FLAG_PORT ;
+6 21 6 ; FLAG_PORT
+7 21 5 FLAG_PORT ;
+8 21 6 ; FLAG_PORT
+9 21 5 FLAG_PORT ;
+10 21 6 ; FLAG_PORT
+11 21 5 FLAG_PORT ;
+12 21 6 ; FLAG_PORT
+13 21 5 FLAG_PORT ;
+14 21 6 ; FLAG_PORT
+15 21 5 FLAG_PORT )
+16 21 7 ) ;
+17 21 8 ; end
+18 21 9 end variables
+19 21 10 variables ;
+20 21 11 ; 
+0 4 0 clk :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 4 0 rst :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 4 0 start :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 4 0 done :
+1 4 2 : in
+2 4 3 in bit
+3 4 4 bit 
+0 9 0 din :
+1 9 2 : in
+2 9 3 in bit_vector
+3 9 5 bit_vector (
+4 9 6 ( 15
+5 9 7 15 downto
+6 9 8 downto 0
+7 9 9 0 )
+8 9 10 ) 
+0 9 0 dout :
+1 9 2 : out
+2 9 3 out bit_vector
+3 9 5 bit_vector (
+4 9 6 ( 15
+5 9 7 15 downto
+6 9 8 downto 0
+7 9 9 0 )
+8 9 10 ) 
+0 16 0 un :
+1 16 1 : process
+2 16 2 process (
+3 16 3 ( start
+4 16 4 start )
+5 16 6 ) FLAG_VARI
+6 16 7 FLAG_VARI FLAG_VARI
+7 16 7 FLAG_VARI FLAG_VARI
+8 16 7 FLAG_VARI begin
+9 16 8 begin FLAG_IF
+10 16 9 FLAG_IF FLAG_ASSIG
+11 16 9 FLAG_ASSIG end
+12 16 10 end process
+13 16 11 process un
+14 16 12 un ;
+15 16 13 ; 
+0 15 0 variable test
+1 15 1 test :
+2 15 3 : bit_vector
+3 15 10 bit_vector (
+4 15 11 ( 6
+5 15 12 6 downto
+6 15 13 downto 0
+7 15 15 0 )
+8 15 16 ) :
+9 15 17 : =
+10 15 18 = "
+11 15 19 " 1000000
+12 15 20 1000000 "
+13 15 21 " ;
+14 15 22 ; 
+0 10 0 variable var_un
+1 10 1 var_un :
+2 10 3 : bit
+3 10 4 bit :
+4 10 5 : =
+5 10 6 = '
+6 10 7 ' 1
+7 10 8 1 '
+8 10 9 ' ;
+9 10 22 ; 
+0 5 0 variable var_deux
+1 5 1 var_deux :
+2 5 3 : bit
+3 5 4 bit ;
+4 5 22 ; 
+0 9 0 if FLAG_COMPA
+1 9 1 FLAG_COMPA then
+2 9 2 then FLAG_ASSIG
+3 9 3 FLAG_ASSIG else
+4 9 5 else FLAG_ASSIG
+5 9 3 FLAG_ASSIG end
+6 9 6 end if
+7 9 7 if ;
+8 9 8 ; 
+0 10 0 signal data_round_in
+1 10 1 data_round_in :
+2 10 3 : bit_vector
+3 10 10 bit_vector (
+4 10 11 ( 12
+5 10 12 12 downto
+6 10 13 downto 0
+7 10 15 0 )
+8 10 16 ) ;
+9 10 22 ; 
+0 10 0 signal data_round_out
+1 10 1 data_round_out :
+2 10 3 : bit_vector
+3 10 10 bit_vector (
+4 10 11 ( 17
+5 10 12 17 downto
+6 10 13 downto 0
+7 10 15 0 )
+8 10 16 ) ;
+9 10 22 ; 
+0 10 0 signal first_round_key
+1 10 1 first_round_key :
+2 10 3 : bit_vector
+3 10 10 bit_vector (
+4 10 11 ( 6
+5 10 12 6 downto
+6 10 13 downto 0
+7 10 15 0 )
+8 10 16 ) ;
+9 10 22 ; 
+0 10 0 signal round_key
+1 10 1 round_key :
+2 10 3 : bit_vector
+3 10 10 bit_vector (
+4 10 11 ( 127
+5 10 12 127 downto
+6 10 13 downto 0
+7 10 15 0 )
+8 10 16 ) ;
+9 10 22 ; 
+0 5 0 signal last_round_signal
+1 5 1 last_round_signal :
+2 5 3 : bit
+3 5 4 bit ;
+4 5 22 ; 
+0 5 0 signal first_round_signal
+1 5 1 first_round_signal :
+2 5 3 : bit
+3 5 4 bit ;
+4 5 22 ; 
 001INF Information: BEGINNING OF THE SYNTHESIS OF THE "TEST/FINAL_TEST/variables.vhd" FILE
 005INF Information: The "TEST/FINAL_TEST/variables.vhd" file was successfully opened 
 009INF Information line 2: The library "std" has been detected
 009INF Information line 4: The library "ieee" has been detected
 010INF Information line 9: The entity "variables" has been detected
 011INF Information line 20: The architecture "struct" has been detected
-803DEB Debugger line 11: The port "clk" has been detected
-803DEB Debugger line 12: The port "rst" has been detected
-803DEB Debugger line 13: The port "start" has been detected
-803DEB Debugger line 14: The port "done" has been detected
-803DEB Debugger line 15: The port "din" has been detected
-803DEB Debugger line 16: The port "dout" has been detected
 021INF Information line 32: The process "un" has been detected
-026ERR Error line 43: "end process" must be followed by the name label
-004INF Information: The option to close when we encounter an error is turned on, so the program will be killed
+050INF Information: THE CREATION OF THE DATA TREE IS ENDED
+100INF Information: THE REORGANIZATION OF THE LEXEMES IS ENDED
+200INF Information: THE SYNTAX VERIFICATION IS ENDED
+300INF Information: THE PRESYNTHESIS VERIFICATION IS ENDED

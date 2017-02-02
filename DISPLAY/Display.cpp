@@ -81,28 +81,12 @@ void Display::displayMessage(bool allDisplay)
 			{
 				cout << *itlistMessages << endl;
 			}
-			else if (((*itlistMessages).substr(3,3) == "DEB")&&(m_debugger == true))
+			else if (((*itlistMessages).substr(3,3) == "DEB")&&(m_debugger == true))	//Affiche les messages de debug si l'option est activée	
 			{
 				cout << *itlistMessages << endl;
 			}			
 			toDisplay++;
 		}
-		/*if (counterDisplay == toDisplay)
-		{
-			cout << *itlistMessages << endl;
-			cout << (*itlistMessages).substr(3,3) << endl;
-			toDisplay++;
-		}
-		if ((counterDisplay == toDisplay) && (m_debugger == true))
-		{
-			cout << *itlistMessages << endl;
-			toDisplay++;
-		}
-		else if ((counterDisplay == toDisplay) && ((*itlistMessages).substr(3,3) != "DEB"))
-		{
-			cout << *itlistMessages << endl;
-			toDisplay++;
-		}*/
 		counterDisplay++;
 	}
 	m_alreadyDisplayed = toDisplay;

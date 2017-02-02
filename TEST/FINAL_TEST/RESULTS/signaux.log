@@ -1,131 +1,3 @@
-List of lexemes contained in the block library std
-1 1 library
-1 1 std
-1 1 ;
-2 2 use
-2 2 std
-2 2 .
-2 2 textio
-2 2 .
-2 2 all
-2 2 ;
-List of lexemes contained in the block library ieee
-3 3 library
-3 3 ieee
-3 3 ;
-4 4 use
-4 4 ieee
-4 4 .
-4 4 bit_1164
-4 4 .
-4 4 all
-4 4 ;
-5 5 use
-5 5 ieee
-5 5 .
-5 5 bit_misc
-5 5 .
-5 5 all
-5 5 ;
-6 6 use
-6 6 ieee
-6 6 .
-6 6 bit_arith
-6 6 .
-6 6 all
-6 6 ;
-List of lexemes contained in the block entity signaux
-8 8 entity
-8 8 signaux
-8 8 is
-9 9 port
-9 9 (
-10 10 FLAG_PORT
-10 10 ;
-11 11 FLAG_PORT
-11 11 ;
-12 12 FLAG_PORT
-12 12 ;
-13 13 FLAG_PORT
-13 13 ;
-14 14 FLAG_PORT
-14 14 ;
-15 15 FLAG_PORT
-15 15 ;
-16 16 FLAG_PORT
-16 16 )
-16 16 ;
-17 17 end
-17 17 signaux
-17 17 ;
-List of lexemes contained in the block port clk
-10 10 clk
-10 10 :
-10 10 in
-10 10 bit
-List of lexemes contained in the block port rst
-11 11 rst
-11 11 :
-11 11 in
-11 11 bit
-List of lexemes contained in the block port start
-12 12 start
-12 12 :
-12 12 in
-12 12 bit
-List of lexemes contained in the block port done
-13 13 done
-13 13 :
-13 13 in
-13 13 bit
-List of lexemes contained in the block port din
-14 14 din
-14 14 :
-14 14 in
-14 14 bit_vector
-14 14 (
-14 14 15
-14 14 downto
-14 14 0
-14 14 )
-List of lexemes contained in the block port dout
-15 15 dout
-15 15 :
-15 15 out
-15 15 bit_vector
-15 15 (
-15 15 15
-15 15 downto
-15 15 0
-15 15 )
-List of lexemes contained in the block port done2
-16 16 done2
-16 16 :
-16 16 in
-16 16 bit
-List of lexemes contained in the block architecture struct
-19 19 architecture
-19 19 struct
-19 19 of
-19 19 signaux
-19 19 is
-26 26 FLAG_SIGN
-27 27 FLAG_SIGN
-31 31 end
-31 31 struct
-31 31 ;
-List of lexemes contained in the block signal last_round_signal
-26 26 signal
-26 26 last_round_signal
-26 26 :
-26 26 bit
-26 26 ;
-List of lexemes contained in the block signal first_round_signal
-27 27 signal
-27 27 first_round_signal
-27 27 :
-27 27 bit
-27 27 ;
 0 10 0 library std
 1 10 1 std ;
 2 10 2 ; use
@@ -206,7 +78,6 @@ List of lexemes contained in the block signal first_round_signal
 4 9 6 ( 15
 5 9 7 15 downto
 6 9 8 downto 0
-NEXT NUMBER15
 7 9 9 0 )
 8 9 10 ) 
 0 9 0 dout :
@@ -216,36 +87,56 @@ NEXT NUMBER15
 4 9 6 ( 15
 5 9 7 15 downto
 6 9 8 downto 0
-NEXT NUMBER15
 7 9 9 0 )
 8 9 10 ) 
 0 4 0 done2 :
 1 4 2 : in
 2 4 3 in bit
 3 4 4 bit 
-0 10 0 architecture struct
-1 10 1 struct of
-2 10 2 of signaux
-3 10 3 signaux is
-4 10 4 is FLAG_SIGN
-5 10 4 FLAG_SIGN FLAG_SIGN
-6 10 4 FLAG_SIGN end
+0 10 0 signal data_round_in
+1 10 1 data_round_in :
+2 10 3 : bit_vector
+3 10 10 bit_vector (
+4 10 11 ( 12
+5 10 12 12 downto
+6 10 13 downto 0
+7 10 15 0 )
+8 10 16 ) ;
+9 10 22 ; 
+0 10 0 signal data_round_out
+1 10 1 data_round_out :
+2 10 3 : bit_vector
+3 10 10 bit_vector (
+4 10 11 ( 17
+5 10 12 17 downto
+6 10 13 downto 0
+7 10 15 0 )
+8 10 16 ) ;
+9 10 22 ; 
+0 10 0 signal first_round_key
+1 10 1 first_round_key :
+2 10 3 : bit_vector
+3 10 10 bit_vector (
+4 10 11 ( 6
+5 10 12 6 downto
+6 10 13 downto 0
+7 10 15 0 )
+8 10 16 ) ;
+9 10 22 ; 
+0 10 0 signal round_key
+1 10 1 round_key :
+2 10 3 : bit_vector
+3 10 10 bit_vector (
+4 10 11 ( 127
+5 10 12 127 to
+6 10 14 to 0
 001INF Information: BEGINNING OF THE SYNTHESIS OF THE "TEST/FINAL_TEST/signaux.vhd" FILE
 005INF Information: The "TEST/FINAL_TEST/signaux.vhd" file was successfully opened 
 009INF Information line 1: The library "std" has been detected
 009INF Information line 3: The library "ieee" has been detected
 010INF Information line 8: The entity "signaux" has been detected
 011INF Information line 19: The architecture "struct" has been detected
-803DEB Debugger line 10: The port "clk" has been detected
-803DEB Debugger line 11: The port "rst" has been detected
-803DEB Debugger line 12: The port "start" has been detected
-803DEB Debugger line 13: The port "done" has been detected
-803DEB Debugger line 14: The port "din" has been detected
-803DEB Debugger line 15: The port "dout" has been detected
-803DEB Debugger line 16: The port "done2" has been detected
-801DEB Debugger line 26: The signal "last_round_signal" has been detected
-801DEB Debugger line 27: The signal "first_round_signal" has been detected
 050INF Information: THE CREATION OF THE DATA TREE IS ENDED
 100INF Information: THE REORGANIZATION OF THE LEXEMES IS ENDED
-231ERR Error line 27: the word "end" can not be used at this place for an architecture
+211ERR Error line 24: the number "0" is not correct. If you have "a to b", "a" has to be lower than "b"
 004INF Information: The option to close when we encounter an error is turned on, so the program will be killed

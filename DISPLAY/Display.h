@@ -1,6 +1,8 @@
 #ifndef _DISPLAY_H_
 #define _DISPLAY_H_
 
+// Classe Display: utilisée pour afficher et stocker les différents messages
+
 #include <math.h>
 #include <string>
 #include <iostream>
