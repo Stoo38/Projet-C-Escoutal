@@ -30,7 +30,8 @@ signal First_round_KEY       : bit_vector(6 downto 0);
 begin
 
 un: process(start)
- variable var_un : bit;
+ variable test : bit_vector (6 downto 0) := "1000000";
+ variable var_un : bit := '1' ;
  variable var_deux : bit;
 begin
  if (start = '1') then
@@ -40,7 +41,7 @@ begin
  end if;  
  
  done <= var_un;  
-end process;
+end process un;
 
 
 end struct;

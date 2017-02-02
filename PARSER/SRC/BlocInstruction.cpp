@@ -4,8 +4,8 @@ void BlocInstruction::createTree()
 {
 	createVariable();
 	createIfCase();
-	createAssig();
 	createComparison();
+	createAssig();	
 	BlocNode::createTree();
 }
 

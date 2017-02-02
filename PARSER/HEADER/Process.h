@@ -32,5 +32,6 @@ class Process : public BlocInstruction
 	virtual void createIfCase();
 	virtual void createVariable();
 	virtual void createAssig();
+	virtual void verifySyntax();
 };
 #endif

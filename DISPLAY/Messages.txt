@@ -46,6 +46,7 @@
 200INF Information: THE SYNTAX VERIFICATION IS ENDED
 210ERR Error line <L:> the number <"W"> is not correct. If you have "a downto b", "a" has to be higher than "b"
 211ERR Error line <L:> the number <"W"> is not correct. If you have "a to b", "a" has to be lower than "b"
+218ERR Error line <L:> the size of the vector <"W"> is different of the expected size
 ###### LIBRARY
 201ERR Error line <L:> <"W"> is not a valid label, it must be the one of the library
 202ERR Error line <L:> : the word <"W"> can not be used at this place for a library
@@ -73,6 +74,22 @@
 
 217ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the signal
 218ERR Error line <L:> the size of the vector <"W"> is different of the expected size
+
+#VARIABLE
+219ERR Error line <L:> the word <"W"> can not be used at this place for a variable
+220ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the variable
+#PORTMAP
+221ERR Error line <L:> the word <"W"> can not be used at this place for a port map
+222ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the port map
+#PROCESS
+223ERR Error line <L:> <"W"> is not a valid label, it must be the one of the process
+224ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the process
+225ERR Error line <L:> the word <"W"> can not be used at this place for a process
+#INSTRUCTIONIF
+226ERR Error line <L:> the word <"W"> can not be used at this place for an instruction if
+227ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the instruction if
+228ERR Error line <L:> It is impossible to have more than one else for an instruction if
+
 
 
 ##### MESSAGES FOR THE DEBUGGING

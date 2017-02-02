@@ -32,5 +32,6 @@ class InstructionIf : public BlocInstruction
 	virtual void createAssig();	
 	virtual void reorganizeLexemes();
 	virtual void createComparison();
+	virtual void verifySyntax();
 };
 #endif

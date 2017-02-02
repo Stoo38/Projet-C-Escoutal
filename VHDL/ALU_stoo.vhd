@@ -1,4 +1,15 @@
+library IEEE ;
+use IEEE.std_logic_1164.ALL ;
 
+use ieee.numeric_std.all;
+entity ALU is
+	port(	A,B		: in STD_LOGIC_VECTOR(2 downto 0) ; 
+		CMD		: in STD_LOGIC_VECTOR(0 to 2) ;
+		Zero		: out std_logic;
+		A		: out STD_LOGIC_VECTOR(0 to 7) ;
+		reset, clock	: in std_logic) ;
+
+end ALU;
 architecture a of ALU is
 
 	component Compteur
@@ -16,5 +27,102 @@ architecture a of ALU is
 		A	: out std_logic);
 	end component ;
 
- 
+signal result: unsigned (8 downto 0) <= "111111111"; 
+signal a_u: unsigned (7 downto 0);
+signal b_u: unsigned (7 downto 0);
+
+begin	
+	MachineEtat01 : MachineEtat port map (sig_clk,sig_rst_n,sig_P,sig_F,sig_M,sig_A);
+	Compteur01 : Compteur port map (sig_M,sig_clk,sig_rst_n,sig_P,sig_F);
+testest2 : process(reset, clock)
+begin
+	
+	case CMD is
+		when("000") => result <= ('0' & a_u);
+		if (result(7 downto 0) = "00000000") then zero <= '1'; 
+	else zero <= '0';
+	end if;
+		when("001") => result <= ('0' & a_u) + ('0' & b_u );
+		when("010") => result <= ('0' & a_u) - ('0' & b_u );
+				case CMD is
+		when("000") => result <= ('0' & a_u);
+		when("001") => result <= ('0' & a_u) + ('0' & b_u );
+		when("010") => result <= ('0' & a_u) - ('0' & b_u );
+		when("011") => result <= ('0' & b_u) - ('0' & a_u );
+		when others => result <= "111111111";
+	end case;
+		
+		when("011") => result <= ('0' & b_u) - ('0' & a_u );
+		when others => result <= "111111111";
+	end case;
+	
+	case CMD is
+		when("000") => result <= ('0' & a_u);
+		when("001") => result <= ('0' & a_u) + ('0' & b_u );
+		when("010") => result <= ('0' & a_u) - ('0' & b_u );
+		when("011") => result <= ('0' & b_u) - ('0' & a_u );
+		when others => result <= "111111111";
+	end case;
+	if (reset = '1') then
+	result <= "000000000";	
+	a_u <= "00000000";
+	b_u <= "00000000";
+	S<= std_logic_vector(result(7 downto 0)); --define the value of S in function of result (8 bits)
+	elsif clock'event and clock = '1' then
+		a_u<= unsigned(a);
+		b_u<= unsigned(b);
+		case CMD is
+			when("000") => result <= ('0' & a_u);
+			when("001") => result <= ('0' & a_u) + ('0' & b_u );
+			when("010") => result <= ('0' & a_u) - ('0' & b_u );
+			when("011") => result <= ('0' & b_u) - ('0' & a_u );
+			when("100") => result <= ('0' & a_u) XOR ('0' & b_u );
+			when("101") => result <= ('0' & a_u) OR ('0' & b_u );		
+			when("110") => result <= ('0' & a_u) AND ('0' & b_u );
+			when("111") => result <= ('0' & a_u) + "000000001";
+			when others => result <= "111111111";
+		end case;
+	S<= std_logic_vector(result(7 downto 0)); --define the value of S in function of result (8 bits)	
+	else zero <= '0';		
+	end if;
+		
+	if (result(7 downto 0) = "00000000") then zero <= '1'; 
+	else zero <= '0';
+	end if;
+	
+end process testest2 ;
+process(reset, clock)
+	variable count_int : unsigned (3 downto 0);
+	variable count_int2 : unsigned (3 downto 0);
+	variable count_2int : unsigned (3 downto 0);
+begin
+
+		
+	if (result(7 downto 0) = "00000000") then 
+		zero <= '1'; 
+		count_int := count_int + "0001";
+		count_int := count_int + "0001";
+		if (result(7 downto 0) = "00000000") then zero <= '1'; 
+		else zero <= '0';
+		end if;
+		if (result(7 downto 0) = "00000000") then zero <= '1'; 
+		else zero <= '0';
+		end if;
+	else zero <= '0';
+	end if;
+	
+end process;
+
+
+testest4 : process(reset, clock)
+begin
+
+		
+	if (result(7 downto 0) = "00000000") then zero <= '1'; 
+	else zero <= '0';
+	end if;
+	
+end process testest4;
+
+
 end A;
