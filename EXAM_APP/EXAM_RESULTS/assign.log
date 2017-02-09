@@ -1,0 +1,23 @@
+001INF Information: BEGINNING OF THE SYNTHESIS OF THE "EXAM_APP/assign.vhd" FILE
+005INF Information: The "EXAM_APP/assign.vhd" file was successfully opened 
+009INF Information line 1: The library "std" has been detected
+009INF Information line 3: The library "ieee" has been detected
+010INF Information line 8: The entity "assign" has been detected
+011INF Information line 19: The architecture "struct" has been detected
+803DEB Debugger line 10: The port "clk" has been detected
+803DEB Debugger line 11: The port "rst" has been detected
+803DEB Debugger line 12: The port "start" has been detected
+803DEB Debugger line 13: The port "done" has been detected
+803DEB Debugger line 14: The port "din" has been detected
+803DEB Debugger line 15: The port "dout" has been detected
+801DEB Debugger line 21: The signal "data_round_in" has been detected
+801DEB Debugger line 22: The signal "data_round_out" has been detected
+801DEB Debugger line 23: The signal "last_round_signal" has been detected
+801DEB Debugger line 24: The signal "first_round_signal" has been detected
+815DEB Debugger line 30: The connexion has been detected
+815DEB Debugger line 33: The connexion has been detected
+815DEB Debugger line 37: The connexion has been detected
+050INF Information: THE CREATION OF THE DATA TREE IS ENDED
+100INF Information: THE REORGANIZATION OF THE LEXEMES IS ENDED
+200INF Information: THE SYNTAX VERIFICATION IS ENDED
+300INF Information: THE PRESYNTHESIS VERIFICATION IS ENDED

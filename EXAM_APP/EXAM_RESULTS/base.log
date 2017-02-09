@@ -1,0 +1,59 @@
+001INF Information: BEGINNING OF THE SYNTHESIS OF THE "EXAM_APP/base.vhd" FILE
+005INF Information: The "EXAM_APP/base.vhd" file was successfully opened 
+009INF Information line 4: The library "std" has been detected
+009INF Information line 6: The library "ieee" has been detected
+010INF Information line 11: The entity "aes_core" has been detected
+011INF Information line 25: The architecture "struct" has been detected
+803DEB Debugger line 13: The port "clk" has been detected
+803DEB Debugger line 14: The port "rst" has been detected
+803DEB Debugger line 15: The port "keyin" has been detected
+803DEB Debugger line 16: The port "start" has been detected
+803DEB Debugger line 17: The port "din" has been detected
+803DEB Debugger line 18: The port "dout" has been detected
+803DEB Debugger line 19: The port "ivin" has been detected
+803DEB Debugger line 20: The port "ecb_cbc" has been detected
+803DEB Debugger line 21: The port "dout_val" has been detected
+020INF Information line 27: The component "key_schedule" has been detected
+020INF Information line 37: The component "round" has been detected
+020INF Information line 49: The component "aes_ctrl" has been detected
+020INF Information line 58: The component "ffd_start" has been detected
+801DEB Debugger line 67: The signal "data_round_in" has been detected
+801DEB Debugger line 68: The signal "data_round_out" has been detected
+801DEB Debugger line 69: The signal "first_round_key" has been detected
+801DEB Debugger line 70: The signal "round_key" has been detected
+801DEB Debugger line 71: The signal "last_round_signal" has been detected
+801DEB Debugger line 72: The signal "first_round_signal" has been detected
+804DEB Debugger line 75: The port map "round_inst" has been detected
+804DEB Debugger line 76: The port map "key_sched_inst" has been detected
+804DEB Debugger line 78: The port map "control_inst" has been detected
+815DEB Debugger line 80: The connexion has been detected
+815DEB Debugger line 83: The connexion has been detected
+815DEB Debugger line 84: The connexion has been detected
+803DEB Debugger line 29: The port "clk" has been detected
+803DEB Debugger line 30: The port "rst" has been detected
+803DEB Debugger line 31: The port "keyin" has been detected
+803DEB Debugger line 32: The port "first_round_key" has been detected
+803DEB Debugger line 33: The port "round_key" has been detected
+803DEB Debugger line 34: The port "first_round_signal" has been detected
+803DEB Debugger line 39: The port "clk" has been detected
+803DEB Debugger line 40: The port "rst" has been detected
+803DEB Debugger line 41: The port "din" has been detected
+803DEB Debugger line 42: The port "first_round_key" has been detected
+803DEB Debugger line 43: The port "round_key" has been detected
+803DEB Debugger line 44: The port "last_round_signal" has been detected
+803DEB Debugger line 45: The port "first_round_signal" has been detected
+803DEB Debugger line 46: The port "dout" has been detected
+803DEB Debugger line 51: The port "clk" has been detected
+803DEB Debugger line 52: The port "rst" has been detected
+803DEB Debugger line 53: The port "start" has been detected
+803DEB Debugger line 54: The port "last_round_signal" has been detected
+803DEB Debugger line 55: The port "first_round_signal" has been detected
+803DEB Debugger line 60: The port "a" has been detected
+803DEB Debugger line 61: The port "q" has been detected
+803DEB Debugger line 62: The port "store" has been detected
+803DEB Debugger line 63: The port "clk" has been detected
+803DEB Debugger line 64: The port "rst" has been detected
+050INF Information: THE CREATION OF THE DATA TREE IS ENDED
+100INF Information: THE REORGANIZATION OF THE LEXEMES IS ENDED
+216ERR Error line 67: the word "std_logic_vector" can not be used at this place for a signal
+004INF Information: The option to close when we encounter an error is turned on, so the program will be killed

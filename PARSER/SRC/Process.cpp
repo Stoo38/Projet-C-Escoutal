@@ -273,13 +273,24 @@ void Process::verifySyntax()
 
 		else if (nbLexeme == 2)	// CAS 2: Mot clef "process"
 		{
-			if (nextWord != "(")
+			if (nextWord == "(")
 			{	
+				nbLexeme = 3;	
+			}
+			else if (nextWord == "begin")
+			{	
+				nbLexeme = 8;	
+			}
+			else if (nextWord == "FLAG_VARI")
+			{	
+				nbLexeme = 7;	
+			}
+			else
+			{
 				m_msgBox.createMessage("225", (*itr).m_line, nextWord);
 				itr = m_listLexemes.end();
 				itr--;
-			}
-			nbLexeme = 3;				
+			}				
 		}	
 
 		else if (nbLexeme == 3)	// CAS 3: Paranthèse ouvrante "("
@@ -407,13 +418,20 @@ void Process::verifySyntax()
 
 		else if (nbLexeme == 11) // CAS 11: Mot clef "process"
 		{
-			if (nextWord != m_identifiant.m_word)
+			if (nextWord == ";")
+			{
+				nbLexeme = 13;
+			}
+			else if (nextWord == m_identifiant.m_word)
 			{	
+				nbLexeme = 12;				
+			}	
+			else
+			{
 				m_msgBox.createMessage("223", (*itr).m_line, nextWord);
 				itr = m_listLexemes.end();
 				itr--;
 			}
-			nbLexeme = 12;
 		}
 
 		else if (nbLexeme == 12) // CAS 12: Label correspondant à l'étiquette du process

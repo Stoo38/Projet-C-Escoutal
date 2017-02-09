@@ -1,0 +1,7 @@
+001INF Information: BEGINNING OF THE SYNTHESIS OF THE "EXAM_APP/base_ports.vhd" FILE
+005INF Information: The "EXAM_APP/base_ports.vhd" file was successfully opened 
+009INF Information line 1: The library "portes" has been detected
+050INF Information: THE CREATION OF THE DATA TREE IS ENDED
+100INF Information: THE REORGANIZATION OF THE LEXEMES IS ENDED
+202ERR Error line 2: : the word "package" can not be used at this place for a library
+004INF Information: The option to close when we encounter an error is turned on, so the program will be killed

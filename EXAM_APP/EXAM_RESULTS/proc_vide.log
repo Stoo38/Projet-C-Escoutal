@@ -1,0 +1,25 @@
+001INF Information: BEGINNING OF THE SYNTHESIS OF THE "EXAM_APP/proc_vide.vhd" FILE
+005INF Information: The "EXAM_APP/proc_vide.vhd" file was successfully opened 
+009INF Information line 2: The library "std" has been detected
+009INF Information line 4: The library "ieee" has been detected
+010INF Information line 9: The entity "proc_vide" has been detected
+011INF Information line 20: The architecture "struct" has been detected
+803DEB Debugger line 11: The port "clk" has been detected
+803DEB Debugger line 12: The port "rst" has been detected
+803DEB Debugger line 13: The port "start" has been detected
+803DEB Debugger line 14: The port "done" has been detected
+803DEB Debugger line 15: The port "din" has been detected
+803DEB Debugger line 16: The port "dout" has been detected
+021INF Information line 32: The process "un" has been detected
+021INF Information line 36: The process "default" has been detected
+021INF Information line 41: The process "deux" has been detected
+801DEB Debugger line 22: The signal "data_round_in" has been detected
+801DEB Debugger line 23: The signal "data_round_out" has been detected
+801DEB Debugger line 24: The signal "first_round_key" has been detected
+801DEB Debugger line 25: The signal "round_key" has been detected
+801DEB Debugger line 26: The signal "last_round_signal" has been detected
+801DEB Debugger line 27: The signal "first_round_signal" has been detected
+050INF Information: THE CREATION OF THE DATA TREE IS ENDED
+100INF Information: THE REORGANIZATION OF THE LEXEMES IS ENDED
+200INF Information: THE SYNTAX VERIFICATION IS ENDED
+300INF Information: THE PRESYNTHESIS VERIFICATION IS ENDED

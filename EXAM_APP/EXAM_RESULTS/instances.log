@@ -1,0 +1,17 @@
+001INF Information: BEGINNING OF THE SYNTHESIS OF THE "EXAM_APP/instances.vhd" FILE
+005INF Information: The "EXAM_APP/instances.vhd" file was successfully opened 
+009INF Information line 4: The library "std" has been detected
+009INF Information line 6: The library "ieee" has been detected
+009INF Information line 10: The library "portes" has been detected
+010INF Information line 13: The entity "instances" has been detected
+011INF Information line 22: The architecture "struct" has been detected
+803DEB Debugger line 15: The port "clk" has been detected
+803DEB Debugger line 16: The port "rst" has been detected
+803DEB Debugger line 17: The port "input" has been detected
+803DEB Debugger line 18: The port "result" has been detected
+801DEB Debugger line 24: The signal "int_level_1" has been detected
+801DEB Debugger line 25: The signal "int_level_2" has been detected
+804DEB Debugger line 28: The port map "first" has been detected
+804DEB Debugger line 32: The port map "second" has been detected
+008ERR Error line 37: ">" is not a valid label, it can only be letters, numbers or underscores
+004INF Information: The option to close when we encounter an error is turned on, so the program will be killed

@@ -11,5 +11,5 @@ signal variable in out to downto upto range
 
 begin end if then else elsif switch case of is when map
 
-and or xor 
+and or xor nand nor
 

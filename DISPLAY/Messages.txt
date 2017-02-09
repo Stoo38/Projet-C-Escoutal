@@ -89,9 +89,14 @@
 226ERR Error line <L:> the word <"W"> can not be used at this place for an instruction if
 227ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the instruction if
 228ERR Error line <L:> It is impossible to have more than one else for an instruction if
-
-
-
+##### CONNEXION
+235ERR Error line <L:> <"W"> is not a valid name for a signal
+236ERR Error line <L:> the lexeme <"W"> can not be there
+237ERR Error line <L:> the lexeme <"W"> can not be there, it is the end of the connexion
+##### GATE
+238ERR Error line <L:> <"W"> is not a valid name for a signal
+239ERR Error line <L:> <"W"> must be followed by a valid gate name
+240ERR Error line <L:> <"W"> must be followed by a gate name or by ";" for the end of the connexion
 ###### MESSAGES DURING THE PRESYNTHESIS
 300INF Information: THE PRESYNTHESIS VERIFICATION IS ENDED
 301WAR Warning: The architecture matches with an entity <"W"> which is not in the same .vhd file

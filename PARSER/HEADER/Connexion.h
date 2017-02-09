@@ -13,13 +13,15 @@ class Connexion : public BlocInstruction
 
 	public:
 	Connexion(const int nLine, Display &msgBox):
-	BlocInstruction("default", "connexion", nLine, msgBox)
+	BlocInstruction("default", "connexion", nLine, msgBox),
+	m_gate(nLine, msgBox)
 	{	
 	}
 
 	//METHODE HERITEE
 	virtual void createTree();
-	virtual void verifySyntax() {};
+	virtual void verifySyntax();
 	virtual void displayLexemes();
+	virtual void reorganizeLexemes() { m_gate.reorganizeLexemes();};
 };
 #endif

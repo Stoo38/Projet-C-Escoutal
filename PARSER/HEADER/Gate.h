@@ -5,22 +5,25 @@
 #include <cstdlib>
 #include <list>
 #include "Lexeme.h"
+#include "BlocNode.h"
 
 using namespace std;
 //Classe pour decouper les connexions en des elements les plus simples possibles
-class Gate
+class Gate : public BlocNode
 {
    	public:
-	list <Lexeme> m_listLexemes;
 	//string m_signal_a;
 	//string m_signal_b;
 	//string m_gate;
 
-	Gate()
+	Gate(const int nLine, Display &msgBox):
+	BlocNode("default", "gate", nLine, msgBox)
 	{
 
-	}	
+	}
 
-	void displayLexemes();
+	virtual	void verifySyntax();
+	virtual void reorganizeLexemes();
+
 };
 #endif

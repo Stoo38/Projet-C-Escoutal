@@ -118,7 +118,7 @@ void Architecture::createProcess()	//Repere les process entre le mot-clé proces
 				}
 				else if ((labelProcess == true) && ((*itr).m_word == ";"))
 				{
-					m_msgBox.createMessage("026", (*itr).m_line, "");
+					//m_msgBox.createMessage("026", (*itr).m_line, "");
 					(m_listeBlocks.back())->addLexeme((*itr).m_word, (*itr).m_line);
 				}
 				else if ((labelProcess == true) && ((*itr).m_word != ";"))
